@@ -27,7 +27,7 @@ module.exports=function(doc,{data,E}){
  const footer=doc.createElement('footer');footer.className='reader-status';footer.innerHTML='<span id="status" role="status">点击网络追踪</span><span>拖动平移 · Ctrl + 滚轮缩放 · 双击网络看端点</span>';doc.body.append(footer);
  const flash=doc.createElement('dialog');flash.id='flash-dialog';flash.className='dialog flash-dialog';flash.innerHTML=require('./schematic_flashing_guide.cjs')();doc.body.append(flash);
  toc.insertAdjacentHTML('afterbegin','<a class="flash-shortcut" href="?module=flash-p4#schematic" data-module="flash-p4">◉ P4 烧录 / 恢复</a><a class="flash-shortcut" href="?module=flash-c5#schematic" data-module="flash-c5">◉ C5 烧录预留 · NC</a>');
- toc.insertAdjacentHTML('afterbegin','<a href="DCDC电源原理图.html">三路 DC/DC 电源图</a>');
+ toc.insertAdjacentHTML('afterbegin','<a href="DCDC电源原理图.html">三路 DC/DC 电源图</a><a href="电池电压采样原理图.html">电池电压采样大图</a>');
  for(const a of toc.querySelectorAll('[data-section]:not([data-section="schematic"])'))a.dataset.notes=a.dataset.section;
  for(const a of toc.querySelectorAll('[data-module]')){const id=a.dataset.module;const domain=id.startsWith('s-')?id.slice(2):data.panels.find(p=>p.id===id)?.domain;a.dataset.color=domain||'p4';}
 };

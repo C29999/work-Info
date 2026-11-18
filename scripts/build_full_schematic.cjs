@@ -10,10 +10,10 @@ function addSheet(id,title,short,make,height=2546){
  const d=draw();d.put(`<svg xmlns="http://www.w3.org/2000/svg" id="svg-${id}" class="circuit" viewBox="0 0 3600 ${height}" role="img" aria-label="${E(title)}"><style>${style}</style><rect width="3600" height="${height}" fill="#fff"/><rect x="18" y="18" width="3564" height="${height-36}" rx="5" fill="none" stroke="#9db3c5" stroke-width="2"/>`);
  d.text(48,77,title,40,'heading');d.text(48,119,'无人船统一主板 · 同名网络全板互连 · 实线为器件/接插件，虚线为逻辑端口 · 候选评审稿',22,'muted');d.text(3550,75,'Rev F / 2026-11-18',27,'heading','text-anchor="end"');d.text(3550,116,short,22,'muted','text-anchor="end"');
  make(d);d.text(48,height-71,'UNIFIED BOAT CONTROL  /  点击网络高亮 · 双击查看全板端点 · DNP为默认不装',21,'heading');d.text(3550,height-71,'3600 × '+height+' · '+short,20,'muted','text-anchor="end"');d.put('</svg>');
- const svg=d.output();sheets.push({id,title,short,svg,height});components.push(...d.components.map(c=>({...c,sheet:id})));panels.push(...d.panels.map(p=>({...p,sheet:id})));
+ const svg=require('./apply_wired_modules.cjs')(d.output(),d.panels,d.components,height);sheets.push({id,title,short,svg,height});components.push(...d.components.map(c=>({...c,sheet:id})));panels.push(...d.panels.map(p=>({...p,sheet:id})));
 }
 addSheet('power','01 · 3S/4S/6S 电源 / 双路 5V / 3.3V','01 电源',d=>require('./schematic_power_rev_d.cjs')(d),3146);
-addSheet('battery','电池电压采样 / 粗略 SOC','电池采样',d=>require('./schematic_battery_rev_f.cjs')(d),780);
+addSheet('battery','电池电压采样 / 粗略 SOC','07 电池采样',d=>require('./schematic_battery_rev_f.cjs')(d),800);
 sheets.push({id:'f4',title:'02 · STM32F407 主控与接口',short:'02 STM32',svg:f4Svg.replace('id="sheet"','id="svg-f4" class="circuit"').replace('01 · 主控页 / 方案评审稿','02 · 主控页 / 方案评审稿')});components.push(...f4.components.map(c=>({...c,sheet:'f4'})));panels.push(...f4.panels.map(p=>({...p,sheet:'f4'})));
 addSheet('p4','03 · ESP32-P4C5 核心板 / CAN / 恢复接口','03 ESP32',d=>require('./schematic_p4_rev_d.cjs')(d,p4));
 addSheet('camera','04 · microSD / USB / CSI / DVP 摄像头','04 存储与视频',d=>require('./schematic_cameras_rev_d.cjs')(d));
@@ -44,6 +44,11 @@ const ui=read('../scripts/full_schematic_ui.js');new vm.Script(ui);s=doc.createE
 const css=doc.createElement("style");css.id="whole-board-styles";css.textContent=read("../scripts/schematic_reader_styles.css");
 doc.head.append(css);
 const unique=[...doc.querySelectorAll('[id]')].map(e=>e.id);if(unique.length!==new Set(unique).size)throw Error('Duplicate HTML ID');
-write('DCDC电源原理图.html',require('./schematic_power_view.cjs')(doc,{data,style,E}));
+const focusedView=require('./schematic_power_view.cjs');
+write('DCDC电源原理图.html',focusedView(doc,{data,style,E}));
+write('电池电压采样原理图.html',focusedView(doc,{data,style,E},{
+ title:'电池电压采样原理图',links:[['battery-sense','电池采样电路']],minWidth:1680,
+ intro:'从左到右：保护后电池母线 → 电阻分压与滤波 → 断电关断开关 → STM32 PC0。窗口较窄时可横向滚动。'
+}));
 write('原理图设计.html','<!DOCTYPE html>\n'+doc.documentElement.outerHTML);dom.window.close();
 console.log(JSON.stringify({sheets:data.sheets.length,domains:data.domains.length,components:components.length,physical:components.filter(c=>c.kind==='physical').length,nets:Object.keys(nets).length,pins:{f4:Object.keys(components.find(c=>c.ref==='U1').pins).length,p4:Object.keys(components.find(c=>c.ref==='U701').pins).length}}));

@@ -41,7 +41,7 @@ module.exports=function(sources,originalPanels,style){
  <text x="7192" y="78" font-size="30" class="heading" text-anchor="end">Rev F · 2026-11-18 · 01 / 01</text>
  <text x="48" y="124" font-size="23" class="muted">同名网络在整图内互连 · 点击高亮 / 双击追踪 · DNP 默认不装 · 候选电气评审稿</text>
  ${label(48,178,'3S / 4S / 6S 单路输入 · 逻辑与舵机双路 5V')}
- ${label(48,1958,'STM32F407 · 实时控制与传感器')}${label(3648,1958,'ESP32-P4C5 · 通信、存储与视频')}
+ ${label(48,1978,'STM32F407 · 实时控制与传感器')}${label(3648,1978,'ESP32-P4C5 · 通信、存储与视频')}
  ${label(48,4358,'外部模块与执行接口')}${label(3648,4358,'SD / USB / CSI / DVP 外围')}
  ${groups.join('\n')}
  <text x="48" y="6670" font-size="23" class="heading">整板同图 · 100 个 F4 引脚 / 88 个 P4 模块焊盘 · 同名网络等效连接 · NC 未接</text>

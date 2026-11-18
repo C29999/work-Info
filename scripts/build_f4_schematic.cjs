@@ -170,7 +170,7 @@ text(1130,2385,'TIM3 两通道共周期；3.3V 电平与舵机兼容性、堵转
 text(48,2475,'UNIFIED BOAT CONTROL  /  主控与接口  /  所有网络均可点击高亮，双击查看连接位置',21,'heading');
 text(3550,2475,'A0 横向 · 3600 × 2546 · 02 / 05',20,'muted','text-anchor="end"');
 put('</svg>');
-const svg=out.join('\n');
+const svg=require('./apply_wired_modules.cjs')(out.join('\n'),panels,components,2546);
 const nets={};for(const c of components)for(const [pin,p]of Object.entries(c.pins)){if(p.net)(nets[p.net]??=[]).push({ref:c.ref,pin,name:p.name,kind:c.kind});}
 const data={title:'无人船统一主板 STM32F4 主控与接口原理图',revision:'Rev F / 2026-11-18',status:'方案评审稿，未完成EDA/电气验证',part:'STM32F407VET6',package:'LQFP100',components,nets,panels,pinSource:pinData.source,afSource:pinData.alternate_function_source,supplementalSources:pinData.supplemental_sources};
 if(Object.keys(components.find(c=>c.ref==='U1').pins).length!==100)throw Error('Incomplete MCU');

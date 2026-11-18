@@ -6,9 +6,10 @@ module.exports = function drawBatterySense(d) {
   // moves the complete panel without reinterpreting its electrical networks.
   const shift=2850;
   const wrap=(name)=>(x,y,...rest)=>d[name](x,y-shift,...rest);
-  const panel=wrap('panel'),rh=wrap('rh'),rv=wrap('rv'),cap=wrap('cap');
+  const {panel}=d;
+  const rh=wrap('rh'),rv=wrap('rv'),cap=wrap('cap');
   const ic=wrap('ic'),testpoint=wrap('testpoint'),noteLines=wrap('noteLines');
-  panel('battery-sense',40,3010,3520,550,'07  3S / 4S / 6S 电压采样 · 粗略 SOC',
+  panel('battery-sense',40,160,3520,550,'07  3S / 4S / 6S 电压采样 · 粗略 SOC',
     '单路电池、与 MCU 共地；保护后母线 0–30V 候选测量范围。电流不采样；串数/容量/曲线由配置选择。');
   rh(75,3150,'R301','49.9k / 0.1%','BAT_SENSE_PROTECTED','BAT_DIV_HI',630,
     '与R307串联组成99.8k上臂；0603，单颗工作电压≥50V、功率≥0.1W，具体料号待冻结');

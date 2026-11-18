@@ -88,6 +88,18 @@ async function main(){
    for(const e of v.querySelectorAll('[data-net],[data-wire]')){const n=e.dataset.net||e.dataset.wire;assert.ok(source.nets[n]?.some(p=>p.domain===domain.id),domain.id+' unknown '+n);if(e.dataset.net){assert.ok(source.panels.some(p=>p.domain===domain.id&&p.title===e.dataset.area));assert.ok(e.closest('[data-panel]'));}}
    assert.equal([...v.querySelectorAll('text')].filter(t=>t.textContent.trim()==='NC').length,cs.flatMap(c=>Object.values(c.pins)).filter(p=>p.net===null).length,domain.id+' NC count');}
  });
+ await check('Battery sense draws the full PC0 path inside its visible panel',()=>{
+  const board=svg('battery'),panel=board.querySelector('[data-panel="battery-sense"]');
+  const rect=panel.querySelector('rect.panel'),drawing=panel.querySelector('[data-wired-module="battery-sense"]');
+  assert.equal(drawing.getAttribute('transform'),`translate(${rect.getAttribute('x')} ${rect.getAttribute('y')})`);
+  const content=drawing.textContent;
+  for(const ref of ['R301','R307','R302','C301','U303','U301','R303','R304','R305','TP301'])assert.match(content,new RegExp('\\b'+ref+'\\b'));
+  for(const n of ['BAT_SENSE_PROTECTED','BAT_DIV_HI','BAT_DIV','BAT_SENSE_EN','BAT_SW','BAT_ADC_LINK','BAT_ADC']){
+   const wires=[...drawing.querySelectorAll(`[data-wire="${n}"]`)];
+   assert.ok(wires.some(e=>Math.abs(+e.getAttribute('x1')-+e.getAttribute('x2'))>28),n+' is drawn as a path');
+   for(const e of wires)for(const side of [1,2])assert.ok(+e.getAttribute('x'+side)>=0&&+e.getAttribute('x'+side)<=+rect.getAttribute('width')&&+e.getAttribute('y'+side)>=0&&+e.getAttribute('y'+side)<=+rect.getAttribute('height'),n+' within panel');
+  }
+ });
  await check('CAN uses separate MCU-side TX/RX and shared cross-region H/L with USB-CAN port',()=>{
   for(const [r,p,n]of [['U1',82,'CAN_TX'],['U1',81,'CAN_RX'],['U2',1,'CAN_TX'],['U2',4,'CAN_RX'],['U701',29,'P4_CAN_TX'],['U701',30,'P4_CAN_RX'],['U702',1,'P4_CAN_TX'],['U702',4,'P4_CAN_RX']])net(r,p,n);
   for(const r of ['U2','U702']){net(r,7,'CAN_H');net(r,6,'CAN_L');net(r,5,null);}net('J201',1,'CAN_H');net('J201',2,'CAN_L');net('J201',3,'GND');
