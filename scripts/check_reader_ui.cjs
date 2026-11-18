@@ -1,0 +1,41 @@
+const fs=require('fs'),path=require('path'),assert=require('assert/strict');
+const {JSDOM,VirtualConsole}=require('jsdom');
+const root=path.resolve(__dirname,'../design'),read=f=>fs.readFileSync(path.join(root,f),'utf8');
+const data=JSON.parse(read('无人船_整板_原理图连接表.json')),errors=[],checks=[],downloads=[],objects=new Map();
+const vc=new VirtualConsole();vc.on('jsdomError',e=>errors.push(e.message));
+const dom=new JSDOM(read('原理图设计.html'),{url:'https://reader.test/原理图设计.html',runScripts:'outside-only',virtualConsole:vc});
+const w=dom.window,d=w.document;
+if(!d.body.classList.contains('reader-page'))require('./schematic_reader_shell.cjs')(d,{data,E:String});
+const svg=d.getElementById('svg-board'),electrical=svg.outerHTML;
+for(const id of ['net-dialog','source-dialog','notes-dialog','flash-dialog'])assert.ok(d.getElementById(id),id);
+Object.defineProperty(d.getElementById('view'),'clientWidth',{value:1200});Object.defineProperty(d.getElementById('view'),'clientHeight',{value:800});
+w.Element.prototype.scrollTo=function(a,b){this.scrollLeft=typeof a==='object'?a.left:a;this.scrollTop=typeof a==='object'?a.top:b;};w.Element.prototype.scrollIntoView=function(){};
+w.HTMLDialogElement.prototype.showModal=function(){this.open=true;};w.HTMLDialogElement.prototype.close=function(){this.open=false;};w.ResizeObserver=class{observe(){}};
+w.URL.createObjectURL=blob=>{const id='blob:test-'+objects.size;objects.set(id,blob);return id;};w.URL.revokeObjectURL=()=>{};
+w.HTMLAnchorElement.prototype.click=function(){if(this.download)downloads.push({name:this.download,blob:objects.get(this.href)});else this.dispatchEvent(new w.MouseEvent('click',{bubbles:true,cancelable:true}));};
+const ui=read('../scripts/full_schematic_ui.js');
+const delivered=[...d.scripts].find(s=>!s.src&&s.type!=='application/json'&&s.textContent.includes('function selectModule'));
+assert.ok(delivered,'Delivered UI script exists');assert.equal(delivered.textContent.replace(/\r\n/g,'\n'),ui.replace(/\r\n/g,'\n'),'Delivered UI matches source');
+w.eval(delivered.textContent);
+const $=id=>d.getElementById(id),event=(id,type)=>$(id).dispatchEvent(new w.Event(type,{bubbles:true}));
+const select=id=>{$('section').value=id;event('section','change');};
+function check(name,fn){try{fn();checks.push({name,passed:true});}catch(e){checks.push({name,passed:false,error:e.message});}}
+async function main(){
+ check('75% default opens P4C5 with transparent flashing outline outside electrical SVG',()=>{assert.equal($('zoom-input').value,'75');assert.equal($('section').value,'p4-module');assert.equal($('locate-overlay').dataset.module,'p4-module');assert.ok($('locate-overlay').classList.contains('locate-flash'));assert.equal(svg.contains($('locate-overlay')),false);for(const r of $('locate-overlay').children)assert.equal(r.getAttribute('fill'),'none');});
+ check('Select and reselect navigation flashes only current panel; animation ends at a persistent outline',()=>{select('sensors');assert.equal($('locate-overlay').childElementCount,1);select('power-input-6s');assert.equal($('locate-overlay').childElementCount,1);assert.equal($('locate-overlay').dataset.module,'power-input-6s');assert.ok($('locate-overlay').classList.contains('locate-flash'));$('locate-overlay').firstElementChild.dispatchEvent(new w.Event('animationend',{bubbles:true}));assert.ok(!$('locate-overlay').classList.contains('locate-flash'));assert.equal($('locate-overlay').childElementCount,1);$('replay-focus').click();assert.ok($('locate-overlay').classList.contains('locate-flash'));});
+ check('C5 highlights five NC pads without implying a wired programming circuit; P4 locates recovery',()=>{select('flash-c5');assert.equal($('locate-overlay').querySelectorAll('.program-pad').length,5);assert.match($('focus-status').textContent,/NC/);select('flash-p4');assert.equal($('locate-overlay').querySelectorAll('.program-pad').length,7);assert.equal($('locate-overlay').childElementCount,8);assert.match($('focus-note').textContent,/逻辑口/);});
+ check('All domains remain visible when navigating, with URL/nav synchronized',()=>{for(const p of data.panels){select(p.id);assert.equal(new URL(w.location.href).searchParams.get('module'),p.id);assert.equal(d.querySelector('.toc [aria-current="location"]').dataset.module,p.id);assert.equal(d.querySelectorAll('#svg-board > [data-domain]').length,5);assert.equal(d.querySelectorAll('#svg-board [hidden]').length,0);}});
+ check('Zoom invalid values restore current value; upper clamp is 400%; readable75 and whole fit work',()=>{$('zoom-input').value='';event('zoom-input','change');assert.ok(Number($('zoom-input').value)>0);$('zoom-input').value='600';event('zoom-input','change');assert.equal($('zoom-input').value,'400');$('readable').click();assert.equal($('zoom-input').value,'75');$('fit').click();assert.ok(Math.abs(parseFloat(svg.style.width)-boardWidth()*Math.min(1168/boardWidth(),768/data.sheets[0].height))<.01);assert.equal($('view').scrollLeft,0);});
+ check('Sidebar controls, search, notes and flash modal work without external navigation script',()=>{const scale=svg.style.width;$('sidebar-toggle').click();assert.equal($('sidebar-toggle').getAttribute('aria-expanded'),'false');assert.equal(svg.style.width,scale);$('module-search').value='unlikelymissing';event('module-search','input');assert.equal($('no-matches').hidden,false);$('module-search').value='';event('module-search','input');assert.equal($('no-matches').hidden,true);d.querySelector('[data-notes]').click();assert.equal($('notes-dialog').open,true);$('close-notes').click();assert.equal($('notes-dialog').open,false);$('flash-btn').click();assert.equal($('flash-dialog').open,true);d.querySelector('[data-program-route="flash-c5"]').click();assert.equal($('flash-dialog').open,false);assert.equal($('section').value,'flash-c5');});
+ check('Network trace, endpoint dialog and clear retain functionality',()=>{const label=d.querySelector('#svg-board [data-net="CAN_H"]');label.dispatchEvent(new w.Event('dblclick',{bubbles:true}));assert.equal($('net-dialog').open,true);assert.match($('endpoints').textContent,/U2/);assert.ok(svg.querySelectorAll('.selected').length);$('locations').firstElementChild.click();assert.equal($('net-dialog').open,false);$('clear').click();assert.equal(svg.querySelectorAll('.selected').length,0);assert.equal($('locate-overlay').childElementCount,0);assert.equal($('replay-focus').disabled,true);});
+ check('CSS animates stroke only, never fills circuit; reduced motion supported',()=>{const css=read('../scripts/schematic_reader_styles.css');assert.match(css,/\.locate-ring\{fill:none/);assert.match(css,/animation:locate-pulse 1s ease-in-out 3/);assert.doesNotMatch(css,/fill-opacity/);assert.match(css,/@media\(prefers-reduced-motion:reduce\)/);});
+ $('fullscreen').click();await Promise.resolve();check('Unsupported fullscreen is reported safely',()=>assert.match($('status').textContent,/不支持全屏/));
+ d.documentElement.requestFullscreen=()=>Promise.reject(new Error('rejected'));$('fullscreen').click();await new Promise(r=>setTimeout(r,0));check('Rejected fullscreen is handled without unhandled promise',()=>assert.match($('status').textContent,/未能进入全屏/));
+ select('flash-p4');$('svg-download').click();const blob=downloads.at(-1).blob;
+ const output=await new Promise((resolve,reject)=>{const r=new w.FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsText(blob);});
+ check('Export contains electrical board only and runtime controls do not alter component pins',()=>{assert.doesNotMatch(output,/locate-overlay|locate-ring|class="[^"]*selected/);const copy=svg.cloneNode(true);copy.removeAttribute('style');assert.equal(copy.outerHTML,electrical);assert.deepEqual(JSON.parse($('schematic-data').textContent).components,data.components);});
+ check('No jsdom errors',()=>assert.deepEqual(errors,[]));
+ const report={method:'jsdom + SVG consistency, no browser or EDA validation',passed:checks.filter(x=>x.passed).length,failed:checks.filter(x=>!x.passed).length,checks};fs.writeFileSync(path.join(__dirname,'../reports/reader-ui-check.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));if(report.failed)process.exitCode=1;
+}
+function boardWidth(){return data.sheets[0].width;}
+main().catch(e=>{console.error(e);process.exitCode=1;}).finally(()=>dom.window.close());

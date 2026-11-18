@@ -1,0 +1,11 @@
+node_modules/
+reports/
+tmp/
+backups/
+*.log
+*.tmp
+*.bak
+*.zip
+.DS_Store
+Thumbs.db
+desktop.ini

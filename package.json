@@ -1,0 +1,19 @@
+{
+  "name": "boat-hardware-design",
+  "version": "1.0.0",
+  "private": true,
+  "description": "无人船统一控制板设计、引脚配置和整板原理图",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "build": "node scripts/build.cjs",
+    "check": "node scripts/check_workspace.cjs",
+    "check:reader": "node scripts/check_reader_ui.cjs",
+    "check:pins": "node scripts/check_pin_sync.cjs",
+    "test": "npm run check && npm run check:reader && npm run check:pins"
+  },
+  "devDependencies": {
+    "jsdom": "31.0.1"
+  }
+}

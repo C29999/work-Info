@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 385" role="img" aria-labelledby="can-title can-desc">
+<title id="can-title">STM32 CAN1 与 ESP32-P4、USB-CAN 上位机连接</title>
+<desc id="can-desc">F4 的 PD1 第82脚为CAN1发送，PD0第81脚为CAN1接收，AF9。经U2收发器接入CAN总线。P4C3模块的P4端经另一收发器接入同一总线，本图按P4C5核心板候选 GPIO20/21，pad29/30。USB-CAN为可拔插短支线。粗线表示CAN_H与CAN_L双线，不表示两线短接。</desc>
+<defs><marker id="can-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#16806a"/></marker></defs>
+<rect x="1" y="1" width="1038" height="383" rx="12" fill="#fff" stroke="#d6e2ef"/>
+<g font-family="Microsoft YaHei,Arial,sans-serif" text-anchor="middle" fill="#142238">
+<rect x="20" y="38" width="210" height="136" rx="10" fill="#eaf3ff" stroke="#1769e0" stroke-width="2"/>
+<text x="125" y="68" font-size="21" font-weight="700">STM32F407VET6</text><text x="125" y="95" font-size="17">CAN1 · AF9</text><text x="125" y="123" font-size="16">PD1 / 82 → TX</text><text x="125" y="151" font-size="16">PD0 / 81 ← RX</text>
+<path d="M240 106H260" stroke="#16806a" stroke-width="3" marker-start="url(#can-arrow)" marker-end="url(#can-arrow)"/>
+<rect x="270" y="58" width="160" height="96" rx="10" fill="#e5f7ed" stroke="#16806a" stroke-width="2"/>
+<text x="350" y="86" font-size="17" font-weight="700">U2 · 收发器</text><text x="350" y="113" font-size="16">SN65HVD230D</text><text x="350" y="138" font-size="15">3.3V · 已画入 F4 页</text>
+<path d="M430 106H610M520 106V252" stroke="#16806a" stroke-width="5" fill="none"/><circle cx="520" cy="106" r="6" fill="#16806a"/>
+<text x="520" y="70" font-size="16" fill="#16806a">CAN_H / CAN_L</text>
+<rect x="610" y="58" width="160" height="96" rx="10" fill="#e5f7ed" stroke="#16806a" stroke-width="2"/>
+<text x="690" y="86" font-size="17" font-weight="700">P4 侧收发器</text><text x="690" y="113" font-size="16">独立于 U2</text><text x="690" y="138" font-size="15">外加 3.3V 收发器</text>
+<path d="M780 106H810" stroke="#16806a" stroke-width="3" marker-start="url(#can-arrow)" marker-end="url(#can-arrow)"/>
+<rect x="820" y="38" width="200" height="136" rx="10" fill="#eaf3ff" stroke="#1769e0" stroke-width="2"/>
+<text x="920" y="68" font-size="20" font-weight="700">ESP32-P4</text><text x="920" y="95" font-size="17">模块内 P4 · TWAI</text><text x="920" y="123" font-size="16">TX20 / RX21 候选</text><text x="920" y="151" font-size="16">P4C5 pad29 / pad30</text>
+<text x="260" y="208" font-size="16" fill="#66758c">固定端点 ①：120Ω 跨接 H / L</text><text x="780" y="208" font-size="16" fill="#66758c">固定端点 ②：120Ω 跨接 H / L</text>
+<rect x="400" y="252" width="240" height="72" rx="10" fill="#fff0d9" stroke="#d0a253" stroke-width="2"/>
+<text x="520" y="281" font-size="20" font-weight="700">USB-CAN ↔ 上位机</text><text x="520" y="308" font-size="16">可拔插短支线 · 自带终端关闭</text>
+<text x="520" y="356" font-size="16" fill="#66758c">功能拓扑：粗线代表 CAN 双线；参考地另接。拔除上位机不移走固定终端。</text>
+</g></svg>

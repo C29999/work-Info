@@ -1,0 +1,1485 @@
+<svg id="sheet" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3600 2546" role="img" aria-label="无人船统一主板 STM32F407VET6 主控与接口原理图 Rev E"><style>.panel{fill:#fff;stroke:#bdcbd7;stroke-width:2}.chip{fill:#f2f7fd;stroke:#2c536f;stroke-width:2.2}.connector{fill:#f6fafc;stroke:#2c536f;stroke-width:2}.port{fill:#fff8ed;stroke:#a87932;stroke-width:2;stroke-dasharray:7 4}.wire,.symbol{stroke:#286756;stroke-width:2;fill:none}.symbol{fill:#fff}.junction{fill:#286756}.heading{fill:#164e78;font-weight:700}.muted{fill:#586d7e}.ref{fill:#153a57;font-weight:700}.pin,.value{fill:#244b60}.net{fill:#176b78;cursor:pointer}.net.selected{fill:#a13617;paint-order:stroke;stroke:#ffdf72;stroke-width:8;stroke-linejoin:round}.wire.selected{stroke:#e27225;stroke-width:4}.net:focus{outline:none;paint-order:stroke;stroke:#ffd775;stroke-width:8}text{font-family:'Microsoft YaHei','Segoe UI',sans-serif;fill:#183448}.net,.pin,.value{font-family:Consolas,'Microsoft YaHei',monospace}.nc{fill:#9aa8b4}</style><rect width="3600" height="2546" fill="#fff"/><rect x="18" y="18" width="3564" height="2510" rx="5" fill="none" stroke="#9db3c5" stroke-width="2"/>
+<text x="48" y="77" font-size="40" class="heading" >无人船统一主板 · STM32F4 主控与接口原理图</text>
+<text x="48" y="119" font-size="22" class="muted" >STM32F407VET6 · LQFP100 · 经典 CAN · 五路驱动 PWM + 两路舵机 + LED PWM · 6S BMS RS485 · AIS UART5</text>
+<text x="3550" y="75" font-size="27" class="heading" text-anchor="end">Rev E / 2026-11-18</text>
+<text x="3550" y="116" font-size="22" class="muted" text-anchor="end">01 · 主控页 / 方案评审稿</text>
+<g id="power"><rect x="40" y="160" width="1040" height="570" rx="10" class="panel"/>
+<text x="62" y="198" font-size="27" class="heading" >01  F4 供电与去耦</text>
+<text x="62" y="229" font-size="18" class="muted" >本页输入为稳压 +3V3；6S 输入保护 / DC-DC 在电源页设计。</text>
+</g>
+<rect x="70" y="253" width="970" height="46" rx="4" class="port"/>
+<text x="84" y="283" font-size="18" class="ref" >PWR1 · 电源页端口</text>
+<line x1="470" y1="276" x2="510" y2="276" class="wire" data-wire="+3V3"/>
+<text x="520" y="282" font-size="18" class="net" data-net="+3V3" data-area="01  F4 供电与去耦" tabindex="0" role="button" aria-label="网络 +3V3，01  F4 供电与去耦" text-anchor="start" >+3V3</text>
+<line x1="760" y1="276" x2="800" y2="276" class="wire" data-wire="GND"/>
+<text x="810" y="282" font-size="18" class="net" data-net="GND" data-area="01  F4 供电与去耦" tabindex="0" role="button" aria-label="网络 GND，01  F4 供电与去耦" text-anchor="start" >GND</text>
+<text x="92" y="329" font-size="16" class="net" data-net="+3V3" data-area="01  F4 供电与去耦" tabindex="0" role="button" aria-label="网络 +3V3，01  F4 供电与去耦" text-anchor="middle" >+3V3</text>
+<line x1="92" y1="340" x2="92" y2="373" class="wire" data-wire="+3V3"/>
+<line x1="79" y1="373" x2="105" y2="373" class="wire"/>
+<line x1="79" y1="383" x2="105" y2="383" class="wire"/>
+<line x1="92" y1="383" x2="92" y2="414" class="wire" data-wire="GND"/>
+<line x1="92" y1="414" x2="92" y2="424" class="wire"/>
+<line x1="79" y1="424" x2="105" y2="424" class="wire"/>
+<line x1="84" y1="430" x2="100" y2="430" class="wire"/>
+<line x1="89" y1="436" x2="95" y2="436" class="wire"/>
+<text x="113" y="370" font-size="16" class="ref" >C101</text>
+<text x="113" y="394" font-size="16" class="value" >100nF</text>
+<text x="252" y="329" font-size="16" class="net" data-net="+3V3" data-area="01  F4 供电与去耦" tabindex="0" role="button" aria-label="网络 +3V3，01  F4 供电与去耦" text-anchor="middle" >+3V3</text>
+<line x1="252" y1="340" x2="252" y2="373" class="wire" data-wire="+3V3"/>
+<line x1="239" y1="373" x2="265" y2="373" class="wire"/>
+<line x1="239" y1="383" x2="265" y2="383" class="wire"/>
+<line x1="252" y1="383" x2="252" y2="414" class="wire" data-wire="GND"/>
+<line x1="252" y1="414" x2="252" y2="424" class="wire"/>
+<line x1="239" y1="424" x2="265" y2="424" class="wire"/>
+<line x1="244" y1="430" x2="260" y2="430" class="wire"/>
+<line x1="249" y1="436" x2="255" y2="436" class="wire"/>
+<text x="273" y="370" font-size="16" class="ref" >C102</text>
+<text x="273" y="394" font-size="16" class="value" >100nF</text>
+<text x="412" y="329" font-size="16" class="net" data-net="+3V3" data-area="01  F4 供电与去耦" tabindex="0" role="button" aria-label="网络 +3V3，01  F4 供电与去耦" text-anchor="middle" >+3V3</text>
+<line x1="412" y1="340" x2="412" y2="373" class="wire" data-wire="+3V3"/>
+<line x1="399" y1="373" x2="425" y2="373" class="wire"/>
+<line x1="399" y1="383" x2="425" y2="383" class="wire"/>
+<line x1="412" y1="383" x2="412" y2="414" class="wire" data-wire="GND"/>
+<line x1="412" y1="414" x2="412" y2="424" class="wire"/>
+<line x1="399" y1="424" x2="425" y2="424" class="wire"/>
+<line x1="404" y1="430" x2="420" y2="430" class="wire"/>
+<line x1="409" y1="436" x2="415" y2="436" class="wire"/>
+<text x="433" y="370" font-size="16" class="ref" >C103</text>
+<text x="433" y="394" font-size="16" class="value" >100nF</text>
+<text x="572" y="329" font-size="16" class="net" data-net="+3V3" data-area="01  F4 供电与去耦" tabindex="0" role="button" aria-label="网络 +3V3，01  F4 供电与去耦" text-anchor="middle" >+3V3</text>
+<line x1="572" y1="340" x2="572" y2="373" class="wire" data-wire="+3V3"/>
+<line x1="559" y1="373" x2="585" y2="373" class="wire"/>
+<line x1="559" y1="383" x2="585" y2="383" class="wire"/>
+<line x1="572" y1="383" x2="572" y2="414" class="wire" data-wire="GND"/>
+<line x1="572" y1="414" x2="572" y2="424" class="wire"/>
+<line x1="559" y1="424" x2="585" y2="424" class="wire"/>
+<line x1="564" y1="430" x2="580" y2="430" class="wire"/>
+<line x1="569" y1="436" x2="575" y2="436" class="wire"/>
+<text x="593" y="370" font-size="16" class="ref" >C104</text>
+<text x="593" y="394" font-size="16" class="value" >100nF</text>
+<text x="732" y="329" font-size="16" class="net" data-net="+3V3" data-area="01  F4 供电与去耦" tabindex="0" role="button" aria-label="网络 +3V3，01  F4 供电与去耦" text-anchor="middle" >+3V3</text>
+<line x1="732" y1="340" x2="732" y2="373" class="wire" data-wire="+3V3"/>
+<line x1="719" y1="373" x2="745" y2="373" class="wire"/>
+<line x1="719" y1="383" x2="745" y2="383" class="wire"/>
+<line x1="732" y1="383" x2="732" y2="414" class="wire" data-wire="GND"/>
+<line x1="732" y1="414" x2="732" y2="424" class="wire"/>
+<line x1="719" y1="424" x2="745" y2="424" class="wire"/>
+<line x1="724" y1="430" x2="740" y2="430" class="wire"/>
+<line x1="729" y1="436" x2="735" y2="436" class="wire"/>
+<text x="753" y="370" font-size="16" class="ref" >C105</text>
+<text x="753" y="394" font-size="16" class="value" >100nF</text>
+<text x="892" y="329" font-size="16" class="net" data-net="+3V3" data-area="01  F4 供电与去耦" tabindex="0" role="button" aria-label="网络 +3V3，01  F4 供电与去耦" text-anchor="middle" >+3V3</text>
+<line x1="892" y1="340" x2="892" y2="373" class="wire" data-wire="+3V3"/>
+<line x1="879" y1="373" x2="905" y2="373" class="wire"/>
+<line x1="879" y1="383" x2="905" y2="383" class="wire"/>
+<line x1="892" y1="383" x2="892" y2="414" class="wire" data-wire="GND"/>
+<line x1="892" y1="414" x2="892" y2="424" class="wire"/>
+<line x1="879" y1="424" x2="905" y2="424" class="wire"/>
+<line x1="884" y1="430" x2="900" y2="430" class="wire"/>
+<line x1="889" y1="436" x2="895" y2="436" class="wire"/>
+<text x="913" y="370" font-size="16" class="ref" >C106</text>
+<text x="913" y="394" font-size="16" class="value" >100nF</text>
+<text x="70" y="465" font-size="18" class="muted" >C101–C106：六个 VDD 各自就近 100nF；C107 为公共储能。</text>
+<text x="92" y="489" font-size="16" class="net" data-net="+3V3" data-area="01  F4 供电与去耦" tabindex="0" role="button" aria-label="网络 +3V3，01  F4 供电与去耦" text-anchor="middle" >+3V3</text>
+<line x1="92" y1="500" x2="92" y2="533" class="wire" data-wire="+3V3"/>
+<line x1="79" y1="533" x2="105" y2="533" class="wire"/>
+<line x1="79" y1="543" x2="105" y2="543" class="wire"/>
+<line x1="92" y1="543" x2="92" y2="574" class="wire" data-wire="GND"/>
+<line x1="92" y1="574" x2="92" y2="584" class="wire"/>
+<line x1="79" y1="584" x2="105" y2="584" class="wire"/>
+<line x1="84" y1="590" x2="100" y2="590" class="wire"/>
+<line x1="89" y1="596" x2="95" y2="596" class="wire"/>
+<text x="113" y="530" font-size="16" class="ref" >C107</text>
+<text x="113" y="554" font-size="16" class="value" >4.7µF</text>
+<text x="310" y="489" font-size="16" class="net" data-net="VCAP1" data-area="01  F4 供电与去耦" tabindex="0" role="button" aria-label="网络 VCAP1，01  F4 供电与去耦" text-anchor="middle" >VCAP1</text>
+<line x1="310" y1="500" x2="310" y2="533" class="wire" data-wire="VCAP1"/>
+<line x1="297" y1="533" x2="323" y2="533" class="wire"/>
+<line x1="297" y1="543" x2="323" y2="543" class="wire"/>
+<line x1="310" y1="543" x2="310" y2="574" class="wire" data-wire="GND"/>
+<line x1="310" y1="574" x2="310" y2="584" class="wire"/>
+<line x1="297" y1="584" x2="323" y2="584" class="wire"/>
+<line x1="302" y1="590" x2="318" y2="590" class="wire"/>
+<line x1="307" y1="596" x2="313" y2="596" class="wire"/>
+<text x="331" y="530" font-size="16" class="ref" >C108</text>
+<text x="331" y="554" font-size="16" class="value" >2.2µF</text>
+<text x="530" y="489" font-size="16" class="net" data-net="VCAP2" data-area="01  F4 供电与去耦" tabindex="0" role="button" aria-label="网络 VCAP2，01  F4 供电与去耦" text-anchor="middle" >VCAP2</text>
+<line x1="530" y1="500" x2="530" y2="533" class="wire" data-wire="VCAP2"/>
+<line x1="517" y1="533" x2="543" y2="533" class="wire"/>
+<line x1="517" y1="543" x2="543" y2="543" class="wire"/>
+<line x1="530" y1="543" x2="530" y2="574" class="wire" data-wire="GND"/>
+<line x1="530" y1="574" x2="530" y2="584" class="wire"/>
+<line x1="517" y1="584" x2="543" y2="584" class="wire"/>
+<line x1="522" y1="590" x2="538" y2="590" class="wire"/>
+<line x1="527" y1="596" x2="533" y2="596" class="wire"/>
+<text x="551" y="530" font-size="16" class="ref" >C109</text>
+<text x="551" y="554" font-size="16" class="value" >2.2µF</text>
+<text x="750" y="489" font-size="16" class="net" data-net="VDDA" data-area="01  F4 供电与去耦" tabindex="0" role="button" aria-label="网络 VDDA，01  F4 供电与去耦" text-anchor="middle" >VDDA</text>
+<line x1="750" y1="500" x2="750" y2="533" class="wire" data-wire="VDDA"/>
+<line x1="737" y1="533" x2="763" y2="533" class="wire"/>
+<line x1="737" y1="543" x2="763" y2="543" class="wire"/>
+<line x1="750" y1="543" x2="750" y2="574" class="wire" data-wire="GND"/>
+<line x1="750" y1="574" x2="750" y2="584" class="wire"/>
+<line x1="737" y1="584" x2="763" y2="584" class="wire"/>
+<line x1="742" y1="590" x2="758" y2="590" class="wire"/>
+<line x1="747" y1="596" x2="753" y2="596" class="wire"/>
+<text x="771" y="530" font-size="16" class="ref" >C110</text>
+<text x="771" y="554" font-size="16" class="value" >1µF</text>
+<text x="930" y="489" font-size="16" class="net" data-net="VDDA" data-area="01  F4 供电与去耦" tabindex="0" role="button" aria-label="网络 VDDA，01  F4 供电与去耦" text-anchor="middle" >VDDA</text>
+<line x1="930" y1="500" x2="930" y2="533" class="wire" data-wire="VDDA"/>
+<line x1="917" y1="533" x2="943" y2="533" class="wire"/>
+<line x1="917" y1="543" x2="943" y2="543" class="wire"/>
+<line x1="930" y1="543" x2="930" y2="574" class="wire" data-wire="GND"/>
+<line x1="930" y1="574" x2="930" y2="584" class="wire"/>
+<line x1="917" y1="584" x2="943" y2="584" class="wire"/>
+<line x1="922" y1="590" x2="938" y2="590" class="wire"/>
+<line x1="927" y1="596" x2="933" y2="596" class="wire"/>
+<text x="951" y="530" font-size="16" class="ref" >C111</text>
+<text x="951" y="554" font-size="16" class="value" >100nF</text>
+<text x="70" y="654" font-size="18" class="muted" >VCAP1 / 2 各自去耦到 GND，不互连，不作外部电源。</text>
+<text x="70" y="688" font-size="18" class="muted" >VBAT→+3V3（无后备电池）；VREF+→VDDA；所有 VSS / VSSA→GND。</text>
+<g id="system"><rect x="40" y="750" width="1040" height="580" rx="10" class="panel"/>
+<text x="62" y="788" font-size="27" class="heading" >02  时钟 / 复位 / 启动 / SWD</text>
+<text x="62" y="819" font-size="18" class="muted" >SWD 承担首次下载与断点；CAN 承担运行诊断，不增加 UART 调试口。</text>
+</g>
+<text x="75" y="853" font-size="17" class="net" data-net="+3V3" data-area="02  时钟 / 复位 / 启动 / SWD" tabindex="0" role="button" aria-label="网络 +3V3，02  时钟 / 复位 / 启动 / SWD" text-anchor="start" >+3V3</text>
+<line x1="75" y1="865" x2="230" y2="865" class="wire" data-wire="+3V3"/>
+<rect x="230" y="857" width="60" height="16" class="symbol"/>
+<line x1="290" y1="865" x2="445" y2="865" class="wire" data-wire="VDDA"/>
+<text x="445" y="853" font-size="17" class="net" data-net="VDDA" data-area="02  时钟 / 复位 / 启动 / SWD" tabindex="0" role="button" aria-label="网络 VDDA，02  时钟 / 复位 / 启动 / SWD" text-anchor="end" >VDDA</text>
+<text x="260" y="895" font-size="16" class="value" text-anchor="middle">R101  0Ω</text>
+<text x="110" y="929" font-size="16" class="net" data-net="+3V3" data-area="02  时钟 / 复位 / 启动 / SWD" tabindex="0" role="button" aria-label="网络 +3V3，02  时钟 / 复位 / 启动 / SWD" text-anchor="middle" >+3V3</text>
+<line x1="110" y1="940" x2="110" y2="973" class="wire" data-wire="+3V3"/>
+<line x1="97" y1="973" x2="123" y2="973" class="wire"/>
+<line x1="97" y1="983" x2="123" y2="983" class="wire"/>
+<line x1="110" y1="983" x2="110" y2="1014" class="wire" data-wire="GND"/>
+<line x1="110" y1="1014" x2="110" y2="1024" class="wire"/>
+<line x1="97" y1="1024" x2="123" y2="1024" class="wire"/>
+<line x1="102" y1="1030" x2="118" y2="1030" class="wire"/>
+<line x1="107" y1="1036" x2="113" y2="1036" class="wire"/>
+<text x="131" y="970" font-size="16" class="ref" >C112</text>
+<text x="131" y="994" font-size="16" class="value" >100nF</text>
+<text x="310" y="929" font-size="16" class="net" data-net="+3V3" data-area="02  时钟 / 复位 / 启动 / SWD" tabindex="0" role="button" aria-label="网络 +3V3，02  时钟 / 复位 / 启动 / SWD" text-anchor="middle" >+3V3</text>
+<line x1="310" y1="940" x2="310" y2="960" class="wire" data-wire="+3V3"/>
+<rect x="302" y="960" width="16" height="37" class="symbol"/>
+<line x1="310" y1="997" x2="310" y2="1017" class="wire" data-wire="NRST"/>
+<text x="310" y="1037" font-size="16" class="net" data-net="NRST" data-area="02  时钟 / 复位 / 启动 / SWD" tabindex="0" role="button" aria-label="网络 NRST，02  时钟 / 复位 / 启动 / SWD" text-anchor="middle" >NRST</text>
+<text x="327" y="970" font-size="16" class="ref" >R102</text>
+<text x="327" y="994" font-size="16" class="value" >10k</text>
+<text x="485" y="929" font-size="16" class="net" data-net="NRST" data-area="02  时钟 / 复位 / 启动 / SWD" tabindex="0" role="button" aria-label="网络 NRST，02  时钟 / 复位 / 启动 / SWD" text-anchor="middle" >NRST</text>
+<line x1="485" y1="940" x2="485" y2="973" class="wire" data-wire="NRST"/>
+<line x1="472" y1="973" x2="498" y2="973" class="wire"/>
+<line x1="472" y1="983" x2="498" y2="983" class="wire"/>
+<line x1="485" y1="983" x2="485" y2="1014" class="wire" data-wire="GND"/>
+<line x1="485" y1="1014" x2="485" y2="1024" class="wire"/>
+<line x1="472" y1="1024" x2="498" y2="1024" class="wire"/>
+<line x1="477" y1="1030" x2="493" y2="1030" class="wire"/>
+<line x1="482" y1="1036" x2="488" y2="1036" class="wire"/>
+<text x="506" y="970" font-size="16" class="ref" >C113</text>
+<text x="506" y="994" font-size="16" class="value" >100nF</text>
+<text x="680" y="929" font-size="16" class="net" data-net="BOOT0" data-area="02  时钟 / 复位 / 启动 / SWD" tabindex="0" role="button" aria-label="网络 BOOT0，02  时钟 / 复位 / 启动 / SWD" text-anchor="middle" >BOOT0</text>
+<line x1="680" y1="940" x2="680" y2="960" class="wire" data-wire="BOOT0"/>
+<rect x="672" y="960" width="16" height="37" class="symbol"/>
+<line x1="680" y1="997" x2="680" y2="1017" class="wire" data-wire="GND"/>
+<line x1="680" y1="1017" x2="680" y2="1027" class="wire"/>
+<line x1="667" y1="1027" x2="693" y2="1027" class="wire"/>
+<line x1="672" y1="1033" x2="688" y2="1033" class="wire"/>
+<line x1="677" y1="1039" x2="683" y2="1039" class="wire"/>
+<text x="697" y="970" font-size="16" class="ref" >R103</text>
+<text x="697" y="994" font-size="16" class="value" >10k</text>
+<text x="880" y="929" font-size="16" class="net" data-net="BOOT1" data-area="02  时钟 / 复位 / 启动 / SWD" tabindex="0" role="button" aria-label="网络 BOOT1，02  时钟 / 复位 / 启动 / SWD" text-anchor="middle" >BOOT1</text>
+<line x1="880" y1="940" x2="880" y2="960" class="wire" data-wire="BOOT1"/>
+<rect x="872" y="960" width="16" height="37" class="symbol"/>
+<line x1="880" y1="997" x2="880" y2="1017" class="wire" data-wire="GND"/>
+<line x1="880" y1="1017" x2="880" y2="1027" class="wire"/>
+<line x1="867" y1="1027" x2="893" y2="1027" class="wire"/>
+<line x1="872" y1="1033" x2="888" y2="1033" class="wire"/>
+<line x1="877" y1="1039" x2="883" y2="1039" class="wire"/>
+<text x="897" y="970" font-size="16" class="ref" >R104</text>
+<text x="897" y="994" font-size="16" class="value" >10k</text>
+<rect x="700" y="1090" width="165" height="180" rx="4" class="connector"/>
+<text x="710" y="1113" font-size="19" class="ref" >J101</text>
+<text x="710" y="1136" font-size="16" class="muted" >SWD / VTref</text>
+<text x="712" y="1160" font-size="15" class="pin" >1</text>
+<line x1="845" y1="1156" x2="885" y2="1156" class="wire" data-wire="+3V3"/>
+<circle cx="845" cy="1156" r="4" class="junction"/>
+<text x="893" y="1160" font-size="17" class="net" data-net="+3V3" data-area="02  时钟 / 复位 / 启动 / SWD" tabindex="0" role="button" aria-label="网络 +3V3，02  时钟 / 复位 / 启动 / SWD" text-anchor="start" >+3V3</text>
+<text x="712" y="1185" font-size="15" class="pin" >2</text>
+<line x1="845" y1="1181" x2="885" y2="1181" class="wire" data-wire="SWDIO"/>
+<circle cx="845" cy="1181" r="4" class="junction"/>
+<text x="893" y="1185" font-size="17" class="net" data-net="SWDIO" data-area="02  时钟 / 复位 / 启动 / SWD" tabindex="0" role="button" aria-label="网络 SWDIO，02  时钟 / 复位 / 启动 / SWD" text-anchor="start" >SWDIO</text>
+<text x="712" y="1210" font-size="15" class="pin" >3</text>
+<line x1="845" y1="1206" x2="885" y2="1206" class="wire" data-wire="SWCLK"/>
+<circle cx="845" cy="1206" r="4" class="junction"/>
+<text x="893" y="1210" font-size="17" class="net" data-net="SWCLK" data-area="02  时钟 / 复位 / 启动 / SWD" tabindex="0" role="button" aria-label="网络 SWCLK，02  时钟 / 复位 / 启动 / SWD" text-anchor="start" >SWCLK</text>
+<text x="712" y="1235" font-size="15" class="pin" >4</text>
+<line x1="845" y1="1231" x2="885" y2="1231" class="wire" data-wire="GND"/>
+<circle cx="845" cy="1231" r="4" class="junction"/>
+<text x="893" y="1235" font-size="17" class="net" data-net="GND" data-area="02  时钟 / 复位 / 启动 / SWD" tabindex="0" role="button" aria-label="网络 GND，02  时钟 / 复位 / 启动 / SWD" text-anchor="start" >GND</text>
+<text x="712" y="1260" font-size="15" class="pin" >5</text>
+<line x1="845" y1="1256" x2="885" y2="1256" class="wire" data-wire="NRST"/>
+<circle cx="845" cy="1256" r="4" class="junction"/>
+<text x="893" y="1260" font-size="17" class="net" data-net="NRST" data-area="02  时钟 / 复位 / 启动 / SWD" tabindex="0" role="button" aria-label="网络 NRST，02  时钟 / 复位 / 启动 / SWD" text-anchor="start" >NRST</text>
+<text x="75" y="1120" font-size="18" class="net" data-net="HSE_IN" data-area="02  时钟 / 复位 / 启动 / SWD" tabindex="0" role="button" aria-label="网络 HSE_IN，02  时钟 / 复位 / 启动 / SWD" text-anchor="start" >HSE_IN</text>
+<line x1="75" y1="1134" x2="235" y2="1134" class="wire" data-wire="HSE_IN"/>
+<line x1="235" y1="1118" x2="235" y2="1150" class="wire"/>
+<rect x="247" y="1117" width="42" height="34" class="symbol"/>
+<line x1="301" y1="1118" x2="301" y2="1150" class="wire"/>
+<line x1="301" y1="1134" x2="500" y2="1134" class="wire" data-wire="HSE_OUT"/>
+<text x="500" y="1120" font-size="18" class="net" data-net="HSE_OUT" data-area="02  时钟 / 复位 / 启动 / SWD" tabindex="0" role="button" aria-label="网络 HSE_OUT，02  时钟 / 复位 / 启动 / SWD" text-anchor="end" >HSE_OUT</text>
+<text x="265" y="1100" font-size="17" class="value" text-anchor="middle">Y101 · 8MHz 候选</text>
+<text x="110" y="1179" font-size="16" class="net" data-net="HSE_IN" data-area="02  时钟 / 复位 / 启动 / SWD" tabindex="0" role="button" aria-label="网络 HSE_IN，02  时钟 / 复位 / 启动 / SWD" text-anchor="middle" >HSE_IN</text>
+<line x1="110" y1="1190" x2="110" y2="1223" class="wire" data-wire="HSE_IN"/>
+<line x1="97" y1="1223" x2="123" y2="1223" class="wire"/>
+<line x1="97" y1="1233" x2="123" y2="1233" class="wire"/>
+<line x1="110" y1="1233" x2="110" y2="1264" class="wire" data-wire="GND"/>
+<line x1="110" y1="1264" x2="110" y2="1274" class="wire"/>
+<line x1="97" y1="1274" x2="123" y2="1274" class="wire"/>
+<line x1="102" y1="1280" x2="118" y2="1280" class="wire"/>
+<line x1="107" y1="1286" x2="113" y2="1286" class="wire"/>
+<text x="131" y="1220" font-size="16" class="ref" >C114</text>
+<text x="131" y="1244" font-size="16" class="value" >CL待定</text>
+<text x="360" y="1179" font-size="16" class="net" data-net="HSE_OUT" data-area="02  时钟 / 复位 / 启动 / SWD" tabindex="0" role="button" aria-label="网络 HSE_OUT，02  时钟 / 复位 / 启动 / SWD" text-anchor="middle" >HSE_OUT</text>
+<line x1="360" y1="1190" x2="360" y2="1223" class="wire" data-wire="HSE_OUT"/>
+<line x1="347" y1="1223" x2="373" y2="1223" class="wire"/>
+<line x1="347" y1="1233" x2="373" y2="1233" class="wire"/>
+<line x1="360" y1="1233" x2="360" y2="1264" class="wire" data-wire="GND"/>
+<line x1="360" y1="1264" x2="360" y2="1274" class="wire"/>
+<line x1="347" y1="1274" x2="373" y2="1274" class="wire"/>
+<line x1="352" y1="1280" x2="368" y2="1280" class="wire"/>
+<line x1="357" y1="1286" x2="363" y2="1286" class="wire"/>
+<text x="381" y="1220" font-size="16" class="ref" >C115</text>
+<text x="381" y="1244" font-size="16" class="value" >CL待定</text>
+<text x="575" y="865" font-size="18" class="muted" >BOOT0：测试夹具可临时拉高到 +3V3</text>
+<circle cx="595" cy="907" r="7" class="symbol"/>
+<line x1="595" y1="914" x2="595" y2="933" class="wire" data-wire="BOOT0"/>
+<text x="613" y="913" font-size="16" class="net" data-net="BOOT0" data-area="02  时钟 / 复位 / 启动 / SWD" tabindex="0" role="button" aria-label="网络 BOOT0，02  时钟 / 复位 / 启动 / SWD" text-anchor="start" >BOOT0</text>
+<text x="581" y="894" font-size="16" class="ref" >TP101</text>
+<circle cx="965" cy="907" r="7" class="symbol"/>
+<line x1="965" y1="914" x2="965" y2="933" class="wire" data-wire="NRST"/>
+<text x="983" y="913" font-size="16" class="net" data-net="NRST" data-area="02  时钟 / 复位 / 启动 / SWD" tabindex="0" role="button" aria-label="网络 NRST，02  时钟 / 复位 / 启动 / SWD" text-anchor="start" >NRST</text>
+<text x="951" y="894" font-size="16" class="ref" >TP102</text>
+<text x="575" y="1062" font-size="18" class="muted" >NRST 经 SWD/测试点可外部拉低复位。</text>
+<g id="analog"><rect x="40" y="1350" width="1040" height="550" rx="10" class="panel"/>
+<text x="62" y="1388" font-size="27" class="heading" >03  电池采样 / GPS / 声纳业务口</text>
+<text x="62" y="1419" font-size="18" class="muted" >6S 化学体系待定；25.2V 仅为 6S 锂离子满充示例。</text>
+</g>
+<text x="75" y="1458" font-size="17" class="net" data-net="BAT_SENSE_PROTECTED" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 BAT_SENSE_PROTECTED，03  电池采样 / GPS / 声纳业务口" text-anchor="start" >BAT_SENSE_PROTECTED</text>
+<line x1="75" y1="1470" x2="285" y2="1470" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
+<rect x="285" y="1462" width="60" height="16" class="symbol"/>
+<line x1="345" y1="1470" x2="555" y2="1470" class="wire" data-wire="BAT_DIV"/>
+<text x="555" y="1458" font-size="17" class="net" data-net="BAT_DIV" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 BAT_DIV，03  电池采样 / GPS / 声纳业务口" text-anchor="end" >BAT_DIV</text>
+<text x="315" y="1500" font-size="16" class="value" text-anchor="middle">R301  100k / 1%</text>
+<text x="170" y="1524" font-size="16" class="net" data-net="BAT_DIV" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 BAT_DIV，03  电池采样 / GPS / 声纳业务口" text-anchor="middle" >BAT_DIV</text>
+<line x1="170" y1="1535" x2="170" y2="1555" class="wire" data-wire="BAT_DIV"/>
+<rect x="162" y="1555" width="16" height="37" class="symbol"/>
+<line x1="170" y1="1592" x2="170" y2="1612" class="wire" data-wire="GND"/>
+<line x1="170" y1="1612" x2="170" y2="1622" class="wire"/>
+<line x1="157" y1="1622" x2="183" y2="1622" class="wire"/>
+<line x1="162" y1="1628" x2="178" y2="1628" class="wire"/>
+<line x1="167" y1="1634" x2="173" y2="1634" class="wire"/>
+<text x="187" y="1565" font-size="16" class="ref" >R302</text>
+<text x="187" y="1589" font-size="16" class="value" >10k / 1%</text>
+<text x="380" y="1524" font-size="16" class="net" data-net="BAT_DIV" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 BAT_DIV，03  电池采样 / GPS / 声纳业务口" text-anchor="middle" >BAT_DIV</text>
+<line x1="380" y1="1535" x2="380" y2="1568" class="wire" data-wire="BAT_DIV"/>
+<line x1="367" y1="1568" x2="393" y2="1568" class="wire"/>
+<line x1="367" y1="1578" x2="393" y2="1578" class="wire"/>
+<line x1="380" y1="1578" x2="380" y2="1609" class="wire" data-wire="GND"/>
+<line x1="380" y1="1609" x2="380" y2="1619" class="wire"/>
+<line x1="367" y1="1619" x2="393" y2="1619" class="wire"/>
+<line x1="372" y1="1625" x2="388" y2="1625" class="wire"/>
+<line x1="377" y1="1631" x2="383" y2="1631" class="wire"/>
+<text x="401" y="1565" font-size="16" class="ref" >C301</text>
+<text x="401" y="1589" font-size="16" class="value" >100nF</text>
+<text x="620" y="1458" font-size="17" class="net" data-net="BAT_DIV" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 BAT_DIV，03  电池采样 / GPS / 声纳业务口" text-anchor="start" >BAT_DIV</text>
+<line x1="620" y1="1470" x2="780" y2="1470" class="wire" data-wire="BAT_DIV"/>
+<rect x="780" y="1462" width="60" height="16" class="symbol"/>
+<line x1="840" y1="1470" x2="1000" y2="1470" class="wire" data-wire="BAT_ADC_LINK"/>
+<text x="1000" y="1458" font-size="17" class="net" data-net="BAT_ADC_LINK" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 BAT_ADC_LINK，03  电池采样 / GPS / 声纳业务口" text-anchor="end" >BAT_ADC_LINK</text>
+<text x="810" y="1500" font-size="16" class="value" text-anchor="middle">R303  1k</text>
+<text x="620" y="1553" font-size="17" class="net" data-net="BAT_ADC_LINK" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 BAT_ADC_LINK，03  电池采样 / GPS / 声纳业务口" text-anchor="start" >BAT_ADC_LINK</text>
+<line x1="620" y1="1565" x2="780" y2="1565" class="wire" data-wire="BAT_ADC_LINK"/>
+<rect x="780" y="1557" width="60" height="16" class="symbol"/>
+<line x1="840" y1="1565" x2="1000" y2="1565" class="wire" data-wire="BAT_ADC"/>
+<text x="1000" y="1553" font-size="17" class="net" data-net="BAT_ADC" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 BAT_ADC，03  电池采样 / GPS / 声纳业务口" text-anchor="end" >BAT_ADC</text>
+<text x="810" y="1595" font-size="16" class="value" text-anchor="middle">R304  0Ω / DNP</text>
+<text x="70" y="1670" font-size="18" class="muted" >VADC≈VBAT/11；25.2V 时约 2.291V（标称电阻）。</text>
+<text x="70" y="1698" font-size="18" class="muted" >R304 默认 DNP：钳位/断电反灌未定，禁止直接闭合后接电池。</text>
+<rect x="80" y="1740" width="165" height="132" rx="4" class="connector"/>
+<text x="90" y="1763" font-size="19" class="ref" >J301</text>
+<text x="90" y="1786" font-size="16" class="muted" >GPS / 水面</text>
+<text x="92" y="1810" font-size="15" class="pin" >1</text>
+<line x1="225" y1="1806" x2="265" y2="1806" class="wire" data-wire="GPS_TX"/>
+<circle cx="225" cy="1806" r="4" class="junction"/>
+<text x="273" y="1810" font-size="17" class="net" data-net="GPS_TX" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 GPS_TX，03  电池采样 / GPS / 声纳业务口" text-anchor="start" >GPS_TX</text>
+<text x="92" y="1836" font-size="15" class="pin" >2</text>
+<line x1="225" y1="1832" x2="265" y2="1832" class="wire" data-wire="GPS_RX"/>
+<circle cx="225" cy="1832" r="4" class="junction"/>
+<text x="273" y="1836" font-size="17" class="net" data-net="GPS_RX" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 GPS_RX，03  电池采样 / GPS / 声纳业务口" text-anchor="start" >GPS_RX</text>
+<text x="92" y="1862" font-size="15" class="pin" >3</text>
+<line x1="225" y1="1858" x2="265" y2="1858" class="wire" data-wire="GND"/>
+<circle cx="225" cy="1858" r="4" class="junction"/>
+<text x="273" y="1862" font-size="17" class="net" data-net="GND" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 GND，03  电池采样 / GPS / 声纳业务口" text-anchor="start" >GND</text>
+<rect x="590" y="1740" width="190" height="132" rx="4" class="connector"/>
+<text x="600" y="1763" font-size="19" class="ref" >J302</text>
+<text x="600" y="1786" font-size="16" class="muted" >声纳候选 TTL</text>
+<text x="602" y="1810" font-size="15" class="pin" >1</text>
+<line x1="760" y1="1806" x2="800" y2="1806" class="wire" data-wire="SONAR_TX"/>
+<circle cx="760" cy="1806" r="4" class="junction"/>
+<text x="808" y="1810" font-size="17" class="net" data-net="SONAR_TX" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 SONAR_TX，03  电池采样 / GPS / 声纳业务口" text-anchor="start" >SONAR_TX</text>
+<text x="602" y="1836" font-size="15" class="pin" >2</text>
+<line x1="760" y1="1832" x2="800" y2="1832" class="wire" data-wire="SONAR_RX"/>
+<circle cx="760" cy="1832" r="4" class="junction"/>
+<text x="808" y="1836" font-size="17" class="net" data-net="SONAR_RX" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 SONAR_RX，03  电池采样 / GPS / 声纳业务口" text-anchor="start" >SONAR_RX</text>
+<text x="602" y="1862" font-size="15" class="pin" >3</text>
+<line x1="760" y1="1858" x2="800" y2="1858" class="wire" data-wire="GND"/>
+<circle cx="760" cy="1858" r="4" class="junction"/>
+<text x="808" y="1862" font-size="17" class="net" data-net="GND" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 GND，03  电池采样 / GPS / 声纳业务口" text-anchor="start" >GND</text>
+<g id="mcu"><rect x="1100" y="160" width="1380" height="1740" rx="10" class="panel"/>
+<text x="1122" y="198" font-size="27" class="heading" >04  U1 · STM32F407VET6 / LQFP100</text>
+<text x="1122" y="229" font-size="18" class="muted" >100 个物理脚完整对应；GPIO/AF 来自 ST 管脚数据，连接为本项目候选。</text>
+</g>
+<rect x="1140" y="270" width="175" height="80" rx="4" class="port"/>
+<text x="1150" y="285" font-size="13" class="ref" >P_AIS</text>
+<text x="1150" y="302" font-size="11" class="muted" >AIS 电气层待定</text>
+<text x="1152" y="321" font-size="13" class="pin" >TX</text>
+<line x1="1295" y1="317" x2="1335" y2="317" class="wire" data-wire="AIS_TX"/>
+<circle cx="1295" cy="317" r="4" class="junction"/>
+<text x="1343" y="321" font-size="14" class="net" data-net="AIS_TX" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 AIS_TX，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" >AIS_TX</text>
+<text x="1152" y="346" font-size="13" class="pin" >RX</text>
+<line x1="1295" y1="342" x2="1335" y2="342" class="wire" data-wire="AIS_RX"/>
+<circle cx="1295" cy="342" r="4" class="junction"/>
+<text x="1343" y="346" font-size="14" class="net" data-net="AIS_RX" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 AIS_RX，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" >AIS_RX</text>
+<text x="1500" y="291" font-size="18" class="muted" >AIS · UART5：PC12 / 80 TX、PD2 / 83 RX，AF8。</text>
+<text x="1500" y="319" font-size="18" class="muted" >仅逻辑跨页预留；不能直连外部差分线或 RS232 电压。</text>
+<text x="1500" y="347" font-size="18" class="muted" >模块型号、方向、波特率、协议、供电与物理层待确认。</text>
+<rect x="1435" y="630" width="710" height="710" class="chip"/><circle cx="1453" cy="1322" r="5" fill="#1769e0"/>
+<g data-mcu-pin="1"><title>#1 PE2 → NC（未连接）</title>
+<line x1="1535" y1="1340" x2="1535" y2="1364" class="wire"/>
+<text x="1540" y="1324" font-size="17" class="pin" transform="rotate(-90 1540 1324)">PE2</text>
+<text x="1535" y="1384" font-size="14" class="muted" text-anchor="middle">1</text>
+<text x="1540" y="1403" font-size="15" class="nc" transform="rotate(90 1540 1403)">NC</text>
+</g>
+<g data-mcu-pin="2"><title>#2 PE3 → NC（未连接）</title>
+<line x1="1556.25" y1="1340" x2="1556.25" y2="1364" class="wire"/>
+<text x="1561.25" y="1324" font-size="17" class="pin" transform="rotate(-90 1561.25 1324)">PE3</text>
+<text x="1556.25" y="1384" font-size="14" class="muted" text-anchor="middle">2</text>
+<text x="1561.25" y="1403" font-size="15" class="nc" transform="rotate(90 1561.25 1403)">NC</text>
+</g>
+<g data-mcu-pin="3"><title>#3 PE4 → NC（未连接）</title>
+<line x1="1577.5" y1="1340" x2="1577.5" y2="1364" class="wire"/>
+<text x="1582.5" y="1324" font-size="17" class="pin" transform="rotate(-90 1582.5 1324)">PE4</text>
+<text x="1577.5" y="1384" font-size="14" class="muted" text-anchor="middle">3</text>
+<text x="1582.5" y="1403" font-size="15" class="nc" transform="rotate(90 1582.5 1403)">NC</text>
+</g>
+<g data-mcu-pin="4"><title>#4 PE5 → PWM5</title>
+<line x1="1598.75" y1="1340" x2="1598.75" y2="1364" class="wire" data-wire="PWM5"/>
+<text x="1603.75" y="1324" font-size="17" class="pin" transform="rotate(-90 1603.75 1324)">PE5</text>
+<text x="1598.75" y="1384" font-size="14" class="muted" text-anchor="middle">4</text>
+<text x="1603.75" y="1403" font-size="17" class="net" data-net="PWM5" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 PWM5，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" transform="rotate(90 1603.75 1403)">PWM5</text>
+</g>
+<g data-mcu-pin="5"><title>#5 PE6 → NC（未连接）</title>
+<line x1="1620" y1="1340" x2="1620" y2="1364" class="wire"/>
+<text x="1625" y="1324" font-size="17" class="pin" transform="rotate(-90 1625 1324)">PE6</text>
+<text x="1620" y="1384" font-size="14" class="muted" text-anchor="middle">5</text>
+<text x="1625" y="1403" font-size="15" class="nc" transform="rotate(90 1625 1403)">NC</text>
+</g>
+<g data-mcu-pin="6"><title>#6 VBAT → +3V3</title>
+<line x1="1641.25" y1="1340" x2="1641.25" y2="1364" class="wire" data-wire="+3V3"/>
+<text x="1646.25" y="1324" font-size="17" class="pin" transform="rotate(-90 1646.25 1324)">VBAT</text>
+<text x="1641.25" y="1384" font-size="14" class="muted" text-anchor="middle">6</text>
+<text x="1646.25" y="1403" font-size="17" class="net" data-net="+3V3" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 +3V3，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" transform="rotate(90 1646.25 1403)">+3V3</text>
+</g>
+<g data-mcu-pin="7"><title>#7 PC13-ANTI_TAMP → NC（未连接）</title>
+<line x1="1662.5" y1="1340" x2="1662.5" y2="1364" class="wire"/>
+<text x="1667.5" y="1324" font-size="17" class="pin" transform="rotate(-90 1667.5 1324)">PC13</text>
+<text x="1662.5" y="1384" font-size="14" class="muted" text-anchor="middle">7</text>
+<text x="1667.5" y="1403" font-size="15" class="nc" transform="rotate(90 1667.5 1403)">NC</text>
+</g>
+<g data-mcu-pin="8"><title>#8 PC14-OSC32_IN → NC（未连接）</title>
+<line x1="1683.75" y1="1340" x2="1683.75" y2="1364" class="wire"/>
+<text x="1688.75" y="1324" font-size="17" class="pin" transform="rotate(-90 1688.75 1324)">PC14</text>
+<text x="1683.75" y="1384" font-size="14" class="muted" text-anchor="middle">8</text>
+<text x="1688.75" y="1403" font-size="15" class="nc" transform="rotate(90 1688.75 1403)">NC</text>
+</g>
+<g data-mcu-pin="9"><title>#9 PC15-OSC32_OUT → NC（未连接）</title>
+<line x1="1705" y1="1340" x2="1705" y2="1364" class="wire"/>
+<text x="1710" y="1324" font-size="17" class="pin" transform="rotate(-90 1710 1324)">PC15</text>
+<text x="1705" y="1384" font-size="14" class="muted" text-anchor="middle">9</text>
+<text x="1710" y="1403" font-size="15" class="nc" transform="rotate(90 1710 1403)">NC</text>
+</g>
+<g data-mcu-pin="10"><title>#10 VSS → GND</title>
+<line x1="1726.25" y1="1340" x2="1726.25" y2="1364" class="wire" data-wire="GND"/>
+<text x="1731.25" y="1324" font-size="17" class="pin" transform="rotate(-90 1731.25 1324)">VSS</text>
+<text x="1726.25" y="1384" font-size="14" class="muted" text-anchor="middle">10</text>
+<text x="1731.25" y="1403" font-size="17" class="net" data-net="GND" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 GND，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" transform="rotate(90 1731.25 1403)">GND</text>
+</g>
+<g data-mcu-pin="11"><title>#11 VDD → +3V3</title>
+<line x1="1747.5" y1="1340" x2="1747.5" y2="1364" class="wire" data-wire="+3V3"/>
+<text x="1752.5" y="1324" font-size="17" class="pin" transform="rotate(-90 1752.5 1324)">VDD</text>
+<text x="1747.5" y="1384" font-size="14" class="muted" text-anchor="middle">11</text>
+<text x="1752.5" y="1403" font-size="17" class="net" data-net="+3V3" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 +3V3，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" transform="rotate(90 1752.5 1403)">+3V3</text>
+</g>
+<g data-mcu-pin="12"><title>#12 PH0-OSC_IN → HSE_IN</title>
+<line x1="1768.75" y1="1340" x2="1768.75" y2="1364" class="wire" data-wire="HSE_IN"/>
+<text x="1773.75" y="1324" font-size="17" class="pin" transform="rotate(-90 1773.75 1324)">PH0</text>
+<text x="1768.75" y="1384" font-size="14" class="muted" text-anchor="middle">12</text>
+<text x="1773.75" y="1403" font-size="17" class="net" data-net="HSE_IN" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 HSE_IN，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" transform="rotate(90 1773.75 1403)">HSE_IN</text>
+</g>
+<g data-mcu-pin="13"><title>#13 PH1-OSC_OUT → HSE_OUT</title>
+<line x1="1790" y1="1340" x2="1790" y2="1364" class="wire" data-wire="HSE_OUT"/>
+<text x="1795" y="1324" font-size="17" class="pin" transform="rotate(-90 1795 1324)">PH1</text>
+<text x="1790" y="1384" font-size="14" class="muted" text-anchor="middle">13</text>
+<text x="1795" y="1403" font-size="17" class="net" data-net="HSE_OUT" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 HSE_OUT，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" transform="rotate(90 1795 1403)">HSE_OUT</text>
+</g>
+<g data-mcu-pin="14"><title>#14 NRST → NRST</title>
+<line x1="1811.25" y1="1340" x2="1811.25" y2="1364" class="wire" data-wire="NRST"/>
+<text x="1816.25" y="1324" font-size="17" class="pin" transform="rotate(-90 1816.25 1324)">NRST</text>
+<text x="1811.25" y="1384" font-size="14" class="muted" text-anchor="middle">14</text>
+<text x="1816.25" y="1403" font-size="17" class="net" data-net="NRST" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 NRST，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" transform="rotate(90 1816.25 1403)">NRST</text>
+</g>
+<g data-mcu-pin="15"><title>#15 PC0 → BAT_ADC</title>
+<line x1="1832.5" y1="1340" x2="1832.5" y2="1364" class="wire" data-wire="BAT_ADC"/>
+<text x="1837.5" y="1324" font-size="17" class="pin" transform="rotate(-90 1837.5 1324)">PC0</text>
+<text x="1832.5" y="1384" font-size="14" class="muted" text-anchor="middle">15</text>
+<text x="1837.5" y="1403" font-size="17" class="net" data-net="BAT_ADC" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 BAT_ADC，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" transform="rotate(90 1837.5 1403)">BAT_ADC</text>
+</g>
+<g data-mcu-pin="16"><title>#16 PC1 → NC（未连接）</title>
+<line x1="1853.75" y1="1340" x2="1853.75" y2="1364" class="wire"/>
+<text x="1858.75" y="1324" font-size="17" class="pin" transform="rotate(-90 1858.75 1324)">PC1</text>
+<text x="1853.75" y="1384" font-size="14" class="muted" text-anchor="middle">16</text>
+<text x="1858.75" y="1403" font-size="15" class="nc" transform="rotate(90 1858.75 1403)">NC</text>
+</g>
+<g data-mcu-pin="17"><title>#17 PC2 → NC（未连接）</title>
+<line x1="1875" y1="1340" x2="1875" y2="1364" class="wire"/>
+<text x="1880" y="1324" font-size="17" class="pin" transform="rotate(-90 1880 1324)">PC2</text>
+<text x="1875" y="1384" font-size="14" class="muted" text-anchor="middle">17</text>
+<text x="1880" y="1403" font-size="15" class="nc" transform="rotate(90 1880 1403)">NC</text>
+</g>
+<g data-mcu-pin="18"><title>#18 PC3 → NC（未连接）</title>
+<line x1="1896.25" y1="1340" x2="1896.25" y2="1364" class="wire"/>
+<text x="1901.25" y="1324" font-size="17" class="pin" transform="rotate(-90 1901.25 1324)">PC3</text>
+<text x="1896.25" y="1384" font-size="14" class="muted" text-anchor="middle">18</text>
+<text x="1901.25" y="1403" font-size="15" class="nc" transform="rotate(90 1901.25 1403)">NC</text>
+</g>
+<g data-mcu-pin="19"><title>#19 VDD → +3V3</title>
+<line x1="1917.5" y1="1340" x2="1917.5" y2="1364" class="wire" data-wire="+3V3"/>
+<text x="1922.5" y="1324" font-size="17" class="pin" transform="rotate(-90 1922.5 1324)">VDD</text>
+<text x="1917.5" y="1384" font-size="14" class="muted" text-anchor="middle">19</text>
+<text x="1922.5" y="1403" font-size="17" class="net" data-net="+3V3" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 +3V3，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" transform="rotate(90 1922.5 1403)">+3V3</text>
+</g>
+<g data-mcu-pin="20"><title>#20 VSSA → GND</title>
+<line x1="1938.75" y1="1340" x2="1938.75" y2="1364" class="wire" data-wire="GND"/>
+<text x="1943.75" y="1324" font-size="17" class="pin" transform="rotate(-90 1943.75 1324)">VSSA</text>
+<text x="1938.75" y="1384" font-size="14" class="muted" text-anchor="middle">20</text>
+<text x="1943.75" y="1403" font-size="17" class="net" data-net="GND" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 GND，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" transform="rotate(90 1943.75 1403)">GND</text>
+</g>
+<g data-mcu-pin="21"><title>#21 VREF+ → VDDA</title>
+<line x1="1960" y1="1340" x2="1960" y2="1364" class="wire" data-wire="VDDA"/>
+<text x="1965" y="1324" font-size="17" class="pin" transform="rotate(-90 1965 1324)">VREF+</text>
+<text x="1960" y="1384" font-size="14" class="muted" text-anchor="middle">21</text>
+<text x="1965" y="1403" font-size="17" class="net" data-net="VDDA" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 VDDA，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" transform="rotate(90 1965 1403)">VDDA</text>
+</g>
+<g data-mcu-pin="22"><title>#22 VDDA → VDDA</title>
+<line x1="1981.25" y1="1340" x2="1981.25" y2="1364" class="wire" data-wire="VDDA"/>
+<text x="1986.25" y="1324" font-size="17" class="pin" transform="rotate(-90 1986.25 1324)">VDDA</text>
+<text x="1981.25" y="1384" font-size="14" class="muted" text-anchor="middle">22</text>
+<text x="1986.25" y="1403" font-size="17" class="net" data-net="VDDA" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 VDDA，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" transform="rotate(90 1986.25 1403)">VDDA</text>
+</g>
+<g data-mcu-pin="23"><title>#23 PA0-WKUP → NC（未连接）</title>
+<line x1="2002.5" y1="1340" x2="2002.5" y2="1364" class="wire"/>
+<text x="2007.5" y="1324" font-size="17" class="pin" transform="rotate(-90 2007.5 1324)">PA0</text>
+<text x="2002.5" y="1384" font-size="14" class="muted" text-anchor="middle">23</text>
+<text x="2007.5" y="1403" font-size="15" class="nc" transform="rotate(90 2007.5 1403)">NC</text>
+</g>
+<g data-mcu-pin="24"><title>#24 PA1 → NC（未连接）</title>
+<line x1="2023.75" y1="1340" x2="2023.75" y2="1364" class="wire"/>
+<text x="2028.75" y="1324" font-size="17" class="pin" transform="rotate(-90 2028.75 1324)">PA1</text>
+<text x="2023.75" y="1384" font-size="14" class="muted" text-anchor="middle">24</text>
+<text x="2028.75" y="1403" font-size="15" class="nc" transform="rotate(90 2028.75 1403)">NC</text>
+</g>
+<g data-mcu-pin="25"><title>#25 PA2 → BMS_TX</title>
+<line x1="2045" y1="1340" x2="2045" y2="1364" class="wire" data-wire="BMS_TX"/>
+<text x="2050" y="1324" font-size="17" class="pin" transform="rotate(-90 2050 1324)">PA2</text>
+<text x="2045" y="1384" font-size="14" class="muted" text-anchor="middle">25</text>
+<text x="2050" y="1403" font-size="17" class="net" data-net="BMS_TX" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 BMS_TX，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" transform="rotate(90 2050 1403)">BMS_TX</text>
+</g>
+<g data-mcu-pin="26"><title>#26 PA3 → BMS_RX</title>
+<line x1="2145" y1="1240" x2="2169" y2="1240" class="wire" data-wire="BMS_RX"/>
+<text x="2133" y="1245" font-size="17" class="pin" text-anchor="end">PA3</text>
+<text x="2185" y="1244" font-size="14" class="muted" text-anchor="middle">26</text>
+<text x="2207" y="1245" font-size="18" class="net" data-net="BMS_RX" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 BMS_RX，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" >BMS_RX</text>
+</g>
+<g data-mcu-pin="27"><title>#27 VSS → GND</title>
+<line x1="2145" y1="1218.75" x2="2169" y2="1218.75" class="wire" data-wire="GND"/>
+<text x="2133" y="1223.75" font-size="17" class="pin" text-anchor="end">VSS</text>
+<text x="2185" y="1222.75" font-size="14" class="muted" text-anchor="middle">27</text>
+<text x="2207" y="1223.75" font-size="18" class="net" data-net="GND" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 GND，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" >GND</text>
+</g>
+<g data-mcu-pin="28"><title>#28 VDD → +3V3</title>
+<line x1="2145" y1="1197.5" x2="2169" y2="1197.5" class="wire" data-wire="+3V3"/>
+<text x="2133" y="1202.5" font-size="17" class="pin" text-anchor="end">VDD</text>
+<text x="2185" y="1201.5" font-size="14" class="muted" text-anchor="middle">28</text>
+<text x="2207" y="1202.5" font-size="18" class="net" data-net="+3V3" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 +3V3，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" >+3V3</text>
+</g>
+<g data-mcu-pin="29"><title>#29 PA4 → NC（未连接）</title>
+<line x1="2145" y1="1176.25" x2="2169" y2="1176.25" class="wire"/>
+<text x="2133" y="1181.25" font-size="17" class="pin" text-anchor="end">PA4</text>
+<text x="2185" y="1180.25" font-size="14" class="muted" text-anchor="middle">29</text>
+<text x="2207" y="1181.25" font-size="15" class="nc" >NC</text>
+</g>
+<g data-mcu-pin="30"><title>#30 PA5 → NC（未连接）</title>
+<line x1="2145" y1="1155" x2="2169" y2="1155" class="wire"/>
+<text x="2133" y="1160" font-size="17" class="pin" text-anchor="end">PA5</text>
+<text x="2185" y="1159" font-size="14" class="muted" text-anchor="middle">30</text>
+<text x="2207" y="1160" font-size="15" class="nc" >NC</text>
+</g>
+<g data-mcu-pin="31"><title>#31 PA6 → SERVO1</title>
+<line x1="2145" y1="1133.75" x2="2169" y2="1133.75" class="wire" data-wire="SERVO1"/>
+<text x="2133" y="1138.75" font-size="17" class="pin" text-anchor="end">PA6</text>
+<text x="2185" y="1137.75" font-size="14" class="muted" text-anchor="middle">31</text>
+<text x="2207" y="1138.75" font-size="18" class="net" data-net="SERVO1" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 SERVO1，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" >SERVO1</text>
+</g>
+<g data-mcu-pin="32"><title>#32 PA7 → SERVO2</title>
+<line x1="2145" y1="1112.5" x2="2169" y2="1112.5" class="wire" data-wire="SERVO2"/>
+<text x="2133" y="1117.5" font-size="17" class="pin" text-anchor="end">PA7</text>
+<text x="2185" y="1116.5" font-size="14" class="muted" text-anchor="middle">32</text>
+<text x="2207" y="1117.5" font-size="18" class="net" data-net="SERVO2" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 SERVO2，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" >SERVO2</text>
+</g>
+<g data-mcu-pin="33"><title>#33 PC4 → NC（未连接）</title>
+<line x1="2145" y1="1091.25" x2="2169" y2="1091.25" class="wire"/>
+<text x="2133" y="1096.25" font-size="17" class="pin" text-anchor="end">PC4</text>
+<text x="2185" y="1095.25" font-size="14" class="muted" text-anchor="middle">33</text>
+<text x="2207" y="1096.25" font-size="15" class="nc" >NC</text>
+</g>
+<g data-mcu-pin="34"><title>#34 PC5 → NC（未连接）</title>
+<line x1="2145" y1="1070" x2="2169" y2="1070" class="wire"/>
+<text x="2133" y="1075" font-size="17" class="pin" text-anchor="end">PC5</text>
+<text x="2185" y="1074" font-size="14" class="muted" text-anchor="middle">34</text>
+<text x="2207" y="1075" font-size="15" class="nc" >NC</text>
+</g>
+<g data-mcu-pin="35"><title>#35 PB0 → NC（未连接）</title>
+<line x1="2145" y1="1048.75" x2="2169" y2="1048.75" class="wire"/>
+<text x="2133" y="1053.75" font-size="17" class="pin" text-anchor="end">PB0</text>
+<text x="2185" y="1052.75" font-size="14" class="muted" text-anchor="middle">35</text>
+<text x="2207" y="1053.75" font-size="15" class="nc" >NC</text>
+</g>
+<g data-mcu-pin="36"><title>#36 PB1 → NC（未连接）</title>
+<line x1="2145" y1="1027.5" x2="2169" y2="1027.5" class="wire"/>
+<text x="2133" y="1032.5" font-size="17" class="pin" text-anchor="end">PB1</text>
+<text x="2185" y="1031.5" font-size="14" class="muted" text-anchor="middle">36</text>
+<text x="2207" y="1032.5" font-size="15" class="nc" >NC</text>
+</g>
+<g data-mcu-pin="37"><title>#37 PB2 → BOOT1</title>
+<line x1="2145" y1="1006.25" x2="2169" y2="1006.25" class="wire" data-wire="BOOT1"/>
+<text x="2133" y="1011.25" font-size="17" class="pin" text-anchor="end">PB2</text>
+<text x="2185" y="1010.25" font-size="14" class="muted" text-anchor="middle">37</text>
+<text x="2207" y="1011.25" font-size="18" class="net" data-net="BOOT1" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 BOOT1，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" >BOOT1</text>
+</g>
+<g data-mcu-pin="38"><title>#38 PE7 → NC（未连接）</title>
+<line x1="2145" y1="985" x2="2169" y2="985" class="wire"/>
+<text x="2133" y="990" font-size="17" class="pin" text-anchor="end">PE7</text>
+<text x="2185" y="989" font-size="14" class="muted" text-anchor="middle">38</text>
+<text x="2207" y="990" font-size="15" class="nc" >NC</text>
+</g>
+<g data-mcu-pin="39"><title>#39 PE8 → NC（未连接）</title>
+<line x1="2145" y1="963.75" x2="2169" y2="963.75" class="wire"/>
+<text x="2133" y="968.75" font-size="17" class="pin" text-anchor="end">PE8</text>
+<text x="2185" y="967.75" font-size="14" class="muted" text-anchor="middle">39</text>
+<text x="2207" y="968.75" font-size="15" class="nc" >NC</text>
+</g>
+<g data-mcu-pin="40"><title>#40 PE9 → PWM1</title>
+<line x1="2145" y1="942.5" x2="2169" y2="942.5" class="wire" data-wire="PWM1"/>
+<text x="2133" y="947.5" font-size="17" class="pin" text-anchor="end">PE9</text>
+<text x="2185" y="946.5" font-size="14" class="muted" text-anchor="middle">40</text>
+<text x="2207" y="947.5" font-size="18" class="net" data-net="PWM1" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 PWM1，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" >PWM1</text>
+</g>
+<g data-mcu-pin="41"><title>#41 PE10 → NC（未连接）</title>
+<line x1="2145" y1="921.25" x2="2169" y2="921.25" class="wire"/>
+<text x="2133" y="926.25" font-size="17" class="pin" text-anchor="end">PE10</text>
+<text x="2185" y="925.25" font-size="14" class="muted" text-anchor="middle">41</text>
+<text x="2207" y="926.25" font-size="15" class="nc" >NC</text>
+</g>
+<g data-mcu-pin="42"><title>#42 PE11 → PWM2</title>
+<line x1="2145" y1="900" x2="2169" y2="900" class="wire" data-wire="PWM2"/>
+<text x="2133" y="905" font-size="17" class="pin" text-anchor="end">PE11</text>
+<text x="2185" y="904" font-size="14" class="muted" text-anchor="middle">42</text>
+<text x="2207" y="905" font-size="18" class="net" data-net="PWM2" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 PWM2，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" >PWM2</text>
+</g>
+<g data-mcu-pin="43"><title>#43 PE12 → NC（未连接）</title>
+<line x1="2145" y1="878.75" x2="2169" y2="878.75" class="wire"/>
+<text x="2133" y="883.75" font-size="17" class="pin" text-anchor="end">PE12</text>
+<text x="2185" y="882.75" font-size="14" class="muted" text-anchor="middle">43</text>
+<text x="2207" y="883.75" font-size="15" class="nc" >NC</text>
+</g>
+<g data-mcu-pin="44"><title>#44 PE13 → PWM3</title>
+<line x1="2145" y1="857.5" x2="2169" y2="857.5" class="wire" data-wire="PWM3"/>
+<text x="2133" y="862.5" font-size="17" class="pin" text-anchor="end">PE13</text>
+<text x="2185" y="861.5" font-size="14" class="muted" text-anchor="middle">44</text>
+<text x="2207" y="862.5" font-size="18" class="net" data-net="PWM3" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 PWM3，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" >PWM3</text>
+</g>
+<g data-mcu-pin="45"><title>#45 PE14 → PWM4</title>
+<line x1="2145" y1="836.25" x2="2169" y2="836.25" class="wire" data-wire="PWM4"/>
+<text x="2133" y="841.25" font-size="17" class="pin" text-anchor="end">PE14</text>
+<text x="2185" y="840.25" font-size="14" class="muted" text-anchor="middle">45</text>
+<text x="2207" y="841.25" font-size="18" class="net" data-net="PWM4" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 PWM4，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" >PWM4</text>
+</g>
+<g data-mcu-pin="46"><title>#46 PE15 → NC（未连接）</title>
+<line x1="2145" y1="815" x2="2169" y2="815" class="wire"/>
+<text x="2133" y="820" font-size="17" class="pin" text-anchor="end">PE15</text>
+<text x="2185" y="819" font-size="14" class="muted" text-anchor="middle">46</text>
+<text x="2207" y="820" font-size="15" class="nc" >NC</text>
+</g>
+<g data-mcu-pin="47"><title>#47 PB10 → DEPTH_SCL</title>
+<line x1="2145" y1="793.75" x2="2169" y2="793.75" class="wire" data-wire="DEPTH_SCL"/>
+<text x="2133" y="798.75" font-size="17" class="pin" text-anchor="end">PB10</text>
+<text x="2185" y="797.75" font-size="14" class="muted" text-anchor="middle">47</text>
+<text x="2207" y="798.75" font-size="18" class="net" data-net="DEPTH_SCL" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 DEPTH_SCL，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" >DEPTH_SCL</text>
+</g>
+<g data-mcu-pin="48"><title>#48 PB11 → DEPTH_SDA</title>
+<line x1="2145" y1="772.5" x2="2169" y2="772.5" class="wire" data-wire="DEPTH_SDA"/>
+<text x="2133" y="777.5" font-size="17" class="pin" text-anchor="end">PB11</text>
+<text x="2185" y="776.5" font-size="14" class="muted" text-anchor="middle">48</text>
+<text x="2207" y="777.5" font-size="18" class="net" data-net="DEPTH_SDA" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 DEPTH_SDA，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" >DEPTH_SDA</text>
+</g>
+<g data-mcu-pin="49"><title>#49 VCAP_1 → VCAP1</title>
+<line x1="2145" y1="751.25" x2="2169" y2="751.25" class="wire" data-wire="VCAP1"/>
+<text x="2133" y="756.25" font-size="17" class="pin" text-anchor="end">VCAP_1</text>
+<text x="2185" y="755.25" font-size="14" class="muted" text-anchor="middle">49</text>
+<text x="2207" y="756.25" font-size="18" class="net" data-net="VCAP1" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 VCAP1，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" >VCAP1</text>
+</g>
+<g data-mcu-pin="50"><title>#50 VDD → +3V3</title>
+<line x1="2145" y1="730" x2="2169" y2="730" class="wire" data-wire="+3V3"/>
+<text x="2133" y="735" font-size="17" class="pin" text-anchor="end">VDD</text>
+<text x="2185" y="734" font-size="14" class="muted" text-anchor="middle">50</text>
+<text x="2207" y="735" font-size="18" class="net" data-net="+3V3" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 +3V3，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" >+3V3</text>
+</g>
+<g data-mcu-pin="51"><title>#51 PB12 → NC（未连接）</title>
+<line x1="2045" y1="630" x2="2045" y2="606" class="wire"/>
+<text x="2041" y="646" font-size="17" class="pin" transform="rotate(90 2041 646)">PB12</text>
+<text x="2045" y="596" font-size="14" class="muted" text-anchor="middle">51</text>
+<text x="2050" y="577" font-size="15" class="nc" transform="rotate(-90 2050 577)">NC</text>
+</g>
+<g data-mcu-pin="52"><title>#52 PB13 → NC（未连接）</title>
+<line x1="2023.75" y1="630" x2="2023.75" y2="606" class="wire"/>
+<text x="2019.75" y="646" font-size="17" class="pin" transform="rotate(90 2019.75 646)">PB13</text>
+<text x="2023.75" y="596" font-size="14" class="muted" text-anchor="middle">52</text>
+<text x="2028.75" y="577" font-size="15" class="nc" transform="rotate(-90 2028.75 577)">NC</text>
+</g>
+<g data-mcu-pin="53"><title>#53 PB14 → NC（未连接）</title>
+<line x1="2002.5" y1="630" x2="2002.5" y2="606" class="wire"/>
+<text x="1998.5" y="646" font-size="17" class="pin" transform="rotate(90 1998.5 646)">PB14</text>
+<text x="2002.5" y="596" font-size="14" class="muted" text-anchor="middle">53</text>
+<text x="2007.5" y="577" font-size="15" class="nc" transform="rotate(-90 2007.5 577)">NC</text>
+</g>
+<g data-mcu-pin="54"><title>#54 PB15 → NC（未连接）</title>
+<line x1="1981.25" y1="630" x2="1981.25" y2="606" class="wire"/>
+<text x="1977.25" y="646" font-size="17" class="pin" transform="rotate(90 1977.25 646)">PB15</text>
+<text x="1981.25" y="596" font-size="14" class="muted" text-anchor="middle">54</text>
+<text x="1986.25" y="577" font-size="15" class="nc" transform="rotate(-90 1986.25 577)">NC</text>
+</g>
+<g data-mcu-pin="55"><title>#55 PD8 → USONIC_TX</title>
+<line x1="1960" y1="630" x2="1960" y2="606" class="wire" data-wire="USONIC_TX"/>
+<text x="1956" y="646" font-size="17" class="pin" transform="rotate(90 1956 646)">PD8</text>
+<text x="1960" y="596" font-size="14" class="muted" text-anchor="middle">55</text>
+<text x="1965" y="577" font-size="17" class="net" data-net="USONIC_TX" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 USONIC_TX，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" transform="rotate(-90 1965 577)">USONIC_TX</text>
+</g>
+<g data-mcu-pin="56"><title>#56 PD9 → USONIC_RX</title>
+<line x1="1938.75" y1="630" x2="1938.75" y2="606" class="wire" data-wire="USONIC_RX"/>
+<text x="1934.75" y="646" font-size="17" class="pin" transform="rotate(90 1934.75 646)">PD9</text>
+<text x="1938.75" y="596" font-size="14" class="muted" text-anchor="middle">56</text>
+<text x="1943.75" y="577" font-size="17" class="net" data-net="USONIC_RX" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 USONIC_RX，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" transform="rotate(-90 1943.75 577)">USONIC_RX</text>
+</g>
+<g data-mcu-pin="57"><title>#57 PD10 → USONIC_DE</title>
+<line x1="1917.5" y1="630" x2="1917.5" y2="606" class="wire" data-wire="USONIC_DE"/>
+<text x="1913.5" y="646" font-size="17" class="pin" transform="rotate(90 1913.5 646)">PD10</text>
+<text x="1917.5" y="596" font-size="14" class="muted" text-anchor="middle">57</text>
+<text x="1922.5" y="577" font-size="17" class="net" data-net="USONIC_DE" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 USONIC_DE，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" transform="rotate(-90 1922.5 577)">USONIC_DE</text>
+</g>
+<g data-mcu-pin="58"><title>#58 PD11 → NC（未连接）</title>
+<line x1="1896.25" y1="630" x2="1896.25" y2="606" class="wire"/>
+<text x="1892.25" y="646" font-size="17" class="pin" transform="rotate(90 1892.25 646)">PD11</text>
+<text x="1896.25" y="596" font-size="14" class="muted" text-anchor="middle">58</text>
+<text x="1901.25" y="577" font-size="15" class="nc" transform="rotate(-90 1901.25 577)">NC</text>
+</g>
+<g data-mcu-pin="59"><title>#59 PD12 → NC（未连接）</title>
+<line x1="1875" y1="630" x2="1875" y2="606" class="wire"/>
+<text x="1871" y="646" font-size="17" class="pin" transform="rotate(90 1871 646)">PD12</text>
+<text x="1875" y="596" font-size="14" class="muted" text-anchor="middle">59</text>
+<text x="1880" y="577" font-size="15" class="nc" transform="rotate(-90 1880 577)">NC</text>
+</g>
+<g data-mcu-pin="60"><title>#60 PD13 → NC（未连接）</title>
+<line x1="1853.75" y1="630" x2="1853.75" y2="606" class="wire"/>
+<text x="1849.75" y="646" font-size="17" class="pin" transform="rotate(90 1849.75 646)">PD13</text>
+<text x="1853.75" y="596" font-size="14" class="muted" text-anchor="middle">60</text>
+<text x="1858.75" y="577" font-size="15" class="nc" transform="rotate(-90 1858.75 577)">NC</text>
+</g>
+<g data-mcu-pin="61"><title>#61 PD14 → NC（未连接）</title>
+<line x1="1832.5" y1="630" x2="1832.5" y2="606" class="wire"/>
+<text x="1828.5" y="646" font-size="17" class="pin" transform="rotate(90 1828.5 646)">PD14</text>
+<text x="1832.5" y="596" font-size="14" class="muted" text-anchor="middle">61</text>
+<text x="1837.5" y="577" font-size="15" class="nc" transform="rotate(-90 1837.5 577)">NC</text>
+</g>
+<g data-mcu-pin="62"><title>#62 PD15 → NC（未连接）</title>
+<line x1="1811.25" y1="630" x2="1811.25" y2="606" class="wire"/>
+<text x="1807.25" y="646" font-size="17" class="pin" transform="rotate(90 1807.25 646)">PD15</text>
+<text x="1811.25" y="596" font-size="14" class="muted" text-anchor="middle">62</text>
+<text x="1816.25" y="577" font-size="15" class="nc" transform="rotate(-90 1816.25 577)">NC</text>
+</g>
+<g data-mcu-pin="63"><title>#63 PC6 → NC（未连接）</title>
+<line x1="1790" y1="630" x2="1790" y2="606" class="wire"/>
+<text x="1786" y="646" font-size="17" class="pin" transform="rotate(90 1786 646)">PC6</text>
+<text x="1790" y="596" font-size="14" class="muted" text-anchor="middle">63</text>
+<text x="1795" y="577" font-size="15" class="nc" transform="rotate(-90 1795 577)">NC</text>
+</g>
+<g data-mcu-pin="64"><title>#64 PC7 → NC（未连接）</title>
+<line x1="1768.75" y1="630" x2="1768.75" y2="606" class="wire"/>
+<text x="1764.75" y="646" font-size="17" class="pin" transform="rotate(90 1764.75 646)">PC7</text>
+<text x="1768.75" y="596" font-size="14" class="muted" text-anchor="middle">64</text>
+<text x="1773.75" y="577" font-size="15" class="nc" transform="rotate(-90 1773.75 577)">NC</text>
+</g>
+<g data-mcu-pin="65"><title>#65 PC8 → NC（未连接）</title>
+<line x1="1747.5" y1="630" x2="1747.5" y2="606" class="wire"/>
+<text x="1743.5" y="646" font-size="17" class="pin" transform="rotate(90 1743.5 646)">PC8</text>
+<text x="1747.5" y="596" font-size="14" class="muted" text-anchor="middle">65</text>
+<text x="1752.5" y="577" font-size="15" class="nc" transform="rotate(-90 1752.5 577)">NC</text>
+</g>
+<g data-mcu-pin="66"><title>#66 PC9 → NC（未连接）</title>
+<line x1="1726.25" y1="630" x2="1726.25" y2="606" class="wire"/>
+<text x="1722.25" y="646" font-size="17" class="pin" transform="rotate(90 1722.25 646)">PC9</text>
+<text x="1726.25" y="596" font-size="14" class="muted" text-anchor="middle">66</text>
+<text x="1731.25" y="577" font-size="15" class="nc" transform="rotate(-90 1731.25 577)">NC</text>
+</g>
+<g data-mcu-pin="67"><title>#67 PA8 → NC（未连接）</title>
+<line x1="1705" y1="630" x2="1705" y2="606" class="wire"/>
+<text x="1701" y="646" font-size="17" class="pin" transform="rotate(90 1701 646)">PA8</text>
+<text x="1705" y="596" font-size="14" class="muted" text-anchor="middle">67</text>
+<text x="1710" y="577" font-size="15" class="nc" transform="rotate(-90 1710 577)">NC</text>
+</g>
+<g data-mcu-pin="68"><title>#68 PA9 → GPS_TX</title>
+<line x1="1683.75" y1="630" x2="1683.75" y2="606" class="wire" data-wire="GPS_TX"/>
+<text x="1679.75" y="646" font-size="17" class="pin" transform="rotate(90 1679.75 646)">PA9</text>
+<text x="1683.75" y="596" font-size="14" class="muted" text-anchor="middle">68</text>
+<text x="1688.75" y="577" font-size="17" class="net" data-net="GPS_TX" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 GPS_TX，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" transform="rotate(-90 1688.75 577)">GPS_TX</text>
+</g>
+<g data-mcu-pin="69"><title>#69 PA10 → GPS_RX</title>
+<line x1="1662.5" y1="630" x2="1662.5" y2="606" class="wire" data-wire="GPS_RX"/>
+<text x="1658.5" y="646" font-size="17" class="pin" transform="rotate(90 1658.5 646)">PA10</text>
+<text x="1662.5" y="596" font-size="14" class="muted" text-anchor="middle">69</text>
+<text x="1667.5" y="577" font-size="17" class="net" data-net="GPS_RX" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 GPS_RX，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" transform="rotate(-90 1667.5 577)">GPS_RX</text>
+</g>
+<g data-mcu-pin="70"><title>#70 PA11 → NC（未连接）</title>
+<line x1="1641.25" y1="630" x2="1641.25" y2="606" class="wire"/>
+<text x="1637.25" y="646" font-size="17" class="pin" transform="rotate(90 1637.25 646)">PA11</text>
+<text x="1641.25" y="596" font-size="14" class="muted" text-anchor="middle">70</text>
+<text x="1646.25" y="577" font-size="15" class="nc" transform="rotate(-90 1646.25 577)">NC</text>
+</g>
+<g data-mcu-pin="71"><title>#71 PA12 → NC（未连接）</title>
+<line x1="1620" y1="630" x2="1620" y2="606" class="wire"/>
+<text x="1616" y="646" font-size="17" class="pin" transform="rotate(90 1616 646)">PA12</text>
+<text x="1620" y="596" font-size="14" class="muted" text-anchor="middle">71</text>
+<text x="1625" y="577" font-size="15" class="nc" transform="rotate(-90 1625 577)">NC</text>
+</g>
+<g data-mcu-pin="72"><title>#72 PA13 → SWDIO</title>
+<line x1="1598.75" y1="630" x2="1598.75" y2="606" class="wire" data-wire="SWDIO"/>
+<text x="1594.75" y="646" font-size="17" class="pin" transform="rotate(90 1594.75 646)">PA13</text>
+<text x="1598.75" y="596" font-size="14" class="muted" text-anchor="middle">72</text>
+<text x="1603.75" y="577" font-size="17" class="net" data-net="SWDIO" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 SWDIO，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" transform="rotate(-90 1603.75 577)">SWDIO</text>
+</g>
+<g data-mcu-pin="73"><title>#73 VCAP_2 → VCAP2</title>
+<line x1="1577.5" y1="630" x2="1577.5" y2="606" class="wire" data-wire="VCAP2"/>
+<text x="1573.5" y="646" font-size="17" class="pin" transform="rotate(90 1573.5 646)">VCAP_2</text>
+<text x="1577.5" y="596" font-size="14" class="muted" text-anchor="middle">73</text>
+<text x="1582.5" y="577" font-size="17" class="net" data-net="VCAP2" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 VCAP2，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" transform="rotate(-90 1582.5 577)">VCAP2</text>
+</g>
+<g data-mcu-pin="74"><title>#74 VSS → GND</title>
+<line x1="1556.25" y1="630" x2="1556.25" y2="606" class="wire" data-wire="GND"/>
+<text x="1552.25" y="646" font-size="17" class="pin" transform="rotate(90 1552.25 646)">VSS</text>
+<text x="1556.25" y="596" font-size="14" class="muted" text-anchor="middle">74</text>
+<text x="1561.25" y="577" font-size="17" class="net" data-net="GND" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 GND，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" transform="rotate(-90 1561.25 577)">GND</text>
+</g>
+<g data-mcu-pin="75"><title>#75 VDD → +3V3</title>
+<line x1="1535" y1="630" x2="1535" y2="606" class="wire" data-wire="+3V3"/>
+<text x="1531" y="646" font-size="17" class="pin" transform="rotate(90 1531 646)">VDD</text>
+<text x="1535" y="596" font-size="14" class="muted" text-anchor="middle">75</text>
+<text x="1540" y="577" font-size="17" class="net" data-net="+3V3" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 +3V3，04  U1 · STM32F407VET6 / LQFP100" text-anchor="start" transform="rotate(-90 1540 577)">+3V3</text>
+</g>
+<g data-mcu-pin="76"><title>#76 PA14 → SWCLK</title>
+<line x1="1435" y1="730" x2="1411" y2="730" class="wire" data-wire="SWCLK"/>
+<text x="1447" y="735" font-size="17" class="pin" >PA14</text>
+<text x="1395" y="734" font-size="14" class="muted" text-anchor="middle">76</text>
+<text x="1373" y="735" font-size="18" class="net" data-net="SWCLK" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 SWCLK，04  U1 · STM32F407VET6 / LQFP100" text-anchor="end" >SWCLK</text>
+</g>
+<g data-mcu-pin="77"><title>#77 PA15 → NC（未连接）</title>
+<line x1="1435" y1="751.25" x2="1411" y2="751.25" class="wire"/>
+<text x="1447" y="756.25" font-size="17" class="pin" >PA15</text>
+<text x="1395" y="755.25" font-size="14" class="muted" text-anchor="middle">77</text>
+<text x="1373" y="756.25" font-size="15" class="nc" text-anchor="end">NC</text>
+</g>
+<g data-mcu-pin="78"><title>#78 PC10 → SONAR_TX</title>
+<line x1="1435" y1="772.5" x2="1411" y2="772.5" class="wire" data-wire="SONAR_TX"/>
+<text x="1447" y="777.5" font-size="17" class="pin" >PC10</text>
+<text x="1395" y="776.5" font-size="14" class="muted" text-anchor="middle">78</text>
+<text x="1373" y="777.5" font-size="18" class="net" data-net="SONAR_TX" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 SONAR_TX，04  U1 · STM32F407VET6 / LQFP100" text-anchor="end" >SONAR_TX</text>
+</g>
+<g data-mcu-pin="79"><title>#79 PC11 → SONAR_RX</title>
+<line x1="1435" y1="793.75" x2="1411" y2="793.75" class="wire" data-wire="SONAR_RX"/>
+<text x="1447" y="798.75" font-size="17" class="pin" >PC11</text>
+<text x="1395" y="797.75" font-size="14" class="muted" text-anchor="middle">79</text>
+<text x="1373" y="798.75" font-size="18" class="net" data-net="SONAR_RX" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 SONAR_RX，04  U1 · STM32F407VET6 / LQFP100" text-anchor="end" >SONAR_RX</text>
+</g>
+<g data-mcu-pin="80"><title>#80 PC12 → AIS_TX</title>
+<line x1="1435" y1="815" x2="1411" y2="815" class="wire" data-wire="AIS_TX"/>
+<text x="1447" y="820" font-size="17" class="pin" >PC12</text>
+<text x="1395" y="819" font-size="14" class="muted" text-anchor="middle">80</text>
+<text x="1373" y="820" font-size="18" class="net" data-net="AIS_TX" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 AIS_TX，04  U1 · STM32F407VET6 / LQFP100" text-anchor="end" >AIS_TX</text>
+</g>
+<g data-mcu-pin="81"><title>#81 PD0 → CAN_RX</title>
+<line x1="1435" y1="836.25" x2="1411" y2="836.25" class="wire" data-wire="CAN_RX"/>
+<text x="1447" y="841.25" font-size="17" class="pin" >PD0</text>
+<text x="1395" y="840.25" font-size="14" class="muted" text-anchor="middle">81</text>
+<text x="1373" y="841.25" font-size="18" class="net" data-net="CAN_RX" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 CAN_RX，04  U1 · STM32F407VET6 / LQFP100" text-anchor="end" >CAN_RX</text>
+</g>
+<g data-mcu-pin="82"><title>#82 PD1 → CAN_TX</title>
+<line x1="1435" y1="857.5" x2="1411" y2="857.5" class="wire" data-wire="CAN_TX"/>
+<text x="1447" y="862.5" font-size="17" class="pin" >PD1</text>
+<text x="1395" y="861.5" font-size="14" class="muted" text-anchor="middle">82</text>
+<text x="1373" y="862.5" font-size="18" class="net" data-net="CAN_TX" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 CAN_TX，04  U1 · STM32F407VET6 / LQFP100" text-anchor="end" >CAN_TX</text>
+</g>
+<g data-mcu-pin="83"><title>#83 PD2 → AIS_RX</title>
+<line x1="1435" y1="878.75" x2="1411" y2="878.75" class="wire" data-wire="AIS_RX"/>
+<text x="1447" y="883.75" font-size="17" class="pin" >PD2</text>
+<text x="1395" y="882.75" font-size="14" class="muted" text-anchor="middle">83</text>
+<text x="1373" y="883.75" font-size="18" class="net" data-net="AIS_RX" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 AIS_RX，04  U1 · STM32F407VET6 / LQFP100" text-anchor="end" >AIS_RX</text>
+</g>
+<g data-mcu-pin="84"><title>#84 PD3 → NC（未连接）</title>
+<line x1="1435" y1="900" x2="1411" y2="900" class="wire"/>
+<text x="1447" y="905" font-size="17" class="pin" >PD3</text>
+<text x="1395" y="904" font-size="14" class="muted" text-anchor="middle">84</text>
+<text x="1373" y="905" font-size="15" class="nc" text-anchor="end">NC</text>
+</g>
+<g data-mcu-pin="85"><title>#85 PD4 → RS485_DE</title>
+<line x1="1435" y1="921.25" x2="1411" y2="921.25" class="wire" data-wire="RS485_DE"/>
+<text x="1447" y="926.25" font-size="17" class="pin" >PD4</text>
+<text x="1395" y="925.25" font-size="14" class="muted" text-anchor="middle">85</text>
+<text x="1373" y="926.25" font-size="18" class="net" data-net="RS485_DE" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 RS485_DE，04  U1 · STM32F407VET6 / LQFP100" text-anchor="end" >RS485_DE</text>
+</g>
+<g data-mcu-pin="86"><title>#86 PD5 → NC（未连接）</title>
+<line x1="1435" y1="942.5" x2="1411" y2="942.5" class="wire"/>
+<text x="1447" y="947.5" font-size="17" class="pin" >PD5</text>
+<text x="1395" y="946.5" font-size="14" class="muted" text-anchor="middle">86</text>
+<text x="1373" y="947.5" font-size="15" class="nc" text-anchor="end">NC</text>
+</g>
+<g data-mcu-pin="87"><title>#87 PD6 → NC（未连接）</title>
+<line x1="1435" y1="963.75" x2="1411" y2="963.75" class="wire"/>
+<text x="1447" y="968.75" font-size="17" class="pin" >PD6</text>
+<text x="1395" y="967.75" font-size="14" class="muted" text-anchor="middle">87</text>
+<text x="1373" y="968.75" font-size="15" class="nc" text-anchor="end">NC</text>
+</g>
+<g data-mcu-pin="88"><title>#88 PD7 → NC（未连接）</title>
+<line x1="1435" y1="985" x2="1411" y2="985" class="wire"/>
+<text x="1447" y="990" font-size="17" class="pin" >PD7</text>
+<text x="1395" y="989" font-size="14" class="muted" text-anchor="middle">88</text>
+<text x="1373" y="990" font-size="15" class="nc" text-anchor="end">NC</text>
+</g>
+<g data-mcu-pin="89"><title>#89 PB3 → NC（未连接）</title>
+<line x1="1435" y1="1006.25" x2="1411" y2="1006.25" class="wire"/>
+<text x="1447" y="1011.25" font-size="17" class="pin" >PB3</text>
+<text x="1395" y="1010.25" font-size="14" class="muted" text-anchor="middle">89</text>
+<text x="1373" y="1011.25" font-size="15" class="nc" text-anchor="end">NC</text>
+</g>
+<g data-mcu-pin="90"><title>#90 PB4 → NC（未连接）</title>
+<line x1="1435" y1="1027.5" x2="1411" y2="1027.5" class="wire"/>
+<text x="1447" y="1032.5" font-size="17" class="pin" >PB4</text>
+<text x="1395" y="1031.5" font-size="14" class="muted" text-anchor="middle">90</text>
+<text x="1373" y="1032.5" font-size="15" class="nc" text-anchor="end">NC</text>
+</g>
+<g data-mcu-pin="91"><title>#91 PB5 → NC（未连接）</title>
+<line x1="1435" y1="1048.75" x2="1411" y2="1048.75" class="wire"/>
+<text x="1447" y="1053.75" font-size="17" class="pin" >PB5</text>
+<text x="1395" y="1052.75" font-size="14" class="muted" text-anchor="middle">91</text>
+<text x="1373" y="1053.75" font-size="15" class="nc" text-anchor="end">NC</text>
+</g>
+<g data-mcu-pin="92"><title>#92 PB6 → IMU_SCL</title>
+<line x1="1435" y1="1070" x2="1411" y2="1070" class="wire" data-wire="IMU_SCL"/>
+<text x="1447" y="1075" font-size="17" class="pin" >PB6</text>
+<text x="1395" y="1074" font-size="14" class="muted" text-anchor="middle">92</text>
+<text x="1373" y="1075" font-size="18" class="net" data-net="IMU_SCL" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 IMU_SCL，04  U1 · STM32F407VET6 / LQFP100" text-anchor="end" >IMU_SCL</text>
+</g>
+<g data-mcu-pin="93"><title>#93 PB7 → IMU_SDA</title>
+<line x1="1435" y1="1091.25" x2="1411" y2="1091.25" class="wire" data-wire="IMU_SDA"/>
+<text x="1447" y="1096.25" font-size="17" class="pin" >PB7</text>
+<text x="1395" y="1095.25" font-size="14" class="muted" text-anchor="middle">93</text>
+<text x="1373" y="1096.25" font-size="18" class="net" data-net="IMU_SDA" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 IMU_SDA，04  U1 · STM32F407VET6 / LQFP100" text-anchor="end" >IMU_SDA</text>
+</g>
+<g data-mcu-pin="94"><title>#94 BOOT0 → BOOT0</title>
+<line x1="1435" y1="1112.5" x2="1411" y2="1112.5" class="wire" data-wire="BOOT0"/>
+<text x="1447" y="1117.5" font-size="17" class="pin" >BOOT0</text>
+<text x="1395" y="1116.5" font-size="14" class="muted" text-anchor="middle">94</text>
+<text x="1373" y="1117.5" font-size="18" class="net" data-net="BOOT0" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 BOOT0，04  U1 · STM32F407VET6 / LQFP100" text-anchor="end" >BOOT0</text>
+</g>
+<g data-mcu-pin="95"><title>#95 PB8 → LED_PWM</title>
+<line x1="1435" y1="1133.75" x2="1411" y2="1133.75" class="wire" data-wire="LED_PWM"/>
+<text x="1447" y="1138.75" font-size="17" class="pin" >PB8</text>
+<text x="1395" y="1137.75" font-size="14" class="muted" text-anchor="middle">95</text>
+<text x="1373" y="1138.75" font-size="18" class="net" data-net="LED_PWM" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 LED_PWM，04  U1 · STM32F407VET6 / LQFP100" text-anchor="end" >LED_PWM</text>
+</g>
+<g data-mcu-pin="96"><title>#96 PB9 → NC（未连接）</title>
+<line x1="1435" y1="1155" x2="1411" y2="1155" class="wire"/>
+<text x="1447" y="1160" font-size="17" class="pin" >PB9</text>
+<text x="1395" y="1159" font-size="14" class="muted" text-anchor="middle">96</text>
+<text x="1373" y="1160" font-size="15" class="nc" text-anchor="end">NC</text>
+</g>
+<g data-mcu-pin="97"><title>#97 PE0 → NC（未连接）</title>
+<line x1="1435" y1="1176.25" x2="1411" y2="1176.25" class="wire"/>
+<text x="1447" y="1181.25" font-size="17" class="pin" >PE0</text>
+<text x="1395" y="1180.25" font-size="14" class="muted" text-anchor="middle">97</text>
+<text x="1373" y="1181.25" font-size="15" class="nc" text-anchor="end">NC</text>
+</g>
+<g data-mcu-pin="98"><title>#98 PE1 → NC（未连接）</title>
+<line x1="1435" y1="1197.5" x2="1411" y2="1197.5" class="wire"/>
+<text x="1447" y="1202.5" font-size="17" class="pin" >PE1</text>
+<text x="1395" y="1201.5" font-size="14" class="muted" text-anchor="middle">98</text>
+<text x="1373" y="1202.5" font-size="15" class="nc" text-anchor="end">NC</text>
+</g>
+<g data-mcu-pin="99"><title>#99 VSS → GND</title>
+<line x1="1435" y1="1218.75" x2="1411" y2="1218.75" class="wire" data-wire="GND"/>
+<text x="1447" y="1223.75" font-size="17" class="pin" >VSS</text>
+<text x="1395" y="1222.75" font-size="14" class="muted" text-anchor="middle">99</text>
+<text x="1373" y="1223.75" font-size="18" class="net" data-net="GND" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 GND，04  U1 · STM32F407VET6 / LQFP100" text-anchor="end" >GND</text>
+</g>
+<g data-mcu-pin="100"><title>#100 VDD → +3V3</title>
+<line x1="1435" y1="1240" x2="1411" y2="1240" class="wire" data-wire="+3V3"/>
+<text x="1447" y="1245" font-size="17" class="pin" >VDD</text>
+<text x="1395" y="1244" font-size="14" class="muted" text-anchor="middle">100</text>
+<text x="1373" y="1245" font-size="18" class="net" data-net="+3V3" data-area="04  U1 · STM32F407VET6 / LQFP100" tabindex="0" role="button" aria-label="网络 +3V3，04  U1 · STM32F407VET6 / LQFP100" text-anchor="end" >+3V3</text>
+</g>
+<text x="1790" y="910" font-size="40" class="ref" text-anchor="middle">U1</text>
+<text x="1790" y="960" font-size="34" class="heading" text-anchor="middle">STM32F407VET6</text>
+<text x="1790" y="1005" font-size="26" class="muted" text-anchor="middle">LQFP100 · 100 脚</text>
+<text x="1790" y="1060" font-size="22" class="muted" text-anchor="middle">底 1→25  /  右 26→50</text>
+<text x="1790" y="1099" font-size="22" class="muted" text-anchor="middle">顶 51→75  /  左 76→100</text>
+<text x="1790" y="1155" font-size="20" class="heading" text-anchor="middle">按用户原理图符号方向</text>
+<text x="1140" y="1640" font-size="21" class="muted" >29 GPIO 已连接 + PD6 预留 = 30 GPIO 预算；PD6 本版 NC。</text>
+<text x="1140" y="1668" font-size="21" class="muted" >PC14/PC15 未接 LSE；PB2 固定 BOOT1 下拉，不计自由扩展。</text>
+<text x="1140" y="1696" font-size="21" class="muted" >PWM1–4：TIM1 共周期；PWM5：TIM9；舵机：TIM3；LED：TIM10。</text>
+<text x="1140" y="1724" font-size="21" class="muted" >NC 表示本版不接。这里是原理图符号，不是 PCB 封装顶视图。</text>
+<text x="1140" y="1752" font-size="21" class="muted" >UART 5/6；AIS 用 UART5；TX/RX 均以 STM32 方向命名。</text>
+<text x="1140" y="1780" font-size="21" class="muted" >ESP32-P4、摄像头、SD、UART雷达、线缆通信在 P4 页继续。</text>
+<g id="can"><rect x="2500" y="160" width="1060" height="410" rx="10" class="panel"/>
+<text x="2522" y="198" font-size="27" class="heading" >05  STM32 CAN1 · 双 MCU + USB-CAN</text>
+<text x="2522" y="229" font-size="18" class="muted" >PD1 / 82 TX · PD0 / 81 RX · AF9；ESP32-P4模块 经另一收发器接入。</text>
+</g>
+<rect x="2720" y="258" width="325" height="220" rx="4" class="chip"/>
+<text x="2882.5" y="287" font-size="22" class="ref" text-anchor="middle">U2</text>
+<text x="2882.5" y="315" font-size="20" class="heading" text-anchor="middle">SN65HVD230D</text>
+<line x1="2694" y1="348" x2="2720" y2="348" class="wire" data-wire="CAN_TX"/>
+<text x="2730" y="353" font-size="17" class="pin" >1 D</text>
+<text x="2685" y="353" font-size="17" class="net" data-net="CAN_TX" data-area="05  STM32 CAN1 · 双 MCU + USB-CAN" tabindex="0" role="button" aria-label="网络 CAN_TX，05  STM32 CAN1 · 双 MCU + USB-CAN" text-anchor="end" >CAN_TX</text>
+<line x1="2694" y1="388" x2="2720" y2="388" class="wire" data-wire="CAN_RX"/>
+<text x="2730" y="393" font-size="17" class="pin" >4 R</text>
+<text x="2685" y="393" font-size="17" class="net" data-net="CAN_RX" data-area="05  STM32 CAN1 · 双 MCU + USB-CAN" tabindex="0" role="button" aria-label="网络 CAN_RX，05  STM32 CAN1 · 双 MCU + USB-CAN" text-anchor="end" >CAN_RX</text>
+<line x1="2694" y1="428" x2="2720" y2="428" class="wire" data-wire="+3V3"/>
+<text x="2730" y="433" font-size="17" class="pin" >3 VCC</text>
+<text x="2685" y="433" font-size="17" class="net" data-net="+3V3" data-area="05  STM32 CAN1 · 双 MCU + USB-CAN" tabindex="0" role="button" aria-label="网络 +3V3，05  STM32 CAN1 · 双 MCU + USB-CAN" text-anchor="end" >+3V3</text>
+<line x1="2694" y1="468" x2="2720" y2="468" class="wire" data-wire="GND"/>
+<text x="2730" y="473" font-size="17" class="pin" >2 GND</text>
+<text x="2685" y="473" font-size="17" class="net" data-net="GND" data-area="05  STM32 CAN1 · 双 MCU + USB-CAN" tabindex="0" role="button" aria-label="网络 GND，05  STM32 CAN1 · 双 MCU + USB-CAN" text-anchor="end" >GND</text>
+<line x1="3045" y1="348" x2="3071" y2="348" class="wire" data-wire="CAN_H"/>
+<text x="3035" y="353" font-size="17" class="pin" text-anchor="end">H 7</text>
+<text x="3080" y="353" font-size="17" class="net" data-net="CAN_H" data-area="05  STM32 CAN1 · 双 MCU + USB-CAN" tabindex="0" role="button" aria-label="网络 CAN_H，05  STM32 CAN1 · 双 MCU + USB-CAN" text-anchor="start" >CAN_H</text>
+<line x1="3045" y1="388" x2="3071" y2="388" class="wire" data-wire="CAN_L"/>
+<text x="3035" y="393" font-size="17" class="pin" text-anchor="end">L 6</text>
+<text x="3080" y="393" font-size="17" class="net" data-net="CAN_L" data-area="05  STM32 CAN1 · 双 MCU + USB-CAN" tabindex="0" role="button" aria-label="网络 CAN_L，05  STM32 CAN1 · 双 MCU + USB-CAN" text-anchor="start" >CAN_L</text>
+<line x1="3045" y1="428" x2="3071" y2="428" class="wire" data-wire="CAN_RS"/>
+<text x="3035" y="433" font-size="17" class="pin" text-anchor="end">Rs 8</text>
+<text x="3080" y="433" font-size="17" class="net" data-net="CAN_RS" data-area="05  STM32 CAN1 · 双 MCU + USB-CAN" tabindex="0" role="button" aria-label="网络 CAN_RS，05  STM32 CAN1 · 双 MCU + USB-CAN" text-anchor="start" >CAN_RS</text>
+<line x1="3045" y1="468" x2="3071" y2="468" class="wire"/>
+<text x="3035" y="473" font-size="17" class="pin" text-anchor="end">Vref 5</text>
+<text x="3080" y="473" font-size="16" class="muted" >NC</text>
+<line x1="3065" y1="462" x2="3077" y2="474" class="wire"/>
+<line x1="3065" y1="474" x2="3077" y2="462" class="wire"/>
+<text x="2590" y="414" font-size="16" class="net" data-net="+3V3" data-area="05  STM32 CAN1 · 双 MCU + USB-CAN" tabindex="0" role="button" aria-label="网络 +3V3，05  STM32 CAN1 · 双 MCU + USB-CAN" text-anchor="middle" >+3V3</text>
+<line x1="2590" y1="425" x2="2590" y2="458" class="wire" data-wire="+3V3"/>
+<line x1="2577" y1="458" x2="2603" y2="458" class="wire"/>
+<line x1="2577" y1="468" x2="2603" y2="468" class="wire"/>
+<line x1="2590" y1="468" x2="2590" y2="499" class="wire" data-wire="GND"/>
+<line x1="2590" y1="499" x2="2590" y2="509" class="wire"/>
+<line x1="2577" y1="509" x2="2603" y2="509" class="wire"/>
+<line x1="2582" y1="515" x2="2598" y2="515" class="wire"/>
+<line x1="2587" y1="521" x2="2593" y2="521" class="wire"/>
+<text x="2611" y="455" font-size="16" class="ref" >C201</text>
+<text x="2611" y="479" font-size="16" class="value" >100nF</text>
+<text x="3170" y="414" font-size="16" class="net" data-net="CAN_RS" data-area="05  STM32 CAN1 · 双 MCU + USB-CAN" tabindex="0" role="button" aria-label="网络 CAN_RS，05  STM32 CAN1 · 双 MCU + USB-CAN" text-anchor="middle" >CAN_RS</text>
+<line x1="3170" y1="425" x2="3170" y2="445" class="wire" data-wire="CAN_RS"/>
+<rect x="3162" y="445" width="16" height="37" class="symbol"/>
+<line x1="3170" y1="482" x2="3170" y2="502" class="wire" data-wire="GND"/>
+<line x1="3170" y1="502" x2="3170" y2="512" class="wire"/>
+<line x1="3157" y1="512" x2="3183" y2="512" class="wire"/>
+<line x1="3162" y1="518" x2="3178" y2="518" class="wire"/>
+<line x1="3167" y1="524" x2="3173" y2="524" class="wire"/>
+<text x="3187" y="455" font-size="16" class="ref" >R201</text>
+<text x="3187" y="479" font-size="16" class="value" >0Ω</text>
+<rect x="3295" y="255" width="100" height="130" rx="4" class="connector"/>
+<text x="3305" y="278" font-size="19" class="ref" >J201</text>
+<text x="3305" y="301" font-size="16" class="muted" >CAN总线</text>
+<text x="3307" y="325" font-size="15" class="pin" >1</text>
+<line x1="3375" y1="321" x2="3415" y2="321" class="wire" data-wire="CAN_H"/>
+<circle cx="3375" cy="321" r="4" class="junction"/>
+<text x="3423" y="325" font-size="17" class="net" data-net="CAN_H" data-area="05  STM32 CAN1 · 双 MCU + USB-CAN" tabindex="0" role="button" aria-label="网络 CAN_H，05  STM32 CAN1 · 双 MCU + USB-CAN" text-anchor="start" >CAN_H</text>
+<text x="3307" y="350" font-size="15" class="pin" >2</text>
+<line x1="3375" y1="346" x2="3415" y2="346" class="wire" data-wire="CAN_L"/>
+<circle cx="3375" cy="346" r="4" class="junction"/>
+<text x="3423" y="350" font-size="17" class="net" data-net="CAN_L" data-area="05  STM32 CAN1 · 双 MCU + USB-CAN" tabindex="0" role="button" aria-label="网络 CAN_L，05  STM32 CAN1 · 双 MCU + USB-CAN" text-anchor="start" >CAN_L</text>
+<text x="3307" y="375" font-size="15" class="pin" >3</text>
+<line x1="3375" y1="371" x2="3415" y2="371" class="wire" data-wire="GND"/>
+<circle cx="3375" cy="371" r="4" class="junction"/>
+<text x="3423" y="375" font-size="17" class="net" data-net="GND" data-area="05  STM32 CAN1 · 双 MCU + USB-CAN" tabindex="0" role="button" aria-label="网络 GND，05  STM32 CAN1 · 双 MCU + USB-CAN" text-anchor="start" >GND</text>
+<text x="3280" y="463" font-size="17" class="net" data-net="CAN_H" data-area="05  STM32 CAN1 · 双 MCU + USB-CAN" tabindex="0" role="button" aria-label="网络 CAN_H，05  STM32 CAN1 · 双 MCU + USB-CAN" text-anchor="start" >CAN_H</text>
+<line x1="3280" y1="475" x2="3365" y2="475" class="wire" data-wire="CAN_H"/>
+<rect x="3365" y="467" width="60" height="16" class="symbol"/>
+<line x1="3425" y1="475" x2="3510" y2="475" class="wire" data-wire="CAN_L"/>
+<text x="3510" y="463" font-size="17" class="net" data-net="CAN_L" data-area="05  STM32 CAN1 · 双 MCU + USB-CAN" tabindex="0" role="button" aria-label="网络 CAN_L，05  STM32 CAN1 · 双 MCU + USB-CAN" text-anchor="end" >CAN_L</text>
+<text x="3395" y="505" font-size="16" class="value" text-anchor="middle">R202  120Ω / DNP</text>
+<text x="2730" y="527" font-size="17" class="muted" >J201 共用总线 · ESP32-P4模块 / USB-CAN；PD6 NC，终端仅两端。</text>
+<g id="bms"><rect x="2500" y="590" width="1060" height="430" rx="10" class="panel"/>
+<text x="2522" y="628" font-size="27" class="heading" >06  电池 BMS · USART2 / RS485</text>
+<text x="2522" y="659" font-size="18" class="muted" >U3 为 ADI MAX3485ESA+ 候选；不能当作已核验的 UMW 替代料。</text>
+</g>
+<rect x="2730" y="688" width="320" height="230" rx="4" class="chip"/>
+<text x="2890" y="717" font-size="22" class="ref" text-anchor="middle">U3</text>
+<text x="2890" y="745" font-size="20" class="heading" text-anchor="middle">MAX3485ESA+</text>
+<line x1="2704" y1="778" x2="2730" y2="778" class="wire" data-wire="BMS_RX"/>
+<text x="2740" y="783" font-size="17" class="pin" >1 RO</text>
+<text x="2695" y="783" font-size="17" class="net" data-net="BMS_RX" data-area="06  电池 BMS · USART2 / RS485" tabindex="0" role="button" aria-label="网络 BMS_RX，06  电池 BMS · USART2 / RS485" text-anchor="end" >BMS_RX</text>
+<line x1="2704" y1="821.3333333333334" x2="2730" y2="821.3333333333334" class="wire" data-wire="RS485_DE"/>
+<text x="2740" y="826.3333333333334" font-size="17" class="pin" >2 /RE</text>
+<text x="2695" y="826.3333333333334" font-size="17" class="net" data-net="RS485_DE" data-area="06  电池 BMS · USART2 / RS485" tabindex="0" role="button" aria-label="网络 RS485_DE，06  电池 BMS · USART2 / RS485" text-anchor="end" >RS485_DE</text>
+<line x1="2704" y1="864.6666666666666" x2="2730" y2="864.6666666666666" class="wire" data-wire="RS485_DE"/>
+<text x="2740" y="869.6666666666666" font-size="17" class="pin" >3 DE</text>
+<text x="2695" y="869.6666666666666" font-size="17" class="net" data-net="RS485_DE" data-area="06  电池 BMS · USART2 / RS485" tabindex="0" role="button" aria-label="网络 RS485_DE，06  电池 BMS · USART2 / RS485" text-anchor="end" >RS485_DE</text>
+<line x1="2704" y1="908" x2="2730" y2="908" class="wire" data-wire="BMS_TX"/>
+<text x="2740" y="913" font-size="17" class="pin" >4 DI</text>
+<text x="2695" y="913" font-size="17" class="net" data-net="BMS_TX" data-area="06  电池 BMS · USART2 / RS485" tabindex="0" role="button" aria-label="网络 BMS_TX，06  电池 BMS · USART2 / RS485" text-anchor="end" >BMS_TX</text>
+<line x1="3050" y1="778" x2="3076" y2="778" class="wire" data-wire="+3V3"/>
+<text x="3040" y="783" font-size="17" class="pin" text-anchor="end">VCC 8</text>
+<text x="3085" y="783" font-size="17" class="net" data-net="+3V3" data-area="06  电池 BMS · USART2 / RS485" tabindex="0" role="button" aria-label="网络 +3V3，06  电池 BMS · USART2 / RS485" text-anchor="start" >+3V3</text>
+<line x1="3050" y1="821.3333333333334" x2="3076" y2="821.3333333333334" class="wire" data-wire="BMS_B"/>
+<text x="3040" y="826.3333333333334" font-size="17" class="pin" text-anchor="end">B 7</text>
+<text x="3085" y="826.3333333333334" font-size="17" class="net" data-net="BMS_B" data-area="06  电池 BMS · USART2 / RS485" tabindex="0" role="button" aria-label="网络 BMS_B，06  电池 BMS · USART2 / RS485" text-anchor="start" >BMS_B</text>
+<line x1="3050" y1="864.6666666666666" x2="3076" y2="864.6666666666666" class="wire" data-wire="BMS_A"/>
+<text x="3040" y="869.6666666666666" font-size="17" class="pin" text-anchor="end">A 6</text>
+<text x="3085" y="869.6666666666666" font-size="17" class="net" data-net="BMS_A" data-area="06  电池 BMS · USART2 / RS485" tabindex="0" role="button" aria-label="网络 BMS_A，06  电池 BMS · USART2 / RS485" text-anchor="start" >BMS_A</text>
+<line x1="3050" y1="908" x2="3076" y2="908" class="wire" data-wire="GND"/>
+<text x="3040" y="913" font-size="17" class="pin" text-anchor="end">GND 5</text>
+<text x="3085" y="913" font-size="17" class="net" data-net="GND" data-area="06  电池 BMS · USART2 / RS485" tabindex="0" role="button" aria-label="网络 GND，06  电池 BMS · USART2 / RS485" text-anchor="start" >GND</text>
+<text x="2550" y="864" font-size="16" class="net" data-net="RS485_DE" data-area="06  电池 BMS · USART2 / RS485" tabindex="0" role="button" aria-label="网络 RS485_DE，06  电池 BMS · USART2 / RS485" text-anchor="middle" >RS485_DE</text>
+<line x1="2550" y1="875" x2="2550" y2="895" class="wire" data-wire="RS485_DE"/>
+<rect x="2542" y="895" width="16" height="37" class="symbol"/>
+<line x1="2550" y1="932" x2="2550" y2="952" class="wire" data-wire="GND"/>
+<line x1="2550" y1="952" x2="2550" y2="962" class="wire"/>
+<line x1="2537" y1="962" x2="2563" y2="962" class="wire"/>
+<line x1="2542" y1="968" x2="2558" y2="968" class="wire"/>
+<line x1="2547" y1="974" x2="2553" y2="974" class="wire"/>
+<text x="2567" y="905" font-size="16" class="ref" >R211</text>
+<text x="2567" y="929" font-size="16" class="value" >10k</text>
+<text x="3150" y="864" font-size="16" class="net" data-net="+3V3" data-area="06  电池 BMS · USART2 / RS485" tabindex="0" role="button" aria-label="网络 +3V3，06  电池 BMS · USART2 / RS485" text-anchor="middle" >+3V3</text>
+<line x1="3150" y1="875" x2="3150" y2="908" class="wire" data-wire="+3V3"/>
+<line x1="3137" y1="908" x2="3163" y2="908" class="wire"/>
+<line x1="3137" y1="918" x2="3163" y2="918" class="wire"/>
+<line x1="3150" y1="918" x2="3150" y2="949" class="wire" data-wire="GND"/>
+<line x1="3150" y1="949" x2="3150" y2="959" class="wire"/>
+<line x1="3137" y1="959" x2="3163" y2="959" class="wire"/>
+<line x1="3142" y1="965" x2="3158" y2="965" class="wire"/>
+<line x1="3147" y1="971" x2="3153" y2="971" class="wire"/>
+<text x="3171" y="905" font-size="16" class="ref" >C211</text>
+<text x="3171" y="929" font-size="16" class="value" >100nF</text>
+<rect x="3295" y="685" width="100" height="130" rx="4" class="connector"/>
+<text x="3305" y="708" font-size="19" class="ref" >J211</text>
+<text x="3305" y="731" font-size="16" class="muted" >BMS485</text>
+<text x="3307" y="755" font-size="15" class="pin" >1</text>
+<line x1="3375" y1="751" x2="3415" y2="751" class="wire" data-wire="BMS_A"/>
+<circle cx="3375" cy="751" r="4" class="junction"/>
+<text x="3423" y="755" font-size="17" class="net" data-net="BMS_A" data-area="06  电池 BMS · USART2 / RS485" tabindex="0" role="button" aria-label="网络 BMS_A，06  电池 BMS · USART2 / RS485" text-anchor="start" >BMS_A</text>
+<text x="3307" y="780" font-size="15" class="pin" >2</text>
+<line x1="3375" y1="776" x2="3415" y2="776" class="wire" data-wire="BMS_B"/>
+<circle cx="3375" cy="776" r="4" class="junction"/>
+<text x="3423" y="780" font-size="17" class="net" data-net="BMS_B" data-area="06  电池 BMS · USART2 / RS485" tabindex="0" role="button" aria-label="网络 BMS_B，06  电池 BMS · USART2 / RS485" text-anchor="start" >BMS_B</text>
+<text x="3307" y="805" font-size="15" class="pin" >3</text>
+<line x1="3375" y1="801" x2="3415" y2="801" class="wire" data-wire="GND"/>
+<circle cx="3375" cy="801" r="4" class="junction"/>
+<text x="3423" y="805" font-size="17" class="net" data-net="GND" data-area="06  电池 BMS · USART2 / RS485" tabindex="0" role="button" aria-label="网络 GND，06  电池 BMS · USART2 / RS485" text-anchor="start" >GND</text>
+<text x="3280" y="888" font-size="17" class="net" data-net="BMS_A" data-area="06  电池 BMS · USART2 / RS485" tabindex="0" role="button" aria-label="网络 BMS_A，06  电池 BMS · USART2 / RS485" text-anchor="start" >BMS_A</text>
+<line x1="3280" y1="900" x2="3365" y2="900" class="wire" data-wire="BMS_A"/>
+<rect x="3365" y="892" width="60" height="16" class="symbol"/>
+<line x1="3425" y1="900" x2="3510" y2="900" class="wire" data-wire="BMS_B"/>
+<text x="3510" y="888" font-size="17" class="net" data-net="BMS_B" data-area="06  电池 BMS · USART2 / RS485" tabindex="0" role="button" aria-label="网络 BMS_B，06  电池 BMS · USART2 / RS485" text-anchor="end" >BMS_B</text>
+<text x="3395" y="930" font-size="16" class="value" text-anchor="middle">R212  120Ω / DNP</text>
+<text x="2740" y="966" font-size="17" class="muted" >仅通信，不从本口送 6S；A/B 极性以 BMS 手册确认。</text>
+<text x="2740" y="994" font-size="17" class="muted" >外部口 TVS / 偏置 / 隔离待线缆与 BMS 电气规格补齐。</text>
+<g id="pwm"><rect x="2500" y="1040" width="1060" height="380" rx="10" class="panel"/>
+<text x="2522" y="1078" font-size="27" class="heading" >07  五路 PWM 七针口 + LED</text>
+<text x="2522" y="1109" font-size="18" class="muted" >J401：1=5V、2=GND、3～7=PWM1～5；信号3.3V，5V禁止反灌。</text>
+</g>
+<text x="2530" y="1136" font-size="17" class="net" data-net="PWM1" data-area="07  五路 PWM 七针口 + LED" tabindex="0" role="button" aria-label="网络 PWM1，07  五路 PWM 七针口 + LED" text-anchor="start" >PWM1</text>
+<line x1="2530" y1="1148" x2="2635" y2="1148" class="wire" data-wire="PWM1"/>
+<rect x="2635" y="1140" width="60" height="16" class="symbol"/>
+<line x1="2695" y1="1148" x2="2800" y2="1148" class="wire" data-wire="PWM1_OUT"/>
+<text x="2800" y="1136" font-size="17" class="net" data-net="PWM1_OUT" data-area="07  五路 PWM 七针口 + LED" tabindex="0" role="button" aria-label="网络 PWM1_OUT，07  五路 PWM 七针口 + LED" text-anchor="end" >PWM1_OUT</text>
+<text x="2665" y="1178" font-size="16" class="value" text-anchor="middle">R401  100Ω</text>
+<text x="2530" y="1184" font-size="17" class="net" data-net="PWM2" data-area="07  五路 PWM 七针口 + LED" tabindex="0" role="button" aria-label="网络 PWM2，07  五路 PWM 七针口 + LED" text-anchor="start" >PWM2</text>
+<line x1="2530" y1="1196" x2="2635" y2="1196" class="wire" data-wire="PWM2"/>
+<rect x="2635" y="1188" width="60" height="16" class="symbol"/>
+<line x1="2695" y1="1196" x2="2800" y2="1196" class="wire" data-wire="PWM2_OUT"/>
+<text x="2800" y="1184" font-size="17" class="net" data-net="PWM2_OUT" data-area="07  五路 PWM 七针口 + LED" tabindex="0" role="button" aria-label="网络 PWM2_OUT，07  五路 PWM 七针口 + LED" text-anchor="end" >PWM2_OUT</text>
+<text x="2665" y="1226" font-size="16" class="value" text-anchor="middle">R402  100Ω</text>
+<text x="2530" y="1232" font-size="17" class="net" data-net="PWM3" data-area="07  五路 PWM 七针口 + LED" tabindex="0" role="button" aria-label="网络 PWM3，07  五路 PWM 七针口 + LED" text-anchor="start" >PWM3</text>
+<line x1="2530" y1="1244" x2="2635" y2="1244" class="wire" data-wire="PWM3"/>
+<rect x="2635" y="1236" width="60" height="16" class="symbol"/>
+<line x1="2695" y1="1244" x2="2800" y2="1244" class="wire" data-wire="PWM3_OUT"/>
+<text x="2800" y="1232" font-size="17" class="net" data-net="PWM3_OUT" data-area="07  五路 PWM 七针口 + LED" tabindex="0" role="button" aria-label="网络 PWM3_OUT，07  五路 PWM 七针口 + LED" text-anchor="end" >PWM3_OUT</text>
+<text x="2665" y="1274" font-size="16" class="value" text-anchor="middle">R403  100Ω</text>
+<text x="2530" y="1280" font-size="17" class="net" data-net="PWM4" data-area="07  五路 PWM 七针口 + LED" tabindex="0" role="button" aria-label="网络 PWM4，07  五路 PWM 七针口 + LED" text-anchor="start" >PWM4</text>
+<line x1="2530" y1="1292" x2="2635" y2="1292" class="wire" data-wire="PWM4"/>
+<rect x="2635" y="1284" width="60" height="16" class="symbol"/>
+<line x1="2695" y1="1292" x2="2800" y2="1292" class="wire" data-wire="PWM4_OUT"/>
+<text x="2800" y="1280" font-size="17" class="net" data-net="PWM4_OUT" data-area="07  五路 PWM 七针口 + LED" tabindex="0" role="button" aria-label="网络 PWM4_OUT，07  五路 PWM 七针口 + LED" text-anchor="end" >PWM4_OUT</text>
+<text x="2665" y="1322" font-size="16" class="value" text-anchor="middle">R404  100Ω</text>
+<text x="2530" y="1328" font-size="17" class="net" data-net="PWM5" data-area="07  五路 PWM 七针口 + LED" tabindex="0" role="button" aria-label="网络 PWM5，07  五路 PWM 七针口 + LED" text-anchor="start" >PWM5</text>
+<line x1="2530" y1="1340" x2="2635" y2="1340" class="wire" data-wire="PWM5"/>
+<rect x="2635" y="1332" width="60" height="16" class="symbol"/>
+<line x1="2695" y1="1340" x2="2800" y2="1340" class="wire" data-wire="PWM5_OUT"/>
+<text x="2800" y="1328" font-size="17" class="net" data-net="PWM5_OUT" data-area="07  五路 PWM 七针口 + LED" tabindex="0" role="button" aria-label="网络 PWM5_OUT，07  五路 PWM 七针口 + LED" text-anchor="end" >PWM5_OUT</text>
+<text x="2665" y="1370" font-size="16" class="value" text-anchor="middle">R405  100Ω</text>
+<rect x="2870" y="1130" width="175" height="217" rx="4" class="connector"/>
+<text x="2880" y="1145" font-size="13" class="ref" >J401</text>
+<text x="2880" y="1162" font-size="11" class="muted" >五路驱动 · 1×7</text>
+<text x="2882" y="1181" font-size="13" class="pin" >1 VCC</text>
+<line x1="3025" y1="1177" x2="3065" y2="1177" class="wire" data-wire="+5V"/>
+<circle cx="3025" cy="1177" r="4" class="junction"/>
+<text x="3073" y="1181" font-size="14" class="net" data-net="+5V" data-area="07  五路 PWM 七针口 + LED" tabindex="0" role="button" aria-label="网络 +5V，07  五路 PWM 七针口 + LED" text-anchor="start" >+5V</text>
+<text x="2882" y="1208" font-size="13" class="pin" >2 GND</text>
+<line x1="3025" y1="1204" x2="3065" y2="1204" class="wire" data-wire="GND"/>
+<circle cx="3025" cy="1204" r="4" class="junction"/>
+<text x="3073" y="1208" font-size="14" class="net" data-net="GND" data-area="07  五路 PWM 七针口 + LED" tabindex="0" role="button" aria-label="网络 GND，07  五路 PWM 七针口 + LED" text-anchor="start" >GND</text>
+<text x="2882" y="1235" font-size="13" class="pin" >3 PWM1</text>
+<line x1="3025" y1="1231" x2="3065" y2="1231" class="wire" data-wire="PWM1_OUT"/>
+<circle cx="3025" cy="1231" r="4" class="junction"/>
+<text x="3073" y="1235" font-size="14" class="net" data-net="PWM1_OUT" data-area="07  五路 PWM 七针口 + LED" tabindex="0" role="button" aria-label="网络 PWM1_OUT，07  五路 PWM 七针口 + LED" text-anchor="start" >PWM1_OUT</text>
+<text x="2882" y="1262" font-size="13" class="pin" >4 PWM2</text>
+<line x1="3025" y1="1258" x2="3065" y2="1258" class="wire" data-wire="PWM2_OUT"/>
+<circle cx="3025" cy="1258" r="4" class="junction"/>
+<text x="3073" y="1262" font-size="14" class="net" data-net="PWM2_OUT" data-area="07  五路 PWM 七针口 + LED" tabindex="0" role="button" aria-label="网络 PWM2_OUT，07  五路 PWM 七针口 + LED" text-anchor="start" >PWM2_OUT</text>
+<text x="2882" y="1289" font-size="13" class="pin" >5 PWM3</text>
+<line x1="3025" y1="1285" x2="3065" y2="1285" class="wire" data-wire="PWM3_OUT"/>
+<circle cx="3025" cy="1285" r="4" class="junction"/>
+<text x="3073" y="1289" font-size="14" class="net" data-net="PWM3_OUT" data-area="07  五路 PWM 七针口 + LED" tabindex="0" role="button" aria-label="网络 PWM3_OUT，07  五路 PWM 七针口 + LED" text-anchor="start" >PWM3_OUT</text>
+<text x="2882" y="1316" font-size="13" class="pin" >6 PWM4</text>
+<line x1="3025" y1="1312" x2="3065" y2="1312" class="wire" data-wire="PWM4_OUT"/>
+<circle cx="3025" cy="1312" r="4" class="junction"/>
+<text x="3073" y="1316" font-size="14" class="net" data-net="PWM4_OUT" data-area="07  五路 PWM 七针口 + LED" tabindex="0" role="button" aria-label="网络 PWM4_OUT，07  五路 PWM 七针口 + LED" text-anchor="start" >PWM4_OUT</text>
+<text x="2882" y="1343" font-size="13" class="pin" >7 PWM5</text>
+<line x1="3025" y1="1339" x2="3065" y2="1339" class="wire" data-wire="PWM5_OUT"/>
+<circle cx="3025" cy="1339" r="4" class="junction"/>
+<text x="3073" y="1343" font-size="14" class="net" data-net="PWM5_OUT" data-area="07  五路 PWM 七针口 + LED" tabindex="0" role="button" aria-label="网络 PWM5_OUT，07  五路 PWM 七针口 + LED" text-anchor="start" >PWM5_OUT</text>
+<text x="3200" y="1148" font-size="17" class="net" data-net="LED_PWM" data-area="07  五路 PWM 七针口 + LED" tabindex="0" role="button" aria-label="网络 LED_PWM，07  五路 PWM 七针口 + LED" text-anchor="start" >LED_PWM</text>
+<line x1="3200" y1="1160" x2="3315" y2="1160" class="wire" data-wire="LED_PWM"/>
+<rect x="3315" y="1152" width="60" height="16" class="symbol"/>
+<line x1="3375" y1="1160" x2="3490" y2="1160" class="wire" data-wire="LED_PWM_OUT"/>
+<text x="3490" y="1148" font-size="17" class="net" data-net="LED_PWM_OUT" data-area="07  五路 PWM 七针口 + LED" tabindex="0" role="button" aria-label="网络 LED_PWM_OUT，07  五路 PWM 七针口 + LED" text-anchor="end" >LED_PWM_OUT</text>
+<text x="3345" y="1190" font-size="16" class="value" text-anchor="middle">R406  100Ω</text>
+<rect x="3220" y="1225" width="135" height="85" rx="4" class="connector"/>
+<text x="3230" y="1240" font-size="13" class="ref" >J406</text>
+<text x="3230" y="1257" font-size="11" class="muted" >LED 调光</text>
+<text x="3232" y="1276" font-size="13" class="pin" >1 SIG</text>
+<line x1="3335" y1="1272" x2="3375" y2="1272" class="wire" data-wire="LED_PWM_OUT"/>
+<circle cx="3335" cy="1272" r="4" class="junction"/>
+<text x="3383" y="1276" font-size="14" class="net" data-net="LED_PWM_OUT" data-area="07  五路 PWM 七针口 + LED" tabindex="0" role="button" aria-label="网络 LED_PWM_OUT，07  五路 PWM 七针口 + LED" text-anchor="start" >LED_PWM_OUT</text>
+<text x="3232" y="1306" font-size="13" class="pin" >2 GND</text>
+<line x1="3335" y1="1302" x2="3375" y2="1302" class="wire" data-wire="GND"/>
+<circle cx="3335" cy="1302" r="4" class="junction"/>
+<text x="3383" y="1306" font-size="14" class="net" data-net="GND" data-area="07  五路 PWM 七针口 + LED" tabindex="0" role="button" aria-label="网络 GND，07  五路 PWM 七针口 + LED" text-anchor="start" >GND</text>
+<text x="2530" y="1400" font-size="17" class="muted" >接口电流、启动/失联安全脉宽与驱动板 EN/FAULT 联锁待确认。</text>
+<g id="sensors"><rect x="2500" y="1440" width="1060" height="980" rx="10" class="panel"/>
+<text x="2522" y="1478" font-size="27" class="heading" >08  传感器端口 / 五个 RS485 超声波</text>
+<text x="2522" y="1509" font-size="18" class="muted" >IMU 与深度用 I²C；超声波共一条独立 A/B 总线，模块供电待定。</text>
+</g>
+<rect x="2530" y="1535" width="160" height="130" rx="4" class="port"/>
+<text x="2540" y="1558" font-size="19" class="ref" >P_IMU</text>
+<text x="2540" y="1581" font-size="16" class="muted" >IMU 模块跨页口</text>
+<text x="2542" y="1605" font-size="15" class="pin" >1</text>
+<line x1="2670" y1="1601" x2="2710" y2="1601" class="wire" data-wire="IMU_SCL"/>
+<circle cx="2670" cy="1601" r="4" class="junction"/>
+<text x="2718" y="1605" font-size="17" class="net" data-net="IMU_SCL" data-area="08  传感器端口 / 五个 RS485 超声波" tabindex="0" role="button" aria-label="网络 IMU_SCL，08  传感器端口 / 五个 RS485 超声波" text-anchor="start" >IMU_SCL</text>
+<text x="2542" y="1630" font-size="15" class="pin" >2</text>
+<line x1="2670" y1="1626" x2="2710" y2="1626" class="wire" data-wire="IMU_SDA"/>
+<circle cx="2670" cy="1626" r="4" class="junction"/>
+<text x="2718" y="1630" font-size="17" class="net" data-net="IMU_SDA" data-area="08  传感器端口 / 五个 RS485 超声波" tabindex="0" role="button" aria-label="网络 IMU_SDA，08  传感器端口 / 五个 RS485 超声波" text-anchor="start" >IMU_SDA</text>
+<text x="2542" y="1655" font-size="15" class="pin" >3</text>
+<line x1="2670" y1="1651" x2="2710" y2="1651" class="wire" data-wire="GND"/>
+<circle cx="2670" cy="1651" r="4" class="junction"/>
+<text x="2718" y="1655" font-size="17" class="net" data-net="GND" data-area="08  传感器端口 / 五个 RS485 超声波" tabindex="0" role="button" aria-label="网络 GND，08  传感器端口 / 五个 RS485 超声波" text-anchor="start" >GND</text>
+<rect x="3100" y="1535" width="150" height="155" rx="4" class="connector"/>
+<text x="3110" y="1558" font-size="19" class="ref" >J501</text>
+<text x="3110" y="1581" font-size="16" class="muted" >深度 I²C</text>
+<text x="3112" y="1605" font-size="15" class="pin" >1</text>
+<line x1="3230" y1="1601" x2="3270" y2="1601" class="wire" data-wire="+3V3"/>
+<circle cx="3230" cy="1601" r="4" class="junction"/>
+<text x="3278" y="1605" font-size="17" class="net" data-net="+3V3" data-area="08  传感器端口 / 五个 RS485 超声波" tabindex="0" role="button" aria-label="网络 +3V3，08  传感器端口 / 五个 RS485 超声波" text-anchor="start" >+3V3</text>
+<text x="3112" y="1630" font-size="15" class="pin" >2</text>
+<line x1="3230" y1="1626" x2="3270" y2="1626" class="wire" data-wire="GND"/>
+<circle cx="3230" cy="1626" r="4" class="junction"/>
+<text x="3278" y="1630" font-size="17" class="net" data-net="GND" data-area="08  传感器端口 / 五个 RS485 超声波" tabindex="0" role="button" aria-label="网络 GND，08  传感器端口 / 五个 RS485 超声波" text-anchor="start" >GND</text>
+<text x="3112" y="1655" font-size="15" class="pin" >3</text>
+<line x1="3230" y1="1651" x2="3270" y2="1651" class="wire" data-wire="DEPTH_SCL"/>
+<circle cx="3230" cy="1651" r="4" class="junction"/>
+<text x="3278" y="1655" font-size="17" class="net" data-net="DEPTH_SCL" data-area="08  传感器端口 / 五个 RS485 超声波" tabindex="0" role="button" aria-label="网络 DEPTH_SCL，08  传感器端口 / 五个 RS485 超声波" text-anchor="start" >DEPTH_SCL</text>
+<text x="3112" y="1680" font-size="15" class="pin" >4</text>
+<line x1="3230" y1="1676" x2="3270" y2="1676" class="wire" data-wire="DEPTH_SDA"/>
+<circle cx="3230" cy="1676" r="4" class="junction"/>
+<text x="3278" y="1680" font-size="17" class="net" data-net="DEPTH_SDA" data-area="08  传感器端口 / 五个 RS485 超声波" tabindex="0" role="button" aria-label="网络 DEPTH_SDA，08  传感器端口 / 五个 RS485 超声波" text-anchor="start" >DEPTH_SDA</text>
+<text x="3100" y="1720" font-size="16" class="muted" >深度供电按 3V3 候选；不匹配则改接口。</text>
+<text x="2530" y="1810" font-size="17" class="muted" >I2C1 上拉在 IMU 模块；</text>
+<text x="2530" y="1838" font-size="17" class="muted" >I2C2 上拉按模块核定。</text>
+<text x="3100" y="1748" font-size="17" class="net" data-net="+3V3" data-area="08  传感器端口 / 五个 RS485 超声波" tabindex="0" role="button" aria-label="网络 +3V3，08  传感器端口 / 五个 RS485 超声波" text-anchor="start" >+3V3</text>
+<line x1="3100" y1="1760" x2="3210" y2="1760" class="wire" data-wire="+3V3"/>
+<rect x="3210" y="1752" width="60" height="16" class="symbol"/>
+<line x1="3270" y1="1760" x2="3380" y2="1760" class="wire" data-wire="DEPTH_SCL"/>
+<text x="3380" y="1748" font-size="17" class="net" data-net="DEPTH_SCL" data-area="08  传感器端口 / 五个 RS485 超声波" tabindex="0" role="button" aria-label="网络 DEPTH_SCL，08  传感器端口 / 五个 RS485 超声波" text-anchor="end" >DEPTH_SCL</text>
+<text x="3240" y="1790" font-size="16" class="value" text-anchor="middle">R501  4.7k*</text>
+<text x="3100" y="1803" font-size="17" class="net" data-net="+3V3" data-area="08  传感器端口 / 五个 RS485 超声波" tabindex="0" role="button" aria-label="网络 +3V3，08  传感器端口 / 五个 RS485 超声波" text-anchor="start" >+3V3</text>
+<line x1="3100" y1="1815" x2="3210" y2="1815" class="wire" data-wire="+3V3"/>
+<rect x="3210" y="1807" width="60" height="16" class="symbol"/>
+<line x1="3270" y1="1815" x2="3380" y2="1815" class="wire" data-wire="DEPTH_SDA"/>
+<text x="3380" y="1803" font-size="17" class="net" data-net="DEPTH_SDA" data-area="08  传感器端口 / 五个 RS485 超声波" tabindex="0" role="button" aria-label="网络 DEPTH_SDA，08  传感器端口 / 五个 RS485 超声波" text-anchor="end" >DEPTH_SDA</text>
+<text x="3240" y="1845" font-size="16" class="value" text-anchor="middle">R502  4.7k*</text>
+<rect x="2530" y="1880" width="130" height="130" rx="4" class="connector"/>
+<text x="2540" y="1903" font-size="19" class="ref" >J510</text>
+<text x="2540" y="1926" font-size="16" class="muted" >超声波1</text>
+<text x="2542" y="1950" font-size="15" class="pin" >1</text>
+<line x1="2640" y1="1946" x2="2680" y2="1946" class="wire" data-wire="USONIC_A"/>
+<circle cx="2640" cy="1946" r="4" class="junction"/>
+<text x="2688" y="1950" font-size="17" class="net" data-net="USONIC_A" data-area="08  传感器端口 / 五个 RS485 超声波" tabindex="0" role="button" aria-label="网络 USONIC_A，08  传感器端口 / 五个 RS485 超声波" text-anchor="start" >USONIC_A</text>
+<text x="2542" y="1975" font-size="15" class="pin" >2</text>
+<line x1="2640" y1="1971" x2="2680" y2="1971" class="wire" data-wire="USONIC_B"/>
+<circle cx="2640" cy="1971" r="4" class="junction"/>
+<text x="2688" y="1975" font-size="17" class="net" data-net="USONIC_B" data-area="08  传感器端口 / 五个 RS485 超声波" tabindex="0" role="button" aria-label="网络 USONIC_B，08  传感器端口 / 五个 RS485 超声波" text-anchor="start" >USONIC_B</text>
+<text x="2542" y="2000" font-size="15" class="pin" >3</text>
+<line x1="2640" y1="1996" x2="2680" y2="1996" class="wire" data-wire="GND"/>
+<circle cx="2640" cy="1996" r="4" class="junction"/>
+<text x="2688" y="2000" font-size="17" class="net" data-net="GND" data-area="08  传感器端口 / 五个 RS485 超声波" tabindex="0" role="button" aria-label="网络 GND，08  传感器端口 / 五个 RS485 超声波" text-anchor="start" >GND</text>
+<rect x="2865" y="1880" width="130" height="130" rx="4" class="connector"/>
+<text x="2875" y="1903" font-size="19" class="ref" >J511</text>
+<text x="2875" y="1926" font-size="16" class="muted" >超声波2</text>
+<text x="2877" y="1950" font-size="15" class="pin" >1</text>
+<line x1="2975" y1="1946" x2="3015" y2="1946" class="wire" data-wire="USONIC_A"/>
+<circle cx="2975" cy="1946" r="4" class="junction"/>
+<text x="3023" y="1950" font-size="17" class="net" data-net="USONIC_A" data-area="08  传感器端口 / 五个 RS485 超声波" tabindex="0" role="button" aria-label="网络 USONIC_A，08  传感器端口 / 五个 RS485 超声波" text-anchor="start" >USONIC_A</text>
+<text x="2877" y="1975" font-size="15" class="pin" >2</text>
+<line x1="2975" y1="1971" x2="3015" y2="1971" class="wire" data-wire="USONIC_B"/>
+<circle cx="2975" cy="1971" r="4" class="junction"/>
+<text x="3023" y="1975" font-size="17" class="net" data-net="USONIC_B" data-area="08  传感器端口 / 五个 RS485 超声波" tabindex="0" role="button" aria-label="网络 USONIC_B，08  传感器端口 / 五个 RS485 超声波" text-anchor="start" >USONIC_B</text>
+<text x="2877" y="2000" font-size="15" class="pin" >3</text>
+<line x1="2975" y1="1996" x2="3015" y2="1996" class="wire" data-wire="GND"/>
+<circle cx="2975" cy="1996" r="4" class="junction"/>
+<text x="3023" y="2000" font-size="17" class="net" data-net="GND" data-area="08  传感器端口 / 五个 RS485 超声波" tabindex="0" role="button" aria-label="网络 GND，08  传感器端口 / 五个 RS485 超声波" text-anchor="start" >GND</text>
+<rect x="3200" y="1880" width="130" height="130" rx="4" class="connector"/>
+<text x="3210" y="1903" font-size="19" class="ref" >J512</text>
+<text x="3210" y="1926" font-size="16" class="muted" >超声波3</text>
+<text x="3212" y="1950" font-size="15" class="pin" >1</text>
+<line x1="3310" y1="1946" x2="3350" y2="1946" class="wire" data-wire="USONIC_A"/>
+<circle cx="3310" cy="1946" r="4" class="junction"/>
+<text x="3358" y="1950" font-size="17" class="net" data-net="USONIC_A" data-area="08  传感器端口 / 五个 RS485 超声波" tabindex="0" role="button" aria-label="网络 USONIC_A，08  传感器端口 / 五个 RS485 超声波" text-anchor="start" >USONIC_A</text>
+<text x="3212" y="1975" font-size="15" class="pin" >2</text>
+<line x1="3310" y1="1971" x2="3350" y2="1971" class="wire" data-wire="USONIC_B"/>
+<circle cx="3310" cy="1971" r="4" class="junction"/>
+<text x="3358" y="1975" font-size="17" class="net" data-net="USONIC_B" data-area="08  传感器端口 / 五个 RS485 超声波" tabindex="0" role="button" aria-label="网络 USONIC_B，08  传感器端口 / 五个 RS485 超声波" text-anchor="start" >USONIC_B</text>
+<text x="3212" y="2000" font-size="15" class="pin" >3</text>
+<line x1="3310" y1="1996" x2="3350" y2="1996" class="wire" data-wire="GND"/>
+<circle cx="3310" cy="1996" r="4" class="junction"/>
+<text x="3358" y="2000" font-size="17" class="net" data-net="GND" data-area="08  传感器端口 / 五个 RS485 超声波" tabindex="0" role="button" aria-label="网络 GND，08  传感器端口 / 五个 RS485 超声波" text-anchor="start" >GND</text>
+<rect x="2530" y="2100" width="130" height="130" rx="4" class="connector"/>
+<text x="2540" y="2123" font-size="19" class="ref" >J513</text>
+<text x="2540" y="2146" font-size="16" class="muted" >超声波4</text>
+<text x="2542" y="2170" font-size="15" class="pin" >1</text>
+<line x1="2640" y1="2166" x2="2680" y2="2166" class="wire" data-wire="USONIC_A"/>
+<circle cx="2640" cy="2166" r="4" class="junction"/>
+<text x="2688" y="2170" font-size="17" class="net" data-net="USONIC_A" data-area="08  传感器端口 / 五个 RS485 超声波" tabindex="0" role="button" aria-label="网络 USONIC_A，08  传感器端口 / 五个 RS485 超声波" text-anchor="start" >USONIC_A</text>
+<text x="2542" y="2195" font-size="15" class="pin" >2</text>
+<line x1="2640" y1="2191" x2="2680" y2="2191" class="wire" data-wire="USONIC_B"/>
+<circle cx="2640" cy="2191" r="4" class="junction"/>
+<text x="2688" y="2195" font-size="17" class="net" data-net="USONIC_B" data-area="08  传感器端口 / 五个 RS485 超声波" tabindex="0" role="button" aria-label="网络 USONIC_B，08  传感器端口 / 五个 RS485 超声波" text-anchor="start" >USONIC_B</text>
+<text x="2542" y="2220" font-size="15" class="pin" >3</text>
+<line x1="2640" y1="2216" x2="2680" y2="2216" class="wire" data-wire="GND"/>
+<circle cx="2640" cy="2216" r="4" class="junction"/>
+<text x="2688" y="2220" font-size="17" class="net" data-net="GND" data-area="08  传感器端口 / 五个 RS485 超声波" tabindex="0" role="button" aria-label="网络 GND，08  传感器端口 / 五个 RS485 超声波" text-anchor="start" >GND</text>
+<rect x="2865" y="2100" width="130" height="130" rx="4" class="connector"/>
+<text x="2875" y="2123" font-size="19" class="ref" >J514</text>
+<text x="2875" y="2146" font-size="16" class="muted" >超声波5</text>
+<text x="2877" y="2170" font-size="15" class="pin" >1</text>
+<line x1="2975" y1="2166" x2="3015" y2="2166" class="wire" data-wire="USONIC_A"/>
+<circle cx="2975" cy="2166" r="4" class="junction"/>
+<text x="3023" y="2170" font-size="17" class="net" data-net="USONIC_A" data-area="08  传感器端口 / 五个 RS485 超声波" tabindex="0" role="button" aria-label="网络 USONIC_A，08  传感器端口 / 五个 RS485 超声波" text-anchor="start" >USONIC_A</text>
+<text x="2877" y="2195" font-size="15" class="pin" >2</text>
+<line x1="2975" y1="2191" x2="3015" y2="2191" class="wire" data-wire="USONIC_B"/>
+<circle cx="2975" cy="2191" r="4" class="junction"/>
+<text x="3023" y="2195" font-size="17" class="net" data-net="USONIC_B" data-area="08  传感器端口 / 五个 RS485 超声波" tabindex="0" role="button" aria-label="网络 USONIC_B，08  传感器端口 / 五个 RS485 超声波" text-anchor="start" >USONIC_B</text>
+<text x="2877" y="2220" font-size="15" class="pin" >3</text>
+<line x1="2975" y1="2216" x2="3015" y2="2216" class="wire" data-wire="GND"/>
+<circle cx="2975" cy="2216" r="4" class="junction"/>
+<text x="3023" y="2220" font-size="17" class="net" data-net="GND" data-area="08  传感器端口 / 五个 RS485 超声波" tabindex="0" role="button" aria-label="网络 GND，08  传感器端口 / 五个 RS485 超声波" text-anchor="start" >GND</text>
+<text x="2530" y="2280" font-size="18" class="muted" >J510–J514 同名网络相连；参考地不是模块供电回流设计。</text>
+<text x="2530" y="2308" font-size="18" class="muted" >主干串接 + 短支线，避免五条长星形线；接口位置随线束定版。</text>
+<text x="2530" y="2336" font-size="18" class="muted" >五模块须有独立地址且可受控轮询；不能默认是 Modbus。</text>
+<text x="2530" y="2364" font-size="18" class="muted" >模块电压/电流、接地/隔离、终端/偏置、保护及线缆待确认。</text>
+<text x="2530" y="2392" font-size="18" class="muted" >一次安排一路测距，按手册设置等待时间，避免声学串扰。</text>
+<g id="ultrasonic"><rect x="40" y="1920" width="1040" height="500" rx="10" class="panel"/>
+<text x="62" y="1958" font-size="27" class="heading" >09  超声波 · USART3 / 独立 RS485</text>
+<text x="62" y="1989" font-size="18" class="muted" >PD8 TX / PD9 RX（AF7）；PD10 为方向 GPIO；与 BMS A/B 分开。</text>
+</g>
+<rect x="295" y="2025" width="340" height="200" rx="4" class="chip"/>
+<text x="465" y="2054" font-size="22" class="ref" text-anchor="middle">U4</text>
+<text x="465" y="2082" font-size="20" class="heading" text-anchor="middle">MAX3485ESA+</text>
+<line x1="269" y1="2115" x2="295" y2="2115" class="wire" data-wire="USONIC_RX"/>
+<text x="305" y="2120" font-size="17" class="pin" >1 RO</text>
+<text x="260" y="2120" font-size="17" class="net" data-net="USONIC_RX" data-area="09  超声波 · USART3 / 独立 RS485" tabindex="0" role="button" aria-label="网络 USONIC_RX，09  超声波 · USART3 / 独立 RS485" text-anchor="end" >USONIC_RX</text>
+<line x1="269" y1="2148.3333333333335" x2="295" y2="2148.3333333333335" class="wire" data-wire="USONIC_DE"/>
+<text x="305" y="2153.3333333333335" font-size="17" class="pin" >2 /RE</text>
+<text x="260" y="2153.3333333333335" font-size="17" class="net" data-net="USONIC_DE" data-area="09  超声波 · USART3 / 独立 RS485" tabindex="0" role="button" aria-label="网络 USONIC_DE，09  超声波 · USART3 / 独立 RS485" text-anchor="end" >USONIC_DE</text>
+<line x1="269" y1="2181.6666666666665" x2="295" y2="2181.6666666666665" class="wire" data-wire="USONIC_DE"/>
+<text x="305" y="2186.6666666666665" font-size="17" class="pin" >3 DE</text>
+<text x="260" y="2186.6666666666665" font-size="17" class="net" data-net="USONIC_DE" data-area="09  超声波 · USART3 / 独立 RS485" tabindex="0" role="button" aria-label="网络 USONIC_DE，09  超声波 · USART3 / 独立 RS485" text-anchor="end" >USONIC_DE</text>
+<line x1="269" y1="2215" x2="295" y2="2215" class="wire" data-wire="USONIC_TX"/>
+<text x="305" y="2220" font-size="17" class="pin" >4 DI</text>
+<text x="260" y="2220" font-size="17" class="net" data-net="USONIC_TX" data-area="09  超声波 · USART3 / 独立 RS485" tabindex="0" role="button" aria-label="网络 USONIC_TX，09  超声波 · USART3 / 独立 RS485" text-anchor="end" >USONIC_TX</text>
+<line x1="635" y1="2115" x2="661" y2="2115" class="wire" data-wire="+3V3"/>
+<text x="625" y="2120" font-size="17" class="pin" text-anchor="end">VCC 8</text>
+<text x="670" y="2120" font-size="17" class="net" data-net="+3V3" data-area="09  超声波 · USART3 / 独立 RS485" tabindex="0" role="button" aria-label="网络 +3V3，09  超声波 · USART3 / 独立 RS485" text-anchor="start" >+3V3</text>
+<line x1="635" y1="2148.3333333333335" x2="661" y2="2148.3333333333335" class="wire" data-wire="USONIC_B"/>
+<text x="625" y="2153.3333333333335" font-size="17" class="pin" text-anchor="end">B 7</text>
+<text x="670" y="2153.3333333333335" font-size="17" class="net" data-net="USONIC_B" data-area="09  超声波 · USART3 / 独立 RS485" tabindex="0" role="button" aria-label="网络 USONIC_B，09  超声波 · USART3 / 独立 RS485" text-anchor="start" >USONIC_B</text>
+<line x1="635" y1="2181.6666666666665" x2="661" y2="2181.6666666666665" class="wire" data-wire="USONIC_A"/>
+<text x="625" y="2186.6666666666665" font-size="17" class="pin" text-anchor="end">A 6</text>
+<text x="670" y="2186.6666666666665" font-size="17" class="net" data-net="USONIC_A" data-area="09  超声波 · USART3 / 独立 RS485" tabindex="0" role="button" aria-label="网络 USONIC_A，09  超声波 · USART3 / 独立 RS485" text-anchor="start" >USONIC_A</text>
+<line x1="635" y1="2215" x2="661" y2="2215" class="wire" data-wire="GND"/>
+<text x="625" y="2220" font-size="17" class="pin" text-anchor="end">GND 5</text>
+<text x="670" y="2220" font-size="17" class="net" data-net="GND" data-area="09  超声波 · USART3 / 独立 RS485" tabindex="0" role="button" aria-label="网络 GND，09  超声波 · USART3 / 独立 RS485" text-anchor="start" >GND</text>
+<text x="170" y="2259" font-size="16" class="net" data-net="USONIC_DE" data-area="09  超声波 · USART3 / 独立 RS485" tabindex="0" role="button" aria-label="网络 USONIC_DE，09  超声波 · USART3 / 独立 RS485" text-anchor="middle" >USONIC_DE</text>
+<line x1="170" y1="2270" x2="170" y2="2290" class="wire" data-wire="USONIC_DE"/>
+<rect x="162" y="2290" width="16" height="37" class="symbol"/>
+<line x1="170" y1="2327" x2="170" y2="2347" class="wire" data-wire="GND"/>
+<line x1="170" y1="2347" x2="170" y2="2357" class="wire"/>
+<line x1="157" y1="2357" x2="183" y2="2357" class="wire"/>
+<line x1="162" y1="2363" x2="178" y2="2363" class="wire"/>
+<line x1="167" y1="2369" x2="173" y2="2369" class="wire"/>
+<text x="187" y="2300" font-size="16" class="ref" >R513</text>
+<text x="187" y="2324" font-size="16" class="value" >10k</text>
+<text x="510" y="2259" font-size="16" class="net" data-net="+3V3" data-area="09  超声波 · USART3 / 独立 RS485" tabindex="0" role="button" aria-label="网络 +3V3，09  超声波 · USART3 / 独立 RS485" text-anchor="middle" >+3V3</text>
+<line x1="510" y1="2270" x2="510" y2="2303" class="wire" data-wire="+3V3"/>
+<line x1="497" y1="2303" x2="523" y2="2303" class="wire"/>
+<line x1="497" y1="2313" x2="523" y2="2313" class="wire"/>
+<line x1="510" y1="2313" x2="510" y2="2344" class="wire" data-wire="GND"/>
+<line x1="510" y1="2344" x2="510" y2="2354" class="wire"/>
+<line x1="497" y1="2354" x2="523" y2="2354" class="wire"/>
+<line x1="502" y1="2360" x2="518" y2="2360" class="wire"/>
+<line x1="507" y1="2366" x2="513" y2="2366" class="wire"/>
+<text x="531" y="2300" font-size="16" class="ref" >C501</text>
+<text x="531" y="2324" font-size="16" class="value" >100nF</text>
+<text x="720" y="2293" font-size="17" class="net" data-net="USONIC_A" data-area="09  超声波 · USART3 / 独立 RS485" tabindex="0" role="button" aria-label="网络 USONIC_A，09  超声波 · USART3 / 独立 RS485" text-anchor="start" >USONIC_A</text>
+<line x1="720" y1="2305" x2="840" y2="2305" class="wire" data-wire="USONIC_A"/>
+<rect x="840" y="2297" width="60" height="16" class="symbol"/>
+<line x1="900" y1="2305" x2="1020" y2="2305" class="wire" data-wire="USONIC_B"/>
+<text x="1020" y="2293" font-size="17" class="net" data-net="USONIC_B" data-area="09  超声波 · USART3 / 独立 RS485" tabindex="0" role="button" aria-label="网络 USONIC_B，09  超声波 · USART3 / 独立 RS485" text-anchor="end" >USONIC_B</text>
+<text x="870" y="2335" font-size="16" class="value" text-anchor="middle">R514  120Ω / DNP</text>
+<text x="80" y="2390" font-size="17" class="muted" >终端仅总线两端；偏置 / ESD / 隔离待补。开路保护不保证终端短接时空闲判定。</text>
+<g id="servo"><rect x="1100" y="1920" width="1380" height="500" rx="10" class="panel"/>
+<text x="1122" y="1958" font-size="27" class="heading" >10  两路舵机 · TIM3 CH1 / CH2</text>
+<text x="1122" y="1989" font-size="18" class="muted" >PA6 / 31、PA7 / 32 · AF2；VCC、GND、PWM 三针，舵机专用 5V。</text>
+</g>
+<text x="1140" y="2028" font-size="17" class="net" data-net="SERVO1" data-area="10  两路舵机 · TIM3 CH1 / CH2" tabindex="0" role="button" aria-label="网络 SERVO1，10  两路舵机 · TIM3 CH1 / CH2" text-anchor="start" >SERVO1</text>
+<line x1="1140" y1="2040" x2="1245" y2="2040" class="wire" data-wire="SERVO1"/>
+<rect x="1245" y="2032" width="60" height="16" class="symbol"/>
+<line x1="1305" y1="2040" x2="1410" y2="2040" class="wire" data-wire="SERVO1_OUT"/>
+<text x="1410" y="2028" font-size="17" class="net" data-net="SERVO1_OUT" data-area="10  两路舵机 · TIM3 CH1 / CH2" tabindex="0" role="button" aria-label="网络 SERVO1_OUT，10  两路舵机 · TIM3 CH1 / CH2" text-anchor="end" >SERVO1_OUT</text>
+<text x="1275" y="2070" font-size="16" class="value" text-anchor="middle">R407  100Ω</text>
+<rect x="1160" y="2090" width="180" height="152" rx="4" class="connector"/>
+<text x="1170" y="2113" font-size="19" class="ref" >J407</text>
+<text x="1170" y="2136" font-size="16" class="muted" >舵机 1</text>
+<text x="1172" y="2160" font-size="15" class="pin" >1 VCC</text>
+<line x1="1320" y1="2156" x2="1360" y2="2156" class="wire" data-wire="+5V_SERVO"/>
+<circle cx="1320" cy="2156" r="4" class="junction"/>
+<text x="1368" y="2160" font-size="17" class="net" data-net="+5V_SERVO" data-area="10  两路舵机 · TIM3 CH1 / CH2" tabindex="0" role="button" aria-label="网络 +5V_SERVO，10  两路舵机 · TIM3 CH1 / CH2" text-anchor="start" >+5V_SERVO</text>
+<text x="1172" y="2196" font-size="15" class="pin" >2 GND</text>
+<line x1="1320" y1="2192" x2="1360" y2="2192" class="wire" data-wire="GND"/>
+<circle cx="1320" cy="2192" r="4" class="junction"/>
+<text x="1368" y="2196" font-size="17" class="net" data-net="GND" data-area="10  两路舵机 · TIM3 CH1 / CH2" tabindex="0" role="button" aria-label="网络 GND，10  两路舵机 · TIM3 CH1 / CH2" text-anchor="start" >GND</text>
+<text x="1172" y="2232" font-size="15" class="pin" >3 PWM</text>
+<line x1="1320" y1="2228" x2="1360" y2="2228" class="wire" data-wire="SERVO1_OUT"/>
+<circle cx="1320" cy="2228" r="4" class="junction"/>
+<text x="1368" y="2232" font-size="17" class="net" data-net="SERVO1_OUT" data-area="10  两路舵机 · TIM3 CH1 / CH2" tabindex="0" role="button" aria-label="网络 SERVO1_OUT，10  两路舵机 · TIM3 CH1 / CH2" text-anchor="start" >SERVO1_OUT</text>
+<text x="1630" y="2069" font-size="16" class="net" data-net="SERVO1_OUT" data-area="10  两路舵机 · TIM3 CH1 / CH2" tabindex="0" role="button" aria-label="网络 SERVO1_OUT，10  两路舵机 · TIM3 CH1 / CH2" text-anchor="middle" >SERVO1_OUT</text>
+<line x1="1630" y1="2080" x2="1630" y2="2100" class="wire" data-wire="SERVO1_OUT"/>
+<rect x="1622" y="2100" width="16" height="37" class="symbol"/>
+<line x1="1630" y1="2137" x2="1630" y2="2157" class="wire" data-wire="GND"/>
+<line x1="1630" y1="2157" x2="1630" y2="2167" class="wire"/>
+<line x1="1617" y1="2167" x2="1643" y2="2167" class="wire"/>
+<line x1="1622" y1="2173" x2="1638" y2="2173" class="wire"/>
+<line x1="1627" y1="2179" x2="1633" y2="2179" class="wire"/>
+<text x="1647" y="2110" font-size="16" class="ref" >R409</text>
+<text x="1647" y="2134" font-size="16" class="value" >100k</text>
+<text x="1630" y="2239" font-size="16" class="net" data-net="+5V_SERVO" data-area="10  两路舵机 · TIM3 CH1 / CH2" tabindex="0" role="button" aria-label="网络 +5V_SERVO，10  两路舵机 · TIM3 CH1 / CH2" text-anchor="middle" >+5V_SERVO</text>
+<line x1="1630" y1="2250" x2="1630" y2="2283" class="wire" data-wire="+5V_SERVO"/>
+<line x1="1617" y1="2283" x2="1643" y2="2283" class="wire"/>
+<line x1="1617" y1="2293" x2="1643" y2="2293" class="wire"/>
+<line x1="1630" y1="2293" x2="1630" y2="2324" class="wire" data-wire="GND"/>
+<line x1="1630" y1="2324" x2="1630" y2="2334" class="wire"/>
+<line x1="1617" y1="2334" x2="1643" y2="2334" class="wire"/>
+<line x1="1622" y1="2340" x2="1638" y2="2340" class="wire"/>
+<line x1="1627" y1="2346" x2="1633" y2="2346" class="wire"/>
+<text x="1651" y="2280" font-size="16" class="ref" >C407</text>
+<text x="1651" y="2304" font-size="16" class="value" >100nF / 10V</text>
+<text x="1820" y="2028" font-size="17" class="net" data-net="SERVO2" data-area="10  两路舵机 · TIM3 CH1 / CH2" tabindex="0" role="button" aria-label="网络 SERVO2，10  两路舵机 · TIM3 CH1 / CH2" text-anchor="start" >SERVO2</text>
+<line x1="1820" y1="2040" x2="1925" y2="2040" class="wire" data-wire="SERVO2"/>
+<rect x="1925" y="2032" width="60" height="16" class="symbol"/>
+<line x1="1985" y1="2040" x2="2090" y2="2040" class="wire" data-wire="SERVO2_OUT"/>
+<text x="2090" y="2028" font-size="17" class="net" data-net="SERVO2_OUT" data-area="10  两路舵机 · TIM3 CH1 / CH2" tabindex="0" role="button" aria-label="网络 SERVO2_OUT，10  两路舵机 · TIM3 CH1 / CH2" text-anchor="end" >SERVO2_OUT</text>
+<text x="1955" y="2070" font-size="16" class="value" text-anchor="middle">R408  100Ω</text>
+<rect x="1840" y="2090" width="180" height="152" rx="4" class="connector"/>
+<text x="1850" y="2113" font-size="19" class="ref" >J408</text>
+<text x="1850" y="2136" font-size="16" class="muted" >舵机 2</text>
+<text x="1852" y="2160" font-size="15" class="pin" >1 VCC</text>
+<line x1="2000" y1="2156" x2="2040" y2="2156" class="wire" data-wire="+5V_SERVO"/>
+<circle cx="2000" cy="2156" r="4" class="junction"/>
+<text x="2048" y="2160" font-size="17" class="net" data-net="+5V_SERVO" data-area="10  两路舵机 · TIM3 CH1 / CH2" tabindex="0" role="button" aria-label="网络 +5V_SERVO，10  两路舵机 · TIM3 CH1 / CH2" text-anchor="start" >+5V_SERVO</text>
+<text x="1852" y="2196" font-size="15" class="pin" >2 GND</text>
+<line x1="2000" y1="2192" x2="2040" y2="2192" class="wire" data-wire="GND"/>
+<circle cx="2000" cy="2192" r="4" class="junction"/>
+<text x="2048" y="2196" font-size="17" class="net" data-net="GND" data-area="10  两路舵机 · TIM3 CH1 / CH2" tabindex="0" role="button" aria-label="网络 GND，10  两路舵机 · TIM3 CH1 / CH2" text-anchor="start" >GND</text>
+<text x="1852" y="2232" font-size="15" class="pin" >3 PWM</text>
+<line x1="2000" y1="2228" x2="2040" y2="2228" class="wire" data-wire="SERVO2_OUT"/>
+<circle cx="2000" cy="2228" r="4" class="junction"/>
+<text x="2048" y="2232" font-size="17" class="net" data-net="SERVO2_OUT" data-area="10  两路舵机 · TIM3 CH1 / CH2" tabindex="0" role="button" aria-label="网络 SERVO2_OUT，10  两路舵机 · TIM3 CH1 / CH2" text-anchor="start" >SERVO2_OUT</text>
+<text x="2310" y="2069" font-size="16" class="net" data-net="SERVO2_OUT" data-area="10  两路舵机 · TIM3 CH1 / CH2" tabindex="0" role="button" aria-label="网络 SERVO2_OUT，10  两路舵机 · TIM3 CH1 / CH2" text-anchor="middle" >SERVO2_OUT</text>
+<line x1="2310" y1="2080" x2="2310" y2="2100" class="wire" data-wire="SERVO2_OUT"/>
+<rect x="2302" y="2100" width="16" height="37" class="symbol"/>
+<line x1="2310" y1="2137" x2="2310" y2="2157" class="wire" data-wire="GND"/>
+<line x1="2310" y1="2157" x2="2310" y2="2167" class="wire"/>
+<line x1="2297" y1="2167" x2="2323" y2="2167" class="wire"/>
+<line x1="2302" y1="2173" x2="2318" y2="2173" class="wire"/>
+<line x1="2307" y1="2179" x2="2313" y2="2179" class="wire"/>
+<text x="2327" y="2110" font-size="16" class="ref" >R410</text>
+<text x="2327" y="2134" font-size="16" class="value" >100k</text>
+<text x="2310" y="2239" font-size="16" class="net" data-net="+5V_SERVO" data-area="10  两路舵机 · TIM3 CH1 / CH2" tabindex="0" role="button" aria-label="网络 +5V_SERVO，10  两路舵机 · TIM3 CH1 / CH2" text-anchor="middle" >+5V_SERVO</text>
+<line x1="2310" y1="2250" x2="2310" y2="2283" class="wire" data-wire="+5V_SERVO"/>
+<line x1="2297" y1="2283" x2="2323" y2="2283" class="wire"/>
+<line x1="2297" y1="2293" x2="2323" y2="2293" class="wire"/>
+<line x1="2310" y1="2293" x2="2310" y2="2324" class="wire" data-wire="GND"/>
+<line x1="2310" y1="2324" x2="2310" y2="2334" class="wire"/>
+<line x1="2297" y1="2334" x2="2323" y2="2334" class="wire"/>
+<line x1="2302" y1="2340" x2="2318" y2="2340" class="wire"/>
+<line x1="2307" y1="2346" x2="2313" y2="2346" class="wire"/>
+<text x="2331" y="2280" font-size="16" class="ref" >C408</text>
+<text x="2331" y="2304" font-size="16" class="value" >100nF / 10V</text>
+<text x="1130" y="2385" font-size="18" class="muted" >TIM3 两通道共周期；3.3V 电平与舵机兼容性、堵转峰值和回流路径须确认。</text>
+<text x="48" y="2475" font-size="21" class="heading" >UNIFIED BOAT CONTROL  /  主控与接口  /  所有网络均可点击高亮，双击查看连接位置</text>
+<text x="3550" y="2475" font-size="20" class="muted" text-anchor="end">A0 横向 · 3600 × 2546 · 02 / 05</text>
+</svg>
