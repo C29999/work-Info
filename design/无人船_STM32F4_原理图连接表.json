@@ -1387,19 +1387,19 @@
     },
     {
       "ref": "J406",
-      "value": "LED 调光",
-      "footprint": "连接器待选",
+      "value": "LED调光",
+      "footprint": "1x2待选",
       "pins": {
         "1": {
-          "name": "1 SIG",
+          "name": "SIG",
           "net": "LED_PWM_OUT"
         },
         "2": {
-          "name": "2 GND",
+          "name": "GND",
           "net": "GND"
         }
       },
-      "note": "3.3V控制信号；灯组电源与驱动在外板",
+      "note": "控制信号3V3；非功率输出",
       "kind": "physical",
       "area": "07  五路 PWM 七针口 + LED"
     },
@@ -2243,7 +2243,7 @@
       {
         "ref": "J406",
         "pin": "2",
-        "name": "2 GND",
+        "name": "GND",
         "kind": "physical"
       },
       {
@@ -3181,7 +3181,7 @@
       {
         "ref": "J406",
         "pin": "1",
-        "name": "1 SIG",
+        "name": "SIG",
         "kind": "physical"
       }
     ],

@@ -5,6 +5,8 @@
 
 双击根目录的 [index.html](index.html) 即可进入，无需安装依赖。
 
+[Rev E 简明说明与检查记录](docs/RevE交付说明.md) 汇总电源、接口、烧录和待确认项。
+
 - [方案总览、PCB 示意与双 MCU 引脚](design/无人船统一主板方案.html)
 - [整板原理图阅读器](design/原理图设计.html)
 - [可编辑控制板布局](design/无人船统一控制板可编辑版.html)
@@ -35,11 +37,17 @@ npm test
 生成器会覆盖 `design/` 下的对应导出文件；修改后应重新生成并检查一起提交。
 PCB 可编辑页是布局示意入口，其当前版本与独立 SVG 一并保留。
 
-检查覆盖本地页面链接、JavaScript 语法、内嵌/独立连接表同步、网络端点索引、阅读器交互及双 MCU 引脚同步。
-检查结果写入被 Git 忽略的 `reports/`。
+检查覆盖本地页面链接、JavaScript 语法、内嵌/独立连接表同步、网络端点索引、Rev E 电源和外设映射、阅读器交互及双 MCU 引脚同步。
+检查结果写入被 Git 忽略的 `reports/`。另可用 Python 3 标准库检查全部 IC 图示引脚与连接表：
+
+```sh
+python scripts/check_electrical_consistency.py
+```
+
+这些检查验证资料与交互的一致性，不代替 EDA ERC/DRC、PCB 或实物验证。
 
 ## 整理记录
 
-2026-11-18 从原“硬件方设计”目录整理迁移到 `D:\code\work\Hardware`。
+2026-11-18 从原“硬件方设计”目录整理迁移到 `D:\ode\work\Hardware`。
 正式目录保留一套最新内容；重复交付目录、旧 ZIP、预览截图、`node_modules`、临时下载和历史备份不纳入版本管理。
 原工作目录保留完整原始材料，供追溯使用。旧版 ROV 工程与核验记录保留其原日期，不代表 Rev E 已完成生产验证。

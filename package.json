@@ -11,7 +11,8 @@
     "check": "node scripts/check_workspace.cjs",
     "check:reader": "node scripts/check_reader_ui.cjs",
     "check:pins": "node scripts/check_pin_sync.cjs",
-    "test": "npm run check && npm run check:reader && npm run check:pins"
+    "test": "npm run check && npm run check:design && npm run check:reader && npm run check:pins",
+    "check:design": "node scripts/check_design.cjs"
   },
   "devDependencies": {
     "jsdom": "31.0.1"

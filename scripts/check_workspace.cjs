@@ -10,13 +10,17 @@ fs.mkdirSync(path.join(root, 'reports'), { recursive: true });
 const errors = [];
 let links = 0;
 let scripts = 0;
+const fragments = [];
+const pageIds = new Map();
 const checkLink = (file, value) => {
-  if (!value || /^(?:#|\?|[a-z][a-z\d+.-]*:|\/\/)/i.test(value)) return;
+  if (!value || /^(?:\?|[a-z][a-z\d+.-]*:|\/\/)/i.test(value)) return;
   const relative = decodeURIComponent(value.split(/[?#]/)[0]);
-  if (!relative) return;
+  const target = relative ? path.resolve(path.dirname(file), relative) : file;
   links++;
-  if (!fs.existsSync(path.resolve(path.dirname(file), relative))) {
-    errors.push(`${path.relative(root, file)} -> ${relative}`);
+  if (!fs.existsSync(target)) {
+    errors.push(`${path.relative(root, file)} -> ${value}`);
+  } else if (value.includes('#') && value.split('#')[1]) {
+    fragments.push({ file, target, id: decodeURIComponent(value.split('#')[1]), value });
   }
 };
 
@@ -25,6 +29,7 @@ const pages = [path.join(root, 'index.html'), ...fs.readdirSync(design)
 for (const file of pages) {
   const dom = new JSDOM(fs.readFileSync(file, 'utf8'));
   try {
+    pageIds.set(file, new Set([...dom.window.document.querySelectorAll('[id]')].map(el => el.id)));
     for (const element of dom.window.document.querySelectorAll('[href], [src], object[data]')) {
       for (const attribute of ['href', 'src', 'data']) checkLink(file, element.getAttribute(attribute));
     }
@@ -39,6 +44,19 @@ for (const file of pages) {
     }
   } finally {
     dom.window.close();
+  }
+}
+
+const documents = [path.join(root, 'README.md'), ...fs.readdirSync(path.join(root, 'docs'))
+  .filter(name => name.endsWith('.md')).map(name => path.join(root, 'docs', name))];
+for (const file of documents) {
+  for (const match of fs.readFileSync(file, 'utf8').matchAll(/\[[^\]]+\]\(([^)]+)\)/g)) {
+    checkLink(file, match[1]);
+  }
+}
+for (const { file, target, id, value } of fragments) {
+  if (pageIds.has(target) && !pageIds.get(target).has(id)) {
+    errors.push(`${path.relative(root, file)} -> ${value} (missing fragment)`);
   }
 }
 
@@ -71,6 +89,6 @@ for (const name of fs.readdirSync(path.join(root, 'scripts')).filter(name => /\.
   new vm.Script(fs.readFileSync(path.join(root, 'scripts', name), 'utf8'), { filename: name });
 }
 assert.deepEqual(errors, [], 'Local links and inline JavaScript must be valid');
-console.log(JSON.stringify({ pages: pages.length, localLinks: links, inlineScripts: scripts,
+console.log(JSON.stringify({ pages: pages.length, documents: documents.length, localLinks: links, inlineScripts: scripts,
   jsonFiles: jsonFiles.length, revision: board.revision, components: board.components.length,
   networks: Object.keys(nets).length, f4Pins: 100, p4Pads: 88, errors }, null, 2));
