@@ -105,7 +105,7 @@
  $('print').onclick=()=>window.print();
  function download(name,body,type){const u=URL.createObjectURL(new Blob([body],{type}));const a=document.createElement('a');a.href=u;a.download=name;a.click();$('export-menu').open=false;setTimeout(()=>URL.revokeObjectURL(u),1500);}
  function csv(rows){return '\uFEFF'+rows.map(row=>row.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');}
- $('bom').onclick=()=>download('无人船_整板_RevE_BOM.csv',csv([['功能区域','位号','型号/数值','封装','装配状态','备注'],...data.components.filter(c=>c.kind==='physical').map(c=>[c.domain,c.ref,c.value,c.footprint,c.assembly,c.note])]),'text/csv;charset=utf-8');
+ $('bom').onclick=()=>download('无人船_整板_RevF_BOM.csv',csv([['功能区域','位号','型号/数值','封装','装配状态','备注'],...data.components.filter(c=>c.kind==='physical').map(c=>[c.domain,c.ref,c.value,c.footprint,c.assembly,c.note])]),'text/csv;charset=utf-8');
  $('netlist').onclick=()=>download('无人船_整板_原理图连接表.json',JSON.stringify(data,null,2),'application/json');
  $('svg-download').onclick=()=>{const copy=svg.cloneNode(true);copy.removeAttribute('style');copy.querySelectorAll('.selected').forEach(e=>e.classList.remove('selected'));download('无人船_整板_原理图.svg',new XMLSerializer().serializeToString(copy),'image/svg+xml');};
  const requested=new URLSearchParams(location.search).get('module');

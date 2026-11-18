@@ -11,7 +11,7 @@ module.exports=function(doc,{data,E}){
  sidebar.replaceChildren();
  sidebar.innerHTML='<div class="reader-side-head"><strong>图纸目录</strong><span>01 / 01</span></div><div class="nav-search"><input id="module-search" type="search" placeholder="查找模块 / MCU" aria-label="筛选模块目录"></div>';
  sidebar.append(toc);
- sidebar.insertAdjacentHTML('beforeend','<p id="no-matches" hidden>没有匹配的模块</p><div class="reader-side-foot">一整张图 · 100 + 88 引脚<br><span>Rev E · 2026.11.18</span></div>');
+ sidebar.insertAdjacentHTML('beforeend',`<p id="no-matches" hidden>没有匹配的模块</p><div class="reader-side-foot">一整张图 · 100 + 88 引脚<br><span>${E(data.revision)}</span></div>`);
  const opts=doc.getElementById('section').innerHTML;
  const drawing=doc.getElementById('view');
  const schematic=doc.getElementById('schematic');
@@ -27,6 +27,7 @@ module.exports=function(doc,{data,E}){
  const footer=doc.createElement('footer');footer.className='reader-status';footer.innerHTML='<span id="status" role="status">点击网络追踪</span><span>拖动平移 · Ctrl + 滚轮缩放 · 双击网络看端点</span>';doc.body.append(footer);
  const flash=doc.createElement('dialog');flash.id='flash-dialog';flash.className='dialog flash-dialog';flash.innerHTML=require('./schematic_flashing_guide.cjs')();doc.body.append(flash);
  toc.insertAdjacentHTML('afterbegin','<a class="flash-shortcut" href="?module=flash-p4#schematic" data-module="flash-p4">◉ P4 烧录 / 恢复</a><a class="flash-shortcut" href="?module=flash-c5#schematic" data-module="flash-c5">◉ C5 烧录预留 · NC</a>');
+ toc.insertAdjacentHTML('afterbegin','<a href="DCDC电源原理图.html">三路 DC/DC 电源图</a>');
  for(const a of toc.querySelectorAll('[data-section]:not([data-section="schematic"])'))a.dataset.notes=a.dataset.section;
  for(const a of toc.querySelectorAll('[data-module]')){const id=a.dataset.module;const domain=id.startsWith('s-')?id.slice(2):data.panels.find(p=>p.id===id)?.domain;a.dataset.color=domain||'p4';}
 };

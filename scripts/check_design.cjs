@@ -31,7 +31,7 @@ const click=(c,node)=>event(c,node,'click');
 const visible=c=>[...c.d.querySelectorAll('.drawing-page')].filter(e=>!e.hidden).map(e=>e.dataset.sheet);
 function allDomainsVisible(c){
  assert.deepEqual(visible(c),['board']);
- const groups=[...c.d.querySelectorAll('#svg-board > [data-domain]')];assert.equal(groups.length,5);
+ const groups=[...c.d.querySelectorAll('#svg-board > [data-domain]')];assert.equal(groups.length,6);
  for(const g of groups){assert.equal(g.closest('[hidden]'),null);for(let el=g;el&&el.id!=='sheet';el=el.parentElement){assert.notEqual(el.style.display,'none');assert.notEqual(el.style.visibility,'hidden');}}
 }
 
@@ -45,8 +45,8 @@ async function main(){
  const dnp=ref=>{assert.match(component(ref).value,/DNP/);assert.equal(component(ref).assembly,'默认不装');};
  const svg=id=>id==='board'?d.getElementById('svg-board'):d.querySelector('#svg-board > [data-domain="'+id+'"]');
  const label=(n,id)=>d.querySelector((id?'#svg-board [data-domain="'+id+'"] ':'#svg-board ')+'[data-net="'+n+'"]');
- await check('One board SVG exposes all five functional domains without a sheet selector or hidden sections',()=>{
-  assert.deepEqual(source.sheets.map(s=>s.id),['board']);assert.deepEqual(source.domains.map(s=>s.id),['power','f4','p4','camera','interfaces']);assert.deepEqual(JSON.parse(d.getElementById('schematic-data').textContent),source);assert.match(source.revision,/Rev E.*2026-11-18/);
+ await check('One board SVG exposes all six functional domains without a sheet selector or hidden sections',()=>{
+  assert.deepEqual(source.sheets.map(s=>s.id),['board']);assert.deepEqual(source.domains.map(s=>s.id),['power','battery','f4','p4','camera','interfaces']);assert.deepEqual(JSON.parse(d.getElementById('schematic-data').textContent),source);assert.match(source.revision,/Rev F.*2026-11-18/);
   assert.equal(d.querySelectorAll('#sheet svg.circuit').length,1);assert.equal(d.querySelectorAll('#sheet svg#locate-overlay').length,1);assert.equal(d.getElementById('page-select'),null);assert.equal(d.querySelectorAll('#sheet [hidden]').length,0);assert.equal(d.querySelectorAll('iframe').length,0);assert.equal(d.querySelectorAll('.drawing-page').length,1);allDomainsVisible(s);
  });
  await check('Embedded single SVG equals the standalone whole-board output, ignoring runtime zoom',()=>{
@@ -54,7 +54,7 @@ async function main(){
  });
  await check('IDs, panels and component references are unique and all panels are navigable',()=>{
   for(const values of [[...d.querySelectorAll('[id]')].map(e=>e.id),source.domains.map(s=>s.id),source.panels.map(p=>p.id),source.components.map(c=>c.ref)])assert.equal(values.length,new Set(values).size);
-  assert.equal(source.panels.length,31);assert.equal(d.querySelectorAll('#svg-board [data-panel]').length,31);
+  assert.equal(source.panels.length,32);assert.equal(d.querySelectorAll('#svg-board [data-panel]').length,32);
   for(const p of source.panels){assert.equal(p.sheet,'board');assert.ok(svg(p.domain).querySelector('[id="'+p.id+'"]'));assert.ok(d.querySelector('.toc [data-module="'+p.id+'"]'));assert.ok(d.querySelector('#section option[value="'+p.id+'"]'));const group=svg(p.domain).querySelector('[data-panel="'+p.id+'"]');assert.ok(group);const t=/^translate\(([-.\d]+)[ ,]+([-.\d]+)\)$/.exec(group.getAttribute('transform'));assert.ok(t,p.id+' transform');const rect=group.querySelector('rect.panel');assert.equal(+rect.getAttribute('x')+Number(t[1]),p.x,p.id+' x');assert.equal(+rect.getAttribute('y')+Number(t[2]),p.y,p.id+' y');assert.equal(+rect.getAttribute('width'),p.w);assert.equal(+rect.getAttribute('height'),p.h);assert.ok(p.x>=0&&p.y>=0&&p.x+p.w<=7240&&p.y+p.h<=6720,p.id+' board bounds');}
   for(let i=0;i<source.panels.length;i++)for(const q of source.panels.slice(i+1)){const p=source.panels[i];assert.ok(Math.min(p.x+p.w,q.x+q.w)<=Math.max(p.x,q.x)||Math.min(p.y+p.h,q.y+q.h)<=Math.max(p.y,q.y),p.id+' overlaps '+q.id);}
   assert.equal(source.components.filter(c=>c.ref==='U701').length,1);assert.ok(!source.components.some(c=>/^U701[A-D]$/.test(c.ref)));
@@ -126,9 +126,17 @@ async function main(){
   for(const p of [1,2,3])net('U802',p,'GND');net('U802',14,'CAM_SCL');net('U802',15,'CAM_SDA');net('U802',13,null);for(let i=4;i<=7;i++){net('U802',i+5,'EXP_UNUSED'+i);pair('R'+(847+i),'EXP_UNUSED'+i,'GND');assert.match(component('R'+(847+i)).value,/100k/);}
   net('U803',1,'GND');net('U803',2,'GND');net('U803',3,'P4_EN');net('U803',4,'+3V3');net('U803',8,'+3V3');net('U803',11,null);assert.notEqual(pin('U803',5).net,pin('U803',9).net);assert.notEqual(pin('U803',6).net,pin('U803',10).net);
  });
- await check('Battery protection/rails are distinct and ADC measurement remains default disconnected',()=>{
-  pair('F901','BAT6S_IN','BAT_FUSED');net('D901','A','BAT_FUSED');net('D901','K','BAT_SENSE_PROTECTED');net('U901',2,'BAT_SENSE_PROTECTED');for(const p of [10,11,12])net('U902',p,'+5V');net('U902',14,'+3V3');for(const p of [84,85,86])net('U701',p,'+3V3');
-  for(const r of ['U1','U701'])assert.ok(!Object.values(component(r).pins).some(p=>['BAT6S_IN','BAT_SENSE_PROTECTED','+5V'].includes(p.net)));pair('R304','BAT_ADC_LINK','BAT_ADC');dnp('R304');
+ await check('One protected battery input feeds a switched, scaled ADC channel',()=>{
+  pair('F901','BAT_IN','BAT_FUSED');net('J901',1,'BAT_IN');net('D901','A','BAT_FUSED');net('D901','K','BAT_SENSE_PROTECTED');net('U901',2,'BAT_SENSE_PROTECTED');for(const p of [10,11,12])net('U902',p,'+5V');net('U902',14,'+3V3');for(const p of [84,85,86])net('U701',p,'+3V3');
+  for(const r of ['U1','U701'])assert.ok(!Object.values(component(r).pins).some(p=>['BAT_IN','BAT_SENSE_PROTECTED','+5V'].includes(p.net)));
+  pair('R301','BAT_SENSE_PROTECTED','BAT_DIV_HI');pair('R307','BAT_DIV_HI','BAT_DIV');pair('R302','BAT_DIV','GND');pair('C301','BAT_DIV','GND');
+  for(const [p,n] of [[14,'+3V3'],[7,'GND'],[1,'BAT_SENSE_EN'],[2,'BAT_DIV'],[3,'BAT_SW']])net('U301',p,n);
+  for(const [p,n] of [[1,'GND'],[2,'BAT_SENSE_EN'],[3,'+3V3']])net('U303',p,n);
+  pair('R303','BAT_SW','BAT_ADC_LINK');pair('R304','BAT_ADC_LINK','BAT_ADC');pair('R305','BAT_ADC','GND');pair('R306','BAT_SENSE_EN','GND');pair('C303','+3V3','GND');pair('C304','+3V3','GND');net('U1',15,'BAT_ADC');net('P_BAT_ADC',1,'BAT_ADC');net('TP301',1,'BAT_ADC');
+  assert.equal(component('R304').value,'0Ω');assert.equal(component('R304').assembly,'候选，未冻结');assert.equal(component('U301').domain,'battery');assert.ok(!byRef.has('U302'));
+  const upper=49.9e3+49.9e3,lower=1/(1/10e3+1/101e3),gain=(upper+lower)/lower*101/100;
+  assert.ok(Math.abs(gain-12.0878)<1e-4);assert.ok(30/gain<3.3);assert.ok(30*10/(99.8+10)<3.6);
+  assert.match(svg('battery').textContent,/串数\/容量\/曲线由配置选择/);assert.match(svg('battery').textContent,/0–30V/);
  });
  await check('Both independent SCT2650 candidate bucks match the verified pin table and reference networks',()=>{
   for(const b of [{u:'U901',pre:'BUCK5',out:'+5V',l:'L901',diode:'D903',rt:'R903',upper:'R905',lower:'R906',comp:'R904',cin:'C902',hf:'C903',boot:'C904',cout:['C905','C906','C913','C914'],rc:'C907',cp:'C908'},{u:'U903',pre:'SERVO5',out:'+5V_SERVO',l:'L903',diode:'D904',rt:'R921',upper:'R922',lower:'R923',comp:'R924',cin:'C921',hf:'C922',boot:'C923',cout:['C924','C925','C926','C927'],rc:'C928',cp:'C929'}]){
@@ -139,7 +147,7 @@ async function main(){
   }
   net('TP906',1,'+5V_SERVO');assert.ok(!source.nets['+5V_SERVO'].some(e=>['U902','J401','U1','U701'].includes(e.ref)));assert.ok(!source.nets['+5V'].some(e=>['J407','J408'].includes(e.ref)));
  });
- await check('Domain navigation only zooms and pans the continuous board, preserving all five regions',()=>{
+ await check('Domain navigation only zooms and pans the continuous board, preserving all six regions',()=>{
   for(const domain of source.domains){const id='s-'+domain.id,select=d.getElementById('section');select.value=id;event(s,select,'change');allDomainsVisible(s);assert.equal(select.value,id);assert.equal(new URL(s.w.location.href).searchParams.get('module'),id);assert.equal(d.querySelector('.toc [aria-current="location"]').dataset.module,id);const scale=Math.min(1.4,(1200-45)/domain.w,(800-40)/domain.h);assert.ok(Math.abs(parseFloat(svg('board').style.width)-7240*scale)<.01);const last=s.scrolls.at(-1)[0];assert.ok(Math.abs(last.left-Math.max(0,(domain.x+domain.w/2)*scale-1200/2+12))<.01);assert.ok(Math.abs(last.top-Math.max(0,(domain.y+domain.h/2)*scale-800/2+12))<.01);}
  });
  await check('Every sidebar module pans to its global coordinates and updates URL/dropdown/active state',()=>{
@@ -176,11 +184,11 @@ async function main(){
   for(let i=0;i<4;i++){const q=setup('原理图设计.html','?module=p4-unit-'+i+'#schematic');allDomainsVisible(q);assert.equal(q.d.getElementById('section').value,'p4-module');assert.equal(q.d.querySelector('.toc [aria-current="location"]').dataset.module,'p4-module');assert.equal(new URL(q.w.location.href).searchParams.get('module'),'p4-module');assert.deepEqual(q.errors,[]);}
  });
  await check('BOM download contains each physical part once, correct DNP state, and no virtual ports',async()=>{
-  d.getElementById('bom').click();const file=s.downloads.at(-1);assert.equal(file.name,'无人船_整板_RevE_BOM.csv');assert.equal(file.blob.type,'text/csv;charset=utf-8');const rows=csvParse(await blobText(s.w,file.blob));assert.deepEqual(rows[0],['功能区域','位号','型号/数值','封装','装配状态','备注']);const body=rows.slice(1),physical=source.components.filter(c=>c.kind==='physical');assert.equal(body.length,physical.length);assert.equal(new Set(body.map(r=>r[1])).size,physical.length);for(const c of physical)assert.deepEqual(body.find(r=>r[1]===c.ref),[c.domain,c.ref,c.value,c.footprint,c.assembly,c.note]);assert.ok(!body.some(r=>['P_CSI','P_DVP','P_IMU','P_AIS'].includes(r[1])));assert.equal(body.find(r=>r[1]==='R807')[4],'默认不装');
+  d.getElementById('bom').click();const file=s.downloads.at(-1);assert.equal(file.name,'无人船_整板_RevF_BOM.csv');assert.equal(file.blob.type,'text/csv;charset=utf-8');const rows=csvParse(await blobText(s.w,file.blob));assert.deepEqual(rows[0],['功能区域','位号','型号/数值','封装','装配状态','备注']);const body=rows.slice(1),physical=source.components.filter(c=>c.kind==='physical');assert.equal(body.length,physical.length);assert.equal(new Set(body.map(r=>r[1])).size,physical.length);for(const c of physical)assert.deepEqual(body.find(r=>r[1]===c.ref),[c.domain,c.ref,c.value,c.footprint,c.assembly,c.note]);assert.ok(!body.some(r=>['P_CSI','P_DVP','P_IMU','P_AIS'].includes(r[1])));assert.equal(body.find(r=>r[1]==='R807')[4],'默认不装');
  });
  await check('JSON export round-trips and whole-board SVG export keeps all regions without live zoom/highlight',async()=>{
   d.getElementById('netlist').click();let file=s.downloads.at(-1);assert.equal(file.name,'无人船_整板_原理图连接表.json');assert.deepEqual(JSON.parse(await blobText(s.w,file.blob)),source);
-  d.getElementById('section').value='p4-can';event(s,d.getElementById('section'),'change');click(s,label('CAN_H','p4'));d.getElementById('svg-download').click();file=s.downloads.at(-1);assert.equal(file.name,'无人船_整板_原理图.svg');const xml=new JSDOM(await blobText(s.w,file.blob),{contentType:'image/svg+xml'});opened.push(xml);assert.equal(xml.window.document.documentElement.id,'svg-board');assert.equal(xml.window.document.documentElement.getAttribute('viewBox'),'0 0 7240 6720');assert.ok(!xml.window.document.documentElement.hasAttribute('style'));assert.equal(xml.window.document.querySelectorAll('.selected').length,0);assert.equal(xml.window.document.querySelectorAll('svg > [data-domain]').length,5);assert.equal(xml.window.document.querySelectorAll('[data-panel]').length,31);assert.ok(xml.window.document.querySelector('[data-net="CAN_H"]'));allDomainsVisible(s);
+  d.getElementById('section').value='p4-can';event(s,d.getElementById('section'),'change');click(s,label('CAN_H','p4'));d.getElementById('svg-download').click();file=s.downloads.at(-1);assert.equal(file.name,'无人船_整板_原理图.svg');const xml=new JSDOM(await blobText(s.w,file.blob),{contentType:'image/svg+xml'});opened.push(xml);assert.equal(xml.window.document.documentElement.id,'svg-board');assert.equal(xml.window.document.documentElement.getAttribute('viewBox'),'0 0 7240 6720');assert.ok(!xml.window.document.documentElement.hasAttribute('style'));assert.equal(xml.window.document.querySelectorAll('.selected').length,0);assert.equal(xml.window.document.querySelectorAll('svg > [data-domain]').length,6);assert.equal(xml.window.document.querySelectorAll('[data-panel]').length,32);assert.ok(xml.window.document.querySelector('[data-net="CAN_H"]'));allDomainsVisible(s);
  });
  await check('Print action uses a single large sheet with no forced region page breaks',()=>{
   d.getElementById('print').click();assert.equal(s.prints,1);const css=d.getElementById('whole-board-styles').textContent;assert.match(css,/@media print/);assert.match(css,/@page\{size:1189mm 1104mm;margin:0\}/);assert.match(css,/\.drawing-page\{[^}]*width:1189mm[^}]*break-inside:avoid[^}]*page-break-inside:avoid/);assert.match(css,/\.schematic-page \.circuit\{width:1189mm!important/);assert.doesNotMatch(css,/break-after:page|size:A3/);allDomainsVisible(s);

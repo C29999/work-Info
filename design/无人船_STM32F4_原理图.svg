@@ -1,7 +1,7 @@
-<svg id="sheet" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3600 2546" role="img" aria-label="无人船统一主板 STM32F407VET6 主控与接口原理图 Rev E"><style>.panel{fill:#fff;stroke:#bdcbd7;stroke-width:2}.chip{fill:#f2f7fd;stroke:#2c536f;stroke-width:2.2}.connector{fill:#f6fafc;stroke:#2c536f;stroke-width:2}.port{fill:#fff8ed;stroke:#a87932;stroke-width:2;stroke-dasharray:7 4}.wire,.symbol{stroke:#286756;stroke-width:2;fill:none}.symbol{fill:#fff}.junction{fill:#286756}.heading{fill:#164e78;font-weight:700}.muted{fill:#586d7e}.ref{fill:#153a57;font-weight:700}.pin,.value{fill:#244b60}.net{fill:#176b78;cursor:pointer}.net.selected{fill:#a13617;paint-order:stroke;stroke:#ffdf72;stroke-width:8;stroke-linejoin:round}.wire.selected{stroke:#e27225;stroke-width:4}.net:focus{outline:none;paint-order:stroke;stroke:#ffd775;stroke-width:8}text{font-family:'Microsoft YaHei','Segoe UI',sans-serif;fill:#183448}.net,.pin,.value{font-family:Consolas,'Microsoft YaHei',monospace}.nc{fill:#9aa8b4}</style><rect width="3600" height="2546" fill="#fff"/><rect x="18" y="18" width="3564" height="2510" rx="5" fill="none" stroke="#9db3c5" stroke-width="2"/>
+<svg id="sheet" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3600 2546" role="img" aria-label="无人船统一主板 STM32F407VET6 主控与接口原理图 Rev F"><style>.panel{fill:#fff;stroke:#bdcbd7;stroke-width:2}.chip{fill:#f2f7fd;stroke:#2c536f;stroke-width:2.2}.connector{fill:#f6fafc;stroke:#2c536f;stroke-width:2}.port{fill:#fff8ed;stroke:#a87932;stroke-width:2;stroke-dasharray:7 4}.wire,.symbol{stroke:#286756;stroke-width:2;fill:none}.symbol{fill:#fff}.junction{fill:#286756}.heading{fill:#164e78;font-weight:700}.muted{fill:#586d7e}.ref{fill:#153a57;font-weight:700}.pin,.value{fill:#244b60}.net{fill:#176b78;cursor:pointer}.net.selected{fill:#a13617;paint-order:stroke;stroke:#ffdf72;stroke-width:8;stroke-linejoin:round}.wire.selected{stroke:#e27225;stroke-width:4}.net:focus{outline:none;paint-order:stroke;stroke:#ffd775;stroke-width:8}text{font-family:'Microsoft YaHei','Segoe UI',sans-serif;fill:#183448}.net,.pin,.value{font-family:Consolas,'Microsoft YaHei',monospace}.nc{fill:#9aa8b4}</style><rect width="3600" height="2546" fill="#fff"/><rect x="18" y="18" width="3564" height="2510" rx="5" fill="none" stroke="#9db3c5" stroke-width="2"/>
 <text x="48" y="77" font-size="40" class="heading" >无人船统一主板 · STM32F4 主控与接口原理图</text>
 <text x="48" y="119" font-size="22" class="muted" >STM32F407VET6 · LQFP100 · 经典 CAN · 五路驱动 PWM + 两路舵机 + LED PWM · 6S BMS RS485 · AIS UART5</text>
-<text x="3550" y="75" font-size="27" class="heading" text-anchor="end">Rev E / 2026-11-18</text>
+<text x="3550" y="75" font-size="27" class="heading" text-anchor="end">Rev F / 2026-11-18</text>
 <text x="3550" y="116" font-size="22" class="muted" text-anchor="end">01 · 主控页 / 方案评审稿</text>
 <g id="power"><rect x="40" y="160" width="1040" height="570" rx="10" class="panel"/>
 <text x="62" y="198" font-size="27" class="heading" >01  F4 供电与去耦</text>
@@ -260,80 +260,53 @@
 <text x="951" y="894" font-size="16" class="ref" >TP102</text>
 <text x="575" y="1062" font-size="18" class="muted" >NRST 经 SWD/测试点可外部拉低复位。</text>
 <g id="analog"><rect x="40" y="1350" width="1040" height="550" rx="10" class="panel"/>
-<text x="62" y="1388" font-size="27" class="heading" >03  电池采样 / GPS / 声纳业务口</text>
-<text x="62" y="1419" font-size="18" class="muted" >6S 化学体系待定；25.2V 仅为 6S 锂离子满充示例。</text>
+<text x="62" y="1388" font-size="27" class="heading" >03  电池 ADC / GPS / 声纳业务口</text>
+<text x="62" y="1419" font-size="18" class="muted" >PC0采集保护后母线的单路电压；完整分压与断电开关见电池采样区。</text>
 </g>
-<text x="75" y="1458" font-size="17" class="net" data-net="BAT_SENSE_PROTECTED" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 BAT_SENSE_PROTECTED，03  电池采样 / GPS / 声纳业务口" text-anchor="start" >BAT_SENSE_PROTECTED</text>
-<line x1="75" y1="1470" x2="285" y2="1470" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
-<rect x="285" y="1462" width="60" height="16" class="symbol"/>
-<line x1="345" y1="1470" x2="555" y2="1470" class="wire" data-wire="BAT_DIV"/>
-<text x="555" y="1458" font-size="17" class="net" data-net="BAT_DIV" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 BAT_DIV，03  电池采样 / GPS / 声纳业务口" text-anchor="end" >BAT_DIV</text>
-<text x="315" y="1500" font-size="16" class="value" text-anchor="middle">R301  100k / 1%</text>
-<text x="170" y="1524" font-size="16" class="net" data-net="BAT_DIV" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 BAT_DIV，03  电池采样 / GPS / 声纳业务口" text-anchor="middle" >BAT_DIV</text>
-<line x1="170" y1="1535" x2="170" y2="1555" class="wire" data-wire="BAT_DIV"/>
-<rect x="162" y="1555" width="16" height="37" class="symbol"/>
-<line x1="170" y1="1592" x2="170" y2="1612" class="wire" data-wire="GND"/>
-<line x1="170" y1="1612" x2="170" y2="1622" class="wire"/>
-<line x1="157" y1="1622" x2="183" y2="1622" class="wire"/>
-<line x1="162" y1="1628" x2="178" y2="1628" class="wire"/>
-<line x1="167" y1="1634" x2="173" y2="1634" class="wire"/>
-<text x="187" y="1565" font-size="16" class="ref" >R302</text>
-<text x="187" y="1589" font-size="16" class="value" >10k / 1%</text>
-<text x="380" y="1524" font-size="16" class="net" data-net="BAT_DIV" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 BAT_DIV，03  电池采样 / GPS / 声纳业务口" text-anchor="middle" >BAT_DIV</text>
-<line x1="380" y1="1535" x2="380" y2="1568" class="wire" data-wire="BAT_DIV"/>
-<line x1="367" y1="1568" x2="393" y2="1568" class="wire"/>
-<line x1="367" y1="1578" x2="393" y2="1578" class="wire"/>
-<line x1="380" y1="1578" x2="380" y2="1609" class="wire" data-wire="GND"/>
-<line x1="380" y1="1609" x2="380" y2="1619" class="wire"/>
-<line x1="367" y1="1619" x2="393" y2="1619" class="wire"/>
-<line x1="372" y1="1625" x2="388" y2="1625" class="wire"/>
-<line x1="377" y1="1631" x2="383" y2="1631" class="wire"/>
-<text x="401" y="1565" font-size="16" class="ref" >C301</text>
-<text x="401" y="1589" font-size="16" class="value" >100nF</text>
-<text x="620" y="1458" font-size="17" class="net" data-net="BAT_DIV" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 BAT_DIV，03  电池采样 / GPS / 声纳业务口" text-anchor="start" >BAT_DIV</text>
-<line x1="620" y1="1470" x2="780" y2="1470" class="wire" data-wire="BAT_DIV"/>
-<rect x="780" y="1462" width="60" height="16" class="symbol"/>
-<line x1="840" y1="1470" x2="1000" y2="1470" class="wire" data-wire="BAT_ADC_LINK"/>
-<text x="1000" y="1458" font-size="17" class="net" data-net="BAT_ADC_LINK" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 BAT_ADC_LINK，03  电池采样 / GPS / 声纳业务口" text-anchor="end" >BAT_ADC_LINK</text>
-<text x="810" y="1500" font-size="16" class="value" text-anchor="middle">R303  1k</text>
-<text x="620" y="1553" font-size="17" class="net" data-net="BAT_ADC_LINK" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 BAT_ADC_LINK，03  电池采样 / GPS / 声纳业务口" text-anchor="start" >BAT_ADC_LINK</text>
-<line x1="620" y1="1565" x2="780" y2="1565" class="wire" data-wire="BAT_ADC_LINK"/>
-<rect x="780" y="1557" width="60" height="16" class="symbol"/>
-<line x1="840" y1="1565" x2="1000" y2="1565" class="wire" data-wire="BAT_ADC"/>
-<text x="1000" y="1553" font-size="17" class="net" data-net="BAT_ADC" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 BAT_ADC，03  电池采样 / GPS / 声纳业务口" text-anchor="end" >BAT_ADC</text>
-<text x="810" y="1595" font-size="16" class="value" text-anchor="middle">R304  0Ω / DNP</text>
-<text x="70" y="1670" font-size="18" class="muted" >VADC≈VBAT/11；25.2V 时约 2.291V（标称电阻）。</text>
-<text x="70" y="1698" font-size="18" class="muted" >R304 默认 DNP：钳位/断电反灌未定，禁止直接闭合后接电池。</text>
+<rect x="80" y="1480" width="205" height="112" rx="4" class="port"/>
+<text x="90" y="1503" font-size="19" class="ref" >P_BAT_ADC</text>
+<text x="90" y="1526" font-size="16" class="muted" >电池采样跨区口</text>
+<text x="92" y="1550" font-size="15" class="pin" >ADC</text>
+<line x1="265" y1="1546" x2="305" y2="1546" class="wire" data-wire="BAT_ADC"/>
+<circle cx="265" cy="1546" r="4" class="junction"/>
+<text x="313" y="1550" font-size="17" class="net" data-net="BAT_ADC" data-area="03  电池 ADC / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 BAT_ADC，03  电池 ADC / GPS / 声纳业务口" text-anchor="start" >BAT_ADC</text>
+<text x="92" y="1582" font-size="15" class="pin" >GND</text>
+<line x1="265" y1="1578" x2="305" y2="1578" class="wire" data-wire="GND"/>
+<circle cx="265" cy="1578" r="4" class="junction"/>
+<text x="313" y="1582" font-size="17" class="net" data-net="GND" data-area="03  电池 ADC / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 GND，03  电池 ADC / GPS / 声纳业务口" text-anchor="start" >GND</text>
+<text x="375" y="1510" font-size="18" class="muted" >3S / 4S / 6S 配置不可自动猜测；</text>
+<text x="375" y="1538" font-size="18" class="muted" >放电曲线未标定前只显示电压。</text>
+<text x="375" y="1566" font-size="18" class="muted" >电源启停与过压瞬态待台架核对。</text>
 <rect x="80" y="1740" width="165" height="132" rx="4" class="connector"/>
 <text x="90" y="1763" font-size="19" class="ref" >J301</text>
 <text x="90" y="1786" font-size="16" class="muted" >GPS / 水面</text>
 <text x="92" y="1810" font-size="15" class="pin" >1</text>
 <line x1="225" y1="1806" x2="265" y2="1806" class="wire" data-wire="GPS_TX"/>
 <circle cx="225" cy="1806" r="4" class="junction"/>
-<text x="273" y="1810" font-size="17" class="net" data-net="GPS_TX" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 GPS_TX，03  电池采样 / GPS / 声纳业务口" text-anchor="start" >GPS_TX</text>
+<text x="273" y="1810" font-size="17" class="net" data-net="GPS_TX" data-area="03  电池 ADC / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 GPS_TX，03  电池 ADC / GPS / 声纳业务口" text-anchor="start" >GPS_TX</text>
 <text x="92" y="1836" font-size="15" class="pin" >2</text>
 <line x1="225" y1="1832" x2="265" y2="1832" class="wire" data-wire="GPS_RX"/>
 <circle cx="225" cy="1832" r="4" class="junction"/>
-<text x="273" y="1836" font-size="17" class="net" data-net="GPS_RX" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 GPS_RX，03  电池采样 / GPS / 声纳业务口" text-anchor="start" >GPS_RX</text>
+<text x="273" y="1836" font-size="17" class="net" data-net="GPS_RX" data-area="03  电池 ADC / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 GPS_RX，03  电池 ADC / GPS / 声纳业务口" text-anchor="start" >GPS_RX</text>
 <text x="92" y="1862" font-size="15" class="pin" >3</text>
 <line x1="225" y1="1858" x2="265" y2="1858" class="wire" data-wire="GND"/>
 <circle cx="225" cy="1858" r="4" class="junction"/>
-<text x="273" y="1862" font-size="17" class="net" data-net="GND" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 GND，03  电池采样 / GPS / 声纳业务口" text-anchor="start" >GND</text>
+<text x="273" y="1862" font-size="17" class="net" data-net="GND" data-area="03  电池 ADC / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 GND，03  电池 ADC / GPS / 声纳业务口" text-anchor="start" >GND</text>
 <rect x="590" y="1740" width="190" height="132" rx="4" class="connector"/>
 <text x="600" y="1763" font-size="19" class="ref" >J302</text>
 <text x="600" y="1786" font-size="16" class="muted" >声纳候选 TTL</text>
 <text x="602" y="1810" font-size="15" class="pin" >1</text>
 <line x1="760" y1="1806" x2="800" y2="1806" class="wire" data-wire="SONAR_TX"/>
 <circle cx="760" cy="1806" r="4" class="junction"/>
-<text x="808" y="1810" font-size="17" class="net" data-net="SONAR_TX" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 SONAR_TX，03  电池采样 / GPS / 声纳业务口" text-anchor="start" >SONAR_TX</text>
+<text x="808" y="1810" font-size="17" class="net" data-net="SONAR_TX" data-area="03  电池 ADC / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 SONAR_TX，03  电池 ADC / GPS / 声纳业务口" text-anchor="start" >SONAR_TX</text>
 <text x="602" y="1836" font-size="15" class="pin" >2</text>
 <line x1="760" y1="1832" x2="800" y2="1832" class="wire" data-wire="SONAR_RX"/>
 <circle cx="760" cy="1832" r="4" class="junction"/>
-<text x="808" y="1836" font-size="17" class="net" data-net="SONAR_RX" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 SONAR_RX，03  电池采样 / GPS / 声纳业务口" text-anchor="start" >SONAR_RX</text>
+<text x="808" y="1836" font-size="17" class="net" data-net="SONAR_RX" data-area="03  电池 ADC / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 SONAR_RX，03  电池 ADC / GPS / 声纳业务口" text-anchor="start" >SONAR_RX</text>
 <text x="602" y="1862" font-size="15" class="pin" >3</text>
 <line x1="760" y1="1858" x2="800" y2="1858" class="wire" data-wire="GND"/>
 <circle cx="760" cy="1858" r="4" class="junction"/>
-<text x="808" y="1862" font-size="17" class="net" data-net="GND" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 GND，03  电池采样 / GPS / 声纳业务口" text-anchor="start" >GND</text>
+<text x="808" y="1862" font-size="17" class="net" data-net="GND" data-area="03  电池 ADC / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 GND，03  电池 ADC / GPS / 声纳业务口" text-anchor="start" >GND</text>
 <g id="mcu"><rect x="1100" y="160" width="1380" height="1740" rx="10" class="panel"/>
 <text x="1122" y="198" font-size="27" class="heading" >04  U1 · STM32F407VET6 / LQFP100</text>
 <text x="1122" y="229" font-size="18" class="muted" >100 个物理脚完整对应；GPIO/AF 来自 ST 管脚数据，连接为本项目候选。</text>

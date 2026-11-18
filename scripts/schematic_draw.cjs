@@ -33,12 +33,12 @@ function testpoint(x,y,ref,name){
  component(ref,name+'测试点','测试点候选',{'1':{name:'1',net:name}},'测试夹具入口；不加专用串口');
  put(`<circle cx="${x}" cy="${y}" r="7" class="symbol"/>`);line(x,y+7,x,y+26,name);net(x+18,y+6,name,'start',16);text(x-14,y-13,ref,16,'ref');
 }
-function ic(x,y,w,h,ref,value,left,right,footprint,note='候选器件；外围与布局仍需审查'){
+function ic(x,y,w,h,ref,value,left,right,footprint,note='候选器件；外围与布局仍需审查',{wired=false}={}){
  component(ref,value,footprint,Object.fromEntries([...left,...right].map(p=>[p[0],{name:p[1],net:p[2]}])),note);
  put(`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="4" class="chip"/>`);text(x+w/2,y+29,ref,22,'ref','text-anchor="middle"');text(x+w/2,y+57,value,20,'heading','text-anchor="middle"');
  const step=(h-100)/Math.max(left.length-1,right.length-1,1);
- left.forEach(([no,n,nn],i)=>{let yy=y+90+i*step;line(x-26,yy,x,yy,nn);text(x+10,yy+5,`${no} ${n}`,17,'pin');if(nn)net(x-35,yy+5,nn,'end',17);else{text(x-35,yy+5,'NC',16,'muted','text-anchor="end"');line(x-32,yy-6,x-20,yy+6);line(x-32,yy+6,x-20,yy-6);}});
- right.forEach(([no,n,nn],i)=>{let yy=y+90+i*step;line(x+w,yy,x+w+26,yy,nn);text(x+w-10,yy+5,`${n} ${no}`,17,'pin','text-anchor="end"');if(nn)net(x+w+35,yy+5,nn,'start',17);else{text(x+w+35,yy+5,'NC',16,'muted');line(x+w+20,yy-6,x+w+32,yy+6);line(x+w+20,yy+6,x+w+32,yy-6);}});
+ left.forEach(([no,n,nn],i)=>{let yy=y+90+i*step;line(x-26,yy,x,yy,nn);text(x+10,yy+5,`${no} ${n}`,17,'pin');if(nn){if(!wired)net(x-35,yy+5,nn,'end',17);}else{text(x-35,yy+5,'NC',16,'muted','text-anchor="end"');line(x-32,yy-6,x-20,yy+6);line(x-32,yy+6,x-20,yy-6);}});
+ right.forEach(([no,n,nn],i)=>{let yy=y+90+i*step;line(x+w,yy,x+w+26,yy,nn);text(x+w-10,yy+5,`${n} ${no}`,17,'pin','text-anchor="end"');if(nn){if(!wired)net(x+w+35,yy+5,nn,'start',17);}else{text(x+w+35,yy+5,'NC',16,'muted');line(x+w+20,yy-6,x+w+32,yy+6);line(x+w+20,yy+6,x+w+32,yy-6);}});
 }
 function noteLines(x,y,lines,size=18){lines.forEach((s,i)=>text(x,y+i*28,s,size,'muted'));}
 

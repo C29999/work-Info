@@ -1,6 +1,6 @@
 {
   "title": "无人船统一主板 STM32F4 主控与接口原理图",
-  "revision": "Rev E / 2026-11-18",
+  "revision": "Rev F / 2026-11-18",
   "status": "方案评审稿，未完成EDA/电气验证",
   "part": "STM32F407VET6",
   "package": "LQFP100",
@@ -442,94 +442,22 @@
       "area": "02  时钟 / 复位 / 启动 / SWD"
     },
     {
-      "ref": "R301",
-      "value": "100k / 1%",
-      "footprint": "0603候选",
+      "ref": "P_BAT_ADC",
+      "value": "电池采样跨区口",
+      "footprint": "跨页端口，无物理封装",
       "pins": {
         "1": {
-          "name": "1",
-          "net": "BAT_SENSE_PROTECTED"
-        },
-        "2": {
-          "name": "2",
-          "net": "BAT_DIV"
-        }
-      },
-      "note": "外部电池保护后取样；电源断电反灌与浪涌约束尚未闭合",
-      "kind": "physical",
-      "area": "03  电池采样 / GPS / 声纳业务口"
-    },
-    {
-      "ref": "R302",
-      "value": "10k / 1%",
-      "footprint": "0603候选",
-      "pins": {
-        "1": {
-          "name": "1",
-          "net": "BAT_DIV"
-        },
-        "2": {
-          "name": "2",
-          "net": "GND"
-        }
-      },
-      "note": "候选阻值",
-      "kind": "physical",
-      "area": "03  电池采样 / GPS / 声纳业务口"
-    },
-    {
-      "ref": "C301",
-      "value": "100nF",
-      "footprint": "0603候选",
-      "pins": {
-        "1": {
-          "name": "1",
-          "net": "BAT_DIV"
-        },
-        "2": {
-          "name": "2",
-          "net": "GND"
-        }
-      },
-      "note": "候选阻容；封装与耐压待BOM冻结",
-      "kind": "physical",
-      "area": "03  电池采样 / GPS / 声纳业务口"
-    },
-    {
-      "ref": "R303",
-      "value": "1k",
-      "footprint": "0603候选",
-      "pins": {
-        "1": {
-          "name": "1",
-          "net": "BAT_DIV"
-        },
-        "2": {
-          "name": "2",
-          "net": "BAT_ADC_LINK"
-        }
-      },
-      "note": "ADC串联限流；不单独构成过压或断电保护",
-      "kind": "physical",
-      "area": "03  电池采样 / GPS / 声纳业务口"
-    },
-    {
-      "ref": "R304",
-      "value": "0Ω / DNP",
-      "footprint": "0603候选",
-      "pins": {
-        "1": {
-          "name": "1",
-          "net": "BAT_ADC_LINK"
-        },
-        "2": {
-          "name": "2",
+          "name": "ADC",
           "net": "BAT_ADC"
+        },
+        "2": {
+          "name": "GND",
+          "net": "GND"
         }
       },
-      "note": "评审版默认不装；补完输入钳位与断电防反灌后再闭合",
-      "kind": "physical",
-      "area": "03  电池采样 / GPS / 声纳业务口"
+      "note": "PC0 / pin15 / ADC1_IN10；来自电池采样区R304输出，MCU与电池共地；仅粗略SOC，不测电流或容量",
+      "kind": "page-port",
+      "area": "03  电池 ADC / GPS / 声纳业务口"
     },
     {
       "ref": "J301",
@@ -551,7 +479,7 @@
       },
       "note": "连接器针序为本项目定义，未承诺与外部成品模块兼容",
       "kind": "physical",
-      "area": "03  电池采样 / GPS / 声纳业务口"
+      "area": "03  电池 ADC / GPS / 声纳业务口"
     },
     {
       "ref": "J302",
@@ -573,7 +501,7 @@
       },
       "note": "仅3V3 UART逻辑接口，供电未接；若模块为RS232/RS485需另增收发器",
       "kind": "physical",
-      "area": "03  电池采样 / GPS / 声纳业务口"
+      "area": "03  电池 ADC / GPS / 声纳业务口"
     },
     {
       "ref": "P_AIS",
@@ -2133,16 +2061,10 @@
         "kind": "physical"
       },
       {
-        "ref": "R302",
+        "ref": "P_BAT_ADC",
         "pin": "2",
-        "name": "2",
-        "kind": "physical"
-      },
-      {
-        "ref": "C301",
-        "pin": "2",
-        "name": "2",
-        "kind": "physical"
+        "name": "GND",
+        "kind": "page-port"
       },
       {
         "ref": "J301",
@@ -2537,60 +2459,12 @@
         "kind": "physical"
       }
     ],
-    "BAT_SENSE_PROTECTED": [
-      {
-        "ref": "R301",
-        "pin": "1",
-        "name": "1",
-        "kind": "physical"
-      }
-    ],
-    "BAT_DIV": [
-      {
-        "ref": "R301",
-        "pin": "2",
-        "name": "2",
-        "kind": "physical"
-      },
-      {
-        "ref": "R302",
-        "pin": "1",
-        "name": "1",
-        "kind": "physical"
-      },
-      {
-        "ref": "C301",
-        "pin": "1",
-        "name": "1",
-        "kind": "physical"
-      },
-      {
-        "ref": "R303",
-        "pin": "1",
-        "name": "1",
-        "kind": "physical"
-      }
-    ],
-    "BAT_ADC_LINK": [
-      {
-        "ref": "R303",
-        "pin": "2",
-        "name": "2",
-        "kind": "physical"
-      },
-      {
-        "ref": "R304",
-        "pin": "1",
-        "name": "1",
-        "kind": "physical"
-      }
-    ],
     "BAT_ADC": [
       {
-        "ref": "R304",
-        "pin": "2",
-        "name": "2",
-        "kind": "physical"
+        "ref": "P_BAT_ADC",
+        "pin": "1",
+        "name": "ADC",
+        "kind": "page-port"
       },
       {
         "ref": "U1",
@@ -3363,7 +3237,7 @@
       "y": 1350,
       "w": 1040,
       "h": 550,
-      "title": "03  电池采样 / GPS / 声纳业务口"
+      "title": "03  电池 ADC / GPS / 声纳业务口"
     },
     {
       "id": "mcu",

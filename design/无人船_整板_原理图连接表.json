@@ -1,6 +1,6 @@
 {
   "title": "无人船统一主板整板原理图",
-  "revision": "Rev E / 2026-11-18",
+  "revision": "Rev F / 2026-11-18",
   "status": "候选电气评审图；未完成相机/接口定型及EDA ERC/DRC",
   "sheets": [
     {
@@ -14,12 +14,21 @@
   "domains": [
     {
       "id": "power",
-      "title": "6S 双路 5V / 逻辑 3.3V",
+      "title": "3S/4S/6S 电源 / 双路 5V / 3.3V",
       "short": "01 电源",
       "x": 40,
       "y": 200,
       "w": 7120,
       "h": 1650
+    },
+    {
+      "id": "battery",
+      "title": "电池电压采样 / 粗略 SOC",
+      "short": "电池采样",
+      "x": 3640,
+      "y": 1390,
+      "w": 3520,
+      "h": 550
     },
     {
       "id": "f4",
@@ -61,21 +70,21 @@
   "components": [
     {
       "ref": "J901",
-      "value": "双路电池输入",
+      "value": "单路电池输入",
       "footprint": "连接器待选",
       "pins": {
         "1": {
-          "name": "BAT6S_IN",
-          "net": "BAT6S_IN"
+          "name": "BAT_IN",
+          "net": "BAT_IN"
         },
         "2": {
           "name": "GND",
           "net": "GND"
         }
       },
-      "note": "双路DC/DC的共用输入；项目自定义2针，连接器电流、线径、防水和防反插结构待定",
+      "note": "仅接一款3S、4S或6S电池；项目自定义2针，连接器电流、线径、防水和防反插结构待定",
       "kind": "physical",
-      "area": "01  6S 输入 · 双路 5V 共用保护",
+      "area": "01  3S / 4S / 6S 输入 · 共用保护",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -87,16 +96,16 @@
       "pins": {
         "1": {
           "name": "1",
-          "net": "BAT6S_IN"
+          "net": "BAT_IN"
         },
         "2": {
           "name": "2",
           "net": "BAT_FUSED"
         }
       },
-      "note": "双路共用输入；需按稳态负载、上电浪涌、线材额定值、DC分断能力确定",
+      "note": "双路共用输入；需按三种电池的最大电压、稳态负载、上电浪涌、线材额定值、DC分断能力确定",
       "kind": "physical",
-      "area": "01  6S 输入 · 双路 5V 共用保护",
+      "area": "01  3S / 4S / 6S 输入 · 共用保护",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -117,7 +126,7 @@
       },
       "note": "串联防反接候选；核对VRRM、IF、浪涌、漏电、I×VF损耗及温升，尚无锁定料号",
       "kind": "physical",
-      "area": "01  6S 输入 · 双路 5V 共用保护",
+      "area": "01  3S / 4S / 6S 输入 · 共用保护",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -138,7 +147,7 @@
       },
       "note": "单向TVS：K接保护后正极、A接GND；VRWM需高于最大持续输入，钳位需协调SCT2650和电容额定值及保险分断",
       "kind": "physical",
-      "area": "01  6S 输入 · 双路 5V 共用保护",
+      "area": "01  3S / 4S / 6S 输入 · 共用保护",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -159,7 +168,7 @@
       },
       "note": "输入储能候选，不是最终选值；耐压、ESR、纹波电流和上电浪涌需与线缆/TVS共同校核",
       "kind": "physical",
-      "area": "01  6S 输入 · 双路 5V 共用保护",
+      "area": "01  3S / 4S / 6S 输入 · 共用保护",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -176,7 +185,7 @@
       },
       "note": "测试夹具入口；不加专用串口",
       "kind": "physical",
-      "area": "01  6S 输入 · 双路 5V 共用保护",
+      "area": "01  3S / 4S / 6S 输入 · 共用保护",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -225,7 +234,7 @@
       },
       "note": "芯洲科技SCT2650 Rev1.3 p2–3；EP9必须焊接地平面。用户写STC2650，确切料号待确认。EN接VIN，6S低电保护由BMS/系统策略另行闭合。",
       "kind": "physical",
-      "area": "02  U901 · 6S → 逻辑 +5V",
+      "area": "02  U901 · 电池母线 → 逻辑 +5V",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -246,7 +255,7 @@
       },
       "note": "工程候选值；按p14有效电容量、输入纹波/偏压/浪涌校核，不是已验证负载设计",
       "kind": "physical",
-      "area": "02  U901 · 6S → 逻辑 +5V",
+      "area": "02  U901 · 电池母线 → 逻辑 +5V",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -267,154 +276,7 @@
       },
       "note": "p14高频旁路，紧靠VIN和GND；回路面积需最小",
       "kind": "physical",
-      "area": "02  U901 · 6S → 逻辑 +5V",
-      "sheet": "board",
-      "assembly": "候选，未冻结",
-      "domain": "power"
-    },
-    {
-      "ref": "C904",
-      "value": "100nF",
-      "footprint": "0603候选",
-      "pins": {
-        "1": {
-          "name": "1",
-          "net": "BUCK5_BOOT"
-        },
-        "2": {
-          "name": "2",
-          "net": "BUCK5_SW"
-        }
-      },
-      "note": "p2 BOOT直接至SW；禁止接GND",
-      "kind": "physical",
-      "area": "02  U901 · 6S → 逻辑 +5V",
-      "sheet": "board",
-      "assembly": "候选，未冻结",
-      "domain": "power"
-    },
-    {
-      "ref": "L901",
-      "value": "7.8µH",
-      "footprint": "封装待选",
-      "pins": {
-        "1": {
-          "name": "1",
-          "net": "BUCK5_SW"
-        },
-        "2": {
-          "name": "2",
-          "net": "+5V"
-        }
-      },
-      "note": "p17表3的5V/500kHz参考值；实际电感Isat须覆盖最坏峰值/限流，RMS和温升待算",
-      "kind": "physical",
-      "area": "02  U901 · 6S → 逻辑 +5V",
-      "sheet": "board",
-      "assembly": "候选，未冻结",
-      "domain": "power"
-    },
-    {
-      "ref": "D903",
-      "value": "B560C-13-F",
-      "footprint": "封装及实际焊盘编号待选",
-      "pins": {
-        "A": {
-          "name": "A",
-          "net": "GND"
-        },
-        "K": {
-          "name": "K",
-          "net": "BUCK5_SW"
-        }
-      },
-      "note": "p14参考续流肖特基，A=GND、K=SW；反压/峰值/平均电流及封舱温升需校核",
-      "kind": "physical",
-      "area": "02  U901 · 6S → 逻辑 +5V",
-      "sheet": "board",
-      "assembly": "候选，未冻结",
-      "domain": "power"
-    },
-    {
-      "ref": "C905",
-      "value": "47µF / 10V",
-      "footprint": "MLCC候选",
-      "pins": {
-        "1": {
-          "name": "1",
-          "net": "+5V"
-        },
-        "2": {
-          "name": "2",
-          "net": "GND"
-        }
-      },
-      "note": "p17表3：5V组合4×47µF，核对直流偏压后的有效容量及环路，不保证舵机堵转不掉压",
-      "kind": "physical",
-      "area": "02  U901 · 6S → 逻辑 +5V",
-      "sheet": "board",
-      "assembly": "候选，未冻结",
-      "domain": "power"
-    },
-    {
-      "ref": "C906",
-      "value": "47µF / 10V",
-      "footprint": "MLCC候选",
-      "pins": {
-        "1": {
-          "name": "1",
-          "net": "+5V"
-        },
-        "2": {
-          "name": "2",
-          "net": "GND"
-        }
-      },
-      "note": "p17表3：5V组合4×47µF，核对直流偏压后的有效容量及环路，不保证舵机堵转不掉压",
-      "kind": "physical",
-      "area": "02  U901 · 6S → 逻辑 +5V",
-      "sheet": "board",
-      "assembly": "候选，未冻结",
-      "domain": "power"
-    },
-    {
-      "ref": "C913",
-      "value": "47µF / 10V",
-      "footprint": "MLCC候选",
-      "pins": {
-        "1": {
-          "name": "1",
-          "net": "+5V"
-        },
-        "2": {
-          "name": "2",
-          "net": "GND"
-        }
-      },
-      "note": "p17表3：5V组合4×47µF，核对直流偏压后的有效容量及环路，不保证舵机堵转不掉压",
-      "kind": "physical",
-      "area": "02  U901 · 6S → 逻辑 +5V",
-      "sheet": "board",
-      "assembly": "候选，未冻结",
-      "domain": "power"
-    },
-    {
-      "ref": "C914",
-      "value": "47µF / 10V",
-      "footprint": "MLCC候选",
-      "pins": {
-        "1": {
-          "name": "1",
-          "net": "+5V"
-        },
-        "2": {
-          "name": "2",
-          "net": "GND"
-        }
-      },
-      "note": "p17表3：5V组合4×47µF，核对直流偏压后的有效容量及环路，不保证舵机堵转不掉压",
-      "kind": "physical",
-      "area": "02  U901 · 6S → 逻辑 +5V",
+      "area": "02  U901 · 电池母线 → 逻辑 +5V",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -435,7 +297,70 @@
       },
       "note": "p12表2：500kHz参考",
       "kind": "physical",
-      "area": "02  U901 · 6S → 逻辑 +5V",
+      "area": "02  U901 · 电池母线 → 逻辑 +5V",
+      "sheet": "board",
+      "assembly": "候选，未冻结",
+      "domain": "power"
+    },
+    {
+      "ref": "C904",
+      "value": "100nF",
+      "footprint": "0603候选",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "BUCK5_BOOT"
+        },
+        "2": {
+          "name": "2",
+          "net": "BUCK5_SW"
+        }
+      },
+      "note": "p2 BOOT直接至SW；禁止接GND",
+      "kind": "physical",
+      "area": "02  U901 · 电池母线 → 逻辑 +5V",
+      "sheet": "board",
+      "assembly": "候选，未冻结",
+      "domain": "power"
+    },
+    {
+      "ref": "L901",
+      "value": "7.8µH",
+      "footprint": "封装待选",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "BUCK5_SW"
+        },
+        "2": {
+          "name": "2",
+          "net": "+5V"
+        }
+      },
+      "note": "p17表3的5V/500kHz参考值；实际电感Isat须覆盖最坏峰值/限流，RMS和温升待算",
+      "kind": "physical",
+      "area": "02  U901 · 电池母线 → 逻辑 +5V",
+      "sheet": "board",
+      "assembly": "候选，未冻结",
+      "domain": "power"
+    },
+    {
+      "ref": "D903",
+      "value": "B560C-13-F",
+      "footprint": "封装及实际焊盘编号待选",
+      "pins": {
+        "A": {
+          "name": "A",
+          "net": "GND"
+        },
+        "K": {
+          "name": "K",
+          "net": "BUCK5_SW"
+        }
+      },
+      "note": "p14参考续流肖特基，A=GND、K=SW；反压/峰值/平均电流及封舱温升需校核",
+      "kind": "physical",
+      "area": "02  U901 · 电池母线 → 逻辑 +5V",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -456,7 +381,7 @@
       },
       "note": "p12表1：5V反馈分压上臂",
       "kind": "physical",
-      "area": "02  U901 · 6S → 逻辑 +5V",
+      "area": "02  U901 · 电池母线 → 逻辑 +5V",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -477,7 +402,7 @@
       },
       "note": "p12表1：下臂；0.8×(1+53.6/10.2)≈5.004V",
       "kind": "physical",
-      "area": "02  U901 · 6S → 逻辑 +5V",
+      "area": "02  U901 · 电池母线 → 逻辑 +5V",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -498,7 +423,7 @@
       },
       "note": "p17表3：补偿电阻，与3.3nF串联到GND",
       "kind": "physical",
-      "area": "02  U901 · 6S → 逻辑 +5V",
+      "area": "02  U901 · 电池母线 → 逻辑 +5V",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -519,7 +444,7 @@
       },
       "note": "p17表3：补偿电容，串联33.2k到GND",
       "kind": "physical",
-      "area": "02  U901 · 6S → 逻辑 +5V",
+      "area": "02  U901 · 电池母线 → 逻辑 +5V",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -540,9 +465,93 @@
       },
       "note": "p17表3可选高频补偿，默认不装，样机环路评估后决定",
       "kind": "physical",
-      "area": "02  U901 · 6S → 逻辑 +5V",
+      "area": "02  U901 · 电池母线 → 逻辑 +5V",
       "sheet": "board",
       "assembly": "默认不装",
+      "domain": "power"
+    },
+    {
+      "ref": "C905",
+      "value": "47µF / 10V",
+      "footprint": "MLCC候选",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V"
+        },
+        "2": {
+          "name": "2",
+          "net": "GND"
+        }
+      },
+      "note": "p17表3：5V组合4×47µF，核对直流偏压后的有效容量及环路，不保证舵机堵转不掉压",
+      "kind": "physical",
+      "area": "02  U901 · 电池母线 → 逻辑 +5V",
+      "sheet": "board",
+      "assembly": "候选，未冻结",
+      "domain": "power"
+    },
+    {
+      "ref": "C906",
+      "value": "47µF / 10V",
+      "footprint": "MLCC候选",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V"
+        },
+        "2": {
+          "name": "2",
+          "net": "GND"
+        }
+      },
+      "note": "p17表3：5V组合4×47µF，核对直流偏压后的有效容量及环路，不保证舵机堵转不掉压",
+      "kind": "physical",
+      "area": "02  U901 · 电池母线 → 逻辑 +5V",
+      "sheet": "board",
+      "assembly": "候选，未冻结",
+      "domain": "power"
+    },
+    {
+      "ref": "C913",
+      "value": "47µF / 10V",
+      "footprint": "MLCC候选",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V"
+        },
+        "2": {
+          "name": "2",
+          "net": "GND"
+        }
+      },
+      "note": "p17表3：5V组合4×47µF，核对直流偏压后的有效容量及环路，不保证舵机堵转不掉压",
+      "kind": "physical",
+      "area": "02  U901 · 电池母线 → 逻辑 +5V",
+      "sheet": "board",
+      "assembly": "候选，未冻结",
+      "domain": "power"
+    },
+    {
+      "ref": "C914",
+      "value": "47µF / 10V",
+      "footprint": "MLCC候选",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V"
+        },
+        "2": {
+          "name": "2",
+          "net": "GND"
+        }
+      },
+      "note": "p17表3：5V组合4×47µF，核对直流偏压后的有效容量及环路，不保证舵机堵转不掉压",
+      "kind": "physical",
+      "area": "02  U901 · 电池母线 → 逻辑 +5V",
+      "sheet": "board",
+      "assembly": "候选，未冻结",
       "domain": "power"
     },
     {
@@ -589,7 +598,7 @@
       },
       "note": "芯洲科技SCT2650 Rev1.3 p2–3；EP9必须焊接地平面。用户写STC2650，确切料号待确认。EN接VIN，6S低电保护由BMS/系统策略另行闭合。",
       "kind": "physical",
-      "area": "03  U903 · 6S → 舵机专用 5V",
+      "area": "03  U903 · 电池母线 → 舵机 +5V_SERVO",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -610,7 +619,7 @@
       },
       "note": "工程候选值；按p14有效电容量、输入纹波/偏压/浪涌校核，不是已验证负载设计",
       "kind": "physical",
-      "area": "03  U903 · 6S → 舵机专用 5V",
+      "area": "03  U903 · 电池母线 → 舵机 +5V_SERVO",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -631,154 +640,7 @@
       },
       "note": "p14高频旁路，紧靠VIN和GND；回路面积需最小",
       "kind": "physical",
-      "area": "03  U903 · 6S → 舵机专用 5V",
-      "sheet": "board",
-      "assembly": "候选，未冻结",
-      "domain": "power"
-    },
-    {
-      "ref": "C923",
-      "value": "100nF",
-      "footprint": "0603候选",
-      "pins": {
-        "1": {
-          "name": "1",
-          "net": "SERVO5_BOOT"
-        },
-        "2": {
-          "name": "2",
-          "net": "SERVO5_SW"
-        }
-      },
-      "note": "p2 BOOT直接至SW；禁止接GND",
-      "kind": "physical",
-      "area": "03  U903 · 6S → 舵机专用 5V",
-      "sheet": "board",
-      "assembly": "候选，未冻结",
-      "domain": "power"
-    },
-    {
-      "ref": "L903",
-      "value": "7.8µH",
-      "footprint": "封装待选",
-      "pins": {
-        "1": {
-          "name": "1",
-          "net": "SERVO5_SW"
-        },
-        "2": {
-          "name": "2",
-          "net": "+5V_SERVO"
-        }
-      },
-      "note": "p17表3的5V/500kHz参考值；实际电感Isat须覆盖最坏峰值/限流，RMS和温升待算",
-      "kind": "physical",
-      "area": "03  U903 · 6S → 舵机专用 5V",
-      "sheet": "board",
-      "assembly": "候选，未冻结",
-      "domain": "power"
-    },
-    {
-      "ref": "D904",
-      "value": "B560C-13-F",
-      "footprint": "封装及实际焊盘编号待选",
-      "pins": {
-        "A": {
-          "name": "A",
-          "net": "GND"
-        },
-        "K": {
-          "name": "K",
-          "net": "SERVO5_SW"
-        }
-      },
-      "note": "p14参考续流肖特基，A=GND、K=SW；反压/峰值/平均电流及封舱温升需校核",
-      "kind": "physical",
-      "area": "03  U903 · 6S → 舵机专用 5V",
-      "sheet": "board",
-      "assembly": "候选，未冻结",
-      "domain": "power"
-    },
-    {
-      "ref": "C924",
-      "value": "47µF / 10V",
-      "footprint": "MLCC候选",
-      "pins": {
-        "1": {
-          "name": "1",
-          "net": "+5V_SERVO"
-        },
-        "2": {
-          "name": "2",
-          "net": "GND"
-        }
-      },
-      "note": "p17表3：5V组合4×47µF，核对直流偏压后的有效容量及环路，不保证舵机堵转不掉压",
-      "kind": "physical",
-      "area": "03  U903 · 6S → 舵机专用 5V",
-      "sheet": "board",
-      "assembly": "候选，未冻结",
-      "domain": "power"
-    },
-    {
-      "ref": "C925",
-      "value": "47µF / 10V",
-      "footprint": "MLCC候选",
-      "pins": {
-        "1": {
-          "name": "1",
-          "net": "+5V_SERVO"
-        },
-        "2": {
-          "name": "2",
-          "net": "GND"
-        }
-      },
-      "note": "p17表3：5V组合4×47µF，核对直流偏压后的有效容量及环路，不保证舵机堵转不掉压",
-      "kind": "physical",
-      "area": "03  U903 · 6S → 舵机专用 5V",
-      "sheet": "board",
-      "assembly": "候选，未冻结",
-      "domain": "power"
-    },
-    {
-      "ref": "C926",
-      "value": "47µF / 10V",
-      "footprint": "MLCC候选",
-      "pins": {
-        "1": {
-          "name": "1",
-          "net": "+5V_SERVO"
-        },
-        "2": {
-          "name": "2",
-          "net": "GND"
-        }
-      },
-      "note": "p17表3：5V组合4×47µF，核对直流偏压后的有效容量及环路，不保证舵机堵转不掉压",
-      "kind": "physical",
-      "area": "03  U903 · 6S → 舵机专用 5V",
-      "sheet": "board",
-      "assembly": "候选，未冻结",
-      "domain": "power"
-    },
-    {
-      "ref": "C927",
-      "value": "47µF / 10V",
-      "footprint": "MLCC候选",
-      "pins": {
-        "1": {
-          "name": "1",
-          "net": "+5V_SERVO"
-        },
-        "2": {
-          "name": "2",
-          "net": "GND"
-        }
-      },
-      "note": "p17表3：5V组合4×47µF，核对直流偏压后的有效容量及环路，不保证舵机堵转不掉压",
-      "kind": "physical",
-      "area": "03  U903 · 6S → 舵机专用 5V",
+      "area": "03  U903 · 电池母线 → 舵机 +5V_SERVO",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -799,7 +661,70 @@
       },
       "note": "p12表2：500kHz参考",
       "kind": "physical",
-      "area": "03  U903 · 6S → 舵机专用 5V",
+      "area": "03  U903 · 电池母线 → 舵机 +5V_SERVO",
+      "sheet": "board",
+      "assembly": "候选，未冻结",
+      "domain": "power"
+    },
+    {
+      "ref": "C923",
+      "value": "100nF",
+      "footprint": "0603候选",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "SERVO5_BOOT"
+        },
+        "2": {
+          "name": "2",
+          "net": "SERVO5_SW"
+        }
+      },
+      "note": "p2 BOOT直接至SW；禁止接GND",
+      "kind": "physical",
+      "area": "03  U903 · 电池母线 → 舵机 +5V_SERVO",
+      "sheet": "board",
+      "assembly": "候选，未冻结",
+      "domain": "power"
+    },
+    {
+      "ref": "L903",
+      "value": "7.8µH",
+      "footprint": "封装待选",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "SERVO5_SW"
+        },
+        "2": {
+          "name": "2",
+          "net": "+5V_SERVO"
+        }
+      },
+      "note": "p17表3的5V/500kHz参考值；实际电感Isat须覆盖最坏峰值/限流，RMS和温升待算",
+      "kind": "physical",
+      "area": "03  U903 · 电池母线 → 舵机 +5V_SERVO",
+      "sheet": "board",
+      "assembly": "候选，未冻结",
+      "domain": "power"
+    },
+    {
+      "ref": "D904",
+      "value": "B560C-13-F",
+      "footprint": "封装及实际焊盘编号待选",
+      "pins": {
+        "A": {
+          "name": "A",
+          "net": "GND"
+        },
+        "K": {
+          "name": "K",
+          "net": "SERVO5_SW"
+        }
+      },
+      "note": "p14参考续流肖特基，A=GND、K=SW；反压/峰值/平均电流及封舱温升需校核",
+      "kind": "physical",
+      "area": "03  U903 · 电池母线 → 舵机 +5V_SERVO",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -820,7 +745,7 @@
       },
       "note": "p12表1：5V反馈分压上臂",
       "kind": "physical",
-      "area": "03  U903 · 6S → 舵机专用 5V",
+      "area": "03  U903 · 电池母线 → 舵机 +5V_SERVO",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -841,7 +766,7 @@
       },
       "note": "p12表1：下臂；0.8×(1+53.6/10.2)≈5.004V",
       "kind": "physical",
-      "area": "03  U903 · 6S → 舵机专用 5V",
+      "area": "03  U903 · 电池母线 → 舵机 +5V_SERVO",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -862,7 +787,7 @@
       },
       "note": "p17表3：补偿电阻，与3.3nF串联到GND",
       "kind": "physical",
-      "area": "03  U903 · 6S → 舵机专用 5V",
+      "area": "03  U903 · 电池母线 → 舵机 +5V_SERVO",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -883,7 +808,7 @@
       },
       "note": "p17表3：补偿电容，串联33.2k到GND",
       "kind": "physical",
-      "area": "03  U903 · 6S → 舵机专用 5V",
+      "area": "03  U903 · 电池母线 → 舵机 +5V_SERVO",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -904,9 +829,93 @@
       },
       "note": "p17表3可选高频补偿，默认不装，样机环路评估后决定",
       "kind": "physical",
-      "area": "03  U903 · 6S → 舵机专用 5V",
+      "area": "03  U903 · 电池母线 → 舵机 +5V_SERVO",
       "sheet": "board",
       "assembly": "默认不装",
+      "domain": "power"
+    },
+    {
+      "ref": "C924",
+      "value": "47µF / 10V",
+      "footprint": "MLCC候选",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V_SERVO"
+        },
+        "2": {
+          "name": "2",
+          "net": "GND"
+        }
+      },
+      "note": "p17表3：5V组合4×47µF，核对直流偏压后的有效容量及环路，不保证舵机堵转不掉压",
+      "kind": "physical",
+      "area": "03  U903 · 电池母线 → 舵机 +5V_SERVO",
+      "sheet": "board",
+      "assembly": "候选，未冻结",
+      "domain": "power"
+    },
+    {
+      "ref": "C925",
+      "value": "47µF / 10V",
+      "footprint": "MLCC候选",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V_SERVO"
+        },
+        "2": {
+          "name": "2",
+          "net": "GND"
+        }
+      },
+      "note": "p17表3：5V组合4×47µF，核对直流偏压后的有效容量及环路，不保证舵机堵转不掉压",
+      "kind": "physical",
+      "area": "03  U903 · 电池母线 → 舵机 +5V_SERVO",
+      "sheet": "board",
+      "assembly": "候选，未冻结",
+      "domain": "power"
+    },
+    {
+      "ref": "C926",
+      "value": "47µF / 10V",
+      "footprint": "MLCC候选",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V_SERVO"
+        },
+        "2": {
+          "name": "2",
+          "net": "GND"
+        }
+      },
+      "note": "p17表3：5V组合4×47µF，核对直流偏压后的有效容量及环路，不保证舵机堵转不掉压",
+      "kind": "physical",
+      "area": "03  U903 · 电池母线 → 舵机 +5V_SERVO",
+      "sheet": "board",
+      "assembly": "候选，未冻结",
+      "domain": "power"
+    },
+    {
+      "ref": "C927",
+      "value": "47µF / 10V",
+      "footprint": "MLCC候选",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+5V_SERVO"
+        },
+        "2": {
+          "name": "2",
+          "net": "GND"
+        }
+      },
+      "note": "p17表3：5V组合4×47µF，核对直流偏压后的有效容量及环路，不保证舵机堵转不掉压",
+      "kind": "physical",
+      "area": "03  U903 · 电池母线 → 舵机 +5V_SERVO",
+      "sheet": "board",
+      "assembly": "候选，未冻结",
       "domain": "power"
     },
     {
@@ -985,7 +994,7 @@
       },
       "note": "TI SLVSAG7F p3图6-1/表6-1；EP未在该表赋予数字脚号，保留EP并在选库时核对；p14固定版FB建议接AGND",
       "kind": "physical",
-      "area": "04  U902 · +5V → +3V3 固定输出",
+      "area": "04  U902 · 逻辑 +5V → 主控 +3V3",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -1006,7 +1015,7 @@
       },
       "note": "TI p13表9-1、p15：PVIN-PGND就近输入电容",
       "kind": "physical",
-      "area": "04  U902 · +5V → +3V3 固定输出",
+      "area": "04  U902 · 逻辑 +5V → 主控 +3V3",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -1027,7 +1036,7 @@
       },
       "note": "TI p13表9-1/p16：AVIN-AGND就近去耦，AVIN和PVIN接同一输入",
       "kind": "physical",
-      "area": "04  U902 · +5V → +3V3 固定输出",
+      "area": "04  U902 · 逻辑 +5V → 主控 +3V3",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -1048,28 +1057,7 @@
       },
       "note": "TI p13图9-1软启动电容参考值；SS/TR至AGND；启动带载需验证",
       "kind": "physical",
-      "area": "04  U902 · +5V → +3V3 固定输出",
-      "sheet": "board",
-      "assembly": "候选，未冻结",
-      "domain": "power"
-    },
-    {
-      "ref": "R907",
-      "value": "100k / 1%",
-      "footprint": "0603候选",
-      "pins": {
-        "1": {
-          "name": "1",
-          "net": "+3V3"
-        },
-        "2": {
-          "name": "2",
-          "net": "PGOOD_3V3"
-        }
-      },
-      "note": "TI p13图9-1 PG上拉参考值；PG为开漏，不是复位监督器",
-      "kind": "physical",
-      "area": "04  U902 · +5V → +3V3 固定输出",
+      "area": "04  U902 · 逻辑 +5V → 主控 +3V3",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -1090,7 +1078,7 @@
       },
       "note": "TI p13表9-1：XFL4020-222MEB参考；p14表9-2推荐2.2µH/22µF；饱和/温升及动态电流需复核",
       "kind": "physical",
-      "area": "04  U902 · +5V → +3V3 固定输出",
+      "area": "04  U902 · 逻辑 +5V → 主控 +3V3",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -1111,7 +1099,28 @@
       },
       "note": "TI p13表9-1/p14表9-2；必须核对3.3V偏压下有效电容量，增加分布式电容后重新核验环路",
       "kind": "physical",
-      "area": "04  U902 · +5V → +3V3 固定输出",
+      "area": "04  U902 · 逻辑 +5V → 主控 +3V3",
+      "sheet": "board",
+      "assembly": "候选，未冻结",
+      "domain": "power"
+    },
+    {
+      "ref": "R907",
+      "value": "100k / 1%",
+      "footprint": "0603候选",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+3V3"
+        },
+        "2": {
+          "name": "2",
+          "net": "PGOOD_3V3"
+        }
+      },
+      "note": "TI p13图9-1 PG上拉参考值；PG为开漏，不是复位监督器",
+      "kind": "physical",
+      "area": "04  U902 · 逻辑 +5V → 主控 +3V3",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -1128,7 +1137,7 @@
       },
       "note": "测试夹具入口；不加专用串口",
       "kind": "physical",
-      "area": "04  U902 · +5V → +3V3 固定输出",
+      "area": "04  U902 · 逻辑 +5V → 主控 +3V3",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -1145,7 +1154,7 @@
       },
       "note": "测试夹具入口；不加专用串口",
       "kind": "physical",
-      "area": "04  U902 · +5V → +3V3 固定输出",
+      "area": "04  U902 · 逻辑 +5V → 主控 +3V3",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
@@ -1206,7 +1215,7 @@
           "net": "GND"
         }
       },
-      "note": "F4 R304仍DNP，钳位/断电反灌完成前不可连接",
+      "note": "保护后母线到电池采样区；R304候选装配，过压/断电瞬态仍待台架验证",
       "kind": "page-port",
       "area": "05  供电连接与测量",
       "sheet": "board",
@@ -1263,6 +1272,327 @@
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "power"
+    },
+    {
+      "ref": "R301",
+      "value": "49.9k / 0.1%",
+      "footprint": "0603候选",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "BAT_SENSE_PROTECTED"
+        },
+        "2": {
+          "name": "2",
+          "net": "BAT_DIV_HI"
+        }
+      },
+      "note": "与R307串联组成99.8k上臂；0603，单颗工作电压≥50V、功率≥0.1W，具体料号待冻结",
+      "kind": "physical",
+      "area": "07  3S / 4S / 6S 电压采样 · 粗略 SOC",
+      "sheet": "board",
+      "assembly": "候选，未冻结",
+      "domain": "battery"
+    },
+    {
+      "ref": "R307",
+      "value": "49.9k / 0.1%",
+      "footprint": "0603候选",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "BAT_DIV_HI"
+        },
+        "2": {
+          "name": "2",
+          "net": "BAT_DIV"
+        }
+      },
+      "note": "与R301串联；分担电压及功耗；禁止省略后仍沿用换算系数",
+      "kind": "physical",
+      "area": "07  3S / 4S / 6S 电压采样 · 粗略 SOC",
+      "sheet": "board",
+      "assembly": "候选，未冻结",
+      "domain": "battery"
+    },
+    {
+      "ref": "R302",
+      "value": "10k / 0.1%",
+      "footprint": "0603候选",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "BAT_DIV"
+        },
+        "2": {
+          "name": "2",
+          "net": "GND"
+        }
+      },
+      "note": "候选阻值",
+      "kind": "physical",
+      "area": "07  3S / 4S / 6S 电压采样 · 粗略 SOC",
+      "sheet": "board",
+      "assembly": "候选，未冻结",
+      "domain": "battery"
+    },
+    {
+      "ref": "C301",
+      "value": "100nF / 16V",
+      "footprint": "0603候选",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "BAT_DIV"
+        },
+        "2": {
+          "name": "2",
+          "net": "GND"
+        }
+      },
+      "note": "分压低通；靠近U301 S1及模拟参考地，不能放在高di/dt回流路径",
+      "kind": "physical",
+      "area": "07  3S / 4S / 6S 电压采样 · 粗略 SOC",
+      "sheet": "board",
+      "assembly": "候选，未冻结",
+      "domain": "battery"
+    },
+    {
+      "ref": "U303",
+      "value": "TLV809EA29DBZR",
+      "footprint": "DBZ / SOT-23-3，标准脚序",
+      "pins": {
+        "1": {
+          "name": "GND",
+          "net": "GND"
+        },
+        "2": {
+          "name": "/RESET",
+          "net": "BAT_SENSE_EN"
+        },
+        "3": {
+          "name": "VDD",
+          "net": "+3V3"
+        }
+      },
+      "note": "TI SLVSES2J p4–5/p8–9；2.93V监控、推挽低有效复位，A延时130–270ms。只控制采样开关，不接MCU NRST；不是R/V换脚版本。",
+      "kind": "physical",
+      "area": "07  3S / 4S / 6S 电压采样 · 粗略 SOC",
+      "sheet": "board",
+      "assembly": "候选，未冻结",
+      "domain": "battery"
+    },
+    {
+      "ref": "C304",
+      "value": "100nF / 16V",
+      "footprint": "0603候选",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+3V3"
+        },
+        "2": {
+          "name": "2",
+          "net": "GND"
+        }
+      },
+      "note": "靠近U303 pin3/1",
+      "kind": "physical",
+      "area": "07  3S / 4S / 6S 电压采样 · 粗略 SOC",
+      "sheet": "board",
+      "assembly": "候选，未冻结",
+      "domain": "battery"
+    },
+    {
+      "ref": "C303",
+      "value": "100nF / 16V",
+      "footprint": "0603候选",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "+3V3"
+        },
+        "2": {
+          "name": "2",
+          "net": "GND"
+        }
+      },
+      "note": "靠近U301 pin14/7",
+      "kind": "physical",
+      "area": "07  3S / 4S / 6S 电压采样 · 粗略 SOC",
+      "sheet": "board",
+      "assembly": "候选，未冻结",
+      "domain": "battery"
+    },
+    {
+      "ref": "R306",
+      "value": "100k",
+      "footprint": "0603候选",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "BAT_SENSE_EN"
+        },
+        "2": {
+          "name": "2",
+          "net": "GND"
+        }
+      },
+      "note": "使能默认下拉；U303为推挽，不增加PGOOD上拉负载",
+      "kind": "physical",
+      "area": "07  3S / 4S / 6S 电压采样 · 粗略 SOC",
+      "sheet": "board",
+      "assembly": "候选，未冻结",
+      "domain": "battery"
+    },
+    {
+      "ref": "U301",
+      "value": "TMUX1511PWR",
+      "footprint": "PW / TSSOP-14",
+      "pins": {
+        "1": {
+          "name": "SEL1",
+          "net": "BAT_SENSE_EN"
+        },
+        "2": {
+          "name": "S1",
+          "net": "BAT_DIV"
+        },
+        "3": {
+          "name": "D1",
+          "net": "BAT_SW"
+        },
+        "4": {
+          "name": "SEL2",
+          "net": "GND"
+        },
+        "5": {
+          "name": "S2",
+          "net": "GND"
+        },
+        "6": {
+          "name": "D2",
+          "net": "GND"
+        },
+        "7": {
+          "name": "GND",
+          "net": "GND"
+        },
+        "8": {
+          "name": "D3",
+          "net": "GND"
+        },
+        "9": {
+          "name": "S3",
+          "net": "GND"
+        },
+        "10": {
+          "name": "SEL3",
+          "net": "GND"
+        },
+        "11": {
+          "name": "D4",
+          "net": "GND"
+        },
+        "12": {
+          "name": "S4",
+          "net": "GND"
+        },
+        "13": {
+          "name": "SEL4",
+          "net": "GND"
+        },
+        "14": {
+          "name": "VDD",
+          "net": "+3V3"
+        }
+      },
+      "note": "TI SCDS390B p3–7/p20–22；SEL1高导通，供电不足时断开。仅通道1用于电池采样，其余信号与SEL接地。断电信号≤3.6V；不属于电气隔离器。",
+      "kind": "physical",
+      "area": "07  3S / 4S / 6S 电压采样 · 粗略 SOC",
+      "sheet": "board",
+      "assembly": "候选，未冻结",
+      "domain": "battery"
+    },
+    {
+      "ref": "R303",
+      "value": "1k / 0.1%",
+      "footprint": "0603候选",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "BAT_SW"
+        },
+        "2": {
+          "name": "2",
+          "net": "BAT_ADC_LINK"
+        }
+      },
+      "note": "ADC串联限流；不能单独承担输入过压/断电保护",
+      "kind": "physical",
+      "area": "07  3S / 4S / 6S 电压采样 · 粗略 SOC",
+      "sheet": "board",
+      "assembly": "候选，未冻结",
+      "domain": "battery"
+    },
+    {
+      "ref": "R304",
+      "value": "0Ω",
+      "footprint": "0603候选",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "BAT_ADC_LINK"
+        },
+        "2": {
+          "name": "2",
+          "net": "BAT_ADC"
+        }
+      },
+      "note": "Rev F候选装配；调试可拆断。启用前完成电压/时序/浪涌台架检查，不可绕过U301。",
+      "kind": "physical",
+      "area": "07  3S / 4S / 6S 电压采样 · 粗略 SOC",
+      "sheet": "board",
+      "assembly": "候选，未冻结",
+      "domain": "battery"
+    },
+    {
+      "ref": "R305",
+      "value": "100k / 0.1%",
+      "footprint": "0603候选",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "BAT_ADC"
+        },
+        "2": {
+          "name": "2",
+          "net": "GND"
+        }
+      },
+      "note": "断电输出泄放；必须计入分压比。断电漏电/残压、输入钳位和瞬态须实测",
+      "kind": "physical",
+      "area": "07  3S / 4S / 6S 电压采样 · 粗略 SOC",
+      "sheet": "board",
+      "assembly": "候选，未冻结",
+      "domain": "battery"
+    },
+    {
+      "ref": "TP301",
+      "value": "BAT_ADC测试点",
+      "footprint": "测试点候选",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "BAT_ADC"
+        }
+      },
+      "note": "测试夹具入口；不加专用串口",
+      "kind": "physical",
+      "area": "07  3S / 4S / 6S 电压采样 · 粗略 SOC",
+      "sheet": "board",
+      "assembly": "候选，未冻结",
+      "domain": "battery"
     },
     {
       "ref": "PWR1",
@@ -1773,108 +2103,24 @@
       "domain": "f4"
     },
     {
-      "ref": "R301",
-      "value": "100k / 1%",
-      "footprint": "0603候选",
+      "ref": "P_BAT_ADC",
+      "value": "电池采样跨区口",
+      "footprint": "跨页端口，无物理封装",
       "pins": {
         "1": {
-          "name": "1",
-          "net": "BAT_SENSE_PROTECTED"
-        },
-        "2": {
-          "name": "2",
-          "net": "BAT_DIV"
-        }
-      },
-      "note": "外部电池保护后取样；电源断电反灌与浪涌约束尚未闭合",
-      "kind": "physical",
-      "area": "03  电池采样 / GPS / 声纳业务口",
-      "sheet": "board",
-      "assembly": "候选，未冻结",
-      "domain": "f4"
-    },
-    {
-      "ref": "R302",
-      "value": "10k / 1%",
-      "footprint": "0603候选",
-      "pins": {
-        "1": {
-          "name": "1",
-          "net": "BAT_DIV"
-        },
-        "2": {
-          "name": "2",
-          "net": "GND"
-        }
-      },
-      "note": "候选阻值",
-      "kind": "physical",
-      "area": "03  电池采样 / GPS / 声纳业务口",
-      "sheet": "board",
-      "assembly": "候选，未冻结",
-      "domain": "f4"
-    },
-    {
-      "ref": "C301",
-      "value": "100nF",
-      "footprint": "0603候选",
-      "pins": {
-        "1": {
-          "name": "1",
-          "net": "BAT_DIV"
-        },
-        "2": {
-          "name": "2",
-          "net": "GND"
-        }
-      },
-      "note": "候选阻容；封装与耐压待BOM冻结",
-      "kind": "physical",
-      "area": "03  电池采样 / GPS / 声纳业务口",
-      "sheet": "board",
-      "assembly": "候选，未冻结",
-      "domain": "f4"
-    },
-    {
-      "ref": "R303",
-      "value": "1k",
-      "footprint": "0603候选",
-      "pins": {
-        "1": {
-          "name": "1",
-          "net": "BAT_DIV"
-        },
-        "2": {
-          "name": "2",
-          "net": "BAT_ADC_LINK"
-        }
-      },
-      "note": "ADC串联限流；不单独构成过压或断电保护",
-      "kind": "physical",
-      "area": "03  电池采样 / GPS / 声纳业务口",
-      "sheet": "board",
-      "assembly": "候选，未冻结",
-      "domain": "f4"
-    },
-    {
-      "ref": "R304",
-      "value": "0Ω / DNP",
-      "footprint": "0603候选",
-      "pins": {
-        "1": {
-          "name": "1",
-          "net": "BAT_ADC_LINK"
-        },
-        "2": {
-          "name": "2",
+          "name": "ADC",
           "net": "BAT_ADC"
+        },
+        "2": {
+          "name": "GND",
+          "net": "GND"
         }
       },
-      "note": "评审版默认不装；补完输入钳位与断电防反灌后再闭合",
-      "kind": "physical",
-      "area": "03  电池采样 / GPS / 声纳业务口",
+      "note": "PC0 / pin15 / ADC1_IN10；来自电池采样区R304输出，MCU与电池共地；仅粗略SOC，不测电流或容量",
+      "kind": "page-port",
+      "area": "03  电池 ADC / GPS / 声纳业务口",
       "sheet": "board",
-      "assembly": "默认不装",
+      "assembly": "逻辑端口",
       "domain": "f4"
     },
     {
@@ -1897,7 +2143,7 @@
       },
       "note": "连接器针序为本项目定义，未承诺与外部成品模块兼容",
       "kind": "physical",
-      "area": "03  电池采样 / GPS / 声纳业务口",
+      "area": "03  电池 ADC / GPS / 声纳业务口",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "f4"
@@ -1922,7 +2168,7 @@
       },
       "note": "仅3V3 UART逻辑接口，供电未接；若模块为RS232/RS485需另增收发器",
       "kind": "physical",
-      "area": "03  电池采样 / GPS / 声纳业务口",
+      "area": "03  电池 ADC / GPS / 声纳业务口",
       "sheet": "board",
       "assembly": "候选，未冻结",
       "domain": "f4"
@@ -5769,11 +6015,11 @@
     }
   ],
   "nets": {
-    "BAT6S_IN": [
+    "BAT_IN": [
       {
         "ref": "J901",
         "pin": "1",
-        "name": "BAT6S_IN",
+        "name": "BAT_IN",
         "kind": "physical",
         "sheet": "board",
         "domain": "power"
@@ -5845,9 +6091,41 @@
         "domain": "power"
       },
       {
+        "ref": "R903",
+        "pin": "2",
+        "name": "2",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "power"
+      },
+      {
         "ref": "D903",
         "pin": "A",
         "name": "A",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "power"
+      },
+      {
+        "ref": "R906",
+        "pin": "2",
+        "name": "2",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "power"
+      },
+      {
+        "ref": "C907",
+        "pin": "2",
+        "name": "2",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "power"
+      },
+      {
+        "ref": "C908",
+        "pin": "2",
+        "name": "2",
         "kind": "physical",
         "sheet": "board",
         "domain": "power"
@@ -5878,38 +6156,6 @@
       },
       {
         "ref": "C914",
-        "pin": "2",
-        "name": "2",
-        "kind": "physical",
-        "sheet": "board",
-        "domain": "power"
-      },
-      {
-        "ref": "R903",
-        "pin": "2",
-        "name": "2",
-        "kind": "physical",
-        "sheet": "board",
-        "domain": "power"
-      },
-      {
-        "ref": "R906",
-        "pin": "2",
-        "name": "2",
-        "kind": "physical",
-        "sheet": "board",
-        "domain": "power"
-      },
-      {
-        "ref": "C907",
-        "pin": "2",
-        "name": "2",
-        "kind": "physical",
-        "sheet": "board",
-        "domain": "power"
-      },
-      {
-        "ref": "C908",
         "pin": "2",
         "name": "2",
         "kind": "physical",
@@ -5949,9 +6195,41 @@
         "domain": "power"
       },
       {
+        "ref": "R921",
+        "pin": "2",
+        "name": "2",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "power"
+      },
+      {
         "ref": "D904",
         "pin": "A",
         "name": "A",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "power"
+      },
+      {
+        "ref": "R923",
+        "pin": "2",
+        "name": "2",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "power"
+      },
+      {
+        "ref": "C928",
+        "pin": "2",
+        "name": "2",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "power"
+      },
+      {
+        "ref": "C929",
+        "pin": "2",
+        "name": "2",
         "kind": "physical",
         "sheet": "board",
         "domain": "power"
@@ -5982,38 +6260,6 @@
       },
       {
         "ref": "C927",
-        "pin": "2",
-        "name": "2",
-        "kind": "physical",
-        "sheet": "board",
-        "domain": "power"
-      },
-      {
-        "ref": "R921",
-        "pin": "2",
-        "name": "2",
-        "kind": "physical",
-        "sheet": "board",
-        "domain": "power"
-      },
-      {
-        "ref": "R923",
-        "pin": "2",
-        "name": "2",
-        "kind": "physical",
-        "sheet": "board",
-        "domain": "power"
-      },
-      {
-        "ref": "C928",
-        "pin": "2",
-        "name": "2",
-        "kind": "physical",
-        "sheet": "board",
-        "domain": "power"
-      },
-      {
-        "ref": "C929",
         "pin": "2",
         "name": "2",
         "kind": "physical",
@@ -6131,6 +6377,142 @@
         "kind": "physical",
         "sheet": "board",
         "domain": "power"
+      },
+      {
+        "ref": "R302",
+        "pin": "2",
+        "name": "2",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "C301",
+        "pin": "2",
+        "name": "2",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "U303",
+        "pin": "1",
+        "name": "GND",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "C304",
+        "pin": "2",
+        "name": "2",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "C303",
+        "pin": "2",
+        "name": "2",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "R306",
+        "pin": "2",
+        "name": "2",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "U301",
+        "pin": "4",
+        "name": "SEL2",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "U301",
+        "pin": "5",
+        "name": "S2",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "U301",
+        "pin": "6",
+        "name": "D2",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "U301",
+        "pin": "7",
+        "name": "GND",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "U301",
+        "pin": "8",
+        "name": "D3",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "U301",
+        "pin": "9",
+        "name": "S3",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "U301",
+        "pin": "10",
+        "name": "SEL3",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "U301",
+        "pin": "11",
+        "name": "D4",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "U301",
+        "pin": "12",
+        "name": "S4",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "U301",
+        "pin": "13",
+        "name": "SEL4",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "R305",
+        "pin": "2",
+        "name": "2",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
       },
       {
         "ref": "PWR1",
@@ -6285,18 +6667,10 @@
         "domain": "f4"
       },
       {
-        "ref": "R302",
+        "ref": "P_BAT_ADC",
         "pin": "2",
-        "name": "2",
-        "kind": "physical",
-        "sheet": "board",
-        "domain": "f4"
-      },
-      {
-        "ref": "C301",
-        "pin": "2",
-        "name": "2",
-        "kind": "physical",
+        "name": "GND",
+        "kind": "page-port",
         "sheet": "board",
         "domain": "f4"
       },
@@ -7174,7 +7548,7 @@
         "name": "1",
         "kind": "physical",
         "sheet": "board",
-        "domain": "f4"
+        "domain": "battery"
       }
     ],
     "BUCK5_BOOT": [
@@ -7309,6 +7683,14 @@
         "domain": "power"
       },
       {
+        "ref": "R905",
+        "pin": "1",
+        "name": "1",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "power"
+      },
+      {
         "ref": "C905",
         "pin": "1",
         "name": "1",
@@ -7334,14 +7716,6 @@
       },
       {
         "ref": "C914",
-        "pin": "1",
-        "name": "1",
-        "kind": "physical",
-        "sheet": "board",
-        "domain": "power"
-      },
-      {
-        "ref": "R905",
         "pin": "1",
         "name": "1",
         "kind": "physical",
@@ -7595,6 +7969,14 @@
         "domain": "power"
       },
       {
+        "ref": "R922",
+        "pin": "1",
+        "name": "1",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "power"
+      },
+      {
         "ref": "C924",
         "pin": "1",
         "name": "1",
@@ -7620,14 +8002,6 @@
       },
       {
         "ref": "C927",
-        "pin": "1",
-        "name": "1",
-        "kind": "physical",
-        "sheet": "board",
-        "domain": "power"
-      },
-      {
-        "ref": "R922",
         "pin": "1",
         "name": "1",
         "kind": "physical",
@@ -7771,14 +8145,6 @@
         "domain": "power"
       },
       {
-        "ref": "R907",
-        "pin": "1",
-        "name": "1",
-        "kind": "physical",
-        "sheet": "board",
-        "domain": "power"
-      },
-      {
         "ref": "L902",
         "pin": "2",
         "name": "2",
@@ -7788,6 +8154,14 @@
       },
       {
         "ref": "C911",
+        "pin": "1",
+        "name": "1",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "power"
+      },
+      {
+        "ref": "R907",
         "pin": "1",
         "name": "1",
         "kind": "physical",
@@ -7809,6 +8183,38 @@
         "kind": "page-port",
         "sheet": "board",
         "domain": "power"
+      },
+      {
+        "ref": "U303",
+        "pin": "3",
+        "name": "VDD",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "C304",
+        "pin": "1",
+        "name": "1",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "C303",
+        "pin": "1",
+        "name": "1",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "U301",
+        "pin": "14",
+        "name": "VDD",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
       },
       {
         "ref": "PWR1",
@@ -8285,6 +8691,162 @@
         "domain": "power"
       }
     ],
+    "BAT_DIV_HI": [
+      {
+        "ref": "R301",
+        "pin": "2",
+        "name": "2",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "R307",
+        "pin": "1",
+        "name": "1",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      }
+    ],
+    "BAT_DIV": [
+      {
+        "ref": "R307",
+        "pin": "2",
+        "name": "2",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "R302",
+        "pin": "1",
+        "name": "1",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "C301",
+        "pin": "1",
+        "name": "1",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "U301",
+        "pin": "2",
+        "name": "S1",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      }
+    ],
+    "BAT_SENSE_EN": [
+      {
+        "ref": "U303",
+        "pin": "2",
+        "name": "/RESET",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "R306",
+        "pin": "1",
+        "name": "1",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "U301",
+        "pin": "1",
+        "name": "SEL1",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      }
+    ],
+    "BAT_SW": [
+      {
+        "ref": "U301",
+        "pin": "3",
+        "name": "D1",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "R303",
+        "pin": "1",
+        "name": "1",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      }
+    ],
+    "BAT_ADC_LINK": [
+      {
+        "ref": "R303",
+        "pin": "2",
+        "name": "2",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "R304",
+        "pin": "1",
+        "name": "1",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      }
+    ],
+    "BAT_ADC": [
+      {
+        "ref": "R304",
+        "pin": "2",
+        "name": "2",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "R305",
+        "pin": "1",
+        "name": "1",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "TP301",
+        "pin": "1",
+        "name": "1",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "battery"
+      },
+      {
+        "ref": "P_BAT_ADC",
+        "pin": "1",
+        "name": "ADC",
+        "kind": "page-port",
+        "sheet": "board",
+        "domain": "f4"
+      },
+      {
+        "ref": "U1",
+        "pin": "15",
+        "name": "PC0",
+        "kind": "physical",
+        "sheet": "board",
+        "domain": "f4"
+      }
+    ],
     "VCAP1": [
       {
         "ref": "C108",
@@ -8532,76 +9094,6 @@
         "ref": "U1",
         "pin": "13",
         "name": "PH1-OSC_OUT",
-        "kind": "physical",
-        "sheet": "board",
-        "domain": "f4"
-      }
-    ],
-    "BAT_DIV": [
-      {
-        "ref": "R301",
-        "pin": "2",
-        "name": "2",
-        "kind": "physical",
-        "sheet": "board",
-        "domain": "f4"
-      },
-      {
-        "ref": "R302",
-        "pin": "1",
-        "name": "1",
-        "kind": "physical",
-        "sheet": "board",
-        "domain": "f4"
-      },
-      {
-        "ref": "C301",
-        "pin": "1",
-        "name": "1",
-        "kind": "physical",
-        "sheet": "board",
-        "domain": "f4"
-      },
-      {
-        "ref": "R303",
-        "pin": "1",
-        "name": "1",
-        "kind": "physical",
-        "sheet": "board",
-        "domain": "f4"
-      }
-    ],
-    "BAT_ADC_LINK": [
-      {
-        "ref": "R303",
-        "pin": "2",
-        "name": "2",
-        "kind": "physical",
-        "sheet": "board",
-        "domain": "f4"
-      },
-      {
-        "ref": "R304",
-        "pin": "1",
-        "name": "1",
-        "kind": "physical",
-        "sheet": "board",
-        "domain": "f4"
-      }
-    ],
-    "BAT_ADC": [
-      {
-        "ref": "R304",
-        "pin": "2",
-        "name": "2",
-        "kind": "physical",
-        "sheet": "board",
-        "domain": "f4"
-      },
-      {
-        "ref": "U1",
-        "pin": "15",
-        "name": "PC0",
         "kind": "physical",
         "sheet": "board",
         "domain": "f4"
@@ -11481,7 +11973,7 @@
       "y": 200,
       "w": 3520,
       "h": 460,
-      "title": "01  6S 输入 · 双路 5V 共用保护",
+      "title": "01  3S / 4S / 6S 输入 · 共用保护",
       "sheet": "board",
       "domain": "power"
     },
@@ -11491,7 +11983,7 @@
       "y": 200,
       "w": 1730,
       "h": 1160,
-      "title": "02  U901 · 6S → 逻辑 +5V",
+      "title": "02  U901 · 电池母线 → 逻辑 +5V",
       "sheet": "board",
       "domain": "power"
     },
@@ -11501,7 +11993,7 @@
       "y": 200,
       "w": 1770,
       "h": 1160,
-      "title": "03  U903 · 6S → 舵机专用 5V",
+      "title": "03  U903 · 电池母线 → 舵机 +5V_SERVO",
       "sheet": "board",
       "domain": "power"
     },
@@ -11511,7 +12003,7 @@
       "y": 690,
       "w": 1730,
       "h": 1160,
-      "title": "04  U902 · +5V → +3V3 固定输出",
+      "title": "04  U902 · 逻辑 +5V → 主控 +3V3",
       "sheet": "board",
       "domain": "power"
     },
@@ -11534,6 +12026,16 @@
       "title": "06  主控供电边界 / 待冻结项目",
       "sheet": "board",
       "domain": "power"
+    },
+    {
+      "id": "battery-sense",
+      "x": 3640,
+      "y": 1390,
+      "w": 3520,
+      "h": 550,
+      "title": "07  3S / 4S / 6S 电压采样 · 粗略 SOC",
+      "sheet": "board",
+      "domain": "battery"
     },
     {
       "id": "power",
@@ -11561,7 +12063,7 @@
       "y": 3180,
       "w": 1040,
       "h": 550,
-      "title": "03  电池采样 / GPS / 声纳业务口",
+      "title": "03  电池 ADC / GPS / 声纳业务口",
       "sheet": "board",
       "domain": "f4"
     },
@@ -11900,7 +12402,7 @@
     "DNP不代表默认导通；相机逻辑端口不代表已经确定FFC针序。",
     "U701按P4C5手册绘制为单个88焊盘核心板；纯P4资料不混用，实物版次仍需核对。",
     "P4C5手册焊盘66为ESP_LDO_VO4，V1.4底板U4标VFB_VO4/LDO_VO4_ADJ；定义差异未闭合，本版不接负载。",
-    "6S电池化学体系/工作范围和峰值负载待定；25.2V仅6×4.2V示例。",
-    "电源、ESD/隔离、视频链路、ADC反灌、执行器失联保护仍需完成工程验证。"
+    "3S/4S/6S电池分别配置、不可同时接入；化学体系/容量/工作范围待定，25.2V仅6×4.2V示例。",
+    "电源、ESD/隔离、视频链路、ADC过压/断电反灌、执行器失联保护仍需完成工程验证。"
   ]
 }

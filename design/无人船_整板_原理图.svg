@@ -1,42 +1,42 @@
 <svg xmlns="http://www.w3.org/2000/svg" id="svg-board" class="circuit" viewBox="0 0 7240 6720" role="img" aria-label="无人船统一主板整张原理图：电源、双MCU、通信、存储、摄像头和执行接口">
  <style>.panel{fill:#fff;stroke:#bdcbd7;stroke-width:2}.chip{fill:#f2f7fd;stroke:#2c536f;stroke-width:2.2}.connector{fill:#f6fafc;stroke:#2c536f;stroke-width:2}.port{fill:#fff8ed;stroke:#a87932;stroke-width:2;stroke-dasharray:7 4}.wire,.symbol{stroke:#286756;stroke-width:2;fill:none}.symbol{fill:#fff}.junction{fill:#286756}.heading{fill:#164e78;font-weight:700}.muted{fill:#586d7e}.ref{fill:#153a57;font-weight:700}.pin,.value{fill:#244b60}.net{fill:#176b78;cursor:pointer}.net.selected{fill:#a13617;paint-order:stroke;stroke:#ffdf72;stroke-width:8;stroke-linejoin:round}.wire.selected{stroke:#e27225;stroke-width:4}.net:focus{outline:none;paint-order:stroke;stroke:#ffd775;stroke-width:8}text{font-family:'Microsoft YaHei','Segoe UI',sans-serif;fill:#183448}.net,.pin,.value{font-family:Consolas,'Microsoft YaHei',monospace}.nc{fill:#9aa8b4}</style><rect width="7240" height="6720" fill="#fff"/><rect x="18" y="18" width="7204" height="6684" rx="6" fill="none" stroke="#9db3c5" stroke-width="2"/>
  <text x="48" y="78" font-size="48" class="heading">无人船统一主板 · 整张原理图</text>
- <text x="7192" y="78" font-size="30" class="heading" text-anchor="end">Rev E · 2026-11-18 · 01 / 01</text>
+ <text x="7192" y="78" font-size="30" class="heading" text-anchor="end">Rev F · 2026-11-18 · 01 / 01</text>
  <text x="48" y="124" font-size="23" class="muted">同名网络在整图内互连 · 点击高亮 / 双击追踪 · DNP 默认不装 · 候选电气评审稿</text>
- <text x="48" y="178" font-size="34" class="heading">6S 输入保护 · 逻辑与舵机双路 5V</text>
+ <text x="48" y="178" font-size="34" class="heading">3S / 4S / 6S 单路输入 · 逻辑与舵机双路 5V</text>
  <text x="48" y="1958" font-size="34" class="heading">STM32F407 · 实时控制与传感器</text><text x="3648" y="1958" font-size="34" class="heading">ESP32-P4C5 · 通信、存储与视频</text>
  <text x="48" y="4358" font-size="34" class="heading">外部模块与执行接口</text><text x="3648" y="4358" font-size="34" class="heading">SD / USB / CSI / DVP 外围</text>
  <g id="domain-power" data-domain="power"><g data-panel="power-input-6s" transform="translate(0 40)"><g xmlns="http://www.w3.org/2000/svg" id="power-input-6s"><rect x="40" y="160" width="3520" height="460" rx="10" class="panel"/>
-<text x="62" y="198" font-size="27" class="heading">01  6S 输入 · 双路 5V 共用保护</text>
-<text x="62" y="229" font-size="18" class="muted">6S 化学体系未锁；25.2V 仅对应单节满充 4.2V 的 6S 电池。保护型号、保险额定值和浪涌等级均待计算。</text>
+<text x="62" y="198" font-size="27" class="heading">01  3S / 4S / 6S 输入 · 共用保护</text>
+<text x="62" y="229" font-size="18" class="muted">单路电池按配置选择，不能同时接入；6S 25.2V 仅是单节满充 4.2V 的示例，保护和负载额定值待核。</text>
 </g>
 <rect xmlns="http://www.w3.org/2000/svg" x="75" y="295" width="200" height="114" rx="4" class="connector"/>
 <text xmlns="http://www.w3.org/2000/svg" x="85" y="318" font-size="19" class="ref">J901</text>
-<text xmlns="http://www.w3.org/2000/svg" x="85" y="341" font-size="16" class="muted">双路电池输入</text>
+<text xmlns="http://www.w3.org/2000/svg" x="85" y="341" font-size="16" class="muted">单路电池输入</text>
 <text xmlns="http://www.w3.org/2000/svg" x="87" y="365" font-size="15" class="pin">1</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="255" y1="361" x2="295" y2="361" class="wire" data-wire="BAT6S_IN"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="255" y1="361" x2="295" y2="361" class="wire" data-wire="BAT_IN"/>
 <circle xmlns="http://www.w3.org/2000/svg" cx="255" cy="361" r="4" class="junction"/>
-<text xmlns="http://www.w3.org/2000/svg" x="303" y="365" font-size="17" class="net" data-net="BAT6S_IN" data-area="01  6S 输入 · 双路 5V 共用保护" tabindex="0" role="button" aria-label="网络 BAT6S_IN，01  6S 输入 · 双路 5V 共用保护" text-anchor="start">BAT6S_IN</text>
+<text xmlns="http://www.w3.org/2000/svg" x="303" y="365" font-size="17" class="net" data-net="BAT_IN" data-area="01  3S / 4S / 6S 输入 · 共用保护" tabindex="0" role="button" aria-label="网络 BAT_IN，01  3S / 4S / 6S 输入 · 共用保护" text-anchor="start">BAT_IN</text>
 <text xmlns="http://www.w3.org/2000/svg" x="87" y="399" font-size="15" class="pin">2</text>
 <line xmlns="http://www.w3.org/2000/svg" x1="255" y1="395" x2="295" y2="395" class="wire" data-wire="GND"/>
 <circle xmlns="http://www.w3.org/2000/svg" cx="255" cy="395" r="4" class="junction"/>
-<text xmlns="http://www.w3.org/2000/svg" x="303" y="399" font-size="17" class="net" data-net="GND" data-area="01  6S 输入 · 双路 5V 共用保护" tabindex="0" role="button" aria-label="网络 GND，01  6S 输入 · 双路 5V 共用保护" text-anchor="start">GND</text>
-<text xmlns="http://www.w3.org/2000/svg" x="650" y="340" font-size="17" class="net" data-net="BAT6S_IN" data-area="01  6S 输入 · 双路 5V 共用保护" tabindex="0" role="button" aria-label="网络 BAT6S_IN，01  6S 输入 · 双路 5V 共用保护" text-anchor="start">BAT6S_IN</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1120" y="340" font-size="17" class="net" data-net="BAT_FUSED" data-area="01  6S 输入 · 双路 5V 共用保护" tabindex="0" role="button" aria-label="网络 BAT_FUSED，01  6S 输入 · 双路 5V 共用保护" text-anchor="end">BAT_FUSED</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="650" y1="355" x2="843" y2="355" class="wire" data-wire="BAT6S_IN"/>
+<text xmlns="http://www.w3.org/2000/svg" x="303" y="399" font-size="17" class="net" data-net="GND" data-area="01  3S / 4S / 6S 输入 · 共用保护" tabindex="0" role="button" aria-label="网络 GND，01  3S / 4S / 6S 输入 · 共用保护" text-anchor="start">GND</text>
+<text xmlns="http://www.w3.org/2000/svg" x="650" y="340" font-size="17" class="net" data-net="BAT_IN" data-area="01  3S / 4S / 6S 输入 · 共用保护" tabindex="0" role="button" aria-label="网络 BAT_IN，01  3S / 4S / 6S 输入 · 共用保护" text-anchor="start">BAT_IN</text>
+<text xmlns="http://www.w3.org/2000/svg" x="1120" y="340" font-size="17" class="net" data-net="BAT_FUSED" data-area="01  3S / 4S / 6S 输入 · 共用保护" tabindex="0" role="button" aria-label="网络 BAT_FUSED，01  3S / 4S / 6S 输入 · 共用保护" text-anchor="end">BAT_FUSED</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="650" y1="355" x2="843" y2="355" class="wire" data-wire="BAT_IN"/>
 <line xmlns="http://www.w3.org/2000/svg" x1="927" y1="355" x2="1120" y2="355" class="wire" data-wire="BAT_FUSED"/>
 <rect xmlns="http://www.w3.org/2000/svg" x="843" y="344" width="84" height="22" class="symbol"/>
 <line xmlns="http://www.w3.org/2000/svg" x1="851" y1="355" x2="919" y2="355" class="wire"/>
 <text xmlns="http://www.w3.org/2000/svg" x="885" y="394" font-size="17" class="value" text-anchor="middle">F901 · 保险 · 额定值待定</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1330" y="340" font-size="17" class="net" data-net="BAT_FUSED" data-area="01  6S 输入 · 双路 5V 共用保护" tabindex="0" role="button" aria-label="网络 BAT_FUSED，01  6S 输入 · 双路 5V 共用保护" text-anchor="start">BAT_FUSED</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2010" y="340" font-size="17" class="net" data-net="BAT_SENSE_PROTECTED" data-area="01  6S 输入 · 双路 5V 共用保护" tabindex="0" role="button" aria-label="网络 BAT_SENSE_PROTECTED，01  6S 输入 · 双路 5V 共用保护" text-anchor="end">BAT_SENSE_PROTECTED</text>
+<text xmlns="http://www.w3.org/2000/svg" x="1330" y="340" font-size="17" class="net" data-net="BAT_FUSED" data-area="01  3S / 4S / 6S 输入 · 共用保护" tabindex="0" role="button" aria-label="网络 BAT_FUSED，01  3S / 4S / 6S 输入 · 共用保护" text-anchor="start">BAT_FUSED</text>
+<text xmlns="http://www.w3.org/2000/svg" x="2010" y="340" font-size="17" class="net" data-net="BAT_SENSE_PROTECTED" data-area="01  3S / 4S / 6S 输入 · 共用保护" tabindex="0" role="button" aria-label="网络 BAT_SENSE_PROTECTED，01  3S / 4S / 6S 输入 · 共用保护" text-anchor="end">BAT_SENSE_PROTECTED</text>
 <line xmlns="http://www.w3.org/2000/svg" x1="1330" y1="355" x2="1645" y2="355" class="wire" data-wire="BAT_FUSED"/>
 <line xmlns="http://www.w3.org/2000/svg" x1="1695" y1="355" x2="2010" y2="355" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
 <path xmlns="http://www.w3.org/2000/svg" d="M 1645 335 L 1645 375 L 1685 355 Z M 1685 335 L 1695 335 L 1695 375 L 1705 375" class="symbol"/>
 <text xmlns="http://www.w3.org/2000/svg" x="1628" y="360" font-size="15" class="pin" text-anchor="end">A</text>
 <text xmlns="http://www.w3.org/2000/svg" x="1715" y="360" font-size="15" class="pin">K</text>
 <text xmlns="http://www.w3.org/2000/svg" x="1670" y="403" font-size="17" class="value" text-anchor="middle">D901 · 反接肖特基 · 型号待定</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2330" y="313" font-size="16" class="net" data-net="BAT_SENSE_PROTECTED" data-area="01  6S 输入 · 双路 5V 共用保护" tabindex="0" role="button" aria-label="网络 BAT_SENSE_PROTECTED，01  6S 输入 · 双路 5V 共用保护" text-anchor="middle">BAT_SENSE_PROTECTED</text>
+<text xmlns="http://www.w3.org/2000/svg" x="2330" y="313" font-size="16" class="net" data-net="BAT_SENSE_PROTECTED" data-area="01  3S / 4S / 6S 输入 · 共用保护" tabindex="0" role="button" aria-label="网络 BAT_SENSE_PROTECTED，01  3S / 4S / 6S 输入 · 共用保护" text-anchor="middle">BAT_SENSE_PROTECTED</text>
 <line xmlns="http://www.w3.org/2000/svg" x1="2330" y1="325" x2="2330" y2="355" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
 <path xmlns="http://www.w3.org/2000/svg" d="M 2310 390 L 2350 390 L 2330 355 Z M 2307 364 L 2310 355 L 2350 355 L 2353 346" class="symbol"/>
 <line xmlns="http://www.w3.org/2000/svg" x1="2330" y1="390" x2="2330" y2="423" class="wire" data-wire="GND"/>
@@ -48,7 +48,7 @@
 <text xmlns="http://www.w3.org/2000/svg" x="2360" y="381" font-size="16" class="value">TVS · 待选</text>
 <text xmlns="http://www.w3.org/2000/svg" x="2302" y="352" font-size="14" class="pin" text-anchor="end">K</text>
 <text xmlns="http://www.w3.org/2000/svg" x="2302" y="397" font-size="14" class="pin" text-anchor="end">A</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2860" y="313" font-size="16" class="net" data-net="BAT_SENSE_PROTECTED" data-area="01  6S 输入 · 双路 5V 共用保护" tabindex="0" role="button" aria-label="网络 BAT_SENSE_PROTECTED，01  6S 输入 · 双路 5V 共用保护" text-anchor="middle">BAT_SENSE_PROTECTED</text>
+<text xmlns="http://www.w3.org/2000/svg" x="2860" y="313" font-size="16" class="net" data-net="BAT_SENSE_PROTECTED" data-area="01  3S / 4S / 6S 输入 · 共用保护" tabindex="0" role="button" aria-label="网络 BAT_SENSE_PROTECTED，01  3S / 4S / 6S 输入 · 共用保护" text-anchor="middle">BAT_SENSE_PROTECTED</text>
 <line xmlns="http://www.w3.org/2000/svg" x1="2860" y1="325" x2="2860" y2="353" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
 <line xmlns="http://www.w3.org/2000/svg" x1="2846" y1="353" x2="2874" y2="353" class="wire"/>
 <line xmlns="http://www.w3.org/2000/svg" x1="2846" y1="364" x2="2874" y2="364" class="wire"/>
@@ -61,518 +61,492 @@
 <text xmlns="http://www.w3.org/2000/svg" x="2882" y="378" font-size="16" class="value">47µF / 63V 候选</text>
 <circle xmlns="http://www.w3.org/2000/svg" cx="3280" cy="350" r="7" class="symbol"/>
 <line xmlns="http://www.w3.org/2000/svg" x1="3280" y1="357" x2="3280" y2="376" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
-<text xmlns="http://www.w3.org/2000/svg" x="3298" y="356" font-size="16" class="net" data-net="BAT_SENSE_PROTECTED" data-area="01  6S 输入 · 双路 5V 共用保护" tabindex="0" role="button" aria-label="网络 BAT_SENSE_PROTECTED，01  6S 输入 · 双路 5V 共用保护" text-anchor="start">BAT_SENSE_PROTECTED</text>
+<text xmlns="http://www.w3.org/2000/svg" x="3298" y="356" font-size="16" class="net" data-net="BAT_SENSE_PROTECTED" data-area="01  3S / 4S / 6S 输入 · 共用保护" tabindex="0" role="button" aria-label="网络 BAT_SENSE_PROTECTED，01  3S / 4S / 6S 输入 · 共用保护" text-anchor="start">BAT_SENSE_PROTECTED</text>
 <text xmlns="http://www.w3.org/2000/svg" x="3266" y="337" font-size="16" class="ref">TP901</text>
 <text xmlns="http://www.w3.org/2000/svg" x="650" y="455" font-size="19" class="muted">F901 → D901 → TVS / 储能 → DC/DC；本输入包含逻辑和舵机电流；推进/LED/水泵功率不经过此处。</text>
 <text xmlns="http://www.w3.org/2000/svg" x="650" y="483" font-size="19" class="muted">TVS 不能按“24V 系统”随意选 24V；反接保护二极管的压降、热损耗和电池采样偏差均需计入。</text>
-<text xmlns="http://www.w3.org/2000/svg" x="650" y="511" font-size="19" class="muted">BAT_SENSE_PROTECTED 是保护后的电压；F4 采样 R304 继续默认 DNP，钳位/断电反灌设计完成前不可接入 ADC。</text>
+<text xmlns="http://www.w3.org/2000/svg" x="650" y="511" font-size="19" class="muted">BAT_SENSE_PROTECTED 是D901后的电压；电池采样经分压和断电开关到PC0，6S/4S/3S须配置选择且实测校准。</text>
 <text xmlns="http://www.w3.org/2000/svg" x="650" y="539" font-size="19" class="muted">参考 GND 为逻辑回流；电机驱动独立供电支路的连接、保险与回流路径需在系统布线中另行闭合。</text></g>
 <g data-panel="power-buck5" transform="translate(3600 -450)"><g xmlns="http://www.w3.org/2000/svg" id="power-buck5"><rect x="40" y="650" width="1730" height="1160" rx="10" class="panel"/>
-<text x="62" y="688" font-size="27" class="heading">02  U901 · 6S → 逻辑 +5V</text>
-<text x="62" y="719" font-size="18" class="muted">SCT2650STER 候选（用户型号待核对）· 5V / 500kHz 原厂参考，负载能力待验证。</text>
+<text x="62" y="688" font-size="27" class="heading">02  U901 · 电池母线 → 逻辑 +5V</text>
+<text x="62" y="719" font-size="18" class="muted">SCT2650STER 候选 · 5 V / 500 kHz 原厂参考 · 导线交叉处有圆点才连通。</text>
 </g>
-<rect xmlns="http://www.w3.org/2000/svg" x="650" y="785" width="360" height="450" rx="4" class="chip"/>
-<text xmlns="http://www.w3.org/2000/svg" x="830" y="814" font-size="22" class="ref" text-anchor="middle">U901</text>
-<text xmlns="http://www.w3.org/2000/svg" x="830" y="842" font-size="20" class="heading" text-anchor="middle">SCT2650STER</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="624" y1="875" x2="650" y2="875" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
-<text xmlns="http://www.w3.org/2000/svg" x="660" y="880" font-size="17" class="pin">2 VIN</text>
-<text xmlns="http://www.w3.org/2000/svg" x="615" y="880" font-size="17" class="net" data-net="BAT_SENSE_PROTECTED" data-area="02  U901 · 6S → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 BAT_SENSE_PROTECTED，02  U901 · 6S → 逻辑 +5V" text-anchor="end">BAT_SENSE_PROTECTED</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="624" y1="962.5" x2="650" y2="962.5" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
-<text xmlns="http://www.w3.org/2000/svg" x="660" y="967.5" font-size="17" class="pin">3 EN</text>
-<text xmlns="http://www.w3.org/2000/svg" x="615" y="967.5" font-size="17" class="net" data-net="BAT_SENSE_PROTECTED" data-area="02  U901 · 6S → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 BAT_SENSE_PROTECTED，02  U901 · 6S → 逻辑 +5V" text-anchor="end">BAT_SENSE_PROTECTED</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="624" y1="1050" x2="650" y2="1050" class="wire" data-wire="BUCK5_RT"/>
-<text xmlns="http://www.w3.org/2000/svg" x="660" y="1055" font-size="17" class="pin">4 RT/CLK</text>
-<text xmlns="http://www.w3.org/2000/svg" x="615" y="1055" font-size="17" class="net" data-net="BUCK5_RT" data-area="02  U901 · 6S → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 BUCK5_RT，02  U901 · 6S → 逻辑 +5V" text-anchor="end">BUCK5_RT</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="624" y1="1137.5" x2="650" y2="1137.5" class="wire" data-wire="GND"/>
-<text xmlns="http://www.w3.org/2000/svg" x="660" y="1142.5" font-size="17" class="pin">7 GND</text>
-<text xmlns="http://www.w3.org/2000/svg" x="615" y="1142.5" font-size="17" class="net" data-net="GND" data-area="02  U901 · 6S → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 GND，02  U901 · 6S → 逻辑 +5V" text-anchor="end">GND</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="624" y1="1225" x2="650" y2="1225" class="wire" data-wire="GND"/>
-<text xmlns="http://www.w3.org/2000/svg" x="660" y="1230" font-size="17" class="pin">9 EP</text>
-<text xmlns="http://www.w3.org/2000/svg" x="615" y="1230" font-size="17" class="net" data-net="GND" data-area="02  U901 · 6S → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 GND，02  U901 · 6S → 逻辑 +5V" text-anchor="end">GND</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="1010" y1="875" x2="1036" y2="875" class="wire" data-wire="BUCK5_BOOT"/>
-<text xmlns="http://www.w3.org/2000/svg" x="1000" y="880" font-size="17" class="pin" text-anchor="end">BOOT 1</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1045" y="880" font-size="17" class="net" data-net="BUCK5_BOOT" data-area="02  U901 · 6S → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 BUCK5_BOOT，02  U901 · 6S → 逻辑 +5V" text-anchor="start">BUCK5_BOOT</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="1010" y1="962.5" x2="1036" y2="962.5" class="wire" data-wire="BUCK5_SW"/>
-<text xmlns="http://www.w3.org/2000/svg" x="1000" y="967.5" font-size="17" class="pin" text-anchor="end">SW 8</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1045" y="967.5" font-size="17" class="net" data-net="BUCK5_SW" data-area="02  U901 · 6S → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 BUCK5_SW，02  U901 · 6S → 逻辑 +5V" text-anchor="start">BUCK5_SW</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="1010" y1="1050" x2="1036" y2="1050" class="wire" data-wire="BUCK5_FB"/>
-<text xmlns="http://www.w3.org/2000/svg" x="1000" y="1055" font-size="17" class="pin" text-anchor="end">FB 5</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1045" y="1055" font-size="17" class="net" data-net="BUCK5_FB" data-area="02  U901 · 6S → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 BUCK5_FB，02  U901 · 6S → 逻辑 +5V" text-anchor="start">BUCK5_FB</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="1010" y1="1137.5" x2="1036" y2="1137.5" class="wire" data-wire="BUCK5_COMP"/>
-<text xmlns="http://www.w3.org/2000/svg" x="1000" y="1142.5" font-size="17" class="pin" text-anchor="end">COMP 6</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1045" y="1142.5" font-size="17" class="net" data-net="BUCK5_COMP" data-area="02  U901 · 6S → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 BUCK5_COMP，02  U901 · 6S → 逻辑 +5V" text-anchor="start">BUCK5_COMP</text>
-<text xmlns="http://www.w3.org/2000/svg" x="175" y="808" font-size="16" class="net" data-net="BAT_SENSE_PROTECTED" data-area="02  U901 · 6S → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 BAT_SENSE_PROTECTED，02  U901 · 6S → 逻辑 +5V" text-anchor="middle">BAT_SENSE_PROTECTED</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="175" y1="820" x2="175" y2="848" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="161" y1="848" x2="189" y2="848" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="161" y1="859" x2="189" y2="859" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="175" y1="859" x2="175" y2="890" class="wire" data-wire="GND"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="175" y1="890" x2="175" y2="899" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="162" y1="899" x2="188" y2="899" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="167" y1="905" x2="183" y2="905" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="172" y1="911" x2="178" y2="911" class="wire"/>
-<text xmlns="http://www.w3.org/2000/svg" x="197" y="848" font-size="16" class="ref">C902</text>
-<text xmlns="http://www.w3.org/2000/svg" x="197" y="873" font-size="16" class="value">10µF / 63V</text>
-<text xmlns="http://www.w3.org/2000/svg" x="415" y="753" font-size="16" class="net" data-net="BAT_SENSE_PROTECTED" data-area="02  U901 · 6S → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 BAT_SENSE_PROTECTED，02  U901 · 6S → 逻辑 +5V" text-anchor="middle">BAT_SENSE_PROTECTED</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="415" y1="765" x2="415" y2="793" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="401" y1="793" x2="429" y2="793" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="401" y1="804" x2="429" y2="804" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="415" y1="804" x2="415" y2="835" class="wire" data-wire="GND"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="415" y1="835" x2="415" y2="844" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="402" y1="844" x2="428" y2="844" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="407" y1="850" x2="423" y2="850" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="412" y1="856" x2="418" y2="856" class="wire"/>
-<text xmlns="http://www.w3.org/2000/svg" x="437" y="793" font-size="16" class="ref">C903</text>
-<text xmlns="http://www.w3.org/2000/svg" x="437" y="818" font-size="16" class="value">100nF / 63V</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1280" y="788" font-size="16" class="net" data-net="BUCK5_BOOT" data-area="02  U901 · 6S → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 BUCK5_BOOT，02  U901 · 6S → 逻辑 +5V" text-anchor="middle">BUCK5_BOOT</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="1280" y1="800" x2="1280" y2="828" class="wire" data-wire="BUCK5_BOOT"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1266" y1="828" x2="1294" y2="828" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1266" y1="839" x2="1294" y2="839" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1280" y1="839" x2="1280" y2="870" class="wire" data-wire="BUCK5_SW"/>
-<text xmlns="http://www.w3.org/2000/svg" x="1280" y="892" font-size="16" class="net" data-net="BUCK5_SW" data-area="02  U901 · 6S → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 BUCK5_SW，02  U901 · 6S → 逻辑 +5V" text-anchor="middle">BUCK5_SW</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1302" y="828" font-size="16" class="ref">C904</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1302" y="853" font-size="16" class="value">100nF</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1190" y="950" font-size="17" class="net" data-net="BUCK5_SW" data-area="02  U901 · 6S → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 BUCK5_SW，02  U901 · 6S → 逻辑 +5V" text-anchor="start">BUCK5_SW</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1640" y="950" font-size="17" class="net" data-net="+5V" data-area="02  U901 · 6S → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 +5V，02  U901 · 6S → 逻辑 +5V" text-anchor="end">+5V</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="1190" y1="965" x2="1373" y2="965" class="wire" data-wire="BUCK5_SW"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1457" y1="965" x2="1640" y2="965" class="wire" data-wire="+5V"/>
-<path xmlns="http://www.w3.org/2000/svg" d="M 1373 965 q 10 -26 21 0 q 10 -26 21 0 q 10 -26 21 0 q 10 -26 21 0" class="symbol"/>
-<text xmlns="http://www.w3.org/2000/svg" x="1415" y="1004" font-size="17" class="value" text-anchor="middle">L901 · 7.8µH</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1230" y="1013" font-size="16" class="net" data-net="BUCK5_SW" data-area="02  U901 · 6S → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 BUCK5_SW，02  U901 · 6S → 逻辑 +5V" text-anchor="middle">BUCK5_SW</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="1230" y1="1025" x2="1230" y2="1055" class="wire" data-wire="BUCK5_SW"/>
-<path xmlns="http://www.w3.org/2000/svg" d="M 1210 1090 L 1250 1090 L 1230 1055 Z M 1210 1046 L 1210 1055 L 1250 1055 L 1250 1064" class="symbol"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1230" y1="1090" x2="1230" y2="1123" class="wire" data-wire="GND"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1230" y1="1123" x2="1230" y2="1132" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1217" y1="1132" x2="1243" y2="1132" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1222" y1="1138" x2="1238" y2="1138" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1227" y1="1144" x2="1233" y2="1144" class="wire"/>
-<text xmlns="http://www.w3.org/2000/svg" x="1260" y="1057" font-size="16" class="ref">D903</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1260" y="1081" font-size="16" class="value">B560C-13-F</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1202" y="1052" font-size="14" class="pin" text-anchor="end">K</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1202" y="1097" font-size="14" class="pin" text-anchor="end">A</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1050" y="1198" font-size="16" class="net" data-net="+5V" data-area="02  U901 · 6S → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 +5V，02  U901 · 6S → 逻辑 +5V" text-anchor="middle">+5V</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="1050" y1="1210" x2="1050" y2="1238" class="wire" data-wire="+5V"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1036" y1="1238" x2="1064" y2="1238" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1036" y1="1249" x2="1064" y2="1249" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1050" y1="1249" x2="1050" y2="1280" class="wire" data-wire="GND"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1050" y1="1280" x2="1050" y2="1289" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1037" y1="1289" x2="1063" y2="1289" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1042" y1="1295" x2="1058" y2="1295" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1047" y1="1301" x2="1053" y2="1301" class="wire"/>
-<text xmlns="http://www.w3.org/2000/svg" x="1072" y="1238" font-size="16" class="ref">C905</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1072" y="1263" font-size="16" class="value">47µF / 10V</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1220" y="1198" font-size="16" class="net" data-net="+5V" data-area="02  U901 · 6S → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 +5V，02  U901 · 6S → 逻辑 +5V" text-anchor="middle">+5V</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="1220" y1="1210" x2="1220" y2="1238" class="wire" data-wire="+5V"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1206" y1="1238" x2="1234" y2="1238" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1206" y1="1249" x2="1234" y2="1249" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1220" y1="1249" x2="1220" y2="1280" class="wire" data-wire="GND"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1220" y1="1280" x2="1220" y2="1289" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1207" y1="1289" x2="1233" y2="1289" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1212" y1="1295" x2="1228" y2="1295" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1217" y1="1301" x2="1223" y2="1301" class="wire"/>
-<text xmlns="http://www.w3.org/2000/svg" x="1242" y="1238" font-size="16" class="ref">C906</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1242" y="1263" font-size="16" class="value">47µF / 10V</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1390" y="1198" font-size="16" class="net" data-net="+5V" data-area="02  U901 · 6S → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 +5V，02  U901 · 6S → 逻辑 +5V" text-anchor="middle">+5V</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="1390" y1="1210" x2="1390" y2="1238" class="wire" data-wire="+5V"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1376" y1="1238" x2="1404" y2="1238" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1376" y1="1249" x2="1404" y2="1249" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1390" y1="1249" x2="1390" y2="1280" class="wire" data-wire="GND"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1390" y1="1280" x2="1390" y2="1289" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1377" y1="1289" x2="1403" y2="1289" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1382" y1="1295" x2="1398" y2="1295" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1387" y1="1301" x2="1393" y2="1301" class="wire"/>
-<text xmlns="http://www.w3.org/2000/svg" x="1412" y="1238" font-size="16" class="ref">C913</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1412" y="1263" font-size="16" class="value">47µF / 10V</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1560" y="1198" font-size="16" class="net" data-net="+5V" data-area="02  U901 · 6S → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 +5V，02  U901 · 6S → 逻辑 +5V" text-anchor="middle">+5V</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="1560" y1="1210" x2="1560" y2="1238" class="wire" data-wire="+5V"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1546" y1="1238" x2="1574" y2="1238" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1546" y1="1249" x2="1574" y2="1249" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1560" y1="1249" x2="1560" y2="1280" class="wire" data-wire="GND"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1560" y1="1280" x2="1560" y2="1289" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1547" y1="1289" x2="1573" y2="1289" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1552" y1="1295" x2="1568" y2="1295" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1557" y1="1301" x2="1563" y2="1301" class="wire"/>
-<text xmlns="http://www.w3.org/2000/svg" x="1582" y="1238" font-size="16" class="ref">C914</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1582" y="1263" font-size="16" class="value">47µF / 10V</text>
-<text xmlns="http://www.w3.org/2000/svg" x="150" y="1344" font-size="16" class="net" data-net="BUCK5_RT" data-area="02  U901 · 6S → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 BUCK5_RT，02  U901 · 6S → 逻辑 +5V" text-anchor="middle">BUCK5_RT</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="150" y1="1355" x2="150" y2="1375" class="wire" data-wire="BUCK5_RT"/>
-<rect xmlns="http://www.w3.org/2000/svg" x="142" y="1375" width="16" height="37" class="symbol"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="150" y1="1412" x2="150" y2="1432" class="wire" data-wire="GND"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="150" y1="1432" x2="150" y2="1442" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="137" y1="1442" x2="163" y2="1442" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="142" y1="1448" x2="158" y2="1448" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="147" y1="1454" x2="153" y2="1454" class="wire"/>
-<text xmlns="http://www.w3.org/2000/svg" x="167" y="1385" font-size="16" class="ref">R903</text>
-<text xmlns="http://www.w3.org/2000/svg" x="167" y="1409" font-size="16" class="value">200k</text>
-<text xmlns="http://www.w3.org/2000/svg" x="410" y="1344" font-size="16" class="net" data-net="+5V" data-area="02  U901 · 6S → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 +5V，02  U901 · 6S → 逻辑 +5V" text-anchor="middle">+5V</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="410" y1="1355" x2="410" y2="1375" class="wire" data-wire="+5V"/>
-<rect xmlns="http://www.w3.org/2000/svg" x="402" y="1375" width="16" height="37" class="symbol"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="410" y1="1412" x2="410" y2="1432" class="wire" data-wire="BUCK5_FB"/>
-<text xmlns="http://www.w3.org/2000/svg" x="410" y="1452" font-size="16" class="net" data-net="BUCK5_FB" data-area="02  U901 · 6S → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 BUCK5_FB，02  U901 · 6S → 逻辑 +5V" text-anchor="middle">BUCK5_FB</text>
-<text xmlns="http://www.w3.org/2000/svg" x="427" y="1385" font-size="16" class="ref">R905</text>
-<text xmlns="http://www.w3.org/2000/svg" x="427" y="1409" font-size="16" class="value">53.6k / 1%</text>
-<text xmlns="http://www.w3.org/2000/svg" x="670" y="1344" font-size="16" class="net" data-net="BUCK5_FB" data-area="02  U901 · 6S → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 BUCK5_FB，02  U901 · 6S → 逻辑 +5V" text-anchor="middle">BUCK5_FB</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="670" y1="1355" x2="670" y2="1375" class="wire" data-wire="BUCK5_FB"/>
-<rect xmlns="http://www.w3.org/2000/svg" x="662" y="1375" width="16" height="37" class="symbol"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="670" y1="1412" x2="670" y2="1432" class="wire" data-wire="GND"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="670" y1="1432" x2="670" y2="1442" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="657" y1="1442" x2="683" y2="1442" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="662" y1="1448" x2="678" y2="1448" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="667" y1="1454" x2="673" y2="1454" class="wire"/>
-<text xmlns="http://www.w3.org/2000/svg" x="687" y="1385" font-size="16" class="ref">R906</text>
-<text xmlns="http://www.w3.org/2000/svg" x="687" y="1409" font-size="16" class="value">10.2k / 1%</text>
-<text xmlns="http://www.w3.org/2000/svg" x="925" y="1344" font-size="16" class="net" data-net="BUCK5_COMP" data-area="02  U901 · 6S → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 BUCK5_COMP，02  U901 · 6S → 逻辑 +5V" text-anchor="middle">BUCK5_COMP</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="925" y1="1355" x2="925" y2="1375" class="wire" data-wire="BUCK5_COMP"/>
-<rect xmlns="http://www.w3.org/2000/svg" x="917" y="1375" width="16" height="37" class="symbol"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="925" y1="1412" x2="925" y2="1432" class="wire" data-wire="BUCK5_COMP_RC"/>
-<text xmlns="http://www.w3.org/2000/svg" x="925" y="1452" font-size="16" class="net" data-net="BUCK5_COMP_RC" data-area="02  U901 · 6S → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 BUCK5_COMP_RC，02  U901 · 6S → 逻辑 +5V" text-anchor="middle">BUCK5_COMP_RC</text>
-<text xmlns="http://www.w3.org/2000/svg" x="942" y="1385" font-size="16" class="ref">R904</text>
-<text xmlns="http://www.w3.org/2000/svg" x="942" y="1409" font-size="16" class="value">33.2k</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1205" y="1343" font-size="16" class="net" data-net="BUCK5_COMP_RC" data-area="02  U901 · 6S → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 BUCK5_COMP_RC，02  U901 · 6S → 逻辑 +5V" text-anchor="middle">BUCK5_COMP_RC</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="1205" y1="1355" x2="1205" y2="1383" class="wire" data-wire="BUCK5_COMP_RC"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1191" y1="1383" x2="1219" y2="1383" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1191" y1="1394" x2="1219" y2="1394" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1205" y1="1394" x2="1205" y2="1425" class="wire" data-wire="GND"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1205" y1="1425" x2="1205" y2="1434" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1192" y1="1434" x2="1218" y2="1434" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1197" y1="1440" x2="1213" y2="1440" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1202" y1="1446" x2="1208" y2="1446" class="wire"/>
-<text xmlns="http://www.w3.org/2000/svg" x="1227" y="1383" font-size="16" class="ref">C907</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1227" y="1408" font-size="16" class="value">3.3nF</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1490" y="1343" font-size="16" class="net" data-net="BUCK5_COMP" data-area="02  U901 · 6S → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 BUCK5_COMP，02  U901 · 6S → 逻辑 +5V" text-anchor="middle">BUCK5_COMP</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="1490" y1="1355" x2="1490" y2="1383" class="wire" data-wire="BUCK5_COMP"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1476" y1="1383" x2="1504" y2="1383" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1476" y1="1394" x2="1504" y2="1394" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1490" y1="1394" x2="1490" y2="1425" class="wire" data-wire="GND"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1490" y1="1425" x2="1490" y2="1434" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1477" y1="1434" x2="1503" y2="1434" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1482" y1="1440" x2="1498" y2="1440" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1487" y1="1446" x2="1493" y2="1446" class="wire"/>
-<text xmlns="http://www.w3.org/2000/svg" x="1512" y="1383" font-size="16" class="ref">C908</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1512" y="1408" font-size="16" class="value">22pF / DNP</text>
-<text xmlns="http://www.w3.org/2000/svg" x="80" y="1545" font-size="18" class="muted">来源：SCT2650 Rev1.3 p2–3脚表、p12分压/频率、p14二极管、p17表3。</text>
-<text xmlns="http://www.w3.org/2000/svg" x="80" y="1573" font-size="18" class="muted">用户输入 STC2650；本图采用 SCT2650STER 候选，不代表采购型号已确认。</text>
-<text xmlns="http://www.w3.org/2000/svg" x="80" y="1601" font-size="18" class="muted">EN 接保护后输入；未复制原厂低压例图UVLO，6S截止由BMS/系统另行确定。</text>
-<text xmlns="http://www.w3.org/2000/svg" x="80" y="1629" font-size="18" class="muted">两路独立稳压、共输入/共地；输出不得并联，不是隔离电源。</text>
-<text xmlns="http://www.w3.org/2000/svg" x="80" y="1657" font-size="18" class="muted">逻辑 +5V 还要承担后级3.3V输入功率；主控不得直接接5V。</text>
-<text xmlns="http://www.w3.org/2000/svg" x="80" y="1685" font-size="18" class="muted">器件5A等级不代表本板保证5A；芯片/二极管/电感温升及瞬态均需实测。</text></g>
+<g xmlns="http://www.w3.org/2000/svg" transform="translate(40 650)">
+<rect x="480" y="280" width="350" height="356" rx="4" class="chip"/>
+<text x="655" y="309" font-size="22" class="ref" text-anchor="middle">U901</text>
+<text x="655" y="337" font-size="20" class="heading" text-anchor="middle">SCT2650STER</text>
+<line x1="454" y1="370" x2="480" y2="370" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
+<text x="490" y="375" font-size="17" class="pin">2 VIN</text>
+<line x1="454" y1="434" x2="480" y2="434" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
+<text x="490" y="439" font-size="17" class="pin">3 EN</text>
+<line x1="454" y1="498" x2="480" y2="498" class="wire" data-wire="BUCK5_RT"/>
+<text x="490" y="503" font-size="17" class="pin">4 RT/CLK</text>
+<line x1="454" y1="562" x2="480" y2="562" class="wire" data-wire="GND"/>
+<text x="490" y="567" font-size="17" class="pin">7 GND</text>
+<line x1="454" y1="626" x2="480" y2="626" class="wire" data-wire="GND"/>
+<text x="490" y="631" font-size="17" class="pin">9 EP</text>
+<line x1="830" y1="370" x2="856" y2="370" class="wire" data-wire="BUCK5_BOOT"/>
+<text x="820" y="375" font-size="17" class="pin" text-anchor="end">BOOT 1</text>
+<line x1="830" y1="434" x2="856" y2="434" class="wire" data-wire="BUCK5_SW"/>
+<text x="820" y="439" font-size="17" class="pin" text-anchor="end">SW 8</text>
+<line x1="830" y1="498" x2="856" y2="498" class="wire" data-wire="BUCK5_FB"/>
+<text x="820" y="503" font-size="17" class="pin" text-anchor="end">FB 5</text>
+<line x1="830" y1="562" x2="856" y2="562" class="wire" data-wire="BUCK5_COMP"/>
+<text x="820" y="567" font-size="17" class="pin" text-anchor="end">COMP 6</text>
+<line x1="62" y1="370" x2="454" y2="370" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
+<text x="62" y="351" font-size="24" class="net" data-net="BAT_SENSE_PROTECTED" data-area="02  U901 · 电池母线 → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 BAT_SENSE_PROTECTED，02  U901 · 电池母线 → 逻辑 +5V" text-anchor="start">BAT_SENSE_PROTECTED</text>
+<line x1="352" y1="370" x2="352" y2="434" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
+<line x1="352" y1="434" x2="454" y2="434" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
+<circle cx="95" cy="370" r="4" class="junction"/>
+<circle cx="222" cy="370" r="4" class="junction"/>
+<circle cx="352" cy="370" r="4" class="junction"/>
+<line x1="95" y1="370" x2="95" y2="559" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
+<line x1="95" y1="571" x2="95" y2="825" class="wire" data-wire="GND"/>
+<line x1="79" y1="559" x2="111" y2="559" class="wire"/>
+<line x1="79" y1="571" x2="111" y2="571" class="wire"/>
+<text x="115" y="566" font-size="18" class="ref" text-anchor="start">C902</text>
+<text x="115" y="593" font-size="18" class="value" text-anchor="start">10µF / 63V</text>
+<line x1="222" y1="370" x2="222" y2="559" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
+<line x1="222" y1="571" x2="222" y2="825" class="wire" data-wire="GND"/>
+<line x1="206" y1="559" x2="238" y2="559" class="wire"/>
+<line x1="206" y1="571" x2="238" y2="571" class="wire"/>
+<text x="242" y="566" font-size="18" class="ref" text-anchor="start">C903</text>
+<text x="242" y="593" font-size="18" class="value" text-anchor="start">100nF / 63V</text>
+<line x1="454" y1="498" x2="370" y2="498" class="wire" data-wire="BUCK5_RT"/>
+<line x1="370" y1="498" x2="370" y2="674" class="wire" data-wire="BUCK5_RT"/>
+<text x="370" y="479" font-size="17" class="net" data-net="BUCK5_RT" data-area="02  U901 · 电池母线 → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 BUCK5_RT，02  U901 · 电池母线 → 逻辑 +5V" text-anchor="middle">BUCK5_RT</text>
+<line x1="370" y1="674" x2="370" y2="694" class="wire" data-wire="BUCK5_RT"/>
+<line x1="370" y1="728" x2="370" y2="825" class="wire" data-wire="GND"/>
+<rect x="361" y="694" width="18" height="34" class="symbol"/>
+<text x="350" y="712" font-size="21" class="ref" text-anchor="end">R903</text>
+<text x="350" y="739" font-size="21" class="value" text-anchor="end">200k</text>
+<line x1="454" y1="562" x2="438" y2="562" class="wire" data-wire="GND"/>
+<line x1="438" y1="562" x2="438" y2="825" class="wire" data-wire="GND"/>
+<line x1="454" y1="626" x2="438" y2="626" class="wire" data-wire="GND"/>
+<circle cx="438" cy="626" r="4" class="junction"/>
+<line x1="856" y1="370" x2="908" y2="370" class="wire" data-wire="BUCK5_BOOT"/>
+<line x1="908" y1="370" x2="908" y2="260" class="wire" data-wire="BUCK5_BOOT"/>
+<line x1="908" y1="260" x2="984" y2="260" class="wire" data-wire="BUCK5_BOOT"/>
+<line x1="984" y1="244" x2="984" y2="276" class="wire"/>
+<line x1="996" y1="244" x2="996" y2="276" class="wire"/>
+<text x="990" y="200" font-size="21" class="ref" text-anchor="middle">C904</text>
+<text x="990" y="227" font-size="21" class="value" text-anchor="middle">100nF</text>
+<text x="893" y="254" font-size="18" class="net" data-net="BUCK5_BOOT" data-area="02  U901 · 电池母线 → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 BUCK5_BOOT，02  U901 · 电池母线 → 逻辑 +5V" text-anchor="end">BUCK5_BOOT</text>
+<line x1="996" y1="260" x2="1084" y2="260" class="wire" data-wire="BUCK5_SW"/>
+<line x1="1084" y1="260" x2="1084" y2="434" class="wire" data-wire="BUCK5_SW"/>
+<text x="1084" y="241" font-size="18" class="net" data-net="BUCK5_SW" data-area="02  U901 · 电池母线 → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 BUCK5_SW，02  U901 · 电池母线 → 逻辑 +5V" text-anchor="middle">BUCK5_SW</text>
+<line x1="856" y1="434" x2="1102" y2="434" class="wire" data-wire="BUCK5_SW"/>
+<path d="M 1102 434 q 10 -27 21 0 q 10 -27 21 0 q 10 -27 21 0 q 10 -27 21 0" class="symbol"/>
+<text x="1144" y="375" font-size="21" class="ref" text-anchor="middle">L901</text>
+<text x="1144" y="402" font-size="21" class="value" text-anchor="middle">7.8µH</text>
+<line x1="1186" y1="434" x2="1670" y2="434" class="wire" data-wire="+5V"/>
+<text x="1670" y="414" font-size="24" class="net" data-net="+5V" data-area="02  U901 · 电池母线 → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 +5V，02  U901 · 电池母线 → 逻辑 +5V" text-anchor="end">+5V</text>
+<circle cx="1084" cy="434" r="4" class="junction"/>
+<line x1="1084" y1="434" x2="1084" y2="560" class="wire" data-wire="BUCK5_SW"/>
+<line x1="1084" y1="596" x2="1084" y2="825" class="wire" data-wire="GND"/>
+<path d="M 1065 596 h 38 l -19 -36 Z" class="symbol"/>
+<path d="M 1058 552 h 7 v 8 h 38 v 8 h 7" class="wire"/>
+<text x="1105" y="587" font-size="18" class="ref" text-anchor="start">D903</text>
+<text x="1105" y="614" font-size="18" class="value" text-anchor="start">B560C-13-F</text>
+<text x="1061" y="554" font-size="16" class="pin" text-anchor="end">K</text>
+<text x="1061" y="613" font-size="16" class="pin" text-anchor="end">A</text>
+<line x1="856" y1="498" x2="1210" y2="498" class="wire" data-wire="BUCK5_FB"/>
+<text x="1010" y="480" font-size="18" class="net" data-net="BUCK5_FB" data-area="02  U901 · 电池母线 → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 BUCK5_FB，02  U901 · 电池母线 → 逻辑 +5V" text-anchor="end">BUCK5_FB</text>
+<line x1="1210" y1="434" x2="1210" y2="441" class="wire" data-wire="+5V"/>
+<line x1="1210" y1="475" x2="1210" y2="498" class="wire" data-wire="BUCK5_FB"/>
+<rect x="1201" y="441" width="18" height="34" class="symbol"/>
+<text x="1190" y="459" font-size="17" class="ref" text-anchor="end">R905</text>
+<text x="1190" y="486" font-size="17" class="value" text-anchor="end">53.6k / 1%</text>
+<line x1="1210" y1="498" x2="1210" y2="649" class="wire" data-wire="BUCK5_FB"/>
+<line x1="1210" y1="683" x2="1210" y2="825" class="wire" data-wire="GND"/>
+<rect x="1201" y="649" width="18" height="34" class="symbol"/>
+<text x="1190" y="667" font-size="18" class="ref" text-anchor="end">R906</text>
+<text x="1190" y="694" font-size="18" class="value" text-anchor="end">10.2k / 1%</text>
+<circle cx="1210" cy="498" r="4" class="junction"/>
+<line x1="856" y1="562" x2="976" y2="562" class="wire" data-wire="BUCK5_COMP"/>
+<text x="970" y="545" font-size="18" class="net" data-net="BUCK5_COMP" data-area="02  U901 · 电池母线 → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 BUCK5_COMP，02  U901 · 电池母线 → 逻辑 +5V" text-anchor="end">BUCK5_COMP</text>
+<line x1="907" y1="562" x2="907" y2="625" class="wire" data-wire="BUCK5_COMP"/>
+<line x1="907" y1="659" x2="907" y2="703" class="wire" data-wire="BUCK5_COMP_RC"/>
+<rect x="898" y="625" width="18" height="34" class="symbol"/>
+<text x="887" y="643" font-size="18" class="ref" text-anchor="end">R904</text>
+<text x="887" y="670" font-size="18" class="value" text-anchor="end">33.2k</text>
+<line x1="907" y1="703" x2="907" y2="746" class="wire" data-wire="BUCK5_COMP_RC"/>
+<line x1="907" y1="758" x2="907" y2="825" class="wire" data-wire="GND"/>
+<line x1="891" y1="746" x2="923" y2="746" class="wire"/>
+<line x1="891" y1="758" x2="923" y2="758" class="wire"/>
+<text x="887" y="753" font-size="18" class="ref" text-anchor="end">C907</text>
+<text x="887" y="780" font-size="18" class="value" text-anchor="end">3.3nF</text>
+<text x="888" y="707" font-size="16" class="net" data-net="BUCK5_COMP_RC" data-area="02  U901 · 电池母线 → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 BUCK5_COMP_RC，02  U901 · 电池母线 → 逻辑 +5V" text-anchor="end">BUCK5_COMP_RC</text>
+<line x1="976" y1="562" x2="976" y2="724" class="wire" data-wire="BUCK5_COMP"/>
+<line x1="976" y1="736" x2="976" y2="825" class="wire" data-wire="GND"/>
+<line x1="960" y1="724" x2="992" y2="724" class="wire"/>
+<line x1="960" y1="736" x2="992" y2="736" class="wire"/>
+<text x="996" y="731" font-size="15" class="ref" text-anchor="start">C908</text>
+<text x="996" y="758" font-size="15" class="value" text-anchor="start">22pF / DNP</text>
+<circle cx="907" cy="562" r="4" class="junction"/>
+<line x1="1325" y1="434" x2="1325" y2="606" class="wire" data-wire="+5V"/>
+<line x1="1325" y1="618" x2="1325" y2="825" class="wire" data-wire="GND"/>
+<line x1="1309" y1="606" x2="1341" y2="606" class="wire"/>
+<line x1="1309" y1="618" x2="1341" y2="618" class="wire"/>
+<text x="1305" y="613" font-size="15" class="ref" text-anchor="end">C905</text>
+<text x="1305" y="640" font-size="15" class="value" text-anchor="end">47µF / 10V</text>
+<line x1="1436" y1="434" x2="1436" y2="606" class="wire" data-wire="+5V"/>
+<line x1="1436" y1="618" x2="1436" y2="825" class="wire" data-wire="GND"/>
+<line x1="1420" y1="606" x2="1452" y2="606" class="wire"/>
+<line x1="1420" y1="618" x2="1452" y2="618" class="wire"/>
+<text x="1416" y="613" font-size="15" class="ref" text-anchor="end">C906</text>
+<text x="1416" y="640" font-size="15" class="value" text-anchor="end">47µF / 10V</text>
+<line x1="1547" y1="434" x2="1547" y2="606" class="wire" data-wire="+5V"/>
+<line x1="1547" y1="618" x2="1547" y2="825" class="wire" data-wire="GND"/>
+<line x1="1531" y1="606" x2="1563" y2="606" class="wire"/>
+<line x1="1531" y1="618" x2="1563" y2="618" class="wire"/>
+<text x="1527" y="613" font-size="15" class="ref" text-anchor="end">C913</text>
+<text x="1527" y="640" font-size="15" class="value" text-anchor="end">47µF / 10V</text>
+<line x1="1658" y1="434" x2="1658" y2="606" class="wire" data-wire="+5V"/>
+<line x1="1658" y1="618" x2="1658" y2="825" class="wire" data-wire="GND"/>
+<line x1="1642" y1="606" x2="1674" y2="606" class="wire"/>
+<line x1="1642" y1="618" x2="1674" y2="618" class="wire"/>
+<text x="1638" y="613" font-size="15" class="ref" text-anchor="end">C914</text>
+<text x="1638" y="640" font-size="15" class="value" text-anchor="end">47µF / 10V</text>
+<circle cx="1210" cy="434" r="4" class="junction"/>
+<circle cx="1325" cy="434" r="4" class="junction"/>
+<circle cx="1436" cy="434" r="4" class="junction"/>
+<circle cx="1547" cy="434" r="4" class="junction"/>
+<circle cx="1658" cy="434" r="4" class="junction"/>
+<line x1="95" y1="825" x2="1658" y2="825" class="wire" data-wire="GND"/>
+<circle cx="222" cy="825" r="4" class="junction"/>
+<circle cx="370" cy="825" r="4" class="junction"/>
+<circle cx="438" cy="825" r="4" class="junction"/>
+<circle cx="750" cy="825" r="4" class="junction"/>
+<circle cx="907" cy="825" r="4" class="junction"/>
+<circle cx="976" cy="825" r="4" class="junction"/>
+<circle cx="1084" cy="825" r="4" class="junction"/>
+<circle cx="1210" cy="825" r="4" class="junction"/>
+<circle cx="1325" cy="825" r="4" class="junction"/>
+<circle cx="1436" cy="825" r="4" class="junction"/>
+<circle cx="1547" cy="825" r="4" class="junction"/>
+<line x1="750" y1="825" x2="750" y2="834" class="wire"/>
+<line x1="737" y1="834" x2="763" y2="834" class="wire"/>
+<line x1="742" y1="840" x2="758" y2="840" class="wire"/>
+<line x1="747" y1="846" x2="753" y2="846" class="wire"/>
+<text x="775" y="860" font-size="18" class="net" data-net="GND" data-area="02  U901 · 电池母线 → 逻辑 +5V" tabindex="0" role="button" aria-label="网络 GND，02  U901 · 电池母线 → 逻辑 +5V" text-anchor="start">GND</text>
+<text x="40" y="944" font-size="20" class="muted">来源：SCT2650 Rev1.3 p2–3 脚表、p12 分压/频率、p14 二极管、p17 表3。</text>
+<text x="40" y="972" font-size="20" class="muted">用户输入 STC2650；本图采用 SCT2650STER 候选。EN 接输入，低电截止由 BMS / 系统另行确定。</text>
+<text x="40" y="1000" font-size="20" class="muted">两路 5 V 独立稳压、共输入和地；输出不得并联。DNP 默认不装。</text>
+<text x="40" y="1028" font-size="20" class="muted">逻辑 +5V 同时给后级 U902 供电；主控使用 U902 的 +3V3。</text>
+<text x="40" y="1056" font-size="20" class="muted">芯片、续流二极管和电感的温升，以及带载瞬态，均需实测。</text>
+</g></g>
 <g data-panel="power-servo5" transform="translate(3600 -450)"><g xmlns="http://www.w3.org/2000/svg" id="power-servo5"><rect x="1790" y="650" width="1770" height="1160" rx="10" class="panel"/>
-<text x="1812" y="688" font-size="27" class="heading">03  U903 · 6S → 舵机专用 5V</text>
-<text x="1812" y="719" font-size="18" class="muted">SCT2650STER 候选（用户型号待核对）· 5V / 500kHz 原厂参考，负载能力待验证。</text>
+<text x="1812" y="688" font-size="27" class="heading">03  U903 · 电池母线 → 舵机 +5V_SERVO</text>
+<text x="1812" y="719" font-size="18" class="muted">SCT2650STER 候选 · 5 V / 500 kHz 原厂参考 · 导线交叉处有圆点才连通。</text>
 </g>
-<rect xmlns="http://www.w3.org/2000/svg" x="2400" y="785" width="360" height="450" rx="4" class="chip"/>
-<text xmlns="http://www.w3.org/2000/svg" x="2580" y="814" font-size="22" class="ref" text-anchor="middle">U903</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2580" y="842" font-size="20" class="heading" text-anchor="middle">SCT2650STER</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="2374" y1="875" x2="2400" y2="875" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
-<text xmlns="http://www.w3.org/2000/svg" x="2410" y="880" font-size="17" class="pin">2 VIN</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2365" y="880" font-size="17" class="net" data-net="BAT_SENSE_PROTECTED" data-area="03  U903 · 6S → 舵机专用 5V" tabindex="0" role="button" aria-label="网络 BAT_SENSE_PROTECTED，03  U903 · 6S → 舵机专用 5V" text-anchor="end">BAT_SENSE_PROTECTED</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="2374" y1="962.5" x2="2400" y2="962.5" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
-<text xmlns="http://www.w3.org/2000/svg" x="2410" y="967.5" font-size="17" class="pin">3 EN</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2365" y="967.5" font-size="17" class="net" data-net="BAT_SENSE_PROTECTED" data-area="03  U903 · 6S → 舵机专用 5V" tabindex="0" role="button" aria-label="网络 BAT_SENSE_PROTECTED，03  U903 · 6S → 舵机专用 5V" text-anchor="end">BAT_SENSE_PROTECTED</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="2374" y1="1050" x2="2400" y2="1050" class="wire" data-wire="SERVO5_RT"/>
-<text xmlns="http://www.w3.org/2000/svg" x="2410" y="1055" font-size="17" class="pin">4 RT/CLK</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2365" y="1055" font-size="17" class="net" data-net="SERVO5_RT" data-area="03  U903 · 6S → 舵机专用 5V" tabindex="0" role="button" aria-label="网络 SERVO5_RT，03  U903 · 6S → 舵机专用 5V" text-anchor="end">SERVO5_RT</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="2374" y1="1137.5" x2="2400" y2="1137.5" class="wire" data-wire="GND"/>
-<text xmlns="http://www.w3.org/2000/svg" x="2410" y="1142.5" font-size="17" class="pin">7 GND</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2365" y="1142.5" font-size="17" class="net" data-net="GND" data-area="03  U903 · 6S → 舵机专用 5V" tabindex="0" role="button" aria-label="网络 GND，03  U903 · 6S → 舵机专用 5V" text-anchor="end">GND</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="2374" y1="1225" x2="2400" y2="1225" class="wire" data-wire="GND"/>
-<text xmlns="http://www.w3.org/2000/svg" x="2410" y="1230" font-size="17" class="pin">9 EP</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2365" y="1230" font-size="17" class="net" data-net="GND" data-area="03  U903 · 6S → 舵机专用 5V" tabindex="0" role="button" aria-label="网络 GND，03  U903 · 6S → 舵机专用 5V" text-anchor="end">GND</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="2760" y1="875" x2="2786" y2="875" class="wire" data-wire="SERVO5_BOOT"/>
-<text xmlns="http://www.w3.org/2000/svg" x="2750" y="880" font-size="17" class="pin" text-anchor="end">BOOT 1</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2795" y="880" font-size="17" class="net" data-net="SERVO5_BOOT" data-area="03  U903 · 6S → 舵机专用 5V" tabindex="0" role="button" aria-label="网络 SERVO5_BOOT，03  U903 · 6S → 舵机专用 5V" text-anchor="start">SERVO5_BOOT</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="2760" y1="962.5" x2="2786" y2="962.5" class="wire" data-wire="SERVO5_SW"/>
-<text xmlns="http://www.w3.org/2000/svg" x="2750" y="967.5" font-size="17" class="pin" text-anchor="end">SW 8</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2795" y="967.5" font-size="17" class="net" data-net="SERVO5_SW" data-area="03  U903 · 6S → 舵机专用 5V" tabindex="0" role="button" aria-label="网络 SERVO5_SW，03  U903 · 6S → 舵机专用 5V" text-anchor="start">SERVO5_SW</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="2760" y1="1050" x2="2786" y2="1050" class="wire" data-wire="SERVO5_FB"/>
-<text xmlns="http://www.w3.org/2000/svg" x="2750" y="1055" font-size="17" class="pin" text-anchor="end">FB 5</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2795" y="1055" font-size="17" class="net" data-net="SERVO5_FB" data-area="03  U903 · 6S → 舵机专用 5V" tabindex="0" role="button" aria-label="网络 SERVO5_FB，03  U903 · 6S → 舵机专用 5V" text-anchor="start">SERVO5_FB</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="2760" y1="1137.5" x2="2786" y2="1137.5" class="wire" data-wire="SERVO5_COMP"/>
-<text xmlns="http://www.w3.org/2000/svg" x="2750" y="1142.5" font-size="17" class="pin" text-anchor="end">COMP 6</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2795" y="1142.5" font-size="17" class="net" data-net="SERVO5_COMP" data-area="03  U903 · 6S → 舵机专用 5V" tabindex="0" role="button" aria-label="网络 SERVO5_COMP，03  U903 · 6S → 舵机专用 5V" text-anchor="start">SERVO5_COMP</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1925" y="808" font-size="16" class="net" data-net="BAT_SENSE_PROTECTED" data-area="03  U903 · 6S → 舵机专用 5V" tabindex="0" role="button" aria-label="网络 BAT_SENSE_PROTECTED，03  U903 · 6S → 舵机专用 5V" text-anchor="middle">BAT_SENSE_PROTECTED</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="1925" y1="820" x2="1925" y2="848" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1911" y1="848" x2="1939" y2="848" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1911" y1="859" x2="1939" y2="859" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1925" y1="859" x2="1925" y2="890" class="wire" data-wire="GND"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1925" y1="890" x2="1925" y2="899" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1912" y1="899" x2="1938" y2="899" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1917" y1="905" x2="1933" y2="905" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1922" y1="911" x2="1928" y2="911" class="wire"/>
-<text xmlns="http://www.w3.org/2000/svg" x="1947" y="848" font-size="16" class="ref">C921</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1947" y="873" font-size="16" class="value">10µF / 63V</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2165" y="753" font-size="16" class="net" data-net="BAT_SENSE_PROTECTED" data-area="03  U903 · 6S → 舵机专用 5V" tabindex="0" role="button" aria-label="网络 BAT_SENSE_PROTECTED，03  U903 · 6S → 舵机专用 5V" text-anchor="middle">BAT_SENSE_PROTECTED</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="2165" y1="765" x2="2165" y2="793" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2151" y1="793" x2="2179" y2="793" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2151" y1="804" x2="2179" y2="804" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2165" y1="804" x2="2165" y2="835" class="wire" data-wire="GND"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2165" y1="835" x2="2165" y2="844" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2152" y1="844" x2="2178" y2="844" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2157" y1="850" x2="2173" y2="850" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2162" y1="856" x2="2168" y2="856" class="wire"/>
-<text xmlns="http://www.w3.org/2000/svg" x="2187" y="793" font-size="16" class="ref">C922</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2187" y="818" font-size="16" class="value">100nF / 63V</text>
-<text xmlns="http://www.w3.org/2000/svg" x="3030" y="788" font-size="16" class="net" data-net="SERVO5_BOOT" data-area="03  U903 · 6S → 舵机专用 5V" tabindex="0" role="button" aria-label="网络 SERVO5_BOOT，03  U903 · 6S → 舵机专用 5V" text-anchor="middle">SERVO5_BOOT</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="3030" y1="800" x2="3030" y2="828" class="wire" data-wire="SERVO5_BOOT"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="3016" y1="828" x2="3044" y2="828" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="3016" y1="839" x2="3044" y2="839" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="3030" y1="839" x2="3030" y2="870" class="wire" data-wire="SERVO5_SW"/>
-<text xmlns="http://www.w3.org/2000/svg" x="3030" y="892" font-size="16" class="net" data-net="SERVO5_SW" data-area="03  U903 · 6S → 舵机专用 5V" tabindex="0" role="button" aria-label="网络 SERVO5_SW，03  U903 · 6S → 舵机专用 5V" text-anchor="middle">SERVO5_SW</text>
-<text xmlns="http://www.w3.org/2000/svg" x="3052" y="828" font-size="16" class="ref">C923</text>
-<text xmlns="http://www.w3.org/2000/svg" x="3052" y="853" font-size="16" class="value">100nF</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2940" y="950" font-size="17" class="net" data-net="SERVO5_SW" data-area="03  U903 · 6S → 舵机专用 5V" tabindex="0" role="button" aria-label="网络 SERVO5_SW，03  U903 · 6S → 舵机专用 5V" text-anchor="start">SERVO5_SW</text>
-<text xmlns="http://www.w3.org/2000/svg" x="3390" y="950" font-size="17" class="net" data-net="+5V_SERVO" data-area="03  U903 · 6S → 舵机专用 5V" tabindex="0" role="button" aria-label="网络 +5V_SERVO，03  U903 · 6S → 舵机专用 5V" text-anchor="end">+5V_SERVO</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="2940" y1="965" x2="3123" y2="965" class="wire" data-wire="SERVO5_SW"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="3207" y1="965" x2="3390" y2="965" class="wire" data-wire="+5V_SERVO"/>
-<path xmlns="http://www.w3.org/2000/svg" d="M 3123 965 q 10 -26 21 0 q 10 -26 21 0 q 10 -26 21 0 q 10 -26 21 0" class="symbol"/>
-<text xmlns="http://www.w3.org/2000/svg" x="3165" y="1004" font-size="17" class="value" text-anchor="middle">L903 · 7.8µH</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2980" y="1013" font-size="16" class="net" data-net="SERVO5_SW" data-area="03  U903 · 6S → 舵机专用 5V" tabindex="0" role="button" aria-label="网络 SERVO5_SW，03  U903 · 6S → 舵机专用 5V" text-anchor="middle">SERVO5_SW</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="2980" y1="1025" x2="2980" y2="1055" class="wire" data-wire="SERVO5_SW"/>
-<path xmlns="http://www.w3.org/2000/svg" d="M 2960 1090 L 3000 1090 L 2980 1055 Z M 2960 1046 L 2960 1055 L 3000 1055 L 3000 1064" class="symbol"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2980" y1="1090" x2="2980" y2="1123" class="wire" data-wire="GND"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2980" y1="1123" x2="2980" y2="1132" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2967" y1="1132" x2="2993" y2="1132" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2972" y1="1138" x2="2988" y2="1138" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2977" y1="1144" x2="2983" y2="1144" class="wire"/>
-<text xmlns="http://www.w3.org/2000/svg" x="3010" y="1057" font-size="16" class="ref">D904</text>
-<text xmlns="http://www.w3.org/2000/svg" x="3010" y="1081" font-size="16" class="value">B560C-13-F</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2952" y="1052" font-size="14" class="pin" text-anchor="end">K</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2952" y="1097" font-size="14" class="pin" text-anchor="end">A</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2800" y="1198" font-size="16" class="net" data-net="+5V_SERVO" data-area="03  U903 · 6S → 舵机专用 5V" tabindex="0" role="button" aria-label="网络 +5V_SERVO，03  U903 · 6S → 舵机专用 5V" text-anchor="middle">+5V_SERVO</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="2800" y1="1210" x2="2800" y2="1238" class="wire" data-wire="+5V_SERVO"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2786" y1="1238" x2="2814" y2="1238" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2786" y1="1249" x2="2814" y2="1249" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2800" y1="1249" x2="2800" y2="1280" class="wire" data-wire="GND"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2800" y1="1280" x2="2800" y2="1289" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2787" y1="1289" x2="2813" y2="1289" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2792" y1="1295" x2="2808" y2="1295" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2797" y1="1301" x2="2803" y2="1301" class="wire"/>
-<text xmlns="http://www.w3.org/2000/svg" x="2822" y="1238" font-size="16" class="ref">C924</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2822" y="1263" font-size="16" class="value">47µF / 10V</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2970" y="1198" font-size="16" class="net" data-net="+5V_SERVO" data-area="03  U903 · 6S → 舵机专用 5V" tabindex="0" role="button" aria-label="网络 +5V_SERVO，03  U903 · 6S → 舵机专用 5V" text-anchor="middle">+5V_SERVO</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="2970" y1="1210" x2="2970" y2="1238" class="wire" data-wire="+5V_SERVO"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2956" y1="1238" x2="2984" y2="1238" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2956" y1="1249" x2="2984" y2="1249" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2970" y1="1249" x2="2970" y2="1280" class="wire" data-wire="GND"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2970" y1="1280" x2="2970" y2="1289" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2957" y1="1289" x2="2983" y2="1289" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2962" y1="1295" x2="2978" y2="1295" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2967" y1="1301" x2="2973" y2="1301" class="wire"/>
-<text xmlns="http://www.w3.org/2000/svg" x="2992" y="1238" font-size="16" class="ref">C925</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2992" y="1263" font-size="16" class="value">47µF / 10V</text>
-<text xmlns="http://www.w3.org/2000/svg" x="3140" y="1198" font-size="16" class="net" data-net="+5V_SERVO" data-area="03  U903 · 6S → 舵机专用 5V" tabindex="0" role="button" aria-label="网络 +5V_SERVO，03  U903 · 6S → 舵机专用 5V" text-anchor="middle">+5V_SERVO</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="3140" y1="1210" x2="3140" y2="1238" class="wire" data-wire="+5V_SERVO"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="3126" y1="1238" x2="3154" y2="1238" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="3126" y1="1249" x2="3154" y2="1249" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="3140" y1="1249" x2="3140" y2="1280" class="wire" data-wire="GND"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="3140" y1="1280" x2="3140" y2="1289" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="3127" y1="1289" x2="3153" y2="1289" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="3132" y1="1295" x2="3148" y2="1295" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="3137" y1="1301" x2="3143" y2="1301" class="wire"/>
-<text xmlns="http://www.w3.org/2000/svg" x="3162" y="1238" font-size="16" class="ref">C926</text>
-<text xmlns="http://www.w3.org/2000/svg" x="3162" y="1263" font-size="16" class="value">47µF / 10V</text>
-<text xmlns="http://www.w3.org/2000/svg" x="3310" y="1198" font-size="16" class="net" data-net="+5V_SERVO" data-area="03  U903 · 6S → 舵机专用 5V" tabindex="0" role="button" aria-label="网络 +5V_SERVO，03  U903 · 6S → 舵机专用 5V" text-anchor="middle">+5V_SERVO</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="3310" y1="1210" x2="3310" y2="1238" class="wire" data-wire="+5V_SERVO"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="3296" y1="1238" x2="3324" y2="1238" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="3296" y1="1249" x2="3324" y2="1249" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="3310" y1="1249" x2="3310" y2="1280" class="wire" data-wire="GND"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="3310" y1="1280" x2="3310" y2="1289" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="3297" y1="1289" x2="3323" y2="1289" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="3302" y1="1295" x2="3318" y2="1295" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="3307" y1="1301" x2="3313" y2="1301" class="wire"/>
-<text xmlns="http://www.w3.org/2000/svg" x="3332" y="1238" font-size="16" class="ref">C927</text>
-<text xmlns="http://www.w3.org/2000/svg" x="3332" y="1263" font-size="16" class="value">47µF / 10V</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1900" y="1344" font-size="16" class="net" data-net="SERVO5_RT" data-area="03  U903 · 6S → 舵机专用 5V" tabindex="0" role="button" aria-label="网络 SERVO5_RT，03  U903 · 6S → 舵机专用 5V" text-anchor="middle">SERVO5_RT</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="1900" y1="1355" x2="1900" y2="1375" class="wire" data-wire="SERVO5_RT"/>
-<rect xmlns="http://www.w3.org/2000/svg" x="1892" y="1375" width="16" height="37" class="symbol"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1900" y1="1412" x2="1900" y2="1432" class="wire" data-wire="GND"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1900" y1="1432" x2="1900" y2="1442" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1887" y1="1442" x2="1913" y2="1442" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1892" y1="1448" x2="1908" y2="1448" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="1897" y1="1454" x2="1903" y2="1454" class="wire"/>
-<text xmlns="http://www.w3.org/2000/svg" x="1917" y="1385" font-size="16" class="ref">R921</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1917" y="1409" font-size="16" class="value">200k</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2160" y="1344" font-size="16" class="net" data-net="+5V_SERVO" data-area="03  U903 · 6S → 舵机专用 5V" tabindex="0" role="button" aria-label="网络 +5V_SERVO，03  U903 · 6S → 舵机专用 5V" text-anchor="middle">+5V_SERVO</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="2160" y1="1355" x2="2160" y2="1375" class="wire" data-wire="+5V_SERVO"/>
-<rect xmlns="http://www.w3.org/2000/svg" x="2152" y="1375" width="16" height="37" class="symbol"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2160" y1="1412" x2="2160" y2="1432" class="wire" data-wire="SERVO5_FB"/>
-<text xmlns="http://www.w3.org/2000/svg" x="2160" y="1452" font-size="16" class="net" data-net="SERVO5_FB" data-area="03  U903 · 6S → 舵机专用 5V" tabindex="0" role="button" aria-label="网络 SERVO5_FB，03  U903 · 6S → 舵机专用 5V" text-anchor="middle">SERVO5_FB</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2177" y="1385" font-size="16" class="ref">R922</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2177" y="1409" font-size="16" class="value">53.6k / 1%</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2420" y="1344" font-size="16" class="net" data-net="SERVO5_FB" data-area="03  U903 · 6S → 舵机专用 5V" tabindex="0" role="button" aria-label="网络 SERVO5_FB，03  U903 · 6S → 舵机专用 5V" text-anchor="middle">SERVO5_FB</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="2420" y1="1355" x2="2420" y2="1375" class="wire" data-wire="SERVO5_FB"/>
-<rect xmlns="http://www.w3.org/2000/svg" x="2412" y="1375" width="16" height="37" class="symbol"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2420" y1="1412" x2="2420" y2="1432" class="wire" data-wire="GND"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2420" y1="1432" x2="2420" y2="1442" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2407" y1="1442" x2="2433" y2="1442" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2412" y1="1448" x2="2428" y2="1448" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2417" y1="1454" x2="2423" y2="1454" class="wire"/>
-<text xmlns="http://www.w3.org/2000/svg" x="2437" y="1385" font-size="16" class="ref">R923</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2437" y="1409" font-size="16" class="value">10.2k / 1%</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2675" y="1344" font-size="16" class="net" data-net="SERVO5_COMP" data-area="03  U903 · 6S → 舵机专用 5V" tabindex="0" role="button" aria-label="网络 SERVO5_COMP，03  U903 · 6S → 舵机专用 5V" text-anchor="middle">SERVO5_COMP</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="2675" y1="1355" x2="2675" y2="1375" class="wire" data-wire="SERVO5_COMP"/>
-<rect xmlns="http://www.w3.org/2000/svg" x="2667" y="1375" width="16" height="37" class="symbol"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2675" y1="1412" x2="2675" y2="1432" class="wire" data-wire="SERVO5_COMP_RC"/>
-<text xmlns="http://www.w3.org/2000/svg" x="2675" y="1452" font-size="16" class="net" data-net="SERVO5_COMP_RC" data-area="03  U903 · 6S → 舵机专用 5V" tabindex="0" role="button" aria-label="网络 SERVO5_COMP_RC，03  U903 · 6S → 舵机专用 5V" text-anchor="middle">SERVO5_COMP_RC</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2692" y="1385" font-size="16" class="ref">R924</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2692" y="1409" font-size="16" class="value">33.2k</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2955" y="1343" font-size="16" class="net" data-net="SERVO5_COMP_RC" data-area="03  U903 · 6S → 舵机专用 5V" tabindex="0" role="button" aria-label="网络 SERVO5_COMP_RC，03  U903 · 6S → 舵机专用 5V" text-anchor="middle">SERVO5_COMP_RC</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="2955" y1="1355" x2="2955" y2="1383" class="wire" data-wire="SERVO5_COMP_RC"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2941" y1="1383" x2="2969" y2="1383" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2941" y1="1394" x2="2969" y2="1394" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2955" y1="1394" x2="2955" y2="1425" class="wire" data-wire="GND"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2955" y1="1425" x2="2955" y2="1434" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2942" y1="1434" x2="2968" y2="1434" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2947" y1="1440" x2="2963" y2="1440" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="2952" y1="1446" x2="2958" y2="1446" class="wire"/>
-<text xmlns="http://www.w3.org/2000/svg" x="2977" y="1383" font-size="16" class="ref">C928</text>
-<text xmlns="http://www.w3.org/2000/svg" x="2977" y="1408" font-size="16" class="value">3.3nF</text>
-<text xmlns="http://www.w3.org/2000/svg" x="3240" y="1343" font-size="16" class="net" data-net="SERVO5_COMP" data-area="03  U903 · 6S → 舵机专用 5V" tabindex="0" role="button" aria-label="网络 SERVO5_COMP，03  U903 · 6S → 舵机专用 5V" text-anchor="middle">SERVO5_COMP</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="3240" y1="1355" x2="3240" y2="1383" class="wire" data-wire="SERVO5_COMP"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="3226" y1="1383" x2="3254" y2="1383" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="3226" y1="1394" x2="3254" y2="1394" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="3240" y1="1394" x2="3240" y2="1425" class="wire" data-wire="GND"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="3240" y1="1425" x2="3240" y2="1434" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="3227" y1="1434" x2="3253" y2="1434" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="3232" y1="1440" x2="3248" y2="1440" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="3237" y1="1446" x2="3243" y2="1446" class="wire"/>
-<text xmlns="http://www.w3.org/2000/svg" x="3262" y="1383" font-size="16" class="ref">C929</text>
-<text xmlns="http://www.w3.org/2000/svg" x="3262" y="1408" font-size="16" class="value">22pF / DNP</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1830" y="1545" font-size="18" class="muted">来源：SCT2650 Rev1.3 p2–3脚表、p12分压/频率、p14二极管、p17表3。</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1830" y="1573" font-size="18" class="muted">用户输入 STC2650；本图采用 SCT2650STER 候选，不代表采购型号已确认。</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1830" y="1601" font-size="18" class="muted">EN 接保护后输入；未复制原厂低压例图UVLO，6S截止由BMS/系统另行确定。</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1830" y="1629" font-size="18" class="muted">两路独立稳压、共输入/共地；输出不得并联，不是隔离电源。</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1830" y="1657" font-size="18" class="muted">舵机仅接 +5V_SERVO；两只运行/堵转电流、储能、线径及接口配额待算。</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1830" y="1685" font-size="18" class="muted">器件5A等级不代表本板保证5A；芯片/二极管/电感温升及瞬态均需实测。</text></g>
+<g xmlns="http://www.w3.org/2000/svg" transform="translate(1790 650)">
+<rect x="480" y="280" width="350" height="356" rx="4" class="chip"/>
+<text x="655" y="309" font-size="22" class="ref" text-anchor="middle">U903</text>
+<text x="655" y="337" font-size="20" class="heading" text-anchor="middle">SCT2650STER</text>
+<line x1="454" y1="370" x2="480" y2="370" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
+<text x="490" y="375" font-size="17" class="pin">2 VIN</text>
+<line x1="454" y1="434" x2="480" y2="434" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
+<text x="490" y="439" font-size="17" class="pin">3 EN</text>
+<line x1="454" y1="498" x2="480" y2="498" class="wire" data-wire="SERVO5_RT"/>
+<text x="490" y="503" font-size="17" class="pin">4 RT/CLK</text>
+<line x1="454" y1="562" x2="480" y2="562" class="wire" data-wire="GND"/>
+<text x="490" y="567" font-size="17" class="pin">7 GND</text>
+<line x1="454" y1="626" x2="480" y2="626" class="wire" data-wire="GND"/>
+<text x="490" y="631" font-size="17" class="pin">9 EP</text>
+<line x1="830" y1="370" x2="856" y2="370" class="wire" data-wire="SERVO5_BOOT"/>
+<text x="820" y="375" font-size="17" class="pin" text-anchor="end">BOOT 1</text>
+<line x1="830" y1="434" x2="856" y2="434" class="wire" data-wire="SERVO5_SW"/>
+<text x="820" y="439" font-size="17" class="pin" text-anchor="end">SW 8</text>
+<line x1="830" y1="498" x2="856" y2="498" class="wire" data-wire="SERVO5_FB"/>
+<text x="820" y="503" font-size="17" class="pin" text-anchor="end">FB 5</text>
+<line x1="830" y1="562" x2="856" y2="562" class="wire" data-wire="SERVO5_COMP"/>
+<text x="820" y="567" font-size="17" class="pin" text-anchor="end">COMP 6</text>
+<line x1="62" y1="370" x2="454" y2="370" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
+<text x="62" y="351" font-size="24" class="net" data-net="BAT_SENSE_PROTECTED" data-area="03  U903 · 电池母线 → 舵机 +5V_SERVO" tabindex="0" role="button" aria-label="网络 BAT_SENSE_PROTECTED，03  U903 · 电池母线 → 舵机 +5V_SERVO" text-anchor="start">BAT_SENSE_PROTECTED</text>
+<line x1="352" y1="370" x2="352" y2="434" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
+<line x1="352" y1="434" x2="454" y2="434" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
+<circle cx="95" cy="370" r="4" class="junction"/>
+<circle cx="222" cy="370" r="4" class="junction"/>
+<circle cx="352" cy="370" r="4" class="junction"/>
+<line x1="95" y1="370" x2="95" y2="559" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
+<line x1="95" y1="571" x2="95" y2="825" class="wire" data-wire="GND"/>
+<line x1="79" y1="559" x2="111" y2="559" class="wire"/>
+<line x1="79" y1="571" x2="111" y2="571" class="wire"/>
+<text x="115" y="566" font-size="18" class="ref" text-anchor="start">C921</text>
+<text x="115" y="593" font-size="18" class="value" text-anchor="start">10µF / 63V</text>
+<line x1="222" y1="370" x2="222" y2="559" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
+<line x1="222" y1="571" x2="222" y2="825" class="wire" data-wire="GND"/>
+<line x1="206" y1="559" x2="238" y2="559" class="wire"/>
+<line x1="206" y1="571" x2="238" y2="571" class="wire"/>
+<text x="242" y="566" font-size="18" class="ref" text-anchor="start">C922</text>
+<text x="242" y="593" font-size="18" class="value" text-anchor="start">100nF / 63V</text>
+<line x1="454" y1="498" x2="370" y2="498" class="wire" data-wire="SERVO5_RT"/>
+<line x1="370" y1="498" x2="370" y2="674" class="wire" data-wire="SERVO5_RT"/>
+<text x="370" y="479" font-size="17" class="net" data-net="SERVO5_RT" data-area="03  U903 · 电池母线 → 舵机 +5V_SERVO" tabindex="0" role="button" aria-label="网络 SERVO5_RT，03  U903 · 电池母线 → 舵机 +5V_SERVO" text-anchor="middle">SERVO5_RT</text>
+<line x1="370" y1="674" x2="370" y2="694" class="wire" data-wire="SERVO5_RT"/>
+<line x1="370" y1="728" x2="370" y2="825" class="wire" data-wire="GND"/>
+<rect x="361" y="694" width="18" height="34" class="symbol"/>
+<text x="350" y="712" font-size="21" class="ref" text-anchor="end">R921</text>
+<text x="350" y="739" font-size="21" class="value" text-anchor="end">200k</text>
+<line x1="454" y1="562" x2="438" y2="562" class="wire" data-wire="GND"/>
+<line x1="438" y1="562" x2="438" y2="825" class="wire" data-wire="GND"/>
+<line x1="454" y1="626" x2="438" y2="626" class="wire" data-wire="GND"/>
+<circle cx="438" cy="626" r="4" class="junction"/>
+<line x1="856" y1="370" x2="908" y2="370" class="wire" data-wire="SERVO5_BOOT"/>
+<line x1="908" y1="370" x2="908" y2="260" class="wire" data-wire="SERVO5_BOOT"/>
+<line x1="908" y1="260" x2="984" y2="260" class="wire" data-wire="SERVO5_BOOT"/>
+<line x1="984" y1="244" x2="984" y2="276" class="wire"/>
+<line x1="996" y1="244" x2="996" y2="276" class="wire"/>
+<text x="990" y="200" font-size="21" class="ref" text-anchor="middle">C923</text>
+<text x="990" y="227" font-size="21" class="value" text-anchor="middle">100nF</text>
+<text x="893" y="254" font-size="18" class="net" data-net="SERVO5_BOOT" data-area="03  U903 · 电池母线 → 舵机 +5V_SERVO" tabindex="0" role="button" aria-label="网络 SERVO5_BOOT，03  U903 · 电池母线 → 舵机 +5V_SERVO" text-anchor="end">SERVO5_BOOT</text>
+<line x1="996" y1="260" x2="1084" y2="260" class="wire" data-wire="SERVO5_SW"/>
+<line x1="1084" y1="260" x2="1084" y2="434" class="wire" data-wire="SERVO5_SW"/>
+<text x="1084" y="241" font-size="18" class="net" data-net="SERVO5_SW" data-area="03  U903 · 电池母线 → 舵机 +5V_SERVO" tabindex="0" role="button" aria-label="网络 SERVO5_SW，03  U903 · 电池母线 → 舵机 +5V_SERVO" text-anchor="middle">SERVO5_SW</text>
+<line x1="856" y1="434" x2="1102" y2="434" class="wire" data-wire="SERVO5_SW"/>
+<path d="M 1102 434 q 10 -27 21 0 q 10 -27 21 0 q 10 -27 21 0 q 10 -27 21 0" class="symbol"/>
+<text x="1144" y="375" font-size="21" class="ref" text-anchor="middle">L903</text>
+<text x="1144" y="402" font-size="21" class="value" text-anchor="middle">7.8µH</text>
+<line x1="1186" y1="434" x2="1670" y2="434" class="wire" data-wire="+5V_SERVO"/>
+<text x="1670" y="414" font-size="24" class="net" data-net="+5V_SERVO" data-area="03  U903 · 电池母线 → 舵机 +5V_SERVO" tabindex="0" role="button" aria-label="网络 +5V_SERVO，03  U903 · 电池母线 → 舵机 +5V_SERVO" text-anchor="end">+5V_SERVO</text>
+<circle cx="1084" cy="434" r="4" class="junction"/>
+<line x1="1084" y1="434" x2="1084" y2="560" class="wire" data-wire="SERVO5_SW"/>
+<line x1="1084" y1="596" x2="1084" y2="825" class="wire" data-wire="GND"/>
+<path d="M 1065 596 h 38 l -19 -36 Z" class="symbol"/>
+<path d="M 1058 552 h 7 v 8 h 38 v 8 h 7" class="wire"/>
+<text x="1105" y="587" font-size="18" class="ref" text-anchor="start">D904</text>
+<text x="1105" y="614" font-size="18" class="value" text-anchor="start">B560C-13-F</text>
+<text x="1061" y="554" font-size="16" class="pin" text-anchor="end">K</text>
+<text x="1061" y="613" font-size="16" class="pin" text-anchor="end">A</text>
+<line x1="856" y1="498" x2="1210" y2="498" class="wire" data-wire="SERVO5_FB"/>
+<text x="1010" y="480" font-size="18" class="net" data-net="SERVO5_FB" data-area="03  U903 · 电池母线 → 舵机 +5V_SERVO" tabindex="0" role="button" aria-label="网络 SERVO5_FB，03  U903 · 电池母线 → 舵机 +5V_SERVO" text-anchor="end">SERVO5_FB</text>
+<line x1="1210" y1="434" x2="1210" y2="441" class="wire" data-wire="+5V_SERVO"/>
+<line x1="1210" y1="475" x2="1210" y2="498" class="wire" data-wire="SERVO5_FB"/>
+<rect x="1201" y="441" width="18" height="34" class="symbol"/>
+<text x="1190" y="459" font-size="17" class="ref" text-anchor="end">R922</text>
+<text x="1190" y="486" font-size="17" class="value" text-anchor="end">53.6k / 1%</text>
+<line x1="1210" y1="498" x2="1210" y2="649" class="wire" data-wire="SERVO5_FB"/>
+<line x1="1210" y1="683" x2="1210" y2="825" class="wire" data-wire="GND"/>
+<rect x="1201" y="649" width="18" height="34" class="symbol"/>
+<text x="1190" y="667" font-size="18" class="ref" text-anchor="end">R923</text>
+<text x="1190" y="694" font-size="18" class="value" text-anchor="end">10.2k / 1%</text>
+<circle cx="1210" cy="498" r="4" class="junction"/>
+<line x1="856" y1="562" x2="976" y2="562" class="wire" data-wire="SERVO5_COMP"/>
+<text x="970" y="545" font-size="18" class="net" data-net="SERVO5_COMP" data-area="03  U903 · 电池母线 → 舵机 +5V_SERVO" tabindex="0" role="button" aria-label="网络 SERVO5_COMP，03  U903 · 电池母线 → 舵机 +5V_SERVO" text-anchor="end">SERVO5_COMP</text>
+<line x1="907" y1="562" x2="907" y2="625" class="wire" data-wire="SERVO5_COMP"/>
+<line x1="907" y1="659" x2="907" y2="703" class="wire" data-wire="SERVO5_COMP_RC"/>
+<rect x="898" y="625" width="18" height="34" class="symbol"/>
+<text x="887" y="643" font-size="18" class="ref" text-anchor="end">R924</text>
+<text x="887" y="670" font-size="18" class="value" text-anchor="end">33.2k</text>
+<line x1="907" y1="703" x2="907" y2="746" class="wire" data-wire="SERVO5_COMP_RC"/>
+<line x1="907" y1="758" x2="907" y2="825" class="wire" data-wire="GND"/>
+<line x1="891" y1="746" x2="923" y2="746" class="wire"/>
+<line x1="891" y1="758" x2="923" y2="758" class="wire"/>
+<text x="887" y="753" font-size="18" class="ref" text-anchor="end">C928</text>
+<text x="887" y="780" font-size="18" class="value" text-anchor="end">3.3nF</text>
+<text x="888" y="707" font-size="16" class="net" data-net="SERVO5_COMP_RC" data-area="03  U903 · 电池母线 → 舵机 +5V_SERVO" tabindex="0" role="button" aria-label="网络 SERVO5_COMP_RC，03  U903 · 电池母线 → 舵机 +5V_SERVO" text-anchor="end">SERVO5_COMP_RC</text>
+<line x1="976" y1="562" x2="976" y2="724" class="wire" data-wire="SERVO5_COMP"/>
+<line x1="976" y1="736" x2="976" y2="825" class="wire" data-wire="GND"/>
+<line x1="960" y1="724" x2="992" y2="724" class="wire"/>
+<line x1="960" y1="736" x2="992" y2="736" class="wire"/>
+<text x="996" y="731" font-size="15" class="ref" text-anchor="start">C929</text>
+<text x="996" y="758" font-size="15" class="value" text-anchor="start">22pF / DNP</text>
+<circle cx="907" cy="562" r="4" class="junction"/>
+<line x1="1325" y1="434" x2="1325" y2="606" class="wire" data-wire="+5V_SERVO"/>
+<line x1="1325" y1="618" x2="1325" y2="825" class="wire" data-wire="GND"/>
+<line x1="1309" y1="606" x2="1341" y2="606" class="wire"/>
+<line x1="1309" y1="618" x2="1341" y2="618" class="wire"/>
+<text x="1305" y="613" font-size="15" class="ref" text-anchor="end">C924</text>
+<text x="1305" y="640" font-size="15" class="value" text-anchor="end">47µF / 10V</text>
+<line x1="1436" y1="434" x2="1436" y2="606" class="wire" data-wire="+5V_SERVO"/>
+<line x1="1436" y1="618" x2="1436" y2="825" class="wire" data-wire="GND"/>
+<line x1="1420" y1="606" x2="1452" y2="606" class="wire"/>
+<line x1="1420" y1="618" x2="1452" y2="618" class="wire"/>
+<text x="1416" y="613" font-size="15" class="ref" text-anchor="end">C925</text>
+<text x="1416" y="640" font-size="15" class="value" text-anchor="end">47µF / 10V</text>
+<line x1="1547" y1="434" x2="1547" y2="606" class="wire" data-wire="+5V_SERVO"/>
+<line x1="1547" y1="618" x2="1547" y2="825" class="wire" data-wire="GND"/>
+<line x1="1531" y1="606" x2="1563" y2="606" class="wire"/>
+<line x1="1531" y1="618" x2="1563" y2="618" class="wire"/>
+<text x="1527" y="613" font-size="15" class="ref" text-anchor="end">C926</text>
+<text x="1527" y="640" font-size="15" class="value" text-anchor="end">47µF / 10V</text>
+<line x1="1658" y1="434" x2="1658" y2="606" class="wire" data-wire="+5V_SERVO"/>
+<line x1="1658" y1="618" x2="1658" y2="825" class="wire" data-wire="GND"/>
+<line x1="1642" y1="606" x2="1674" y2="606" class="wire"/>
+<line x1="1642" y1="618" x2="1674" y2="618" class="wire"/>
+<text x="1638" y="613" font-size="15" class="ref" text-anchor="end">C927</text>
+<text x="1638" y="640" font-size="15" class="value" text-anchor="end">47µF / 10V</text>
+<circle cx="1210" cy="434" r="4" class="junction"/>
+<circle cx="1325" cy="434" r="4" class="junction"/>
+<circle cx="1436" cy="434" r="4" class="junction"/>
+<circle cx="1547" cy="434" r="4" class="junction"/>
+<circle cx="1658" cy="434" r="4" class="junction"/>
+<line x1="95" y1="825" x2="1658" y2="825" class="wire" data-wire="GND"/>
+<circle cx="222" cy="825" r="4" class="junction"/>
+<circle cx="370" cy="825" r="4" class="junction"/>
+<circle cx="438" cy="825" r="4" class="junction"/>
+<circle cx="750" cy="825" r="4" class="junction"/>
+<circle cx="907" cy="825" r="4" class="junction"/>
+<circle cx="976" cy="825" r="4" class="junction"/>
+<circle cx="1084" cy="825" r="4" class="junction"/>
+<circle cx="1210" cy="825" r="4" class="junction"/>
+<circle cx="1325" cy="825" r="4" class="junction"/>
+<circle cx="1436" cy="825" r="4" class="junction"/>
+<circle cx="1547" cy="825" r="4" class="junction"/>
+<line x1="750" y1="825" x2="750" y2="834" class="wire"/>
+<line x1="737" y1="834" x2="763" y2="834" class="wire"/>
+<line x1="742" y1="840" x2="758" y2="840" class="wire"/>
+<line x1="747" y1="846" x2="753" y2="846" class="wire"/>
+<text x="775" y="860" font-size="18" class="net" data-net="GND" data-area="03  U903 · 电池母线 → 舵机 +5V_SERVO" tabindex="0" role="button" aria-label="网络 GND，03  U903 · 电池母线 → 舵机 +5V_SERVO" text-anchor="start">GND</text>
+<text x="40" y="944" font-size="20" class="muted">来源：SCT2650 Rev1.3 p2–3 脚表、p12 分压/频率、p14 二极管、p17 表3。</text>
+<text x="40" y="972" font-size="20" class="muted">用户输入 STC2650；本图采用 SCT2650STER 候选。EN 接输入，低电截止由 BMS / 系统另行确定。</text>
+<text x="40" y="1000" font-size="20" class="muted">两路 5 V 独立稳压、共输入和地；输出不得并联。DNP 默认不装。</text>
+<text x="40" y="1028" font-size="20" class="muted">舵机仅接 +5V_SERVO；运行/堵转电流、储能、线径和接口配额待验证。</text>
+<text x="40" y="1056" font-size="20" class="muted">芯片、续流二极管和电感的温升，以及带载瞬态，均需实测。</text>
+</g></g>
 <g data-panel="power-buck33" transform="translate(0 -1140)"><g xmlns="http://www.w3.org/2000/svg" id="power-buck33"><rect x="40" y="1830" width="1730" height="1160" rx="10" class="panel"/>
-<text x="62" y="1868" font-size="27" class="heading">04  U902 · +5V → +3V3 固定输出</text>
-<text x="62" y="1899" font-size="18" class="muted">TPS62132RGT · 同步降压 · 3A 器件等级；固定3.3V版本 FB 接GND，输出直接由VOS采样。</text>
+<text x="62" y="1868" font-size="27" class="heading">04  U902 · 逻辑 +5V → 主控 +3V3</text>
+<text x="62" y="1899" font-size="18" class="muted">TPS62132RGT · 同步降压 · 固定 3.3 V：VOS 接输出，FB 接地。</text>
 </g>
-<g xmlns="http://www.w3.org/2000/svg" transform="translate(-1750 1180)">
-<rect x="2280" y="800" width="480" height="600" rx="4" class="chip"/>
-<text x="2520" y="829" font-size="22" class="ref" text-anchor="middle">U902</text>
-<text x="2520" y="857" font-size="20" class="heading" text-anchor="middle">TPS62132RGT</text>
-<line x1="2254" y1="890" x2="2280" y2="890" class="wire" data-wire="+5V"/>
-<text x="2290" y="895" font-size="17" class="pin">11 PVIN</text>
-<text x="2245" y="895" font-size="17" class="net" data-net="+5V" data-area="04  U902 · +5V → +3V3 固定输出" tabindex="0" role="button" aria-label="网络 +5V，04  U902 · +5V → +3V3 固定输出" text-anchor="end">+5V</text>
-<line x1="2254" y1="952.5" x2="2280" y2="952.5" class="wire" data-wire="+5V"/>
-<text x="2290" y="957.5" font-size="17" class="pin">12 PVIN</text>
-<text x="2245" y="957.5" font-size="17" class="net" data-net="+5V" data-area="04  U902 · +5V → +3V3 固定输出" tabindex="0" role="button" aria-label="网络 +5V，04  U902 · +5V → +3V3 固定输出" text-anchor="end">+5V</text>
-<line x1="2254" y1="1015" x2="2280" y2="1015" class="wire" data-wire="+5V"/>
-<text x="2290" y="1020" font-size="17" class="pin">10 AVIN</text>
-<text x="2245" y="1020" font-size="17" class="net" data-net="+5V" data-area="04  U902 · +5V → +3V3 固定输出" tabindex="0" role="button" aria-label="网络 +5V，04  U902 · +5V → +3V3 固定输出" text-anchor="end">+5V</text>
-<line x1="2254" y1="1077.5" x2="2280" y2="1077.5" class="wire" data-wire="+5V"/>
-<text x="2290" y="1082.5" font-size="17" class="pin">13 EN</text>
-<text x="2245" y="1082.5" font-size="17" class="net" data-net="+5V" data-area="04  U902 · +5V → +3V3 固定输出" tabindex="0" role="button" aria-label="网络 +5V，04  U902 · +5V → +3V3 固定输出" text-anchor="end">+5V</text>
-<line x1="2254" y1="1140" x2="2280" y2="1140" class="wire" data-wire="BUCK33_SS"/>
-<text x="2290" y="1145" font-size="17" class="pin">9 SS/TR</text>
-<text x="2245" y="1145" font-size="17" class="net" data-net="BUCK33_SS" data-area="04  U902 · +5V → +3V3 固定输出" tabindex="0" role="button" aria-label="网络 BUCK33_SS，04  U902 · +5V → +3V3 固定输出" text-anchor="end">BUCK33_SS</text>
-<line x1="2254" y1="1202.5" x2="2280" y2="1202.5" class="wire" data-wire="GND"/>
-<text x="2290" y="1207.5" font-size="17" class="pin">8 DEF</text>
-<text x="2245" y="1207.5" font-size="17" class="net" data-net="GND" data-area="04  U902 · +5V → +3V3 固定输出" tabindex="0" role="button" aria-label="网络 GND，04  U902 · +5V → +3V3 固定输出" text-anchor="end">GND</text>
-<line x1="2254" y1="1265" x2="2280" y2="1265" class="wire" data-wire="+3V3"/>
-<text x="2290" y="1270" font-size="17" class="pin">7 FSW</text>
-<text x="2245" y="1270" font-size="17" class="net" data-net="+3V3" data-area="04  U902 · +5V → +3V3 固定输出" tabindex="0" role="button" aria-label="网络 +3V3，04  U902 · +5V → +3V3 固定输出" text-anchor="end">+3V3</text>
-<line x1="2254" y1="1327.5" x2="2280" y2="1327.5" class="wire" data-wire="GND"/>
-<text x="2290" y="1332.5" font-size="17" class="pin">5 FB</text>
-<text x="2245" y="1332.5" font-size="17" class="net" data-net="GND" data-area="04  U902 · +5V → +3V3 固定输出" tabindex="0" role="button" aria-label="网络 GND，04  U902 · +5V → +3V3 固定输出" text-anchor="end">GND</text>
-<line x1="2760" y1="890" x2="2786" y2="890" class="wire" data-wire="BUCK33_SW"/>
-<text x="2750" y="895" font-size="17" class="pin" text-anchor="end">SW 1</text>
-<text x="2795" y="895" font-size="17" class="net" data-net="BUCK33_SW" data-area="04  U902 · +5V → +3V3 固定输出" tabindex="0" role="button" aria-label="网络 BUCK33_SW，04  U902 · +5V → +3V3 固定输出" text-anchor="start">BUCK33_SW</text>
-<line x1="2760" y1="952.5" x2="2786" y2="952.5" class="wire" data-wire="BUCK33_SW"/>
-<text x="2750" y="957.5" font-size="17" class="pin" text-anchor="end">SW 2</text>
-<text x="2795" y="957.5" font-size="17" class="net" data-net="BUCK33_SW" data-area="04  U902 · +5V → +3V3 固定输出" tabindex="0" role="button" aria-label="网络 BUCK33_SW，04  U902 · +5V → +3V3 固定输出" text-anchor="start">BUCK33_SW</text>
-<line x1="2760" y1="1015" x2="2786" y2="1015" class="wire" data-wire="BUCK33_SW"/>
-<text x="2750" y="1020" font-size="17" class="pin" text-anchor="end">SW 3</text>
-<text x="2795" y="1020" font-size="17" class="net" data-net="BUCK33_SW" data-area="04  U902 · +5V → +3V3 固定输出" tabindex="0" role="button" aria-label="网络 BUCK33_SW，04  U902 · +5V → +3V3 固定输出" text-anchor="start">BUCK33_SW</text>
-<line x1="2760" y1="1077.5" x2="2786" y2="1077.5" class="wire" data-wire="+3V3"/>
-<text x="2750" y="1082.5" font-size="17" class="pin" text-anchor="end">VOS 14</text>
-<text x="2795" y="1082.5" font-size="17" class="net" data-net="+3V3" data-area="04  U902 · +5V → +3V3 固定输出" tabindex="0" role="button" aria-label="网络 +3V3，04  U902 · +5V → +3V3 固定输出" text-anchor="start">+3V3</text>
-<line x1="2760" y1="1140" x2="2786" y2="1140" class="wire" data-wire="PGOOD_3V3"/>
-<text x="2750" y="1145" font-size="17" class="pin" text-anchor="end">PG 4</text>
-<text x="2795" y="1145" font-size="17" class="net" data-net="PGOOD_3V3" data-area="04  U902 · +5V → +3V3 固定输出" tabindex="0" role="button" aria-label="网络 PGOOD_3V3，04  U902 · +5V → +3V3 固定输出" text-anchor="start">PGOOD_3V3</text>
-<line x1="2760" y1="1202.5" x2="2786" y2="1202.5" class="wire" data-wire="GND"/>
-<text x="2750" y="1207.5" font-size="17" class="pin" text-anchor="end">AGND 6</text>
-<text x="2795" y="1207.5" font-size="17" class="net" data-net="GND" data-area="04  U902 · +5V → +3V3 固定输出" tabindex="0" role="button" aria-label="网络 GND，04  U902 · +5V → +3V3 固定输出" text-anchor="start">GND</text>
-<line x1="2760" y1="1265" x2="2786" y2="1265" class="wire" data-wire="GND"/>
-<text x="2750" y="1270" font-size="17" class="pin" text-anchor="end">PGND 15</text>
-<text x="2795" y="1270" font-size="17" class="net" data-net="GND" data-area="04  U902 · +5V → +3V3 固定输出" tabindex="0" role="button" aria-label="网络 GND，04  U902 · +5V → +3V3 固定输出" text-anchor="start">GND</text>
-<line x1="2760" y1="1327.5" x2="2786" y2="1327.5" class="wire" data-wire="GND"/>
-<text x="2750" y="1332.5" font-size="17" class="pin" text-anchor="end">PGND 16</text>
-<text x="2795" y="1332.5" font-size="17" class="net" data-net="GND" data-area="04  U902 · +5V → +3V3 固定输出" tabindex="0" role="button" aria-label="网络 GND，04  U902 · +5V → +3V3 固定输出" text-anchor="start">GND</text>
-<line x1="2760" y1="1390" x2="2786" y2="1390" class="wire" data-wire="GND"/>
-<text x="2750" y="1395" font-size="17" class="pin" text-anchor="end">Thermal Pad EP</text>
-<text x="2795" y="1395" font-size="17" class="net" data-net="GND" data-area="04  U902 · +5V → +3V3 固定输出" tabindex="0" role="button" aria-label="网络 GND，04  U902 · +5V → +3V3 固定输出" text-anchor="start">GND</text>
-<text x="1935" y="808" font-size="16" class="net" data-net="+5V" data-area="04  U902 · +5V → +3V3 固定输出" tabindex="0" role="button" aria-label="网络 +5V，04  U902 · +5V → +3V3 固定输出" text-anchor="middle">+5V</text>
-<line x1="1935" y1="820" x2="1935" y2="848" class="wire" data-wire="+5V"/>
-<line x1="1921" y1="848" x2="1949" y2="848" class="wire"/>
-<line x1="1921" y1="859" x2="1949" y2="859" class="wire"/>
-<line x1="1935" y1="859" x2="1935" y2="890" class="wire" data-wire="GND"/>
-<line x1="1935" y1="890" x2="1935" y2="899" class="wire"/>
-<line x1="1922" y1="899" x2="1948" y2="899" class="wire"/>
-<line x1="1927" y1="905" x2="1943" y2="905" class="wire"/>
-<line x1="1932" y1="911" x2="1938" y2="911" class="wire"/>
-<text x="1957" y="848" font-size="16" class="ref">C909</text>
-<text x="1957" y="873" font-size="16" class="value">10µF / 25V</text>
-<text x="2150" y="808" font-size="16" class="net" data-net="+5V" data-area="04  U902 · +5V → +3V3 固定输出" tabindex="0" role="button" aria-label="网络 +5V，04  U902 · +5V → +3V3 固定输出" text-anchor="middle">+5V</text>
-<line x1="2150" y1="820" x2="2150" y2="848" class="wire" data-wire="+5V"/>
-<line x1="2136" y1="848" x2="2164" y2="848" class="wire"/>
-<line x1="2136" y1="859" x2="2164" y2="859" class="wire"/>
-<line x1="2150" y1="859" x2="2150" y2="890" class="wire" data-wire="GND"/>
-<line x1="2150" y1="890" x2="2150" y2="899" class="wire"/>
-<line x1="2137" y1="899" x2="2163" y2="899" class="wire"/>
-<line x1="2142" y1="905" x2="2158" y2="905" class="wire"/>
-<line x1="2147" y1="911" x2="2153" y2="911" class="wire"/>
-<text x="2172" y="848" font-size="16" class="ref">C910</text>
-<text x="2172" y="873" font-size="16" class="value">100nF / 25V</text>
-<text x="1970" y="1068" font-size="16" class="net" data-net="BUCK33_SS" data-area="04  U902 · +5V → +3V3 固定输出" tabindex="0" role="button" aria-label="网络 BUCK33_SS，04  U902 · +5V → +3V3 固定输出" text-anchor="middle">BUCK33_SS</text>
-<line x1="1970" y1="1080" x2="1970" y2="1108" class="wire" data-wire="BUCK33_SS"/>
-<line x1="1956" y1="1108" x2="1984" y2="1108" class="wire"/>
-<line x1="1956" y1="1119" x2="1984" y2="1119" class="wire"/>
-<line x1="1970" y1="1119" x2="1970" y2="1150" class="wire" data-wire="GND"/>
-<line x1="1970" y1="1150" x2="1970" y2="1159" class="wire"/>
-<line x1="1957" y1="1159" x2="1983" y2="1159" class="wire"/>
-<line x1="1962" y1="1165" x2="1978" y2="1165" class="wire"/>
-<line x1="1967" y1="1171" x2="1973" y2="1171" class="wire"/>
-<text x="1992" y="1108" font-size="16" class="ref">C912</text>
-<text x="1992" y="1133" font-size="16" class="value">3.3nF / 25V</text>
-<text x="1970" y="1299" font-size="16" class="net" data-net="+3V3" data-area="04  U902 · +5V → +3V3 固定输出" tabindex="0" role="button" aria-label="网络 +3V3，04  U902 · +5V → +3V3 固定输出" text-anchor="middle">+3V3</text>
-<line x1="1970" y1="1310" x2="1970" y2="1330" class="wire" data-wire="+3V3"/>
-<rect x="1962" y="1330" width="16" height="37" class="symbol"/>
-<line x1="1970" y1="1367" x2="1970" y2="1387" class="wire" data-wire="PGOOD_3V3"/>
-<text x="1970" y="1407" font-size="16" class="net" data-net="PGOOD_3V3" data-area="04  U902 · +5V → +3V3 固定输出" tabindex="0" role="button" aria-label="网络 PGOOD_3V3，04  U902 · +5V → +3V3 固定输出" text-anchor="middle">PGOOD_3V3</text>
-<text x="1987" y="1340" font-size="16" class="ref">R907</text>
-<text x="1987" y="1364" font-size="16" class="value">100k / 1%</text>
-<text x="3010" y="950" font-size="17" class="net" data-net="BUCK33_SW" data-area="04  U902 · +5V → +3V3 固定输出" tabindex="0" role="button" aria-label="网络 BUCK33_SW，04  U902 · +5V → +3V3 固定输出" text-anchor="start">BUCK33_SW</text>
-<text x="3430" y="950" font-size="17" class="net" data-net="+3V3" data-area="04  U902 · +5V → +3V3 固定输出" tabindex="0" role="button" aria-label="网络 +3V3，04  U902 · +5V → +3V3 固定输出" text-anchor="end">+3V3</text>
-<line x1="3010" y1="965" x2="3178" y2="965" class="wire" data-wire="BUCK33_SW"/>
-<line x1="3262" y1="965" x2="3430" y2="965" class="wire" data-wire="+3V3"/>
-<path d="M 3178 965 q 10 -26 21 0 q 10 -26 21 0 q 10 -26 21 0 q 10 -26 21 0" class="symbol"/>
-<text x="3220" y="1004" font-size="17" class="value" text-anchor="middle">L902 · 2.2µH</text>
-<text x="3100" y="1118" font-size="16" class="net" data-net="+3V3" data-area="04  U902 · +5V → +3V3 固定输出" tabindex="0" role="button" aria-label="网络 +3V3，04  U902 · +5V → +3V3 固定输出" text-anchor="middle">+3V3</text>
-<line x1="3100" y1="1130" x2="3100" y2="1158" class="wire" data-wire="+3V3"/>
-<line x1="3086" y1="1158" x2="3114" y2="1158" class="wire"/>
-<line x1="3086" y1="1169" x2="3114" y2="1169" class="wire"/>
-<line x1="3100" y1="1169" x2="3100" y2="1200" class="wire" data-wire="GND"/>
-<line x1="3100" y1="1200" x2="3100" y2="1209" class="wire"/>
-<line x1="3087" y1="1209" x2="3113" y2="1209" class="wire"/>
-<line x1="3092" y1="1215" x2="3108" y2="1215" class="wire"/>
-<line x1="3097" y1="1221" x2="3103" y2="1221" class="wire"/>
-<text x="3122" y="1158" font-size="16" class="ref">C911</text>
-<text x="3122" y="1183" font-size="16" class="value">22µF / 6.3V</text>
-<circle cx="3150" cy="1340" r="7" class="symbol"/>
-<line x1="3150" y1="1347" x2="3150" y2="1366" class="wire" data-wire="+3V3"/>
-<text x="3168" y="1346" font-size="16" class="net" data-net="+3V3" data-area="04  U902 · +5V → +3V3 固定输出" tabindex="0" role="button" aria-label="网络 +3V3，04  U902 · +5V → +3V3 固定输出" text-anchor="start">+3V3</text>
-<text x="3136" y="1327" font-size="16" class="ref">TP902</text>
-<circle cx="3380" cy="1430" r="7" class="symbol"/>
-<line x1="3380" y1="1437" x2="3380" y2="1456" class="wire" data-wire="PGOOD_3V3"/>
-<text x="3398" y="1436" font-size="16" class="net" data-net="PGOOD_3V3" data-area="04  U902 · +5V → +3V3 固定输出" tabindex="0" role="button" aria-label="网络 PGOOD_3V3，04  U902 · +5V → +3V3 固定输出" text-anchor="start">PGOOD_3V3</text>
-<text x="3366" y="1417" font-size="16" class="ref">TP903</text>
-<text x="1830" y="1545" font-size="18" class="muted">SLVSAG7F：p3引脚及固定3.3V型号；p13图9-1为TPS62130可调参考。</text>
-<text x="1830" y="1573" font-size="18" class="muted">本图按p14固定版说明去除输出分压，将FB接AGND；VOS接电感后的+3V3。</text>
-<text x="1830" y="1601" font-size="18" class="muted">FSW接+3V3：稳定后约1.25MHz；DEF接GND：保持标称输出，无+5%提升。</text>
-<text x="1830" y="1629" font-size="18" class="muted">L=2.2µH / Cout=22µF为p14表9-2推荐组合；外围值是候选参考，须实测。</text>
-<text x="1830" y="1657" font-size="18" class="muted">PGND、AGND、EP接连续地平面；将高di/dt回路与反馈采样路径分开布线。</text>
-<text x="1830" y="1685" font-size="18" class="muted">本器件只从+5V取电；不能把6S直接接到AVIN/PVIN。负载总额定值未冻结。</text>
+<g xmlns="http://www.w3.org/2000/svg" transform="translate(40 1830)">
+<rect x="470" y="240" width="370" height="484" rx="4" class="chip"/>
+<text x="655" y="269" font-size="22" class="ref" text-anchor="middle">U902</text>
+<text x="655" y="297" font-size="20" class="heading" text-anchor="middle">TPS62132RGT</text>
+<line x1="444" y1="330" x2="470" y2="330" class="wire" data-wire="+5V"/>
+<text x="480" y="335" font-size="17" class="pin">11 PVIN</text>
+<line x1="444" y1="378" x2="470" y2="378" class="wire" data-wire="+5V"/>
+<text x="480" y="383" font-size="17" class="pin">12 PVIN</text>
+<line x1="444" y1="426" x2="470" y2="426" class="wire" data-wire="+5V"/>
+<text x="480" y="431" font-size="17" class="pin">10 AVIN</text>
+<line x1="444" y1="474" x2="470" y2="474" class="wire" data-wire="+5V"/>
+<text x="480" y="479" font-size="17" class="pin">13 EN</text>
+<line x1="444" y1="522" x2="470" y2="522" class="wire" data-wire="BUCK33_SS"/>
+<text x="480" y="527" font-size="17" class="pin">9 SS/TR</text>
+<line x1="444" y1="570" x2="470" y2="570" class="wire" data-wire="GND"/>
+<text x="480" y="575" font-size="17" class="pin">8 DEF</text>
+<line x1="444" y1="618" x2="470" y2="618" class="wire" data-wire="GND"/>
+<text x="480" y="623" font-size="17" class="pin">5 FB</text>
+<line x1="444" y1="666" x2="470" y2="666" class="wire" data-wire="GND"/>
+<text x="480" y="671" font-size="17" class="pin">6 AGND</text>
+<line x1="840" y1="330" x2="866" y2="330" class="wire" data-wire="BUCK33_SW"/>
+<text x="830" y="335" font-size="17" class="pin" text-anchor="end">SW 1</text>
+<line x1="840" y1="378" x2="866" y2="378" class="wire" data-wire="BUCK33_SW"/>
+<text x="830" y="383" font-size="17" class="pin" text-anchor="end">SW 2</text>
+<line x1="840" y1="426" x2="866" y2="426" class="wire" data-wire="BUCK33_SW"/>
+<text x="830" y="431" font-size="17" class="pin" text-anchor="end">SW 3</text>
+<line x1="840" y1="474" x2="866" y2="474" class="wire" data-wire="+3V3"/>
+<text x="830" y="479" font-size="17" class="pin" text-anchor="end">VOS 14</text>
+<line x1="840" y1="522" x2="866" y2="522" class="wire" data-wire="+3V3"/>
+<text x="830" y="527" font-size="17" class="pin" text-anchor="end">FSW 7</text>
+<line x1="840" y1="570" x2="866" y2="570" class="wire" data-wire="PGOOD_3V3"/>
+<text x="830" y="575" font-size="17" class="pin" text-anchor="end">PG 4</text>
+<line x1="840" y1="618" x2="866" y2="618" class="wire" data-wire="GND"/>
+<text x="830" y="623" font-size="17" class="pin" text-anchor="end">PGND 15</text>
+<line x1="840" y1="666" x2="866" y2="666" class="wire" data-wire="GND"/>
+<text x="830" y="671" font-size="17" class="pin" text-anchor="end">PGND 16</text>
+<line x1="840" y1="714" x2="866" y2="714" class="wire" data-wire="GND"/>
+<text x="830" y="719" font-size="17" class="pin" text-anchor="end">Thermal Pad EP</text>
+<line x1="62" y1="330" x2="444" y2="330" class="wire" data-wire="+5V"/>
+<text x="62" y="308" font-size="24" class="net" data-net="+5V" data-area="04  U902 · 逻辑 +5V → 主控 +3V3" tabindex="0" role="button" aria-label="网络 +5V，04  U902 · 逻辑 +5V → 主控 +3V3" text-anchor="start">+5V</text>
+<line x1="379" y1="330" x2="379" y2="474" class="wire" data-wire="+5V"/>
+<line x1="379" y1="474" x2="444" y2="474" class="wire" data-wire="+5V"/>
+<line x1="379" y1="378" x2="444" y2="378" class="wire" data-wire="+5V"/>
+<circle cx="379" cy="378" r="4" class="junction"/>
+<line x1="379" y1="426" x2="444" y2="426" class="wire" data-wire="+5V"/>
+<circle cx="379" cy="426" r="4" class="junction"/>
+<circle cx="78" cy="330" r="4" class="junction"/>
+<circle cx="210" cy="330" r="4" class="junction"/>
+<circle cx="379" cy="330" r="4" class="junction"/>
+<line x1="78" y1="330" x2="78" y2="574" class="wire" data-wire="+5V"/>
+<line x1="78" y1="586" x2="78" y2="840" class="wire" data-wire="GND"/>
+<line x1="62" y1="574" x2="94" y2="574" class="wire"/>
+<line x1="62" y1="586" x2="94" y2="586" class="wire"/>
+<text x="98" y="581" font-size="18" class="ref" text-anchor="start">C909</text>
+<text x="98" y="608" font-size="18" class="value" text-anchor="start">10µF / 25V</text>
+<line x1="210" y1="330" x2="210" y2="574" class="wire" data-wire="+5V"/>
+<line x1="210" y1="586" x2="210" y2="840" class="wire" data-wire="GND"/>
+<line x1="194" y1="574" x2="226" y2="574" class="wire"/>
+<line x1="194" y1="586" x2="226" y2="586" class="wire"/>
+<text x="230" y="581" font-size="18" class="ref" text-anchor="start">C910</text>
+<text x="230" y="608" font-size="18" class="value" text-anchor="start">100nF / 25V</text>
+<line x1="444" y1="522" x2="350" y2="522" class="wire" data-wire="BUCK33_SS"/>
+<line x1="350" y1="522" x2="350" y2="675" class="wire" data-wire="BUCK33_SS"/>
+<text x="350" y="505" font-size="17" class="net" data-net="BUCK33_SS" data-area="04  U902 · 逻辑 +5V → 主控 +3V3" tabindex="0" role="button" aria-label="网络 BUCK33_SS，04  U902 · 逻辑 +5V → 主控 +3V3" text-anchor="middle">BUCK33_SS</text>
+<line x1="350" y1="675" x2="350" y2="708" class="wire" data-wire="BUCK33_SS"/>
+<line x1="350" y1="720" x2="350" y2="840" class="wire" data-wire="GND"/>
+<line x1="334" y1="708" x2="366" y2="708" class="wire"/>
+<line x1="334" y1="720" x2="366" y2="720" class="wire"/>
+<text x="330" y="715" font-size="18" class="ref" text-anchor="end">C912</text>
+<text x="330" y="742" font-size="18" class="value" text-anchor="end">3.3nF / 25V</text>
+<line x1="444" y1="570" x2="425" y2="570" class="wire" data-wire="GND"/>
+<line x1="425" y1="570" x2="425" y2="840" class="wire" data-wire="GND"/>
+<line x1="444" y1="618" x2="425" y2="618" class="wire" data-wire="GND"/>
+<circle cx="425" cy="618" r="4" class="junction"/>
+<line x1="444" y1="666" x2="425" y2="666" class="wire" data-wire="GND"/>
+<circle cx="425" cy="666" r="4" class="junction"/>
+<line x1="866" y1="330" x2="1020" y2="330" class="wire" data-wire="BUCK33_SW"/>
+<line x1="980" y1="330" x2="980" y2="426" class="wire" data-wire="BUCK33_SW"/>
+<line x1="980" y1="426" x2="866" y2="426" class="wire" data-wire="BUCK33_SW"/>
+<line x1="980" y1="378" x2="866" y2="378" class="wire" data-wire="BUCK33_SW"/>
+<circle cx="980" cy="330" r="4" class="junction"/>
+<circle cx="980" cy="378" r="4" class="junction"/>
+<text x="876" y="309" font-size="17" class="net" data-net="BUCK33_SW" data-area="04  U902 · 逻辑 +5V → 主控 +3V3" tabindex="0" role="button" aria-label="网络 BUCK33_SW，04  U902 · 逻辑 +5V → 主控 +3V3" text-anchor="start">BUCK33_SW</text>
+<path d="M 1020 330 q 10 -27 21 0 q 10 -27 21 0 q 10 -27 21 0 q 10 -27 21 0" class="symbol"/>
+<text x="1062" y="271" font-size="21" class="ref" text-anchor="middle">L902</text>
+<text x="1062" y="298" font-size="21" class="value" text-anchor="middle">2.2µH</text>
+<line x1="1104" y1="330" x2="1670" y2="330" class="wire" data-wire="+3V3"/>
+<text x="1670" y="308" font-size="24" class="net" data-net="+3V3" data-area="04  U902 · 逻辑 +5V → 主控 +3V3" tabindex="0" role="button" aria-label="网络 +3V3，04  U902 · 逻辑 +5V → 主控 +3V3" text-anchor="end">+3V3</text>
+<line x1="1210" y1="330" x2="1210" y2="522" class="wire" data-wire="+3V3"/>
+<line x1="1210" y1="522" x2="866" y2="522" class="wire" data-wire="+3V3"/>
+<line x1="866" y1="474" x2="1210" y2="474" class="wire" data-wire="+3V3"/>
+<circle cx="1210" cy="474" r="4" class="junction"/>
+<line x1="1610" y1="330" x2="1610" y2="624" class="wire" data-wire="+3V3"/>
+<line x1="1610" y1="636" x2="1610" y2="840" class="wire" data-wire="GND"/>
+<line x1="1594" y1="624" x2="1626" y2="624" class="wire"/>
+<line x1="1594" y1="636" x2="1626" y2="636" class="wire"/>
+<text x="1590" y="631" font-size="21" class="ref" text-anchor="end">C911</text>
+<text x="1590" y="658" font-size="21" class="value" text-anchor="end">22µF / 6.3V</text>
+<line x1="866" y1="570" x2="1510" y2="570" class="wire" data-wire="PGOOD_3V3"/>
+<text x="1494" y="550" font-size="20" class="net" data-net="PGOOD_3V3" data-area="04  U902 · 逻辑 +5V → 主控 +3V3" tabindex="0" role="button" aria-label="网络 PGOOD_3V3，04  U902 · 逻辑 +5V → 主控 +3V3" text-anchor="end">PGOOD_3V3</text>
+<line x1="1320" y1="330" x2="1320" y2="426" class="wire" data-wire="+3V3"/>
+<line x1="1320" y1="460" x2="1320" y2="570" class="wire" data-wire="PGOOD_3V3"/>
+<rect x="1311" y="426" width="18" height="34" class="symbol"/>
+<text x="1340" y="444" font-size="21" class="ref" text-anchor="start">R907</text>
+<text x="1340" y="471" font-size="21" class="value" text-anchor="start">100k / 1%</text>
+<circle cx="1320" cy="570" r="4" class="junction"/>
+<circle cx="1210" cy="330" r="4" class="junction"/>
+<circle cx="1320" cy="330" r="4" class="junction"/>
+<circle cx="1610" cy="330" r="4" class="junction"/>
+<circle cx="1460" cy="279" r="7" class="symbol"/>
+<line x1="1460" y1="286" x2="1460" y2="330" class="wire" data-wire="+3V3"/>
+<circle cx="1460" cy="330" r="4" class="junction"/>
+<text x="1445" y="285" font-size="18" class="ref" text-anchor="end">TP902</text>
+<circle cx="1510" cy="507" r="7" class="symbol"/>
+<line x1="1510" y1="514" x2="1510" y2="570" class="wire" data-wire="PGOOD_3V3"/>
+<circle cx="1510" cy="570" r="4" class="junction"/>
+<text x="1495" y="513" font-size="18" class="ref" text-anchor="end">TP903</text>
+<line x1="866" y1="618" x2="980" y2="618" class="wire" data-wire="GND"/>
+<line x1="980" y1="618" x2="980" y2="840" class="wire" data-wire="GND"/>
+<line x1="866" y1="666" x2="980" y2="666" class="wire" data-wire="GND"/>
+<circle cx="980" cy="666" r="4" class="junction"/>
+<line x1="866" y1="714" x2="980" y2="714" class="wire" data-wire="GND"/>
+<circle cx="980" cy="714" r="4" class="junction"/>
+<line x1="78" y1="840" x2="1610" y2="840" class="wire" data-wire="GND"/>
+<circle cx="210" cy="840" r="4" class="junction"/>
+<circle cx="350" cy="840" r="4" class="junction"/>
+<circle cx="425" cy="840" r="4" class="junction"/>
+<circle cx="655" cy="840" r="4" class="junction"/>
+<circle cx="980" cy="840" r="4" class="junction"/>
+<line x1="655" y1="840" x2="655" y2="849" class="wire"/>
+<line x1="642" y1="849" x2="668" y2="849" class="wire"/>
+<line x1="647" y1="855" x2="663" y2="855" class="wire"/>
+<line x1="652" y1="861" x2="658" y2="861" class="wire"/>
+<text x="680" y="875" font-size="18" class="net" data-net="GND" data-area="04  U902 · 逻辑 +5V → 主控 +3V3" tabindex="0" role="button" aria-label="网络 GND，04  U902 · 逻辑 +5V → 主控 +3V3" text-anchor="start">GND</text>
+<text x="40" y="944" font-size="20" class="muted">来源：TI SLVSAG7F p3 引脚、p13 图 9-1 可调版参考、p14 固定版接法及 LC 选值。</text>
+<text x="40" y="972" font-size="20" class="muted">FSW 接 +3V3：稳定后约 1.25 MHz；DEF 接地：保持标称输出。</text>
+<text x="40" y="1000" font-size="20" class="muted">PGND、AGND、EP 共地；布板时分开开关电流回路与输出采样路径。</text>
+<text x="40" y="1028" font-size="20" class="muted">U902 只接逻辑 +5V，不能接电池母线。带载启动、瞬态及温升待实测。</text>
 </g></g>
 <g data-panel="power-ports" transform="translate(0 -1140)"><g xmlns="http://www.w3.org/2000/svg" id="power-ports"><rect x="1790" y="1830" width="1770" height="560" rx="10" class="panel"/>
 <text x="1812" y="1868" font-size="27" class="heading">05  供电连接与测量</text>
@@ -637,8 +611,163 @@
 <text xmlns="http://www.w3.org/2000/svg" x="1830" y="2652" font-size="19" class="muted">相机及SD的电源、电平与时序按型号确认；不按接口名字推定供电。</text>
 <text xmlns="http://www.w3.org/2000/svg" x="1830" y="2680" font-size="19" class="muted">电机、LED和水泵功率在外部驱动板；舵机使用独立+5V_SERVO。</text>
 <text xmlns="http://www.w3.org/2000/svg" x="1830" y="2708" font-size="19" class="muted">共用输入保护需按两路总输入/浪涌重算；不是仅逻辑支路的额定值。</text>
-<text xmlns="http://www.w3.org/2000/svg" x="1830" y="2736" font-size="19" class="muted">待定：电池体系、BMS截止、保护料号、峰值负载、线径与接口电流。</text>
+<text xmlns="http://www.w3.org/2000/svg" x="1830" y="2736" font-size="19" class="muted">待定：3S/4S/6S各电池体系、容量、工作范围、BMS截止、保护料号、峰值负载、线径与接口电流。</text>
 <text xmlns="http://www.w3.org/2000/svg" x="1830" y="2764" font-size="19" class="muted">待验证：温升、低电启停、环路/阶跃、短路、EMI及断电反灌。</text></g></g>
+<g id="domain-battery" data-domain="battery"><g data-panel="battery-sense" transform="translate(6450 -1620)"><g xmlns="http://www.w3.org/2000/svg" id="battery-sense"><rect x="-2810" y="3010" width="3520" height="550" rx="10" class="panel"/>
+<text x="-2788" y="3048" font-size="27" class="heading">07  3S / 4S / 6S 电压采样 · 粗略 SOC</text>
+<text x="-2788" y="3079" font-size="18" class="muted">单路电池、与 MCU 共地；保护后母线 0–30V 候选测量范围。电流不采样；串数/容量/曲线由配置选择。</text>
+</g>
+<text xmlns="http://www.w3.org/2000/svg" x="75" y="288" font-size="17" class="net" data-net="BAT_SENSE_PROTECTED" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 BAT_SENSE_PROTECTED，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="start">BAT_SENSE_PROTECTED</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="75" y1="300" x2="360" y2="300" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
+<rect xmlns="http://www.w3.org/2000/svg" x="360" y="292" width="60" height="16" class="symbol"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="420" y1="300" x2="705" y2="300" class="wire" data-wire="BAT_DIV_HI"/>
+<text xmlns="http://www.w3.org/2000/svg" x="705" y="288" font-size="17" class="net" data-net="BAT_DIV_HI" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 BAT_DIV_HI，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="end">BAT_DIV_HI</text>
+<text xmlns="http://www.w3.org/2000/svg" x="390" y="330" font-size="16" class="value" text-anchor="middle">R301  49.9k / 0.1%</text>
+<text xmlns="http://www.w3.org/2000/svg" x="75" y="378" font-size="17" class="net" data-net="BAT_DIV_HI" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 BAT_DIV_HI，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="start">BAT_DIV_HI</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="75" y1="390" x2="360" y2="390" class="wire" data-wire="BAT_DIV_HI"/>
+<rect xmlns="http://www.w3.org/2000/svg" x="360" y="382" width="60" height="16" class="symbol"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="420" y1="390" x2="705" y2="390" class="wire" data-wire="BAT_DIV"/>
+<text xmlns="http://www.w3.org/2000/svg" x="705" y="378" font-size="17" class="net" data-net="BAT_DIV" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 BAT_DIV，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="end">BAT_DIV</text>
+<text xmlns="http://www.w3.org/2000/svg" x="390" y="420" font-size="16" class="value" text-anchor="middle">R307  49.9k / 0.1%</text>
+<text xmlns="http://www.w3.org/2000/svg" x="135" y="464" font-size="16" class="net" data-net="BAT_DIV" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 BAT_DIV，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="middle">BAT_DIV</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="135" y1="475" x2="135" y2="495" class="wire" data-wire="BAT_DIV"/>
+<rect xmlns="http://www.w3.org/2000/svg" x="127" y="495" width="16" height="37" class="symbol"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="135" y1="532" x2="135" y2="552" class="wire" data-wire="GND"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="135" y1="552" x2="135" y2="562" class="wire"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="122" y1="562" x2="148" y2="562" class="wire"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="127" y1="568" x2="143" y2="568" class="wire"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="132" y1="574" x2="138" y2="574" class="wire"/>
+<text xmlns="http://www.w3.org/2000/svg" x="152" y="505" font-size="16" class="ref">R302</text>
+<text xmlns="http://www.w3.org/2000/svg" x="152" y="529" font-size="16" class="value">10k / 0.1%</text>
+<text xmlns="http://www.w3.org/2000/svg" x="420" y="464" font-size="16" class="net" data-net="BAT_DIV" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 BAT_DIV，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="middle">BAT_DIV</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="420" y1="475" x2="420" y2="508" class="wire" data-wire="BAT_DIV"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="407" y1="508" x2="433" y2="508" class="wire"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="407" y1="518" x2="433" y2="518" class="wire"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="420" y1="518" x2="420" y2="549" class="wire" data-wire="GND"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="420" y1="549" x2="420" y2="559" class="wire"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="407" y1="559" x2="433" y2="559" class="wire"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="412" y1="565" x2="428" y2="565" class="wire"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="417" y1="571" x2="423" y2="571" class="wire"/>
+<text xmlns="http://www.w3.org/2000/svg" x="441" y="505" font-size="16" class="ref">C301</text>
+<text xmlns="http://www.w3.org/2000/svg" x="441" y="529" font-size="16" class="value">100nF / 16V</text>
+<text xmlns="http://www.w3.org/2000/svg" x="1030" y="350" font-size="18" class="muted">D902 / F901 承担输入侧浪涌保护候选；本通道无独立精密钳位。</text>
+<text xmlns="http://www.w3.org/2000/svg" x="1030" y="378" font-size="18" class="muted">超出30V、TVS钳位瞬态及开关断电输入上限须台架验证。</text>
+<rect xmlns="http://www.w3.org/2000/svg" x="1050" y="470" width="400" height="170" rx="4" class="chip"/>
+<text xmlns="http://www.w3.org/2000/svg" x="1250" y="499" font-size="22" class="ref" text-anchor="middle">U303</text>
+<text xmlns="http://www.w3.org/2000/svg" x="1250" y="527" font-size="20" class="heading" text-anchor="middle">TLV809EA29DBZR</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="1024" y1="560" x2="1050" y2="560" class="wire" data-wire="+3V3"/>
+<text xmlns="http://www.w3.org/2000/svg" x="1060" y="565" font-size="17" class="pin">3 VDD</text>
+<text xmlns="http://www.w3.org/2000/svg" x="1015" y="565" font-size="17" class="net" data-net="+3V3" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 +3V3，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="end">+3V3</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="1024" y1="630" x2="1050" y2="630" class="wire" data-wire="GND"/>
+<text xmlns="http://www.w3.org/2000/svg" x="1060" y="635" font-size="17" class="pin">1 GND</text>
+<text xmlns="http://www.w3.org/2000/svg" x="1015" y="635" font-size="17" class="net" data-net="GND" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 GND，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="end">GND</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="1450" y1="560" x2="1476" y2="560" class="wire" data-wire="BAT_SENSE_EN"/>
+<text xmlns="http://www.w3.org/2000/svg" x="1440" y="565" font-size="17" class="pin" text-anchor="end">/RESET 2</text>
+<text xmlns="http://www.w3.org/2000/svg" x="1485" y="565" font-size="17" class="net" data-net="BAT_SENSE_EN" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 BAT_SENSE_EN，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="start">BAT_SENSE_EN</text>
+<text xmlns="http://www.w3.org/2000/svg" x="820" y="499" font-size="16" class="net" data-net="+3V3" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 +3V3，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="middle">+3V3</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="820" y1="510" x2="820" y2="543" class="wire" data-wire="+3V3"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="807" y1="543" x2="833" y2="543" class="wire"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="807" y1="553" x2="833" y2="553" class="wire"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="820" y1="553" x2="820" y2="584" class="wire" data-wire="GND"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="820" y1="584" x2="820" y2="594" class="wire"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="807" y1="594" x2="833" y2="594" class="wire"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="812" y1="600" x2="828" y2="600" class="wire"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="817" y1="606" x2="823" y2="606" class="wire"/>
+<text xmlns="http://www.w3.org/2000/svg" x="841" y="540" font-size="16" class="ref">C304</text>
+<text xmlns="http://www.w3.org/2000/svg" x="841" y="564" font-size="16" class="value">100nF / 16V</text>
+<text xmlns="http://www.w3.org/2000/svg" x="1660" y="289" font-size="16" class="net" data-net="+3V3" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 +3V3，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="middle">+3V3</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="1660" y1="300" x2="1660" y2="333" class="wire" data-wire="+3V3"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="1647" y1="333" x2="1673" y2="333" class="wire"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="1647" y1="343" x2="1673" y2="343" class="wire"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="1660" y1="343" x2="1660" y2="374" class="wire" data-wire="GND"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="1660" y1="374" x2="1660" y2="384" class="wire"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="1647" y1="384" x2="1673" y2="384" class="wire"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="1652" y1="390" x2="1668" y2="390" class="wire"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="1657" y1="396" x2="1663" y2="396" class="wire"/>
+<text xmlns="http://www.w3.org/2000/svg" x="1681" y="330" font-size="16" class="ref">C303</text>
+<text xmlns="http://www.w3.org/2000/svg" x="1681" y="354" font-size="16" class="value">100nF / 16V</text>
+<text xmlns="http://www.w3.org/2000/svg" x="1660" y="479" font-size="16" class="net" data-net="BAT_SENSE_EN" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 BAT_SENSE_EN，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="middle">BAT_SENSE_EN</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="1660" y1="490" x2="1660" y2="510" class="wire" data-wire="BAT_SENSE_EN"/>
+<rect xmlns="http://www.w3.org/2000/svg" x="1652" y="510" width="16" height="37" class="symbol"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="1660" y1="547" x2="1660" y2="567" class="wire" data-wire="GND"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="1660" y1="567" x2="1660" y2="577" class="wire"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="1647" y1="577" x2="1673" y2="577" class="wire"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="1652" y1="583" x2="1668" y2="583" class="wire"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="1657" y1="589" x2="1663" y2="589" class="wire"/>
+<text xmlns="http://www.w3.org/2000/svg" x="1677" y="520" font-size="16" class="ref">R306</text>
+<text xmlns="http://www.w3.org/2000/svg" x="1677" y="544" font-size="16" class="value">100k</text>
+<rect xmlns="http://www.w3.org/2000/svg" x="1980" y="290" width="360" height="350" rx="4" class="chip"/>
+<text xmlns="http://www.w3.org/2000/svg" x="2160" y="319" font-size="22" class="ref" text-anchor="middle">U301</text>
+<text xmlns="http://www.w3.org/2000/svg" x="2160" y="347" font-size="20" class="heading" text-anchor="middle">TMUX1511PWR</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="1954" y1="380" x2="1980" y2="380" class="wire" data-wire="+3V3"/>
+<text xmlns="http://www.w3.org/2000/svg" x="1990" y="385" font-size="17" class="pin">14 VDD</text>
+<text xmlns="http://www.w3.org/2000/svg" x="1945" y="385" font-size="17" class="net" data-net="+3V3" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 +3V3，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="end">+3V3</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="1954" y1="421.6666666666667" x2="1980" y2="421.6666666666667" class="wire" data-wire="BAT_SENSE_EN"/>
+<text xmlns="http://www.w3.org/2000/svg" x="1990" y="426.6666666666667" font-size="17" class="pin">1 SEL1</text>
+<text xmlns="http://www.w3.org/2000/svg" x="1945" y="426.6666666666667" font-size="17" class="net" data-net="BAT_SENSE_EN" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 BAT_SENSE_EN，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="end">BAT_SENSE_EN</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="1954" y1="463.3333333333333" x2="1980" y2="463.3333333333333" class="wire" data-wire="BAT_DIV"/>
+<text xmlns="http://www.w3.org/2000/svg" x="1990" y="468.3333333333333" font-size="17" class="pin">2 S1</text>
+<text xmlns="http://www.w3.org/2000/svg" x="1945" y="468.3333333333333" font-size="17" class="net" data-net="BAT_DIV" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 BAT_DIV，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="end">BAT_DIV</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="1954" y1="505" x2="1980" y2="505" class="wire" data-wire="GND"/>
+<text xmlns="http://www.w3.org/2000/svg" x="1990" y="510" font-size="17" class="pin">4 SEL2</text>
+<text xmlns="http://www.w3.org/2000/svg" x="1945" y="510" font-size="17" class="net" data-net="GND" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 GND，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="end">GND</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="1954" y1="546.6666666666666" x2="1980" y2="546.6666666666666" class="wire" data-wire="GND"/>
+<text xmlns="http://www.w3.org/2000/svg" x="1990" y="551.6666666666666" font-size="17" class="pin">10 SEL3</text>
+<text xmlns="http://www.w3.org/2000/svg" x="1945" y="551.6666666666666" font-size="17" class="net" data-net="GND" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 GND，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="end">GND</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="1954" y1="588.3333333333333" x2="1980" y2="588.3333333333333" class="wire" data-wire="GND"/>
+<text xmlns="http://www.w3.org/2000/svg" x="1990" y="593.3333333333333" font-size="17" class="pin">13 SEL4</text>
+<text xmlns="http://www.w3.org/2000/svg" x="1945" y="593.3333333333333" font-size="17" class="net" data-net="GND" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 GND，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="end">GND</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="1954" y1="630" x2="1980" y2="630" class="wire" data-wire="GND"/>
+<text xmlns="http://www.w3.org/2000/svg" x="1990" y="635" font-size="17" class="pin">7 GND</text>
+<text xmlns="http://www.w3.org/2000/svg" x="1945" y="635" font-size="17" class="net" data-net="GND" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 GND，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="end">GND</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="2340" y1="380" x2="2366" y2="380" class="wire" data-wire="BAT_SW"/>
+<text xmlns="http://www.w3.org/2000/svg" x="2330" y="385" font-size="17" class="pin" text-anchor="end">D1 3</text>
+<text xmlns="http://www.w3.org/2000/svg" x="2375" y="385" font-size="17" class="net" data-net="BAT_SW" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 BAT_SW，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="start">BAT_SW</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="2340" y1="421.6666666666667" x2="2366" y2="421.6666666666667" class="wire" data-wire="GND"/>
+<text xmlns="http://www.w3.org/2000/svg" x="2330" y="426.6666666666667" font-size="17" class="pin" text-anchor="end">S2 5</text>
+<text xmlns="http://www.w3.org/2000/svg" x="2375" y="426.6666666666667" font-size="17" class="net" data-net="GND" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 GND，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="start">GND</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="2340" y1="463.3333333333333" x2="2366" y2="463.3333333333333" class="wire" data-wire="GND"/>
+<text xmlns="http://www.w3.org/2000/svg" x="2330" y="468.3333333333333" font-size="17" class="pin" text-anchor="end">D2 6</text>
+<text xmlns="http://www.w3.org/2000/svg" x="2375" y="468.3333333333333" font-size="17" class="net" data-net="GND" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 GND，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="start">GND</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="2340" y1="505" x2="2366" y2="505" class="wire" data-wire="GND"/>
+<text xmlns="http://www.w3.org/2000/svg" x="2330" y="510" font-size="17" class="pin" text-anchor="end">D3 8</text>
+<text xmlns="http://www.w3.org/2000/svg" x="2375" y="510" font-size="17" class="net" data-net="GND" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 GND，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="start">GND</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="2340" y1="546.6666666666666" x2="2366" y2="546.6666666666666" class="wire" data-wire="GND"/>
+<text xmlns="http://www.w3.org/2000/svg" x="2330" y="551.6666666666666" font-size="17" class="pin" text-anchor="end">S3 9</text>
+<text xmlns="http://www.w3.org/2000/svg" x="2375" y="551.6666666666666" font-size="17" class="net" data-net="GND" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 GND，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="start">GND</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="2340" y1="588.3333333333333" x2="2366" y2="588.3333333333333" class="wire" data-wire="GND"/>
+<text xmlns="http://www.w3.org/2000/svg" x="2330" y="593.3333333333333" font-size="17" class="pin" text-anchor="end">D4 11</text>
+<text xmlns="http://www.w3.org/2000/svg" x="2375" y="593.3333333333333" font-size="17" class="net" data-net="GND" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 GND，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="start">GND</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="2340" y1="630" x2="2366" y2="630" class="wire" data-wire="GND"/>
+<text xmlns="http://www.w3.org/2000/svg" x="2330" y="635" font-size="17" class="pin" text-anchor="end">S4 12</text>
+<text xmlns="http://www.w3.org/2000/svg" x="2375" y="635" font-size="17" class="net" data-net="GND" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 GND，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="start">GND</text>
+<text xmlns="http://www.w3.org/2000/svg" x="2720" y="288" font-size="17" class="net" data-net="BAT_SW" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 BAT_SW，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="start">BAT_SW</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="2720" y1="300" x2="3055" y2="300" class="wire" data-wire="BAT_SW"/>
+<rect xmlns="http://www.w3.org/2000/svg" x="3055" y="292" width="60" height="16" class="symbol"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="3115" y1="300" x2="3450" y2="300" class="wire" data-wire="BAT_ADC_LINK"/>
+<text xmlns="http://www.w3.org/2000/svg" x="3450" y="288" font-size="17" class="net" data-net="BAT_ADC_LINK" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 BAT_ADC_LINK，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="end">BAT_ADC_LINK</text>
+<text xmlns="http://www.w3.org/2000/svg" x="3085" y="330" font-size="16" class="value" text-anchor="middle">R303  1k / 0.1%</text>
+<text xmlns="http://www.w3.org/2000/svg" x="2720" y="378" font-size="17" class="net" data-net="BAT_ADC_LINK" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 BAT_ADC_LINK，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="start">BAT_ADC_LINK</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="2720" y1="390" x2="3055" y2="390" class="wire" data-wire="BAT_ADC_LINK"/>
+<rect xmlns="http://www.w3.org/2000/svg" x="3055" y="382" width="60" height="16" class="symbol"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="3115" y1="390" x2="3450" y2="390" class="wire" data-wire="BAT_ADC"/>
+<text xmlns="http://www.w3.org/2000/svg" x="3450" y="378" font-size="17" class="net" data-net="BAT_ADC" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 BAT_ADC，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="end">BAT_ADC</text>
+<text xmlns="http://www.w3.org/2000/svg" x="3085" y="420" font-size="16" class="value" text-anchor="middle">R304  0Ω</text>
+<text xmlns="http://www.w3.org/2000/svg" x="2810" y="464" font-size="16" class="net" data-net="BAT_ADC" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 BAT_ADC，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="middle">BAT_ADC</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="2810" y1="475" x2="2810" y2="495" class="wire" data-wire="BAT_ADC"/>
+<rect xmlns="http://www.w3.org/2000/svg" x="2802" y="495" width="16" height="37" class="symbol"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="2810" y1="532" x2="2810" y2="552" class="wire" data-wire="GND"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="2810" y1="552" x2="2810" y2="562" class="wire"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="2797" y1="562" x2="2823" y2="562" class="wire"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="2802" y1="568" x2="2818" y2="568" class="wire"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="2807" y1="574" x2="2813" y2="574" class="wire"/>
+<text xmlns="http://www.w3.org/2000/svg" x="2827" y="505" font-size="16" class="ref">R305</text>
+<text xmlns="http://www.w3.org/2000/svg" x="2827" y="529" font-size="16" class="value">100k / 0.1%</text>
+<circle xmlns="http://www.w3.org/2000/svg" cx="3160" cy="500" r="7" class="symbol"/>
+<line xmlns="http://www.w3.org/2000/svg" x1="3160" y1="507" x2="3160" y2="526" class="wire" data-wire="BAT_ADC"/>
+<text xmlns="http://www.w3.org/2000/svg" x="3178" y="506" font-size="16" class="net" data-net="BAT_ADC" data-area="07  3S / 4S / 6S 电压采样 · 粗略 SOC" tabindex="0" role="button" aria-label="网络 BAT_ADC，07  3S / 4S / 6S 电压采样 · 粗略 SOC" text-anchor="start">BAT_ADC</text>
+<text xmlns="http://www.w3.org/2000/svg" x="3146" y="487" font-size="16" class="ref">TP301</text>
+<text xmlns="http://www.w3.org/2000/svg" x="75" y="675" font-size="18" class="muted">V保护后母线 ≈ 12.0878 × VADC（含R305负载，忽略开关导通电阻）；25.2V → 约2.085V。PC0 / pin15 / ADC1_IN10；上电等待至少500ms，曲线未标定前仅显示电压。</text></g></g>
 <g id="domain-f4" data-domain="f4"><g data-panel="power" transform="translate(0 1830)"><g xmlns="http://www.w3.org/2000/svg" id="power"><rect x="40" y="160" width="1040" height="570" rx="10" class="panel"/>
 <text x="62" y="198" font-size="27" class="heading">01  F4 供电与去耦</text>
 <text x="62" y="229" font-size="18" class="muted">本区输入为稳压 +3V3；6S 输入保护 / DC-DC 见上方电源区。</text>
@@ -896,80 +1025,53 @@
 <text xmlns="http://www.w3.org/2000/svg" x="951" y="894" font-size="16" class="ref">TP102</text>
 <text xmlns="http://www.w3.org/2000/svg" x="575" y="1062" font-size="18" class="muted">NRST 经 SWD/测试点可外部拉低复位。</text></g>
 <g data-panel="analog" transform="translate(0 1830)"><g xmlns="http://www.w3.org/2000/svg" id="analog"><rect x="40" y="1350" width="1040" height="550" rx="10" class="panel"/>
-<text x="62" y="1388" font-size="27" class="heading">03  电池采样 / GPS / 声纳业务口</text>
-<text x="62" y="1419" font-size="18" class="muted">6S 化学体系待定；25.2V 仅为 6S 锂离子满充示例。</text>
+<text x="62" y="1388" font-size="27" class="heading">03  电池 ADC / GPS / 声纳业务口</text>
+<text x="62" y="1419" font-size="18" class="muted">PC0采集保护后母线的单路电压；完整分压与断电开关见电池采样区。</text>
 </g>
-<text xmlns="http://www.w3.org/2000/svg" x="75" y="1458" font-size="17" class="net" data-net="BAT_SENSE_PROTECTED" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 BAT_SENSE_PROTECTED，03  电池采样 / GPS / 声纳业务口" text-anchor="start">BAT_SENSE_PROTECTED</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="75" y1="1470" x2="285" y2="1470" class="wire" data-wire="BAT_SENSE_PROTECTED"/>
-<rect xmlns="http://www.w3.org/2000/svg" x="285" y="1462" width="60" height="16" class="symbol"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="345" y1="1470" x2="555" y2="1470" class="wire" data-wire="BAT_DIV"/>
-<text xmlns="http://www.w3.org/2000/svg" x="555" y="1458" font-size="17" class="net" data-net="BAT_DIV" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 BAT_DIV，03  电池采样 / GPS / 声纳业务口" text-anchor="end">BAT_DIV</text>
-<text xmlns="http://www.w3.org/2000/svg" x="315" y="1500" font-size="16" class="value" text-anchor="middle">R301  100k / 1%</text>
-<text xmlns="http://www.w3.org/2000/svg" x="170" y="1524" font-size="16" class="net" data-net="BAT_DIV" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 BAT_DIV，03  电池采样 / GPS / 声纳业务口" text-anchor="middle">BAT_DIV</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="170" y1="1535" x2="170" y2="1555" class="wire" data-wire="BAT_DIV"/>
-<rect xmlns="http://www.w3.org/2000/svg" x="162" y="1555" width="16" height="37" class="symbol"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="170" y1="1592" x2="170" y2="1612" class="wire" data-wire="GND"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="170" y1="1612" x2="170" y2="1622" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="157" y1="1622" x2="183" y2="1622" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="162" y1="1628" x2="178" y2="1628" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="167" y1="1634" x2="173" y2="1634" class="wire"/>
-<text xmlns="http://www.w3.org/2000/svg" x="187" y="1565" font-size="16" class="ref">R302</text>
-<text xmlns="http://www.w3.org/2000/svg" x="187" y="1589" font-size="16" class="value">10k / 1%</text>
-<text xmlns="http://www.w3.org/2000/svg" x="380" y="1524" font-size="16" class="net" data-net="BAT_DIV" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 BAT_DIV，03  电池采样 / GPS / 声纳业务口" text-anchor="middle">BAT_DIV</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="380" y1="1535" x2="380" y2="1568" class="wire" data-wire="BAT_DIV"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="367" y1="1568" x2="393" y2="1568" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="367" y1="1578" x2="393" y2="1578" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="380" y1="1578" x2="380" y2="1609" class="wire" data-wire="GND"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="380" y1="1609" x2="380" y2="1619" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="367" y1="1619" x2="393" y2="1619" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="372" y1="1625" x2="388" y2="1625" class="wire"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="377" y1="1631" x2="383" y2="1631" class="wire"/>
-<text xmlns="http://www.w3.org/2000/svg" x="401" y="1565" font-size="16" class="ref">C301</text>
-<text xmlns="http://www.w3.org/2000/svg" x="401" y="1589" font-size="16" class="value">100nF</text>
-<text xmlns="http://www.w3.org/2000/svg" x="620" y="1458" font-size="17" class="net" data-net="BAT_DIV" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 BAT_DIV，03  电池采样 / GPS / 声纳业务口" text-anchor="start">BAT_DIV</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="620" y1="1470" x2="780" y2="1470" class="wire" data-wire="BAT_DIV"/>
-<rect xmlns="http://www.w3.org/2000/svg" x="780" y="1462" width="60" height="16" class="symbol"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="840" y1="1470" x2="1000" y2="1470" class="wire" data-wire="BAT_ADC_LINK"/>
-<text xmlns="http://www.w3.org/2000/svg" x="1000" y="1458" font-size="17" class="net" data-net="BAT_ADC_LINK" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 BAT_ADC_LINK，03  电池采样 / GPS / 声纳业务口" text-anchor="end">BAT_ADC_LINK</text>
-<text xmlns="http://www.w3.org/2000/svg" x="810" y="1500" font-size="16" class="value" text-anchor="middle">R303  1k</text>
-<text xmlns="http://www.w3.org/2000/svg" x="620" y="1553" font-size="17" class="net" data-net="BAT_ADC_LINK" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 BAT_ADC_LINK，03  电池采样 / GPS / 声纳业务口" text-anchor="start">BAT_ADC_LINK</text>
-<line xmlns="http://www.w3.org/2000/svg" x1="620" y1="1565" x2="780" y2="1565" class="wire" data-wire="BAT_ADC_LINK"/>
-<rect xmlns="http://www.w3.org/2000/svg" x="780" y="1557" width="60" height="16" class="symbol"/>
-<line xmlns="http://www.w3.org/2000/svg" x1="840" y1="1565" x2="1000" y2="1565" class="wire" data-wire="BAT_ADC"/>
-<text xmlns="http://www.w3.org/2000/svg" x="1000" y="1553" font-size="17" class="net" data-net="BAT_ADC" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 BAT_ADC，03  电池采样 / GPS / 声纳业务口" text-anchor="end">BAT_ADC</text>
-<text xmlns="http://www.w3.org/2000/svg" x="810" y="1595" font-size="16" class="value" text-anchor="middle">R304  0Ω / DNP</text>
-<text xmlns="http://www.w3.org/2000/svg" x="70" y="1670" font-size="18" class="muted">VADC≈VBAT/11；25.2V 时约 2.291V（标称电阻）。</text>
-<text xmlns="http://www.w3.org/2000/svg" x="70" y="1698" font-size="18" class="muted">R304 默认 DNP：钳位/断电反灌未定，禁止直接闭合后接电池。</text>
+<rect xmlns="http://www.w3.org/2000/svg" x="80" y="1480" width="205" height="112" rx="4" class="port"/>
+<text xmlns="http://www.w3.org/2000/svg" x="90" y="1503" font-size="19" class="ref">P_BAT_ADC</text>
+<text xmlns="http://www.w3.org/2000/svg" x="90" y="1526" font-size="16" class="muted">电池采样跨区口</text>
+<text xmlns="http://www.w3.org/2000/svg" x="92" y="1550" font-size="15" class="pin">ADC</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="265" y1="1546" x2="305" y2="1546" class="wire" data-wire="BAT_ADC"/>
+<circle xmlns="http://www.w3.org/2000/svg" cx="265" cy="1546" r="4" class="junction"/>
+<text xmlns="http://www.w3.org/2000/svg" x="313" y="1550" font-size="17" class="net" data-net="BAT_ADC" data-area="03  电池 ADC / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 BAT_ADC，03  电池 ADC / GPS / 声纳业务口" text-anchor="start">BAT_ADC</text>
+<text xmlns="http://www.w3.org/2000/svg" x="92" y="1582" font-size="15" class="pin">GND</text>
+<line xmlns="http://www.w3.org/2000/svg" x1="265" y1="1578" x2="305" y2="1578" class="wire" data-wire="GND"/>
+<circle xmlns="http://www.w3.org/2000/svg" cx="265" cy="1578" r="4" class="junction"/>
+<text xmlns="http://www.w3.org/2000/svg" x="313" y="1582" font-size="17" class="net" data-net="GND" data-area="03  电池 ADC / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 GND，03  电池 ADC / GPS / 声纳业务口" text-anchor="start">GND</text>
+<text xmlns="http://www.w3.org/2000/svg" x="375" y="1510" font-size="18" class="muted">3S / 4S / 6S 配置不可自动猜测；</text>
+<text xmlns="http://www.w3.org/2000/svg" x="375" y="1538" font-size="18" class="muted">放电曲线未标定前只显示电压。</text>
+<text xmlns="http://www.w3.org/2000/svg" x="375" y="1566" font-size="18" class="muted">电源启停与过压瞬态待台架核对。</text>
 <rect xmlns="http://www.w3.org/2000/svg" x="80" y="1740" width="165" height="132" rx="4" class="connector"/>
 <text xmlns="http://www.w3.org/2000/svg" x="90" y="1763" font-size="19" class="ref">J301</text>
 <text xmlns="http://www.w3.org/2000/svg" x="90" y="1786" font-size="16" class="muted">GPS / 水面</text>
 <text xmlns="http://www.w3.org/2000/svg" x="92" y="1810" font-size="15" class="pin">1</text>
 <line xmlns="http://www.w3.org/2000/svg" x1="225" y1="1806" x2="265" y2="1806" class="wire" data-wire="GPS_TX"/>
 <circle xmlns="http://www.w3.org/2000/svg" cx="225" cy="1806" r="4" class="junction"/>
-<text xmlns="http://www.w3.org/2000/svg" x="273" y="1810" font-size="17" class="net" data-net="GPS_TX" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 GPS_TX，03  电池采样 / GPS / 声纳业务口" text-anchor="start">GPS_TX</text>
+<text xmlns="http://www.w3.org/2000/svg" x="273" y="1810" font-size="17" class="net" data-net="GPS_TX" data-area="03  电池 ADC / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 GPS_TX，03  电池 ADC / GPS / 声纳业务口" text-anchor="start">GPS_TX</text>
 <text xmlns="http://www.w3.org/2000/svg" x="92" y="1836" font-size="15" class="pin">2</text>
 <line xmlns="http://www.w3.org/2000/svg" x1="225" y1="1832" x2="265" y2="1832" class="wire" data-wire="GPS_RX"/>
 <circle xmlns="http://www.w3.org/2000/svg" cx="225" cy="1832" r="4" class="junction"/>
-<text xmlns="http://www.w3.org/2000/svg" x="273" y="1836" font-size="17" class="net" data-net="GPS_RX" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 GPS_RX，03  电池采样 / GPS / 声纳业务口" text-anchor="start">GPS_RX</text>
+<text xmlns="http://www.w3.org/2000/svg" x="273" y="1836" font-size="17" class="net" data-net="GPS_RX" data-area="03  电池 ADC / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 GPS_RX，03  电池 ADC / GPS / 声纳业务口" text-anchor="start">GPS_RX</text>
 <text xmlns="http://www.w3.org/2000/svg" x="92" y="1862" font-size="15" class="pin">3</text>
 <line xmlns="http://www.w3.org/2000/svg" x1="225" y1="1858" x2="265" y2="1858" class="wire" data-wire="GND"/>
 <circle xmlns="http://www.w3.org/2000/svg" cx="225" cy="1858" r="4" class="junction"/>
-<text xmlns="http://www.w3.org/2000/svg" x="273" y="1862" font-size="17" class="net" data-net="GND" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 GND，03  电池采样 / GPS / 声纳业务口" text-anchor="start">GND</text>
+<text xmlns="http://www.w3.org/2000/svg" x="273" y="1862" font-size="17" class="net" data-net="GND" data-area="03  电池 ADC / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 GND，03  电池 ADC / GPS / 声纳业务口" text-anchor="start">GND</text>
 <rect xmlns="http://www.w3.org/2000/svg" x="590" y="1740" width="190" height="132" rx="4" class="connector"/>
 <text xmlns="http://www.w3.org/2000/svg" x="600" y="1763" font-size="19" class="ref">J302</text>
 <text xmlns="http://www.w3.org/2000/svg" x="600" y="1786" font-size="16" class="muted">声纳候选 TTL</text>
 <text xmlns="http://www.w3.org/2000/svg" x="602" y="1810" font-size="15" class="pin">1</text>
 <line xmlns="http://www.w3.org/2000/svg" x1="760" y1="1806" x2="800" y2="1806" class="wire" data-wire="SONAR_TX"/>
 <circle xmlns="http://www.w3.org/2000/svg" cx="760" cy="1806" r="4" class="junction"/>
-<text xmlns="http://www.w3.org/2000/svg" x="808" y="1810" font-size="17" class="net" data-net="SONAR_TX" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 SONAR_TX，03  电池采样 / GPS / 声纳业务口" text-anchor="start">SONAR_TX</text>
+<text xmlns="http://www.w3.org/2000/svg" x="808" y="1810" font-size="17" class="net" data-net="SONAR_TX" data-area="03  电池 ADC / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 SONAR_TX，03  电池 ADC / GPS / 声纳业务口" text-anchor="start">SONAR_TX</text>
 <text xmlns="http://www.w3.org/2000/svg" x="602" y="1836" font-size="15" class="pin">2</text>
 <line xmlns="http://www.w3.org/2000/svg" x1="760" y1="1832" x2="800" y2="1832" class="wire" data-wire="SONAR_RX"/>
 <circle xmlns="http://www.w3.org/2000/svg" cx="760" cy="1832" r="4" class="junction"/>
-<text xmlns="http://www.w3.org/2000/svg" x="808" y="1836" font-size="17" class="net" data-net="SONAR_RX" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 SONAR_RX，03  电池采样 / GPS / 声纳业务口" text-anchor="start">SONAR_RX</text>
+<text xmlns="http://www.w3.org/2000/svg" x="808" y="1836" font-size="17" class="net" data-net="SONAR_RX" data-area="03  电池 ADC / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 SONAR_RX，03  电池 ADC / GPS / 声纳业务口" text-anchor="start">SONAR_RX</text>
 <text xmlns="http://www.w3.org/2000/svg" x="602" y="1862" font-size="15" class="pin">3</text>
 <line xmlns="http://www.w3.org/2000/svg" x1="760" y1="1858" x2="800" y2="1858" class="wire" data-wire="GND"/>
 <circle xmlns="http://www.w3.org/2000/svg" cx="760" cy="1858" r="4" class="junction"/>
-<text xmlns="http://www.w3.org/2000/svg" x="808" y="1862" font-size="17" class="net" data-net="GND" data-area="03  电池采样 / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 GND，03  电池采样 / GPS / 声纳业务口" text-anchor="start">GND</text></g>
+<text xmlns="http://www.w3.org/2000/svg" x="808" y="1862" font-size="17" class="net" data-net="GND" data-area="03  电池 ADC / GPS / 声纳业务口" tabindex="0" role="button" aria-label="网络 GND，03  电池 ADC / GPS / 声纳业务口" text-anchor="start">GND</text></g>
 <g data-panel="mcu" transform="translate(0 1830)"><g xmlns="http://www.w3.org/2000/svg" id="mcu"><rect x="1100" y="160" width="1380" height="1740" rx="10" class="panel"/>
 <text x="1122" y="198" font-size="27" class="heading">04  U1 · STM32F407VET6 / LQFP100</text>
 <text x="1122" y="229" font-size="18" class="muted">100 个物理脚完整对应；GPIO/AF 来自 ST 管脚数据，连接为本项目候选。</text>

@@ -12,9 +12,10 @@ module.exports=function(sources,originalPanels,style){
   'power-servo5':[5390,200],
   'power-buck33':[40,690],
   'power-ports':[1790,690],
-  'power-boundaries':[1790,1270]
+  'power-boundaries':[1790,1270],
+  'battery-sense':[3640,1390]
  };
- const offsets={f4:[0,1830],p4:[3600,1830],interfaces:[0,4230],camera:[3600,4230]};
+ const offsets={f4:[0,1830],p4:[3600,1830],interfaces:[0,4230],camera:[3600,4230],battery:[0,0]};
  const groups=[];
  for(const source of sources){
   const xml=new JSDOM(source.svg,{contentType:'image/svg+xml'}),root=xml.window.document.documentElement;
@@ -37,9 +38,9 @@ module.exports=function(sources,originalPanels,style){
  const svg=`<svg xmlns="http://www.w3.org/2000/svg" id="svg-board" class="circuit" viewBox="0 0 ${width} ${height}" role="img" aria-label="无人船统一主板整张原理图：电源、双MCU、通信、存储、摄像头和执行接口">
  <style>${style}</style><rect width="${width}" height="${height}" fill="#fff"/><rect x="18" y="18" width="${width-36}" height="${height-36}" rx="6" fill="none" stroke="#9db3c5" stroke-width="2"/>
  ${label(48,78,'无人船统一主板 · 整张原理图',48)}
- <text x="7192" y="78" font-size="30" class="heading" text-anchor="end">Rev E · 2026-11-18 · 01 / 01</text>
+ <text x="7192" y="78" font-size="30" class="heading" text-anchor="end">Rev F · 2026-11-18 · 01 / 01</text>
  <text x="48" y="124" font-size="23" class="muted">同名网络在整图内互连 · 点击高亮 / 双击追踪 · DNP 默认不装 · 候选电气评审稿</text>
- ${label(48,178,'6S 输入保护 · 逻辑与舵机双路 5V')}
+ ${label(48,178,'3S / 4S / 6S 单路输入 · 逻辑与舵机双路 5V')}
  ${label(48,1958,'STM32F407 · 实时控制与传感器')}${label(3648,1958,'ESP32-P4C5 · 通信、存储与视频')}
  ${label(48,4358,'外部模块与执行接口')}${label(3648,4358,'SD / USB / CSI / DVP 外围')}
  ${groups.join('\n')}
