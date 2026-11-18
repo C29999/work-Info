@@ -1,4 +1,26 @@
-module.exports=()=>`<div class="dialog-heading"><div><span class="eyebrow">ESP32 · 下载与恢复</span><h2>两颗芯片，分别烧录</h2></div><button id="close-flash">关闭</button></div>
-<p class="notice">当前图纸按 P4C5 资料绘制。你提到的 C3 属于另一型号；不能套用 C5 的启动脚或核心板焊盘号。</p>
-<div class="flash-cards"><section class="flash-card p4-card"><h3>① ESP32-P4</h3><p>主程序：视频、存储与外部通信。</p><button data-program-route="flash-p4">紫色闪烁 · P4 烧录区</button><p>现图保留 UART 恢复测试点、BOOT/RESET 和 USB Serial/JTAG 逻辑口。USB 尚未完成实物连接器、VBUS 和 ESD 设计。</p></section><section class="flash-card c5-card"><h3>② ESP32-C5</h3><p>无线协处理器：需要匹配 P4 端的软件。</p><button data-program-route="flash-c5">橙色闪烁 · C5 待引出焊盘</button><p>目前模块 4 / 5 / 6 / 7 / 82 脚仍标为 NC；没有画成已可使用的 C5 下载口。</p></section></div>
-<div id="flash-instructions"><table class="flash-table"><thead><tr><th>芯片</th><th>图中位置</th><th>当前边界</th></tr></thead><tbody><tr><td>P4</td><td>TP701 / TP702：UART TX / RX；TP703：EN；SW701 / SW702：RESET / BOOT。</td><td>UART 使用匹配的逻辑电平，TX 与 RX 交叉并共地。固件必须针对 P4 构建，不能烧写 C5 / C3 固件。</td></tr><tr><td>C5</td><td>模块 4 / 5：UART RX / TX；6 / 7：GPIO28 / GPIO27；82：C5 复位路径。</td><td>这些脚当前 NC，需补下载引出与启动 / 复位电路后才能按该路径烧录；不能照搬 C3 脚号。</td></tr></tbody></table><p>焊盘号指 P4C5 核心板，依据见<a href="../references/P4C5核心板说明书.pdf">核心板说明书</a>和<a href="../references/P4-module开发板原理图V1.4.pdf">V1.4 底板参考</a>。本图没有把厂商底板的下载切换电路直接移植进来。</p><h3>P4 手动 UART 恢复</h3><ol><li>使用 3.3V 逻辑 USB-UART：RX 接 TP701（P4 TX），TX 接 TP702（P4 RX），另接公共 GND。按板电源方案供电。</li><li>按住 SW702 BOOT，按下并松开 SW701 RESET，再松开 BOOT；复位释放时 GPIO35 为低、GPIO36 为高。</li><li>在已有 P4 项目中按生成的下载参数烧录，例如 <code>idf.py -p COMx flash monitor</code>；COMx 替换为实际串口。运行时释放 BOOT 后复位。</li></ol><p>C5 必须先补下载电路；模块82内部与P4 GPIO54共享复位路径，需避免外部下载器与P4驱动争用。现有两个按键仅控制P4。</p><p>启动模式依据：<a href="https://docs.espressif.com/projects/esptool/en/latest/esp32p4/advanced-topics/boot-mode-selection.html">Espressif P4</a>、<a href="https://docs.espressif.com/projects/esptool/en/latest/esp32c5/advanced-topics/boot-mode-selection.html">Espressif C5</a>。</p></div>`;
+'use strict';
+
+module.exports=()=>`<div class="dialog-heading"><div><span class="eyebrow">ESP32 · 下载与恢复</span><h2>P4 和 C5 分别烧录</h2></div><button id="close-flash">关闭</button></div>
+<p class="notice">本主板 Rev F 有 P4 手动 UART 恢复电路。C5 下载焊盘尚未引出，橙色定位仅帮助查找模块焊盘。</p>
+<div class="flash-cards">
+ <section class="flash-card p4-card"><h3>① ESP32-P4</h3><p>主程序：视频、存储与外部通信。</p><button data-program-route="flash-p4">定位 P4 下载 / 恢复电路</button><p>TP701 / TP702、SW701 / SW702 已画。USB Serial/JTAG 是逻辑预留口，未接实物 USB 插座。</p></section>
+ <section class="flash-card c5-card"><h3>② ESP32-C5</h3><p>无线协处理器：固件需与 P4 端的 ESP-Hosted 配置匹配。</p><button data-program-route="flash-c5">定位 C5 待引出焊盘</button><p>模块焊盘 4 / 5 / 6 / 7 / 82 在本主板上均为 NC。</p></section>
+</div>
+<div id="flash-instructions">
+ <h3>P4 · 本主板上的手动 UART</h3>
+ <ol>
+  <li>板上正常供电，下载器只接匹配目标电平的 TX / RX / GND。下载器 RX → TP701（P4 TX，模块 64 / GPIO37）；下载器 TX → TP702（P4 RX，模块 65 / GPIO38）。参考底板串口为 3.3 V 逻辑；接线前核对实物电平。</li>
+  <li>按住 SW702 BOOT，按下并松开 SW701 RESET，再松开 BOOT。复位释放时模块 62 / GPIO35 为低，63 / GPIO36 为高。TP703 是 P4 EN（模块 87）。</li>
+  <li>在目标为 <code>esp32p4</code> 的项目中运行 <code>idf.py -p COMx flash</code>。手动下载后，如未自动运行，松开 BOOT 再按 RESET。</li>
+ </ol>
+ <p>P4 原生 USB Serial/JTAG 在模块 50（D−）/ 51（D+），即当前 <code>P_USB_DEBUG</code>。USB-HS 摄像头插座走另一组信号，不能当下载口。</p>
+ <h3>C5 · 原厂载板或后续夹具</h3>
+ <table class="flash-table"><thead><tr><th>模块焊盘</th><th>烧录用途</th></tr></thead><tbody>
+ <tr><td>4 / C5_U0RXD</td><td>接下载器 TX</td></tr><tr><td>5 / C5_U0TXD</td><td>接下载器 RX</td></tr>
+ <tr><td>6 / GPIO28</td><td>BOOT：C5 复位释放时拉低</td></tr><tr><td>7 / GPIO27</td><td>C5 复位释放时保持高</td></tr>
+ <tr><td>82 / P4 GPIO54</td><td>模块内部与 C5 CHIP_PU 共用复位路径。需确认 P4 此时不驱动该线，避免外部下载电路与 P4 争用。</td></tr>
+ </tbody></table>
+ <p>若用原厂 P4C5 开发底板，插其 CH343P 下载口，把目标开关拨到 C5；它带下载切换与复位电路。自制主板需先补独立下载引出（含共地）和复位控制，SW701 / SW702 只控制 P4。</p>
+ <p>在目标为 <code>esp32c5</code> 的项目中用对应端口烧录。若烧厂商提供的 ESP-Hosted 镜像，按该镜像随附的地址烧录，并确认与 P4 主程序匹配。</p>
+ <p>资料：<a href="../references/P4C5核心板说明书.pdf">模块焊盘和内部连接</a>、<a href="../references/P4-module开发板原理图V1.4.pdf">厂商下载切换电路</a>、<a href="https://github.com/osptek/devboard-esp32p4c5_module/blob/main/README_EN.md">原厂开发底板操作</a>、<a href="https://docs.espressif.com/projects/esptool/en/latest/esp32p4/advanced-topics/boot-mode-selection.html">P4 启动条件</a>、<a href="https://docs.espressif.com/projects/esptool/en/latest/esp32c5/advanced-topics/boot-mode-selection.html">C5 启动条件</a>。</p>
+</div>`;
